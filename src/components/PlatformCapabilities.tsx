@@ -44,9 +44,9 @@ export default function PlatformCapabilities() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {capabilities.map((cap, i) => (
-            <div key={i} className="glass-panel rounded-2xl p-8 hover:-translate-y-1 transition-transform duration-300 group">
-              <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
-                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-white/50 flex flex-col items-center justify-center group-hover:scale-110 group-hover:text-white transition-all shadow-[0_0_10px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+            <div key={i} className="glass-panel glass-interactive rounded-2xl p-8 group">
+              <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/10 group-hover:border-[#0ea5e9]/30 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-white/50 flex flex-col items-center justify-center group-hover:border-[#0ea5e9]/50 group-hover:text-[#0ea5e9] transition-all shadow-[0_0_10px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_15px_rgba(14,165,233,0.3)]">
                   {cap.icon}
                 </div>
                 <h3 className="text-xl text-white font-medium tracking-wide">{cap.title}</h3>

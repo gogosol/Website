@@ -28,11 +28,11 @@ export default function HeroSection() {
             QCertify helps enterprises assess, document, and communicate quantum-era readiness with structured evidence, governance workflows, and auditable assurance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="#contact" className="relative group overflow-hidden inline-flex justify-center items-center gap-2 px-8 py-4 rounded-full font-bold transition-all bg-white text-black hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-300">
+            <Link href="#contact" className="relative group overflow-hidden inline-flex justify-center items-center gap-2 px-8 py-4 rounded-full font-bold transition-all glass-panel glass-interactive text-white focus:outline-none focus:ring-2 focus:ring-[#0ea5e9]">
               <span className="relative z-10 shadow-sm">Book a Demo</span>
             </Link>
-            <Link href="#platform" className="inline-flex justify-center items-center gap-2 glass-panel hover:bg-white/10 border border-white/20 px-8 py-4 rounded-full font-medium transition-all text-white focus:outline-none focus:ring-2 focus:ring-white">
-              Explore the Platform <ArrowRight className="w-4 h-4 text-white" />
+            <Link href="#platform" className="inline-flex justify-center items-center gap-2 glass-panel glass-interactive px-8 py-4 rounded-full font-medium transition-all text-white focus:outline-none focus:ring-2 focus:ring-[#0ea5e9]">
+              Explore the Platform <ArrowRight className="w-4 h-4 text-white group-hover:text-[#0ea5e9] transition-colors" />
             </Link>
           </div>
         </motion.div>
@@ -55,11 +55,11 @@ export default function HeroSection() {
           </div>
           
           <div className="flex-1 space-y-5 font-mono text-sm z-10 relative">
-            <div className="p-5 glass-panel rounded-xl flex justify-between items-center transition-transform hover:scale-[1.02]">
-              <span className="text-slate-300 uppercase tracking-widest text-xs">PQC Framework mapping</span>
+            <div className="p-5 glass-panel glass-interactive rounded-xl flex justify-between items-center group">
+              <span className="text-slate-300 uppercase tracking-widest text-xs group-hover:text-[#0ea5e9] transition-colors">PQC Framework mapping</span>
               <span className="text-white font-bold text-shadow">92% Cover</span>
             </div>
-            <div className="p-6 glass-panel rounded-xl flex gap-4 flex-col transition-transform hover:scale-[1.02]">
+            <div className="p-6 glass-panel glass-interactive rounded-xl flex gap-4 flex-col group">
               <div className="flex justify-between items-center mb-1">
                 <span className="text-slate-400 text-xs tracking-widest uppercase">System Readiness Overview</span>
                 <span className="text-white text-xs font-bold">74%</span>
