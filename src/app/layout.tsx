@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -8,11 +10,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "QCertify | Enterprise Quantum Trust & Readiness",
-  description: "QCertify helps enterprises assess, document, and communicate quantum-era readiness with structured evidence and governance workflows.",
+  title: {
+    default: "QCertify — Enterprise Cryptographic Protection for the Post-Quantum Era",
+    template: "%s | QCertify",
+  },
+  description:
+    "QCertify builds enterprise cryptographic protection for the post-quantum era. QuantumHalon is a crypto-agile gateway that protects traffic and supports phased migration.",
   openGraph: {
-    title: "QCertify | Enterprise Quantum Trust & Readiness",
-    description: "The enterprise platform for quantum-era trust, readiness, certification, assurance, and governance.",
+    title: "QCertify — Enterprise Cryptographic Protection for the Post-Quantum Era",
+    description:
+      "QuantumHalon is a crypto-agile gateway that protects traffic today and enables phased transition to stronger cryptographic protection.",
     url: "https://qcertify.com",
     siteName: "QCertify",
     images: [
@@ -20,7 +27,7 @@ export const metadata: Metadata = {
         url: "https://qcertify.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "QCertify - Quantum Readiness Platform",
+        alt: "QCertify — Enterprise Cryptographic Protection",
       },
     ],
     locale: "en_US",
@@ -28,8 +35,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "QCertify | Enterprise Quantum Trust & Readiness",
-    description: "The enterprise platform for quantum-era trust, readiness, certification, assurance, and governance.",
+    title: "QCertify — Enterprise Cryptographic Protection for the Post-Quantum Era",
+    description:
+      "QuantumHalon is a crypto-agile gateway that protects traffic and supports phased post-quantum migration.",
     images: ["https://qcertify.com/og-image.jpg"],
   },
 };
@@ -44,7 +52,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} h-full antialiased bg-black text-white overflow-x-hidden`}
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden">{children}</body>
+      <body className="min-h-full flex flex-col overflow-x-hidden">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
