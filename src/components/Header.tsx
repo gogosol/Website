@@ -52,11 +52,10 @@ export default function Header() {
             <Image
               src="/SF_White_Logo_Web.png"
               alt="QCertify Logo"
-              width={160}
-              height={40}
+              width={120}
+              height={30}
               loading="eager"
-              className="object-contain h-10 w-auto"
-              style={{ height: 'auto' }}
+              className="object-contain h-7 w-auto"
             />
           </Link>
 
