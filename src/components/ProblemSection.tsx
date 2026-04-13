@@ -50,10 +50,10 @@ export default function ProblemSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="p-6 glass-panel rounded-xl group hover:-translate-y-1 transition-transform"
+              className="p-6 glass-panel glass-interactive rounded-xl group"
             >
-              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mb-4 border border-white/10 group-hover:scale-110 group-hover:bg-white/10 transition-all">
-                {prob.icon}
+              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mb-4 border border-white/10 group-hover:border-[#0ea5e9]/50 group-hover:bg-[#0ea5e9]/10 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.3)] transition-all">
+                <span className="group-hover:text-[#0ea5e9] transition-colors">{prob.icon}</span>
               </div>
               <h3 className="text-white font-medium text-lg mb-2">{prob.title}</h3>
               <p className="text-slate-400 text-sm leading-relaxed">{prob.desc}</p>

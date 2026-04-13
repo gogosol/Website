@@ -20,8 +20,8 @@ export default function OutcomesSection() {
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {outcomes.map((out, i) => (
-            <div key={i} className="p-8 glass-panel flex flex-col gap-4 hover:bg-white/10 transition-colors">
-              <div className="text-white/50 mb-2">
+            <div key={i} className="p-8 glass-panel glass-interactive flex flex-col gap-4 group">
+              <div className="text-white/50 mb-2 group-hover:text-[#0ea5e9] transition-colors">
                 {out.icon}
               </div>
               <div className="text-2xl text-white font-semibold tracking-tight">

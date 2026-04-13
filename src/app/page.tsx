@@ -31,12 +31,12 @@ function WhyNowSection() {
             </div>
           </div>
           <div className="md:w-1/2 w-full grid gap-4">
-             <div className="p-6 glass-panel rounded-xl block transition-transform hover:-translate-y-1 duration-300">
-                <div className="text-white text-xl font-medium mb-2 opacity-90">Cost of Late Assurance</div>
+             <div className="p-6 glass-panel glass-interactive rounded-xl block transition-transform group">
+                <div className="text-white text-xl font-medium mb-2 opacity-90 group-hover:text-[#0ea5e9] transition-colors">Cost of Late Assurance</div>
                 <div className="text-slate-400">Rushed discovery leads to incomplete migrations and failed partner audits.</div>
              </div>
-             <div className="p-6 glass-panel rounded-xl block border-l-[3px] border-l-white/50 ml-0 md:ml-8 transition-transform hover:-translate-y-1 duration-300">
-                <div className="text-white text-xl font-medium mb-2 opacity-90">Rising Procurement Standards</div>
+             <div className="p-6 glass-panel glass-interactive rounded-xl block border-l-[3px] border-l-[#0ea5e9]/50 ml-0 md:ml-8 transition-transform group hover:border-[#0ea5e9]">
+                <div className="text-white text-xl font-medium mb-2 opacity-90 group-hover:text-[#0ea5e9] transition-colors">Rising Procurement Standards</div>
                 <div className="text-slate-400">Enterprise buyers increasingly demand certifiable proof of post-quantum readiness.</div>
              </div>
           </div>
@@ -68,8 +68,8 @@ function SolutionSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((F, i) => (
-            <div key={i} className="p-6 rounded-2xl glass-panel transition-all hover:scale-[1.02] hover:-translate-y-1 group">
-              <F.icon className="w-8 h-8 text-white/70 mb-4 group-hover:scale-110 group-hover:text-white transition-all duration-300" />
+            <div key={i} className="p-6 rounded-2xl glass-panel glass-interactive group">
+              <F.icon className="w-8 h-8 text-white/70 mb-4 group-hover:scale-110 group-hover:text-[#0ea5e9] transition-all duration-300" />
               <h3 className="text-lg font-medium text-white mb-2">{F.name}</h3>
               <p className="text-sm text-slate-400 leading-relaxed">{F.desc}</p>
             </div>
@@ -137,8 +137,8 @@ function UseCasesSection() {
         </p>
         <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-left">
           {['Financial Services', 'Government & Public Sector', 'Critical Infrastructure', 'Advanced Manufacturing', 'Defense-adjacent Organizations', 'Research Institutions'].map(item => (
-            <li key={item} className="flex items-center text-slate-300 p-4 border border-white/5 glass-panel rounded-xl hover:bg-white/10 transition-colors">
-              <CheckCircle className="w-5 h-5 text-white/50 mr-3 flex-shrink-0" /> {item}
+            <li key={item} className="flex items-center text-slate-300 p-4 glass-panel glass-interactive rounded-xl group">
+              <CheckCircle className="w-5 h-5 text-[#0ea5e9] mr-3 flex-shrink-0 group-hover:scale-110 transition-transform" /> {item}
             </li>
           ))}
         </ul>
@@ -166,7 +166,7 @@ function CTASection() {
           Turn assurance into an operating capability.
         </h2>
         <p className="text-xl text-slate-400 mb-10">For teams building long-horizon trust in high-stakes environments.</p>
-        <button className="bg-white text-black hover:bg-slate-200 transition-colors px-8 py-4 rounded-md font-semibold text-lg flex items-center justify-center mx-auto gap-2">
+        <button className="glass-panel glass-interactive text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center mx-auto gap-2">
           Request a Trust Briefing
         </button>
       </div>
@@ -192,9 +192,8 @@ function Footer() {
   return (
     <footer className="glass-panel border-t border-white/5 py-12 relative z-10 rounded-t-3xl mt-12 mx-4 sm:mx-6 lg:mx-8 mb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex items-center gap-2">
-          <Image src="/SF Logo Q White.png" alt="SF QCertify" width={24} height={24} className="opacity-80 object-contain" />
-          <span className="text-slate-300 font-semibold tracking-widest uppercase text-lg">QCERTIFY</span>
+        <div className="flex items-center">
+          <Image src="/SF_White_Logo_Web.png" alt="QCertify Logo" width={140} height={32} className="opacity-80 object-contain h-8 w-auto" />
         </div>
         <div className="text-slate-500 text-sm font-mono">
           &copy; {new Date().getFullYear()} QCertify. All Rights Reserved.
