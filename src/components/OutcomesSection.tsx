@@ -11,16 +11,17 @@ export default function OutcomesSection() {
   ];
 
   return (
-    <section className="py-24 bg-[#0A0E17] border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-5xl text-white font-semibold tracking-tight mb-16 text-center">
+    <section className="py-24 bg-transparent border-y border-white/5 relative overflow-hidden">
+      <div className="bg-glow-orb w-[600px] h-[600px] bg-white bottom-[-200px] left-[-300px] opacity-[0.03]"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2 className="text-3xl md:text-5xl text-white font-semibold tracking-tight mb-16 text-center text-glow">
           Measurable confidence.
         </h2>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {outcomes.map((out, i) => (
-            <div key={i} className="p-8 border border-white/5 bg-[#131825] rounded-xl flex flex-col gap-4 hover:bg-white/5 transition-colors">
-              <div className="text-slate-500 mb-2">
+            <div key={i} className="p-8 glass-panel flex flex-col gap-4 hover:bg-white/10 transition-colors">
+              <div className="text-white/50 mb-2">
                 {out.icon}
               </div>
               <div className="text-2xl text-white font-semibold tracking-tight">
