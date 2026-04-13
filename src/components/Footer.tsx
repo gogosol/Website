@@ -29,10 +29,9 @@ export default function Footer() {
             <Image
               src="/SF_White_Logo_Web.png"
               alt="QCertify Logo"
-              width={140}
-              height={32}
-              className="opacity-80 object-contain h-8 w-auto mb-4"
-              style={{ height: 'auto' }}
+              width={110}
+              height={28}
+              className="opacity-80 object-contain h-6 w-auto mb-4"
             />
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs mb-6">
               Enterprise cryptographic protection for the post-quantum era. Protect traffic today. Transition with confidence tomorrow.
