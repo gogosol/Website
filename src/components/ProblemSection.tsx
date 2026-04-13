@@ -5,22 +5,22 @@ import { FileWarning, ListTodo, Users, Search } from 'lucide-react';
 
 const problems = [
   {
-    icon: <FileWarning className="w-5 h-5 text-[#E879F9]" />,
+    icon: <FileWarning className="w-5 h-5 text-white/80" />,
     title: "Fragmented evidence",
     desc: "Proof of readiness is scattered across PDFs, spreadsheets, and disconnected communications."
   },
   {
-    icon: <ListTodo className="w-5 h-5 text-[#E879F9]" />,
+    icon: <ListTodo className="w-5 h-5 text-white/80" />,
     title: "No audit-ready workflow",
     desc: "Existing workflows are manual, making repeatable certification prep almost impossible."
   },
   {
-    icon: <Users className="w-5 h-5 text-[#E879F9]" />,
+    icon: <Users className="w-5 h-5 text-white/80" />,
     title: "Unclear ownership",
     desc: "Responsibility for cryptographic and trust transitions spans siloed technical and compliance teams."
   },
   {
-    icon: <Search className="w-5 h-5 text-[#E879F9]" />,
+    icon: <Search className="w-5 h-5 text-white/80" />,
     title: "Limited visibility",
     desc: "Executives lack a unified, defensible view of platform security and readiness claims."
   }
@@ -29,13 +29,13 @@ const problems = [
 export default function ProblemSection() {
   return (
     <section className="py-24 relative overflow-hidden border-y border-white/5">
-      <div className="bg-glow-orb w-[500px] h-[500px] bg-[#06b6d4] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10"></div>
+      <div className="bg-glow-orb w-[500px] h-[500px] bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03]"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mb-16">
           <h2 className="text-3xl md:text-5xl text-white font-semibold tracking-tight mb-6 leading-tight">
             The challenge is not knowing change is coming. <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] to-[#e879f9]">The challenge is proving you are prepared.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">The challenge is proving you are prepared.</span>
           </h2>
           <p className="text-slate-300 text-lg leading-relaxed">
             Quantum readiness is not just a technical issue. It is an assurance problem. Most organizations are not operationally ready for quantum-era trust demands, leaving their readiness work fragmented and vulnerable to gaps.
@@ -52,7 +52,7 @@ export default function ProblemSection() {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="p-6 glass-panel rounded-xl group hover:-translate-y-1 transition-transform"
             >
-              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mb-4 border border-white/10 group-hover:scale-110 transition-transform">
+              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mb-4 border border-white/10 group-hover:scale-110 group-hover:bg-white/10 transition-all">
                 {prob.icon}
               </div>
               <h3 className="text-white font-medium text-lg mb-2">{prob.title}</h3>

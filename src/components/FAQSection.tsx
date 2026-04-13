@@ -31,7 +31,7 @@ export default function FAQSection() {
 
   return (
     <section className="py-24 relative overflow-hidden border-t border-white/5" id="faq">
-      <div className="bg-glow-orb w-[600px] h-[600px] bg-[#E879F9] top-[20%] left-[-200px] opacity-10"></div>
+      <div className="bg-glow-orb w-[600px] h-[600px] bg-white top-[20%] left-[-200px] opacity-[0.03]"></div>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <h2 className="text-3xl md:text-5xl text-white font-bold tracking-tight mb-12 text-center text-glow">
           Frequently asked questions
@@ -40,16 +40,16 @@ export default function FAQSection() {
           {faqs.map((faq, i) => (
             <div key={i} className="glass-panel rounded-xl overflow-hidden transition-all duration-300">
               <button 
-                className="w-full text-left px-6 py-5 flex items-center justify-between hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:bg-white/5 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#e879f9]"
+                className="w-full text-left px-6 py-5 flex items-center justify-between hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:bg-white/5 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white"
                 onClick={() => setOpen(open === i ? null : i)}
                 aria-expanded={open === i}
                 aria-controls={`faq-answer-${i}`}
               >
                 <div className="flex items-center gap-4">
-                   <Hexagon className="w-4 h-4 text-[#06b6d4] flex-shrink-0" />
+                   <Hexagon className="w-4 h-4 text-white/50 flex-shrink-0" />
                    <span className="text-white font-medium text-lg pr-4">{faq.q}</span>
                 </div>
-                <ChevronDown className={`w-5 h-5 text-[#e879f9] transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`} aria-hidden="true" />
+                <ChevronDown className={`w-5 h-5 text-white/50 transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`} aria-hidden="true" />
               </button>
               {open === i && (
                 <div id={`faq-answer-${i}`} className="px-6 pb-5 pt-2 border-t border-white/10 bg-black/20" role="region">

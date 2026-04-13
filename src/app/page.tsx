@@ -8,25 +8,26 @@ import SecuritySection from '@/components/SecuritySection';
 import OutcomesSection from '@/components/OutcomesSection';
 import FAQSection from '@/components/FAQSection';
 import { Shield, Clock, Layers, Activity, FileCheck, CheckCircle, Briefcase, Globe, Settings, Lock } from 'lucide-react';
+
 function WhyNowSection() {
   return (
     <section className="py-24 relative overflow-hidden" id="why-now">
-      <div className="bg-glow-orb w-[600px] h-[600px] bg-[#E879F9] top-0 left-[-200px] opacity-10"></div>
+      <div className="bg-glow-orb w-[600px] h-[600px] bg-white top-0 left-[-200px] opacity-[0.03]"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row gap-16 items-center">
           <div className="md:w-1/2">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-6">
               Why preparation cannot wait
             </h2>
-            <p className="text-slate-300 text-lg mb-6 leading-relaxed">
+            <p className="text-slate-300 text-lg mb-6 leading-relaxed flex-1">
               The trust gap is widening. Readiness compounds over time. Organizations need structured preparation before outside pressure forces rushed action.
             </p>
-            <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            <p className="text-slate-300 text-lg leading-relaxed mb-8 flex-1">
               Cryptographic and trust transitions require governance maturity before crisis moments. Early preparation creates an operational advantage, not just protection.
             </p>
-            <div className="flex items-center gap-4 text-[#06B6D4]">
-              <Clock className="w-6 h-6" />
-              <span className="font-semibold tracking-wide uppercase text-sm text-glow">Strategic Maturity Takes Time</span>
+            <div className="flex items-center gap-4 text-white">
+              <Clock className="w-6 h-6 opacity-80" />
+              <span className="font-semibold tracking-wide uppercase text-sm text-glow opacity-90">Strategic Maturity Takes Time</span>
             </div>
           </div>
           <div className="md:w-1/2 w-full grid gap-4">
@@ -34,7 +35,7 @@ function WhyNowSection() {
                 <div className="text-white text-xl font-medium mb-2 opacity-90">Cost of Late Assurance</div>
                 <div className="text-slate-400">Rushed discovery leads to incomplete migrations and failed partner audits.</div>
              </div>
-             <div className="p-6 glass-panel rounded-xl block border-l-[3px] border-l-[#E879F9] ml-0 md:ml-8 transition-transform hover:-translate-y-1 duration-300">
+             <div className="p-6 glass-panel rounded-xl block border-l-[3px] border-l-white/50 ml-0 md:ml-8 transition-transform hover:-translate-y-1 duration-300">
                 <div className="text-white text-xl font-medium mb-2 opacity-90">Rising Procurement Standards</div>
                 <div className="text-slate-400">Enterprise buyers increasingly demand certifiable proof of post-quantum readiness.</div>
              </div>
@@ -54,7 +55,7 @@ function SolutionSection() {
   ];
 
   return (
-    <section className="py-24 bg-[#020617] relative border-t border-white/5" id="platform">
+    <section className="py-24 bg-transparent relative border-t border-white/5" id="platform">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-6">
@@ -68,7 +69,7 @@ function SolutionSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((F, i) => (
             <div key={i} className="p-6 rounded-2xl glass-panel transition-all hover:scale-[1.02] hover:-translate-y-1 group">
-              <F.icon className="w-8 h-8 text-[#06B6D4] mb-4 group-hover:scale-110 group-hover:text-[#E879F9] transition-all duration-300" />
+              <F.icon className="w-8 h-8 text-white/70 mb-4 group-hover:scale-110 group-hover:text-white transition-all duration-300" />
               <h3 className="text-lg font-medium text-white mb-2">{F.name}</h3>
               <p className="text-sm text-slate-400 leading-relaxed">{F.desc}</p>
             </div>
@@ -88,7 +89,7 @@ function HowItWorksSection() {
   ];
 
   return (
-    <section className="py-24 bg-[#0A0E17]">
+    <section className="py-24 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
           <h2 className="text-3xl md:text-4xl text-white font-semibold tracking-tight">A repeatable path to defensible trust.</h2>
@@ -96,8 +97,8 @@ function HowItWorksSection() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {steps.map((s, i) => (
             <div key={i} className="relative">
-              {i < 3 && <div className="hidden md:block absolute top-6 flex-1 w-full left-1/2 border-t border-slate-700/50 border-dashed z-0"></div>}
-              <div className="relative z-10 w-12 h-12 rounded-full bg-[#1E293B] border-2 border-slate-700 flex items-center justify-center text-white font-mono font-bold mb-6">
+              {i < 3 && <div className="hidden md:block absolute top-6 flex-1 w-full left-1/2 border-t border-white/20 border-dashed z-0"></div>}
+              <div className="relative z-10 w-12 h-12 rounded-full bg-white/5 border border-white/20 flex items-center justify-center text-white font-mono font-bold mb-6">
                 {s.n}
               </div>
               <h3 className="text-white font-medium text-lg">{s.title}</h3>
@@ -111,7 +112,7 @@ function HowItWorksSection() {
 
 function TrustedBySection() {
   return (
-    <section className="py-20 border-y border-white/5 bg-[#020617] text-center">
+    <section className="py-20 border-y border-white/5 bg-transparent text-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-sm uppercase tracking-wider text-slate-500 font-semibold mb-10">Built for organizations where trust must be operationalized</p>
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
@@ -126,7 +127,7 @@ function TrustedBySection() {
 
 function UseCasesSection() {
   return (
-    <section className="py-24 bg-[#0A0E17]" id="solutions">
+    <section className="py-24 bg-transparent" id="solutions">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6">
           Designed for high-stakes environments
@@ -136,8 +137,8 @@ function UseCasesSection() {
         </p>
         <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-left">
           {['Financial Services', 'Government & Public Sector', 'Critical Infrastructure', 'Advanced Manufacturing', 'Defense-adjacent Organizations', 'Research Institutions'].map(item => (
-            <li key={item} className="flex items-center text-slate-300 p-4 border border-white/5 bg-[#0B0F19] rounded-xl hover:bg-white/5 transition-colors">
-              <CheckCircle className="w-5 h-5 text-[#0ea5e9] mr-3 flex-shrink-0" /> {item}
+            <li key={item} className="flex items-center text-slate-300 p-4 border border-white/5 glass-panel rounded-xl hover:bg-white/10 transition-colors">
+              <CheckCircle className="w-5 h-5 text-white/50 mr-3 flex-shrink-0" /> {item}
             </li>
           ))}
         </ul>
@@ -148,7 +149,7 @@ function UseCasesSection() {
 
 function TestimonialSection() {
   return (
-    <section className="py-24 bg-[#020617] border-y border-white/5 text-center">
+    <section className="py-24 bg-transparent border-y border-white/5 text-center">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <QuoteTestimonial />
       </div>
@@ -158,14 +159,14 @@ function TestimonialSection() {
 
 function CTASection() {
   return (
-    <section className="py-32 bg-gradient-to-b from-[#0A0E17] to-[#020617] border-t border-white/5 relative overflow-hidden" id="contact">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-96 bg-[#0ea5e9]/10 rounded-full blur-[120px] pointer-events-none" />
+    <section className="py-32 bg-transparent border-t border-white/5 relative overflow-hidden" id="contact">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <h2 className="text-4xl md:text-6xl text-white font-semibold tracking-tight mb-6">
           Turn assurance into an operating capability.
         </h2>
         <p className="text-xl text-slate-400 mb-10">For teams building long-horizon trust in high-stakes environments.</p>
-        <button className="bg-white text-[#020617] hover:bg-slate-200 transition-colors px-8 py-4 rounded-md font-semibold text-lg flex items-center justify-center mx-auto gap-2">
+        <button className="bg-white text-black hover:bg-slate-200 transition-colors px-8 py-4 rounded-md font-semibold text-lg flex items-center justify-center mx-auto gap-2">
           Request a Trust Briefing
         </button>
       </div>
@@ -176,7 +177,7 @@ function CTASection() {
 function QuoteTestimonial() {
   return (
     <div className="flex flex-col items-center">
-      <Settings className="w-10 h-10 text-slate-700 mb-8" />
+      <Settings className="w-10 h-10 text-white/30 mb-8" />
       <blockquote className="text-2xl md:text-3xl text-slate-300 font-medium leading-relaxed mb-8">
         "QCertify helped us frame readiness as an operational program instead of a collection of disconnected documents. The platform created visibility across technical, compliance, and leadership stakeholders."
       </blockquote>
@@ -209,7 +210,7 @@ function Footer() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#020617] selection:bg-[#0ea5e9]/30">
+    <main className="min-h-screen bg-transparent selection:bg-white/30">
       <Header />
       <HeroSection />
       <ProblemSection />
