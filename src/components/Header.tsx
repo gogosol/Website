@@ -27,10 +27,10 @@ export default function Header() {
              <Link href="#platform" className="text-sm font-medium text-slate-300 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">Platform</Link>
              <Link href="#solutions" className="text-sm font-medium text-slate-300 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">Solutions</Link>
              <Link href="#trust" className="text-sm font-medium text-slate-300 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">Trust & Security</Link>
-             <Link href="#contact" className="text-sm font-medium text-slate-300 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">Company</Link>
+             <Link href="mailto:contact@qcertify.io" className="text-sm font-medium text-slate-300 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">Company</Link>
           </nav>
           <div className="hidden md:flex items-center">
-            <Link href="#contact" className="relative group text-sm font-bold text-white glass-panel glass-interactive px-6 py-2.5 rounded-full overflow-hidden transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5e9]">
+            <Link href="mailto:contact@qcertify.io" className="relative group text-sm font-bold text-white glass-panel glass-interactive px-6 py-2.5 rounded-full overflow-hidden transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5e9]">
               <span className="relative z-10 tracking-wide">Book a Demo</span>
             </Link>
           </div>
@@ -53,7 +53,7 @@ export default function Header() {
             <Link href="#platform" className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-white/5">Platform</Link>
             <Link href="#solutions" className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-white/5">Solutions</Link>
             <Link href="#trust" className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-[#0ea5e9]/10">Trust</Link>
-            <Link href="#contact" className="block px-3 py-2 mt-4 text-center rounded-md text-base font-medium glass-panel glass-interactive text-white">Book a Demo</Link>
+            <Link href="mailto:contact@qcertify.io" className="block px-3 py-2 mt-4 text-center rounded-md text-base font-medium glass-panel glass-interactive text-white">Book a Demo</Link>
           </div>
         </div>
       )}
