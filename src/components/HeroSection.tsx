@@ -28,7 +28,7 @@ export default function HeroSection() {
             QCertify helps enterprises assess, document, and communicate quantum-era readiness with structured evidence, governance workflows, and auditable assurance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="#contact" className="relative group overflow-hidden inline-flex justify-center items-center gap-2 px-8 py-4 rounded-full font-bold transition-all glass-panel glass-interactive text-white focus:outline-none focus:ring-2 focus:ring-[#0ea5e9]">
+            <Link href="mailto:contact@qcertify.io" className="relative group overflow-hidden inline-flex justify-center items-center gap-2 px-8 py-4 rounded-full font-bold transition-all glass-panel glass-interactive text-white focus:outline-none focus:ring-2 focus:ring-[#0ea5e9]">
               <span className="relative z-10 shadow-sm">Book a Demo</span>
             </Link>
             <Link href="#platform" className="inline-flex justify-center items-center gap-2 glass-panel glass-interactive px-8 py-4 rounded-full font-medium transition-all text-white focus:outline-none focus:ring-2 focus:ring-[#0ea5e9]">

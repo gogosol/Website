@@ -166,9 +166,9 @@ function CTASection() {
           Turn assurance into an operating capability.
         </h2>
         <p className="text-xl text-slate-400 mb-10">For teams building long-horizon trust in high-stakes environments.</p>
-        <button className="glass-panel glass-interactive text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center mx-auto gap-2">
+        <a href="mailto:contact@qcertify.io" className="inline-flex glass-panel glass-interactive text-white px-8 py-4 rounded-full font-semibold text-lg items-center justify-center mx-auto gap-2">
           Request a Trust Briefing
-        </button>
+        </a>
       </div>
     </section>
   );
@@ -192,18 +192,30 @@ function Footer() {
   return (
     <footer className="glass-panel border-t border-white/5 py-12 relative z-10 rounded-t-3xl mt-12 mx-4 sm:mx-6 lg:mx-8 mb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex items-center">
+        <div className="flex flex-col items-center md:items-start gap-4">
           <Image src="/SF_White_Logo_Web.png" alt="QCertify Logo" width={140} height={32} className="opacity-80 object-contain h-8 w-auto" />
+          <a href="mailto:contact@qcertify.io" className="text-slate-400 hover:text-[#0ea5e9] transition-colors font-mono text-sm tracking-wide">contact@qcertify.io</a>
         </div>
-        <div className="text-slate-500 text-sm font-mono">
+        <div className="text-slate-500 text-sm font-mono text-center">
           &copy; {new Date().getFullYear()} QCertify. All Rights Reserved.
         </div>
         <div className="flex gap-6 text-sm font-medium">
-          <a href="#" className="text-slate-400 hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" className="text-slate-400 hover:text-white transition-colors">Terms of Trust</a>
+          <a href="#" className="text-slate-400 hover:text-[#0ea5e9] transition-colors">Privacy Policy</a>
+          <a href="#" className="text-slate-400 hover:text-[#0ea5e9] transition-colors">Terms of Trust</a>
         </div>
       </div>
     </footer>
+  );
+}
+
+function ImageBanner({ src, alt, className }: { src: string, alt: string, className?: string }) {
+  return (
+    <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-12 ${className || ''}`}>
+      <div className="relative w-full h-64 md:h-96 rounded-3xl glass-panel border border-white/5 overflow-hidden group">
+        <div className="absolute inset-0 bg-black/60 z-10 group-hover:bg-[#0ea5e9]/10 transition-colors duration-700 pointer-events-none"></div>
+        <Image src={src} alt={alt} fill className="object-cover grayscale opacity-50 mix-blend-luminosity group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105" />
+      </div>
+    </div>
   );
 }
 
@@ -214,9 +226,11 @@ export default function Home() {
       <HeroSection />
       <ProblemSection />
       <WhyNowSection />
+      <ImageBanner src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000" alt="Abstract Liquid Glass Shapes" />
       <SolutionSection />
       <PlatformCapabilities />
       <HowItWorksSection />
+      <ImageBanner src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000" alt="Secure Server Technology" className="py-20" />
       <TrustedBySection />
       <UseCasesSection />
       <SecuritySection />
