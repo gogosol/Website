@@ -49,15 +49,15 @@ export default function Header() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center" aria-label="QCertify Home">
-            <Image
-              src="/SF_White_Logo_Web.png"
-              alt="QCertify Logo"
-              width={160}
-              height={40}
-              loading="eager"
-              className="object-contain h-10 w-auto"
-              style={{ height: 'auto' }}
-            />
+            <div className="relative h-10 w-[160px]">
+              <Image
+                src="/SF_White_Logo_Web.png"
+                alt="QCertify Logo"
+                fill
+                loading="eager"
+                className="object-contain object-left"
+              />
+            </div>
           </Link>
 
           {/* Desktop nav */}

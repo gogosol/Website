@@ -26,14 +26,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Image
-              src="/SF_White_Logo_Web.png"
-              alt="QCertify Logo"
-              width={140}
-              height={32}
-              className="opacity-80 object-contain h-8 w-auto mb-4"
-              style={{ height: 'auto' }}
-            />
+            <div className="relative h-8 w-[140px] mb-4">
+              <Image
+                src="/SF_White_Logo_Web.png"
+                alt="QCertify Logo"
+                fill
+                className="opacity-80 object-contain object-left"
+              />
+            </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs mb-6">
               Enterprise cryptographic protection for the post-quantum era. Protect traffic today. Transition with confidence tomorrow.
             </p>
