@@ -28,10 +28,10 @@ export default function GhostDashboard() {
         </span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 min-h-[340px]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:min-h-[340px]">
         {/* ═══ LEFT: Gateway List ═══ */}
         <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={panelReveal}
-          className="lg:col-span-3 border-r border-white/5 p-4 space-y-2">
+          className="lg:col-span-3 lg:border-r border-b lg:border-b-0 border-white/5 p-4 space-y-2">
           <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-3 px-1">
             Gateway Pairs
           </div>
@@ -56,11 +56,11 @@ export default function GhostDashboard() {
 
         {/* ═══ CENTER: Topology View ═══ */}
         <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={panelReveal}
-          className="lg:col-span-5 border-r border-white/5 p-4">
+          className="lg:col-span-5 lg:border-r border-b lg:border-b-0 border-white/5 p-4">
           <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-3 px-1">
             Traffic Topology
           </div>
-          <div className="h-[240px] relative">
+          <div className="h-[200px] lg:h-[240px] relative">
             <svg viewBox="0 0 360 200" fill="none" className="w-full h-full" aria-hidden="true">
               {/* Center hub */}
               <rect x="140" y="70" width="80" height="60" rx="10" fill="rgba(14,165,233,0.08)" stroke="rgba(14,165,233,0.3)" strokeWidth="1" />

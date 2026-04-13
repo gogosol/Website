@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { LayoutGrid, Code, Cog } from "lucide-react";
 
 /**
  * Asset D — Crypto-Agility Visual
@@ -37,9 +38,13 @@ export default function CryptoAgility() {
           </span>
         </div>
         <div className="grid grid-cols-3 gap-3">
-          {["Applications", "APIs", "Services"].map((name, i) => (
+          {[
+            { name: "Applications", Icon: LayoutGrid },
+            { name: "APIs", Icon: Code },
+            { name: "Services", Icon: Cog },
+          ].map(({ name, Icon }, i) => (
             <div key={i} className="p-3 bg-white/[0.03] border border-white/10 rounded-lg text-center">
-              <div className="w-6 h-6 mx-auto mb-2 rounded bg-white/[0.06] border border-white/10" />
+              <Icon className="w-5 h-5 mx-auto mb-2 text-slate-400" />
               <span className="text-xs text-slate-400 font-medium">{name}</span>
             </div>
           ))}
