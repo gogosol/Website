@@ -13,117 +13,89 @@ function FadeIn({ children, className = "", delay = 0 }: { children: React.React
   );
 }
 
+/* Mini topology for each industry */
+function IndustryTopology({ type }: { type: string }) {
+  const configs: Record<string, { nodes: string[]; pattern: string }> = {
+    finance: { nodes: ["Banks", "Trading", "Clearance"], pattern: "Inter-institution traffic" },
+    healthcare: { nodes: ["Hospital", "Clinic", "Research"], pattern: "Patient data transit" },
+    government: { nodes: ["Agency", "Dept", "Classified"], pattern: "Sovereign communications" },
+    infrastructure: { nodes: ["Control", "Remote", "SCADA"], pattern: "OT/ICS paths" },
+    enterprise: { nodes: ["HQ", "Branch", "Cloud"], pattern: "Distributed transit" },
+  };
+  const cfg = configs[type] || configs.enterprise;
+
+  return (
+    <svg viewBox="0 0 240 80" fill="none" className="w-full h-auto" aria-hidden="true">
+      {cfg.nodes.map((n, i) => (
+        <g key={i}>
+          <rect x={10 + i * 80} y="10" width="55" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+          <text x={37 + i * 80} y="28" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="monospace">{n}</text>
+          {i < cfg.nodes.length - 1 && (
+            <line x1={65 + i * 80} y1="24" x2={10 + (i + 1) * 80} y2="24" stroke="rgba(14,165,233,0.3)" strokeWidth="1.5" strokeDasharray="3 3" className="anim-flow-dash" />
+          )}
+        </g>
+      ))}
+      {/* Gateway label */}
+      <rect x="70" y="50" width="100" height="22" rx="4" fill="rgba(14,165,233,0.06)" stroke="rgba(14,165,233,0.2)" strokeDasharray="3 3" />
+      <text x="120" y="64" textAnchor="middle" fill="rgba(14,165,233,0.5)" fontSize="6" fontFamily="monospace" letterSpacing="1">{cfg.pattern}</text>
+    </svg>
+  );
+}
+
 const industries = [
-  {
-    icon: Building2,
-    title: "Financial Services",
-    headline: "Protecting data with decades of sensitivity.",
-    description: "Financial institutions manage data that retains its sensitivity for years or decades — transaction records, customer identities, inter-bank communications, and investment positions. This data is a prime target for Harvest Now, Decrypt Later collection.",
-    context: "At the same time, financial regulators are increasingly focused on cryptographic resilience. Organizations need to demonstrate they are preparing for post-quantum transition — not that they will start planning eventually.",
-    benefits: [
-      "Protect inter-branch and inter-institution traffic with stronger cryptographic methods",
-      "Deploy phased transition that aligns with financial change management and governance",
-      "Support regulatory readiness without disrupting core banking operations",
-    ],
-  },
-  {
-    icon: Heart,
-    title: "Healthcare",
-    headline: "Shielding patient data from long-term cryptographic exposure.",
-    description: "Patient records, clinical trial data, genomic information, and research communications carry sensitivity that extends well beyond typical data lifecycles. Once compromised, this data cannot be made private again.",
-    context: "Healthcare organizations also operate complex, distributed environments — hospitals, clinics, research facilities, insurer networks — making centralized cryptographic migration extraordinarily difficult.",
-    benefits: [
-      "Apply stronger protection to data flows between healthcare facilities and partners",
-      "Start transition on regulated data paths (HIPAA, HITECH) without touching clinical systems",
-      "Maintain operational continuity across distributed healthcare environments",
-    ],
-  },
-  {
-    icon: Landmark,
-    title: "Government & Public Sector",
-    headline: "Securing sovereign data against evolving cryptographic threats.",
-    description: "Government agencies handle classified, sensitive, and citizen-related data that must remain protected for the long term. National security, diplomatic communications, and critical public services depend on cryptographic integrity that outlasts current algorithmic assumptions.",
-    context: "Post-quantum readiness is not optional for government — it is becoming a mandated trajectory.",
-    benefits: [
-      "Protect sensitive government traffic paths with advanced cryptographic methods",
-      "Deploy incrementally across agencies, departments, and classification levels",
-      "Align with government cryptographic transition guidelines and mandates",
-    ],
-  },
-  {
-    icon: Factory,
-    title: "Critical Infrastructure",
-    headline: "Protecting the systems society depends on.",
-    description: "Energy grids, water systems, transportation networks, and telecommunications infrastructure carry operational data that, if compromised, could have cascading physical consequences. These environments also run equipment and protocols with long operational lifespans — making centralized cryptographic upgrades practically impossible.",
-    context: "",
-    benefits: [
-      "Apply gateway-level protection without modifying OT/ICS systems or legacy SCADA protocols",
-      "Protect communication paths between control centers and remote facilities",
-      "Support incremental deployment that aligns with critical infrastructure maintenance cycles",
-    ],
-  },
-  {
-    icon: Briefcase,
-    title: "Enterprise & Industrial Environments",
-    headline: "Strengthening cryptographic posture across complex organizations.",
-    description: "Large enterprises operate environments that span cloud, on-premises, branch offices, partner connections, and hybrid architectures. Cryptographic protection in these environments is often inconsistent, partially documented, and difficult to upgrade holistically.",
-    context: "",
-    benefits: [
-      "Establish gateway-level cryptographic protection on the most critical traffic paths",
-      "Bring consistency to cryptographic posture across heterogeneous environments",
-      "Start the post-quantum transition where it matters most, then expand over time",
-    ],
-  },
+  { key: "finance", icon: Building2, title: "Financial Services", tagline: "Data with decades of sensitivity.", benefits: ["Inter-institution traffic protection", "Regulatory readiness", "Governed migration"] },
+  { key: "healthcare", icon: Heart, title: "Healthcare", tagline: "Patient data cannot be un-compromised.", benefits: ["HIPAA-compatible deployment", "Cross-facility protection", "Clinical system continuity"] },
+  { key: "government", icon: Landmark, title: "Government", tagline: "Sovereign data. Mandated timelines.", benefits: ["Classification-level deployment", "Agency-by-agency rollout", "Mandate alignment"] },
+  { key: "infrastructure", icon: Factory, title: "Critical Infrastructure", tagline: "Protecting systems society depends on.", benefits: ["OT/ICS compatible gateway", "No legacy system changes", "Long-lifecycle alignment"] },
+  { key: "enterprise", icon: Briefcase, title: "Enterprise", tagline: "Complex, distributed, hybrid.", benefits: ["Multi-site coverage", "Cloud + on-prem paths", "Phased enterprise rollout"] },
 ];
 
 export default function IndustriesPage() {
   return (
     <div className="min-h-screen bg-transparent selection:bg-white/30">
       {/* Hero */}
-      <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-28 pb-8 lg:pt-40 lg:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-glow-orb w-[800px] h-[800px] bg-white top-[-200px] right-[-300px] opacity-10 hidden md:block" />
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl relative z-10">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto relative z-10">
           <SectionLabel label="Industries" />
-          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
-            Enterprise cryptographic protection,{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">purpose-built for high-stakes industries.</span>
+          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
+            Purpose-built for{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">high-stakes industries.</span>
           </h1>
-          <p className="text-lg lg:text-xl text-slate-300 max-w-2xl leading-relaxed font-light">
-            Every industry handling sensitive, long-lived data faces the same structural challenge: cryptographic protection must evolve. QuantumHalon helps organizations take the first practical steps.
-          </p>
         </motion.div>
       </section>
 
-      {/* Industry sections */}
-      <section className="pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-10">
+      {/* Industry cards with mini topologies */}
+      <section className="pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-6">
           {industries.map((ind, i) => (
             <FadeIn key={i} delay={i * 0.05}>
-              <div className="glass-panel rounded-2xl p-8 lg:p-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <ind.icon className="w-6 h-6 text-[#0ea5e9]" />
-                  </div>
+              <div className="glass-panel rounded-2xl p-6 lg:p-8">
+                <div className="grid lg:grid-cols-3 gap-6 items-center">
+                  {/* Icon + text */}
                   <div>
-                    <h2 className="text-2xl font-semibold text-white">{ind.title}</h2>
-                    <p className="text-slate-400 text-sm">{ind.headline}</p>
-                  </div>
-                </div>
-                <div className="grid lg:grid-cols-2 gap-8">
-                  <div>
-                    <p className="text-slate-300 text-sm leading-relaxed mb-4">{ind.description}</p>
-                    {ind.context && <p className="text-slate-400 text-sm leading-relaxed">{ind.context}</p>}
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-[#0ea5e9] uppercase tracking-widest mb-3">Why QuantumHalon</div>
-                    <div className="space-y-3">
-                      {ind.benefits.map((b, j) => (
-                        <div key={j} className="flex items-start gap-3">
-                          <CheckCircle className="w-4 h-4 text-[#0ea5e9] flex-shrink-0 mt-0.5" />
-                          <span className="text-slate-300 text-sm leading-relaxed">{b}</span>
-                        </div>
-                      ))}
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                        <ind.icon className="w-5 h-5 text-[#0ea5e9]" />
+                      </div>
+                      <div>
+                        <h2 className="text-lg font-semibold text-white">{ind.title}</h2>
+                        <p className="text-slate-400 text-xs">{ind.tagline}</p>
+                      </div>
                     </div>
+                  </div>
+                  {/* Mini topology */}
+                  <div>
+                    <IndustryTopology type={ind.key} />
+                  </div>
+                  {/* Benefits */}
+                  <div className="space-y-2">
+                    {ind.benefits.map((b, j) => (
+                      <div key={j} className="flex items-center gap-2">
+                        <CheckCircle className="w-3.5 h-3.5 text-[#0ea5e9] flex-shrink-0" />
+                        <span className="text-slate-300 text-xs">{b}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -133,12 +105,11 @@ export default function IndustriesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 relative overflow-hidden border-t border-white/5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <section className="py-28 relative overflow-hidden border-t border-white/5">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md h-80 bg-white/[0.04] rounded-full blur-[120px] pointer-events-none" />
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl text-white font-semibold tracking-tight mb-6">See how QCertify supports your industry.</h2>
-            <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">Discuss your industry-specific requirements and see how QuantumHalon fits your environment.</p>
+            <h2 className="text-4xl md:text-5xl text-white font-semibold tracking-tight mb-4">See how QCertify supports your industry.</h2>
             <CTAButton href="/contact">Book a Demo</CTAButton>
           </FadeIn>
         </div>
