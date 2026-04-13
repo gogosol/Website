@@ -27,14 +27,16 @@ export default function PlatformCapabilities() {
   ];
 
   return (
-    <section className="py-24 bg-[#0A0E17] border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative overflow-hidden border-y border-white/5">
+      <div className="bg-glow-orb w-[700px] h-[700px] bg-[#E879F9] bottom-0 right-[-300px] opacity-10"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-16 md:flex justify-between items-end">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-5xl text-white font-semibold tracking-tight mb-6">
               The infrastructure behind certifiable readiness.
             </h2>
-            <p className="text-slate-400 text-lg leading-relaxed">
+            <p className="text-slate-300 text-lg leading-relaxed">
               Enterprise capabilities for evidence, assurance, and action. QCertify transforms disparate compliance functions into a single scalable system of record.
             </p>
           </div>
@@ -42,18 +44,18 @@ export default function PlatformCapabilities() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {capabilities.map((cap, i) => (
-            <div key={i} className="bg-[#0B0F19] border border-white/10 rounded-xl p-8 hover:border-slate-700 transition-colors">
-              <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/5">
-                <div className="w-10 h-10 rounded-lg bg-[#0ea5e9]/10 text-[#0ea5e9] flex flex-col items-center justify-center">
+            <div key={i} className="glass-panel rounded-2xl p-8 hover:-translate-y-1 transition-transform duration-300 group">
+              <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
+                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-[#06b6d4] flex flex-col items-center justify-center group-hover:scale-110 group-hover:text-[#E879F9] transition-all shadow-[0_0_10px_rgba(6,182,212,0.2)] group-hover:shadow-[0_0_15px_rgba(232,121,249,0.4)]">
                   {cap.icon}
                 </div>
-                <h3 className="text-xl text-white font-medium">{cap.title}</h3>
+                <h3 className="text-xl text-white font-medium tracking-wide">{cap.title}</h3>
               </div>
               <ul className="space-y-4">
                 {cap.features.map((feat, f_i) => (
                   <li key={f_i} className="flex items-start gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-600 mt-2 flex-shrink-0" />
-                    <span className="text-slate-400">{feat}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#06b6d4] to-[#E879F9] mt-2 flex-shrink-0 shadow-[0_0_5px_rgba(232,121,249,0.5)]" />
+                    <span className="text-slate-300">{feat}</span>
                   </li>
                 ))}
               </ul>

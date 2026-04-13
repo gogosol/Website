@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Hexagon } from 'lucide-react';
 
 const faqs = [
   {
@@ -30,26 +30,30 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-[#0A0E17] border-t border-white/5" id="faq">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-5xl text-white font-semibold tracking-tight mb-12 text-center">
+    <section className="py-24 relative overflow-hidden border-t border-white/5" id="faq">
+      <div className="bg-glow-orb w-[600px] h-[600px] bg-[#E879F9] top-[20%] left-[-200px] opacity-10"></div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2 className="text-3xl md:text-5xl text-white font-bold tracking-tight mb-12 text-center text-glow">
           Frequently asked questions
         </h2>
         <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <div key={i} className="border border-white/10 bg-[#0B0F19] rounded-xl overflow-hidden transition-all duration-300">
+            <div key={i} className="glass-panel rounded-xl overflow-hidden transition-all duration-300">
               <button 
-                className="w-full text-left px-6 py-5 flex items-center justify-between hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:bg-white/5 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0ea5e9]"
+                className="w-full text-left px-6 py-5 flex items-center justify-between hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:bg-white/5 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#e879f9]"
                 onClick={() => setOpen(open === i ? null : i)}
                 aria-expanded={open === i}
                 aria-controls={`faq-answer-${i}`}
               >
-                <span className="text-white font-medium text-lg pr-4">{faq.q}</span>
-                <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`} aria-hidden="true" />
+                <div className="flex items-center gap-4">
+                   <Hexagon className="w-4 h-4 text-[#06b6d4] flex-shrink-0" />
+                   <span className="text-white font-medium text-lg pr-4">{faq.q}</span>
+                </div>
+                <ChevronDown className={`w-5 h-5 text-[#e879f9] transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`} aria-hidden="true" />
               </button>
               {open === i && (
-                <div id={`faq-answer-${i}`} className="px-6 pb-5 pt-2 border-t border-white/5 bg-[#020617]/50" role="region">
-                  <p className="text-slate-400 leading-relaxed">
+                <div id={`faq-answer-${i}`} className="px-6 pb-5 pt-2 border-t border-white/10 bg-black/20" role="region">
+                  <p className="text-slate-300 leading-relaxed font-light pl-8">
                     {faq.a}
                   </p>
                 </div>

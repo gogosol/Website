@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import ProblemSection from '@/components/ProblemSection';
@@ -9,31 +10,32 @@ import FAQSection from '@/components/FAQSection';
 import { Shield, Clock, Layers, Activity, FileCheck, CheckCircle, Briefcase, Globe, Settings, Lock } from 'lucide-react';
 function WhyNowSection() {
   return (
-    <section className="py-24 bg-[#0A0E17]/50 relative" id="why-now">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative overflow-hidden" id="why-now">
+      <div className="bg-glow-orb w-[600px] h-[600px] bg-[#E879F9] top-0 left-[-200px] opacity-10"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row gap-16 items-center">
           <div className="md:w-1/2">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-6">
               Why preparation cannot wait
             </h2>
-            <p className="text-slate-400 text-lg mb-6 leading-relaxed">
+            <p className="text-slate-300 text-lg mb-6 leading-relaxed">
               The trust gap is widening. Readiness compounds over time. Organizations need structured preparation before outside pressure forces rushed action.
             </p>
-            <p className="text-slate-400 text-lg leading-relaxed mb-8">
+            <p className="text-slate-300 text-lg leading-relaxed mb-8">
               Cryptographic and trust transitions require governance maturity before crisis moments. Early preparation creates an operational advantage, not just protection.
             </p>
-            <div className="flex items-center gap-4 text-[#0ea5e9]">
+            <div className="flex items-center gap-4 text-[#06B6D4]">
               <Clock className="w-6 h-6" />
-              <span className="font-semibold tracking-wide uppercase text-sm">Strategic Maturity Takes Time</span>
+              <span className="font-semibold tracking-wide uppercase text-sm text-glow">Strategic Maturity Takes Time</span>
             </div>
           </div>
           <div className="md:w-1/2 w-full grid gap-4">
-             <div className="p-6 border border-white/5 bg-white/5 rounded-xl block backdrop-blur-sm">
-                <div className="text-white text-xl font-medium mb-2">Cost of Late Assurance</div>
+             <div className="p-6 glass-panel rounded-xl block transition-transform hover:-translate-y-1 duration-300">
+                <div className="text-white text-xl font-medium mb-2 opacity-90">Cost of Late Assurance</div>
                 <div className="text-slate-400">Rushed discovery leads to incomplete migrations and failed partner audits.</div>
              </div>
-             <div className="p-6 border border-[#0ea5e9]/30 bg-[#0ea5e9]/5 rounded-xl block backdrop-blur-sm ml-0 md:ml-8">
-                <div className="text-white text-xl font-medium mb-2">Rising Procurement Standards</div>
+             <div className="p-6 glass-panel rounded-xl block border-l-[3px] border-l-[#E879F9] ml-0 md:ml-8 transition-transform hover:-translate-y-1 duration-300">
+                <div className="text-white text-xl font-medium mb-2 opacity-90">Rising Procurement Standards</div>
                 <div className="text-slate-400">Enterprise buyers increasingly demand certifiable proof of post-quantum readiness.</div>
              </div>
           </div>
@@ -65,8 +67,8 @@ function SolutionSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((F, i) => (
-            <div key={i} className="p-6 rounded-xl border border-white/10 bg-[#0B0F19] hover:bg-white/5 transition-colors group">
-              <F.icon className="w-8 h-8 text-[#8b5cf6] mb-4 group-hover:scale-110 transition-transform" />
+            <div key={i} className="p-6 rounded-2xl glass-panel transition-all hover:scale-[1.02] hover:-translate-y-1 group">
+              <F.icon className="w-8 h-8 text-[#06B6D4] mb-4 group-hover:scale-110 group-hover:text-[#E879F9] transition-all duration-300" />
               <h3 className="text-lg font-medium text-white mb-2">{F.name}</h3>
               <p className="text-sm text-slate-400 leading-relaxed">{F.desc}</p>
             </div>
@@ -187,18 +189,18 @@ function QuoteTestimonial() {
 
 function Footer() {
   return (
-    <footer className="bg-[#020617] border-t border-white/5 py-12">
+    <footer className="glass-panel border-t border-white/5 py-12 relative z-10 rounded-t-3xl mt-12 mx-4 sm:mx-6 lg:mx-8 mb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
-          <Lock className="w-5 h-5 text-slate-600" />
-          <span className="text-slate-400 font-semibold tracking-wide">QCERTIFY</span>
+          <Image src="/SF Logo Q White.png" alt="SF QCertify" width={24} height={24} className="opacity-80 object-contain" />
+          <span className="text-slate-300 font-semibold tracking-widest uppercase text-lg">QCERTIFY</span>
         </div>
-        <div className="text-slate-500 text-sm">
+        <div className="text-slate-500 text-sm font-mono">
           &copy; {new Date().getFullYear()} QCertify. All Rights Reserved.
         </div>
-        <div className="flex gap-6 text-sm">
-          <a href="#" className="text-slate-400 hover:text-white">Privacy Policy [Placeholder]</a>
-          <a href="#" className="text-slate-400 hover:text-white">Terms of Trust [Placeholder]</a>
+        <div className="flex gap-6 text-sm font-medium">
+          <a href="#" className="text-slate-400 hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" className="text-slate-400 hover:text-white transition-colors">Terms of Trust</a>
         </div>
       </div>
     </footer>
