@@ -21,7 +21,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center gap-3" aria-label="QCertify Logo">
-            <Image src="/Logo Q White.png" alt="QCertify Logo" width={40} height={40} className="object-contain" />
+            <Image src="/icon.png" alt="QCertify Logo" width={40} height={40} className="object-contain" />
             <span className="font-bold text-xl tracking-widest text-white uppercase sm:block">QCertify</span>
           </div>
           <nav className="hidden md:flex space-x-8" aria-label="Main Navigation">
