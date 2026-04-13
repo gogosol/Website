@@ -5,12 +5,12 @@
   --color-foreground: var(--foreground);
   --color-primary: #ffffff;
   --color-primary-foreground: #000000;
-  --color-secondary: #111111;
+  --color-secondary: #0a0a0a;
   --color-secondary-foreground: #ffffff;
-  --color-accent: #0ea5e9; /* Kept generic light blue for minute details */
+  --color-accent: #0ea5e9; /* Very subtle blue strictly for tiny details */
   --color-accent-blue: #0ea5e9;
   --color-muted: #1e1e1e;
-  --color-muted-foreground: #a1a1aa;
+  --color-muted-foreground: #8a8a93;
   --color-border: rgba(255, 255, 255, 0.1);
 
   --font-sans: var(--font-inter);
@@ -27,42 +27,48 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
-                    radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
+  background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                    radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.015) 0%, transparent 50%);
   background-attachment: fixed;
 }
 
 @layer utilities {
   .glass-panel {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(40px) saturate(150%);
+    -webkit-backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    border-right-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 1.5rem; /* rounded-3xl */
   }
   
   .glass-panel-heavy {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px 0 rgba(0, 0, 0, 0.7);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(60px) saturate(200%);
+    -webkit-backdrop-filter: blur(60px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    border-right-color: rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.05), 0 15px 50px 0 rgba(0, 0, 0, 0.8);
+    border-radius: 2rem; /* rounded-4xl */
   }
 
   .text-glow {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   }
 
   .text-glow-accent {
-    text-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
   }
   
   .bg-glow-orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px);
+    filter: blur(100px);
     z-index: 0;
     pointer-events: none;
-    opacity: 0.3;
+    opacity: 0.15;
   }
 }
