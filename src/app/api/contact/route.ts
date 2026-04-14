@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
@@ -23,36 +25,12 @@ export async function POST(request: Request) {
       );
     }
 
-    // Configure the SMTP transporter
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: Number(process.env.SMTP_PORT) === 465, // true for 465, false for other ports
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
-    // Content of the email
-    const mailOptions = {
-      from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER, 
-      to: 'contact@qcertify.io',
+    // Send the email using Resend
+    const { data, error } = await resend.emails.send({
+      from: 'Acme <onboarding@resend.dev>', // Resend's default testing address. In production use e.g., 'QCertify <noreply@qcertify.io>'
+      to: ['contact@qcertify.io'], 
       replyTo: email,
       subject: `New Contact Form Submission from ${firstName} ${lastName} (${company})`,
-      text: `
-New contact form submission:
-
-Name: ${firstName} ${lastName}
-Email: ${email}
-Company: ${company}
-Job Title: ${jobTitle}
-Industry: ${industry || 'Not specified'}
-Interest: ${interest || 'Not specified'}
-
-Message:
-${message || 'No message provided.'}
-      `,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
@@ -65,16 +43,21 @@ ${message || 'No message provided.'}
         <p><strong>Message:</strong></p>
         <p>${message ? message.replace(/\n/g, '<br/>') : 'No message provided.'}</p>
       `,
-    };
+    });
 
-    // Send the email
-    await transporter.sendMail(mailOptions);
+    if (error) {
+      console.error('Error from Resend:', error);
+      return NextResponse.json(
+        { error: error.message || 'Failed to send email' },
+        { status: 500 }
+      );
+    }
 
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error('Error sending email:', error);
+    return NextResponse.json({ success: true, data });
+  } catch (err) {
+    console.error('Error handling contact form:', err);
     return NextResponse.json(
-      { error: 'Failed to send email' },
+      { error: 'Internal server error' },
       { status: 500 }
     );
   }
