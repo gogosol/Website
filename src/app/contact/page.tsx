@@ -51,12 +51,13 @@ export default function ContactPage() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send message");
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || "Failed to send message");
       }
 
       setSubmitted(true);
-    } catch (err) {
-      setError("An error occurred while sending your message. Please try again.");
+    } catch (err: any) {
+      setError(err.message || "An error occurred while sending your message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
