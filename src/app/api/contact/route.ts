@@ -56,10 +56,10 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true, data });
-  } catch (err) {
+  } catch (err: any) {
     console.error('Error handling contact form:', err);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: err.message || 'Internal server error' },
       { status: 500 }
     );
   }
