@@ -36,7 +36,7 @@ export default function HNDLTimeline() {
           <text x="450" y="28" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="9" fontFamily="monospace" letterSpacing="4">WITHOUT QUANTUMHALON</text>
 
           {/* ═══ THREAT TRACK (top) ═══ */}
-          <line x1="120" y1="100" x2="780" y2="100" stroke="rgba(249,115,22,0.2)" strokeWidth="2" strokeDasharray="6 4" />
+          {/* Removed single long track line to prevent overlap */}
 
           {/* Step 1: Capture */}
           <rect x="80" y="60" width="160" height="80" rx="12" fill="rgba(249,115,22,0.06)" stroke="rgba(249,115,22,0.3)" strokeWidth="1" />
@@ -50,7 +50,7 @@ export default function HNDLTimeline() {
           ))}
 
           {/* Arrow 1→2 */}
-          <line x1="250" y1="100" x2="330" y2="100" stroke="rgba(249,115,22,0.3)" strokeWidth="1.5" />
+          <line x1="240" y1="100" x2="330" y2="100" stroke="rgba(249,115,22,0.3)" strokeWidth="2" strokeDasharray="6 4" />
           <polygon points="328,95 340,100 328,105" fill="rgba(249,115,22,0.4)" />
 
           {/* Step 2: Store */}
@@ -60,7 +60,7 @@ export default function HNDLTimeline() {
           <text x="430" y="124" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="11" fontFamily="var(--font-sans)">awaiting quantum capability</text>
 
           {/* Arrow 2→3 */}
-          <line x1="530" y1="100" x2="610" y2="100" stroke="rgba(249,115,22,0.3)" strokeWidth="1.5" />
+          <line x1="520" y1="100" x2="610" y2="100" stroke="rgba(249,115,22,0.3)" strokeWidth="2" strokeDasharray="6 4" />
           <polygon points="608,95 620,100 608,105" fill="rgba(249,115,22,0.4)" />
 
           {/* Step 3: Decrypt */}
@@ -83,7 +83,8 @@ export default function HNDLTimeline() {
           <text x="450" y="215" textAnchor="middle" fill="rgba(14,165,233,0.4)" fontSize="9" fontFamily="monospace" letterSpacing="4">WITH QUANTUMHALON</text>
 
           {/* ═══ PROTECTED TRACK (bottom) ═══ */}
-          <line x1="120" y1="290" x2="780" y2="290" stroke="rgba(14,165,233,0.2)" strokeWidth="2" strokeDasharray="6 4" className="anim-flow-dash" />
+          <line x1="240" y1="290" x2="340" y2="290" stroke="rgba(14,165,233,0.2)" strokeWidth="2" strokeDasharray="6 4" className="anim-flow-dash" />
+          <line x1="520" y1="290" x2="620" y2="290" stroke="rgba(14,165,233,0.2)" strokeWidth="2" strokeDasharray="6 4" className="anim-flow-dash" />
 
           {/* Step P1 */}
           <rect x="80" y="250" width="160" height="80" rx="12" fill="rgba(14,165,233,0.05)" stroke="rgba(14,165,233,0.3)" strokeWidth="1" />

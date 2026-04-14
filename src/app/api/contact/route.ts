@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 
     // Send the email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>', // MUST use onboarding@resend.dev unless qcertify.io is verified on your Resend account dashboard!
+      from: 'Acme <noreply@qcertify.io>', // Resend's default testing address. In production use e.g., 'QCertify <noreply@qcertify.io>'
       to: ['contact@qcertify.io'], 
       replyTo: email,
       subject: `New Contact Form Submission from ${firstName} ${lastName} (${company})`,
