@@ -1,0 +1,5 @@
+To help you appear in Google search results, I've created a plan to add the necessary SEO files (`robots.txt` and `sitemap.xml`) and optimize your metadata.
+
+However, I have two critical questions:
+1. Is your primary production domain **qcertify.com** or **qcertify.io**? (I see both in the project).
+2. Have you already set up a **Google Search Console** account for your domain? If not, that is likely why it's not appearing yet, and I can guide you through it.

@@ -1,0 +1,5 @@
+I've created an implementation plan to help Google index your site, which involves adding a `sitemap.xml` and `robots.txt` and fixing your metadata.
+
+To ensure these files are correct, I have two questions:
+1. Is your primary production domain **qcertify.com** or **qcertify.io**?
+2. Have you already set up a **Google Search Console** account for this domain? (This is the most critical step for indexation).

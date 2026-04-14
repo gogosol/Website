@@ -10,21 +10,25 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://qcertify.io"),
   title: {
     default: "QCertify — Enterprise Cryptographic Protection for the Post-Quantum Era",
     template: "%s | QCertify",
   },
   description:
     "QCertify builds enterprise cryptographic protection for the post-quantum era. QuantumHalon is a crypto-agile gateway that protects traffic and supports phased migration.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "QCertify — Enterprise Cryptographic Protection for the Post-Quantum Era",
     description:
       "QuantumHalon is a crypto-agile gateway that protects traffic today and enables phased transition to stronger cryptographic protection.",
-    url: "https://qcertify.com",
+    url: "https://qcertify.io",
     siteName: "QCertify",
     images: [
       {
-        url: "https://qcertify.com/og-image.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "QCertify — Enterprise Cryptographic Protection",
@@ -38,7 +42,7 @@ export const metadata: Metadata = {
     title: "QCertify — Enterprise Cryptographic Protection for the Post-Quantum Era",
     description:
       "QuantumHalon is a crypto-agile gateway that protects traffic and supports phased post-quantum migration.",
-    images: ["https://qcertify.com/og-image.jpg"],
+    images: ["/og-image.jpg"],
   },
 };
 

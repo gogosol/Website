@@ -1,0 +1,1 @@
+To ensure all SEO configurations (like sitemaps and metadata) are correct, could you please confirm if `qcertify.com` is your primary domain name? I noticed `qcertify.io` was mentioned in previous tasks, and having the wrong domain in your metadata can explicitly prevent Google from indexing your site correctly.

@@ -1,0 +1,3 @@
+Could you please confirm if your primary domain is **qcertify.com** or **qcertify.io**?
+
+I see `qcertify.com` in the code but noticed `qcertify.io` in previous tasks. Correcting this is essential for Google to index your site properly. Also, do you already have a **Google Search Console** account set up for this domain?

@@ -1,0 +1,3 @@
+Could you please confirm if your primary production domain is **qcertify.com** or **qcertify.io**? 
+
+Also, have you already set up a **Google Search Console** account for this domain? This is the most important step for letting Google know your site exists.
