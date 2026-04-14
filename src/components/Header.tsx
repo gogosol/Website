@@ -38,13 +38,14 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "glass-panel !rounded-none border-b border-white/10"
-          : "bg-transparent"
-      }`}
-    >
+    <>
+      <header
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          isScrolled
+            ? "glass-panel !rounded-none border-b border-white/10"
+            : "bg-transparent"
+        }`}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -142,6 +143,8 @@ export default function Header() {
         </div>
       </div>
 
+      </header>
+
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 top-20 z-50 bg-black/98 backdrop-blur-xl border-t border-white/10 overflow-y-auto">
@@ -193,6 +196,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
