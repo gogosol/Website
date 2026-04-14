@@ -40,9 +40,9 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? "glass-panel !rounded-none border-b border-white/10"
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+          isScrolled || mobileMenuOpen
+            ? "bg-black/80 backdrop-blur-xl border-b border-white/10"
             : "bg-transparent"
         }`}
       >
@@ -80,7 +80,7 @@ export default function Header() {
                   </button>
                   {solutionsOpen && (
                     <div
-                      className="absolute top-full left-0 mt-2 w-56 glass-panel rounded-xl p-2 border border-white/10"
+                      className="absolute top-full left-0 mt-2 w-56 bg-black/90 backdrop-blur-xl rounded-xl p-2 border border-white/10 shadow-2xl"
                       onMouseLeave={() => setSolutionsOpen(false)}
                     >
                       {item.children.map((child) => (
