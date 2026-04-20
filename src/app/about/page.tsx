@@ -18,7 +18,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-transparent selection:bg-white/30">
       {/* Hero */}
       <section className="relative pt-28 pb-12 lg:pt-40 lg:pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-glow-orb w-[800px] h-[800px] bg-[#0ea5e9] top-[-200px] left-[-300px] opacity-[0.06] hidden md:block" />
+        <div className="bg-glow-orb w-[800px] h-[800px] bg-white top-[-200px] left-[-300px] opacity-[0.06] hidden md:block" />
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl relative z-10">
           <SectionLabel label="About QCertify" />
           <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
@@ -232,6 +232,7 @@ export default function AboutPage() {
     </div>
   );
 }
+
 
 
 
