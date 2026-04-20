@@ -123,8 +123,8 @@ function HeroSection() {
   return (
     <section className="relative pt-28 pb-8 lg:pt-36 lg:pb-12 min-h-[90vh] flex flex-col justify-center overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0ea5e9]/[0.03] via-transparent to-transparent" />
-      <div className="bg-glow-orb w-[800px] h-[800px] bg-[#0ea5e9] top-[-200px] left-[-300px] opacity-[0.06] hidden md:block" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] via-transparent to-transparent" />
+      <div className="bg-glow-orb w-[800px] h-[800px] bg-white top-[-200px] left-[-300px] opacity-[0.06] hidden md:block" />
       <div className="bg-glow-orb w-[600px] h-[600px] bg-white bottom-[-100px] right-[-200px] opacity-[0.03]" />
       <HeroParticles />
 
@@ -482,6 +482,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 

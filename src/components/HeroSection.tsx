@@ -12,7 +12,7 @@ export default function HeroSection() {
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background glow orbs */}
-      <div className="bg-glow-orb w-[800px] h-[800px] bg-[#0ea5e9] top-[-200px] left-[-300px] opacity-[0.06] hidden md:block"></div>
+      <div className="bg-glow-orb w-[800px] h-[800px] bg-white top-[-200px] left-[-300px] opacity-[0.06] hidden md:block"></div>
       <div className="bg-glow-orb w-[600px] h-[600px] bg-white bottom-[-100px] right-[-200px] opacity-[0.03]"></div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
@@ -95,6 +95,7 @@ export default function HeroSection() {
     </section>
   );
 }
+
 
 
 

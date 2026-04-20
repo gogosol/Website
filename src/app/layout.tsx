@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -58,7 +58,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} h-full antialiased bg-black text-white overflow-x-hidden`}
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden relative">
+      <body className="min-h-full flex flex-col overflow-x-hidden relative" suppressHydrationWarning>
         <GlobalParticles />
         <Header />
         <main className="flex-1 min-h-screen">
