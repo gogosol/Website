@@ -68,7 +68,7 @@ export default function UseCasesPage() {
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
                   {/* Diagram */}
                   <div className={`${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                    <UseCaseTopology variant={uc.variant} className="!rounded-none !border-0 !bg-transparent !shadow-none !p-0 hover:!transform-none hover:!border-0 hover:!bg-transparent hover:!shadow-none" />
+                    <UseCaseTopology variant={uc.variant} className="!rounded-none !border-0 !bg-transparent !bg-none !shadow-none !p-0 hover:!transform-none hover:!border-0 hover:!bg-transparent hover:!bg-none hover:!shadow-none" />
                   </div>
                   {/* Content */}
                   <div className={`${i % 2 === 1 ? "lg:order-1" : ""}`}>

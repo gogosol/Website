@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -35,7 +35,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs mb-6">
-              Enterprise cryptographic protection for the post-quantum era. Protect traffic today. Transition with confidence tomorrow.
+              Protecting organizations for the post-quantum era. Practical post-quantum protection with QuantumHalon - reduce HNDL risk, meet regulatory demands, and transition with confidence.
             </p>
             <a
               href="mailto:contact@qcertify.io"
@@ -91,3 +91,4 @@ export default function Footer() {
     </footer>
   );
 }
+

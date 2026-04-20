@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, CheckCircle } from "lucide-react";
@@ -61,7 +61,7 @@ export default function CompliancePage() {
           <FadeIn delay={0.3}>
             <div className="mt-6 p-4 rounded-xl border border-[#0ea5e9]/20 bg-[#0ea5e9]/[0.03] max-w-3xl mx-auto">
               <p className="text-slate-400 text-xs text-center">
-                <span className="text-[#0ea5e9] font-bold">Note:</span> QCertify provides tooling and infrastructure that support an organization&apos;s path toward readiness — not compliance certification itself.
+                <span className="text-[#0ea5e9] font-bold">Note:</span> QCertify provides tooling and infrastructure that support an organization&apos;s path toward readiness - not compliance certification itself.
               </p>
             </div>
           </FadeIn>
@@ -130,3 +130,4 @@ export default function CompliancePage() {
     </div>
   );
 }
+

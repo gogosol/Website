@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import { BookOpen, Shield, RefreshCw, Server, FileText, ArrowRight } from "lucide-react";
@@ -20,7 +20,7 @@ const categories = [
     articles: [
       {
         title: "What Is Harvest Now, Decrypt Later?",
-        desc: "A clear, practical explanation of the HNDL threat model — why data captured today is at risk from future decryption capabilities.",
+        desc: "A clear, practical explanation of the HNDL threat model - why data captured today is at risk from future decryption capabilities.",
         tag: "Threat Model",
       },
       {
@@ -30,7 +30,7 @@ const categories = [
       },
       {
         title: "The Cost of Waiting: Why Deferred Migration Increases Risk",
-        desc: "The compounding operational cost of delayed cryptographic transition — from compressed timelines to reactive upgrades.",
+        desc: "The compounding operational cost of delayed cryptographic transition - from compressed timelines to reactive upgrades.",
         tag: "Strategy",
       },
     ],
@@ -51,7 +51,7 @@ const categories = [
       },
       {
         title: "Hybrid Cryptography: Running Classical and Post-Quantum Together",
-        desc: "The role and mechanics of hybrid cryptographic approaches during the transition period — compatibility without compromise.",
+        desc: "The role and mechanics of hybrid cryptographic approaches during the transition period - compatibility without compromise.",
         tag: "Technical",
       },
     ],
@@ -67,7 +67,7 @@ const categories = [
       },
       {
         title: "Protecting Traffic Without Redesigning Applications",
-        desc: "The value of network-layer protection versus application-layer changes — and when each approach is appropriate.",
+        desc: "The value of network-layer protection versus application-layer changes - and when each approach is appropriate.",
         tag: "Deployment",
       },
       {
@@ -83,7 +83,7 @@ const categories = [
     articles: [
       {
         title: "Cryptographic Readiness as a Governance Priority",
-        desc: "Why boards and CISOs should treat cryptographic transition as a strategic initiative — not a technical footnote.",
+        desc: "Why boards and CISOs should treat cryptographic transition as a strategic initiative - not a technical footnote.",
         tag: "Governance",
       },
       {
@@ -165,3 +165,4 @@ export default function ResourcesPage() {
     </div>
   );
 }
+

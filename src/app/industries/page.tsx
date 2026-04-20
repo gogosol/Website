@@ -28,15 +28,15 @@ function IndustryTopology({ type }: { type: string }) {
     <svg viewBox="0 0 240 80" fill="none" className="w-full h-auto" aria-hidden="true">
       {cfg.nodes.map((n, i) => (
         <g key={i}>
-          <rect x={10 + i * 80} y="10" width="55" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
-          <text x={37 + i * 80} y="28" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="monospace">{n}</text>
+          <rect x={10 + i * 80} y="10" width="65" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
+          <text x={42.5 + i * 80} y="28" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="monospace">{n}</text>
           {i < cfg.nodes.length - 1 && (
-            <line x1={65 + i * 80} y1="24" x2={10 + (i + 1) * 80} y2="24" stroke="rgba(14,165,233,0.3)" strokeWidth="1.5" strokeDasharray="3 3" className="anim-flow-dash" />
+            <line x1={75 + i * 80} y1="24" x2={10 + (i + 1) * 80} y2="24" stroke="rgba(14,165,233,0.3)" strokeWidth="1.5" strokeDasharray="3 3" className="anim-flow-dash" />
           )}
         </g>
       ))}
       {/* Gateway label */}
-      <rect x="70" y="50" width="100" height="22" rx="4" fill="rgba(14,165,233,0.06)" stroke="rgba(14,165,233,0.2)" strokeDasharray="3 3" />
+      <rect x="40" y="50" width="160" height="22" rx="4" fill="rgba(14,165,233,0.06)" stroke="rgba(14,165,233,0.2)" strokeDasharray="3 3" />
       <text x="120" y="64" textAnchor="middle" fill="rgba(14,165,233,0.5)" fontSize="6" fontFamily="monospace" letterSpacing="1">{cfg.pattern}</text>
     </svg>
   );

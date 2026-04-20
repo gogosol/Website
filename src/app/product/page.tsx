@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import SectionLabel from "@/components/SectionLabel";
@@ -29,7 +29,7 @@ export default function ProductPage() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Enterprise Traffic Protection</span>
           </h1>
           <p className="text-lg text-slate-400 max-w-xl mx-auto font-light">
-            Software that applies stronger cryptographic protection to traffic between environments — and adapts as standards evolve.
+            Software that applies stronger cryptographic protection to traffic between environments - and adapts as standards evolve.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
             <CTAButton href="/contact">Book a Demo</CTAButton>
@@ -201,3 +201,4 @@ export default function ProductPage() {
     </div>
   );
 }
+
