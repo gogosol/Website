@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import { Server, Cloud, Building, Globe, Laptop, Network } from "lucide-react";
@@ -106,9 +106,9 @@ export default function HeroArchitecture() {
           {/* Protected path - enhanced with more particles and glow */}
           <motion.g custom={5} initial="hidden" animate="visible" variants={nodeVariant}>
             {/* Glow trail */}
-            <line x1="420" y1="200" x2="540" y2="200" stroke="#0ea5e9" strokeWidth="8" strokeOpacity="0.06" filter="url(#gw-glow-strong)" />
-            <line x1="420" y1="200" x2="540" y2="200" stroke="#0ea5e9" strokeWidth="4" strokeOpacity="0.1" filter="url(#gw-glow)" />
-            <line x1="420" y1="200" x2="540" y2="200" stroke="#0ea5e9" strokeWidth="2" strokeOpacity="0.5" strokeDasharray="6 6" className="anim-flow-dash" markerEnd="url(#arr-accent)" />
+            <line x1="420" y1="200" x2="540" y2="200" stroke="transparent" strokeWidth="8" strokeOpacity="0" filter="url(#gw-glow-strong)" />
+            <line x1="420" y1="200" x2="540" y2="200" stroke="transparent" strokeWidth="4" strokeOpacity="0" filter="url(#gw-glow)" />
+            <line x1="420" y1="200" x2="540" y2="200" stroke="transparent" strokeWidth="2" strokeOpacity="0" strokeDasharray="6 6" className="anim-flow-dash" markerEnd="url(#arr-accent)" />
             {/* Flowing particles - more and varied */}
             {[0, 1, 2, 3, 4].map((p) => (
               <circle key={`p-${p}`} r={p % 2 === 0 ? "3" : "2"} fill="#0ea5e9" opacity="0">
