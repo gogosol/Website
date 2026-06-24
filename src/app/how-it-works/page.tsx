@@ -1,141 +1,87 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
-import SectionLabel from "@/components/SectionLabel";
-import CTAButton from "@/components/CTAButton";
-import HeroArchitecture from "@/components/visuals/HeroArchitecture";
 
-function FadeIn({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.55, delay, ease: [0.25, 0.1, 0.25, 1] }} className={className}>
-      {children}
-    </motion.div>
-  );
-}
+import React from "react";
+import CTAButton from "@/components/CTAButton";
+import {
+  FadeIn,
+  FeatureCard,
+  ImagePanel,
+  InlineGatewayVisual,
+  PageHero,
+  SectionHeader,
+} from "@/components/QuantumPage";
+import { Cloud, EyeOff, GitBranch, KeyRound, Network, Radar, Route, ShieldCheck } from "lucide-react";
+
+const flowSteps = [
+  {
+    title: "Traffic crosses the inline gateway",
+    text: "QuantumHalon is placed at a governed chokepoint. Protected paths cross it by design.",
+  },
+  {
+    title: "Classifier resolves the path",
+    text: "The gateway classifies traffic at a high level using policy-relevant network context.",
+  },
+  {
+    title: "Mode engine selects behavior",
+    text: "Policy chooses mediated protection, opaque protection, approved passthrough, or block for each selected path.",
+  },
+  {
+    title: "Crypto boundary enforces",
+    text: "The selected mode applies the approved protection behavior for that path.",
+  },
+  {
+    title: "Evidence proves state",
+    text: "Operators receive deployment and coverage evidence without making cloud services the live traffic path.",
+  },
+];
 
 export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-transparent selection:bg-white/30">
-      {/* Hero */}
-      <section className="relative pt-28 pb-8 lg:pt-40 lg:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-glow-orb w-[800px] h-[800px] bg-white top-[-200px] right-[-300px] opacity-10 hidden md:block" />
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto relative z-10">
-          <SectionLabel label="Architecture" />
-          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
-            A practical architecture for{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
-              cryptographic protection.
-            </span>
-          </h1>
-          <p className="text-lg text-slate-400 max-w-xl mx-auto font-light">
-            Deployable now. Adaptable over time. Compatible with what you already run.
-          </p>
-        </motion.div>
-      </section>
+      <PageHero
+        compact
+        label="How It Works"
+        title="A transparent inline path with policy-selected protection."
+        body="QuantumHalon turns post-quantum protection into an enforceable network behavior without forcing every endpoint or application to move first."
+        imageSrc="/images/local-packet-path.png"
+        imageAlt="Minimal isometric QuantumHalon gateway appliance protecting packet cubes."
+        chips={["Inline", "Classify", "Select Mode", "Enforce", "Report"]}
+        primaryCta={{ href: "/contact", label: "Walk Through Your Paths" }}
+        secondaryCta={{ href: "/product", label: "Product Details" }}
+      />
 
-      {/* Before / After */}
-      <section className="py-16 lg:py-24 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="text-center max-w-2xl mx-auto mb-10">
-              <SectionLabel label="Comparison" />
-              <h2 className="text-3xl md:text-4xl text-white font-semibold tracking-tight">
-                Before and after QuantumHalon.
-              </h2>
-            </div>
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            label="Packet Path"
+            title="The gateway sits in the path. The cloud does not."
+            body="The live packet path stays local to deployed gateways. QCertify governance services coordinate policy and operational state separately from packet handling."
+            align="center"
+          />
+          <FadeIn delay={0.1} className="mt-10">
+            <InlineGatewayVisual />
           </FadeIn>
-          <div className="grid lg:grid-cols-2 gap-6">
-            {/* Before */}
-            <FadeIn delay={0.1}>
-              <div className="glass-panel rounded-2xl p-6 h-full">
-                <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Without QuantumHalon</div>
-                <div className="space-y-3 mb-6">
-                  {[
-                    "Standard encryption on transit paths",
-                    "Vulnerable to future quantum decryption",
-                    "No crypto visibility or control plane",
-                    "Upgrade requires changing every system",
-                  ].map((t, i) => (
-                    <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-white/[0.02] border border-white/5">
-                      <div className="w-2 h-2 rounded-full bg-amber-500/60 flex-shrink-0" />
-                      <span className="text-slate-400 text-sm">{t}</span>
-                    </div>
-                  ))}
-                </div>
-                {/* Mini diagram: exposed path */}
-                <svg viewBox="0 0 400 60" fill="none" className="w-full" aria-hidden="true">
-                  <rect x="10" y="15" width="70" height="30" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
-                  <text x="45" y="33" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="monospace">Source</text>
-                  <line x1="80" y1="30" x2="320" y2="30" stroke="rgba(249,115,22,0.25)" strokeWidth="2" strokeDasharray="6 4" />
-                  <text x="200" y="20" textAnchor="middle" fill="rgba(249,115,22,0.4)" fontSize="7" fontFamily="monospace" letterSpacing="2">EXPOSED</text>
-                  <rect x="320" y="15" width="70" height="30" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
-                  <text x="355" y="33" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="monospace">Dest</text>
-                </svg>
-              </div>
-            </FadeIn>
-            {/* After */}
-            <FadeIn delay={0.2}>
-              <div className="glass-panel rounded-2xl p-6 h-full border-[#0ea5e9]/20">
-                <div className="text-xs font-bold text-[#0ea5e9] uppercase tracking-widest mb-4">With QuantumHalon</div>
-                <div className="space-y-3 mb-6">
-                  {[
-                    "Gateway applies stronger crypto at boundary",
-                    "Reduced Harvest Now, Decrypt Later exposure",
-                    "Full visibility via control plane",
-                    "Internal systems remain unchanged",
-                  ].map((t, i) => (
-                    <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-[#0ea5e9]/[0.03] border border-[#0ea5e9]/15">
-                      <CheckCircle className="w-4 h-4 text-[#0ea5e9] flex-shrink-0" />
-                      <span className="text-slate-300 text-sm">{t}</span>
-                    </div>
-                  ))}
-                </div>
-                {/* Mini diagram: protected path */}
-                <svg viewBox="0 0 400 60" fill="none" className="w-full" aria-hidden="true">
-                  <rect x="10" y="15" width="50" height="30" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
-                  <text x="35" y="33" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="monospace">Src</text>
-                  <rect x="70" y="12" width="50" height="36" rx="6" fill="rgba(14,165,233,0.08)" stroke="rgba(14,165,233,0.3)" />
-                  <text x="95" y="33" textAnchor="middle" fill="rgba(14,165,233,0.7)" fontSize="6" fontFamily="monospace" fontWeight="700">QH</text>
-                  <line x1="120" y1="30" x2="280" y2="30" stroke="rgba(14,165,233,0.4)" strokeWidth="2" strokeDasharray="4 3" className="anim-flow-dash" />
-                  <text x="200" y="20" textAnchor="middle" fill="rgba(14,165,233,0.4)" fontSize="7" fontFamily="monospace" letterSpacing="2">PROTECTED</text>
-                  <rect x="280" y="12" width="50" height="36" rx="6" fill="rgba(14,165,233,0.08)" stroke="rgba(14,165,233,0.3)" />
-                  <text x="305" y="33" textAnchor="middle" fill="rgba(14,165,233,0.7)" fontSize="6" fontFamily="monospace" fontWeight="700">QH</text>
-                  <rect x="340" y="15" width="50" height="30" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
-                  <text x="365" y="33" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="monospace">Dest</text>
-                </svg>
-              </div>
-            </FadeIn>
-          </div>
         </div>
       </section>
 
-      {/* Traffic Flow Steps */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="text-center max-w-2xl mx-auto mb-10">
-              <SectionLabel label="Traffic Flow" />
-              <h2 className="text-3xl md:text-4xl text-white font-semibold tracking-tight mb-3">
-                Six steps. Fully transparent.
-              </h2>
-            </div>
-          </FadeIn>
-          <div className="space-y-3 max-w-3xl mx-auto">
-            {[
-              { step: "01", text: "Traffic originates from internal system.", highlight: false },
-              { step: "02", text: "Reaches QuantumHalon gateway at source boundary.", highlight: true },
-              { step: "03", text: "Stronger cryptographic protection applied.", highlight: true },
-              { step: "04", text: "Protected traffic traverses the network.", highlight: false },
-              { step: "05", text: "Arrives at destination QuantumHalon gateway.", highlight: true },
-              { step: "06", text: "Delivered to internal system unchanged.", highlight: false },
-            ].map((s, i) => (
-              <FadeIn key={i} delay={i * 0.06}>
-                <div className={`flex items-center gap-4 p-4 rounded-xl ${s.highlight ? "glass-panel border-l-2 border-l-[#0ea5e9]/50" : "glass-panel"}`}>
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-mono font-bold ${s.highlight ? "bg-[#0ea5e9]/15 text-[#0ea5e9] border border-[#0ea5e9]/30" : "bg-white/5 text-white/40 border border-white/10"}`}>
-                    {s.step}
+      <section className="border-y border-white/5 py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+          <SectionHeader
+            label="Flow"
+            title="Five steps from raw traffic to governed protection."
+            body="This is deliberately high-level. The public site explains the operating model; detailed policy and crypto mechanics stay inside the product and technical briefings."
+          />
+          <div className="space-y-3">
+            {flowSteps.map((step, index) => (
+              <FadeIn key={step.title} delay={index * 0.05}>
+                <div className="grid gap-4 rounded-lg border border-white/10 bg-white/[0.03] p-5 sm:grid-cols-[64px_1fr]">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-[#0ea5e9]/30 bg-[#0ea5e9]/10 font-mono text-sm font-semibold text-[#0ea5e9]">
+                    {String(index + 1).padStart(2, "0")}
                   </div>
-                  <span className="text-slate-300 text-sm">{s.text}</span>
+                  <div>
+                    <h3 className="text-base font-semibold text-white">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">{step.text}</p>
+                  </div>
                 </div>
               </FadeIn>
             ))}
@@ -143,76 +89,74 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* Full Architecture Diagram */}
-      <section className="py-16 lg:py-24 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
-            <div className="text-center max-w-2xl mx-auto mb-8">
-              <SectionLabel label="Full Architecture" />
-              <h2 className="text-3xl md:text-4xl text-white font-semibold tracking-tight">
-                The complete gateway flow.
-              </h2>
+            <ImagePanel
+              src="/images/mode-selector.png"
+              alt="Minimal isometric illustration showing one gateway splitting traffic into four policy outcomes."
+              caption="Mode behavior stays policy-driven"
+            />
+          </FadeIn>
+          <div>
+            <SectionHeader
+              label="Mode Logic"
+              title="The same gateway can make different decisions for different paths."
+              body="Mode 1 provides mediated protection. Mode 2 protects opaque paths. Passthrough is explicit. Block stops traffic according to policy."
+            />
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {[
+                { icon: ShieldCheck, title: "Mode 1", text: "Mediated protection for paths where trusted handling is appropriate." },
+                { icon: Network, title: "Mode 2", text: "Opaque protection for paths where application behavior should remain unchanged." },
+                { icon: Route, title: "Passthrough", text: "Approved transparent forwarding for paths outside active protection." },
+                { icon: Radar, title: "Block", text: "Policy denial that stops the flow instead of silently downgrading." },
+              ].map((item, index) => (
+                <FadeIn key={item.title} delay={index * 0.05}>
+                  <FeatureCard icon={item.icon} title={item.title}>
+                    {item.text}
+                  </FeatureCard>
+                </FadeIn>
+              ))}
             </div>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <HeroArchitecture />
-          </FadeIn>
+          </div>
         </div>
       </section>
 
-      {/* Policy Control */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="text-center max-w-2xl mx-auto mb-10">
-              <SectionLabel label="Policy Control" />
-              <h2 className="text-3xl md:text-4xl text-white font-semibold tracking-tight mb-3">
-                Protection is policy-driven and path-specific.
-              </h2>
-            </div>
-          </FadeIn>
-          <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+      <section className="border-y border-white/5 py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            label="Trust Model"
+            title="Mode 1 starts with clear enterprise trust readiness."
+            body="For mediated protection, organizations prepare the required trust through standard enterprise rollout processes before activation. Detailed trust architecture is reserved for technical review."
+            align="center"
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-4">
             {[
-              { tier: "Standard Paths", method: "Classical", border: "border-white/10", text: "text-white/50" },
-              { tier: "Sensitive Paths", method: "Hybrid (Classical + PQC)", border: "border-[#38bdf8]/30", text: "text-[#38bdf8]" },
-              { tier: "Critical Paths", method: "Full PQC", border: "border-[#0ea5e9]/40", text: "text-[#0ea5e9]" },
-            ].map((t, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className={`glass-panel glass-interactive rounded-xl p-5 text-center ${t.border}`}>
-                  <div className={`text-xs font-mono font-bold uppercase tracking-widest mb-2 ${t.text}`}>{t.tier}</div>
-                  <div className="text-white font-medium text-base">{t.method}</div>
-                </div>
+              { icon: GitBranch, title: "Prepare trust", text: "Use normal enterprise rollout controls to prepare systems for mediated protection." },
+              { icon: KeyRound, title: "Activate Mode 1", text: "Turn on mediated protection only for approved paths after trust readiness is confirmed." },
+              { icon: Cloud, title: "Keep custody bounded", text: "Sensitive trust operations remain inside controlled custody boundaries." },
+              { icon: EyeOff, title: "Preserve the boundary", text: "Mode choices keep visibility and payload handling explicit." },
+            ].map((item, index) => (
+              <FadeIn key={item.title} delay={index * 0.05}>
+                <FeatureCard icon={item.icon} title={item.title}>
+                  {item.text}
+                </FeatureCard>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Practical Design strip */}
-      <section className="py-12 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-            {["No app changes", "No endpoint agents", "No protocol redesign", "Reversible", "Governed"].map((item, i) => (
-              <FadeIn key={i} delay={i * 0.05}>
-                <div className="p-3 glass-panel rounded-xl text-center">
-                  <span className="text-xs font-medium text-slate-300">{item}</span>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-28 lg:py-36 relative overflow-hidden border-t border-white/5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md h-80 bg-white/[0.04] rounded-full blur-[120px] pointer-events-none" />
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
+        <div className="absolute inset-0 circuit-mask opacity-70" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl text-white font-semibold tracking-tight mb-4">See the architecture in action.</h2>
-            <p className="text-lg text-slate-400 mb-8">Book a technical walkthrough for your environment.</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <CTAButton href="/contact">Book a Demo</CTAButton>
-              <CTAButton href="/product" variant="secondary">Explore QuantumHalon</CTAButton>
+            <SectionHeader label="Technical Walkthrough" title="Map the model to your protected paths." align="center" />
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <CTAButton href="/contact">Book a Walkthrough</CTAButton>
+              <CTAButton href="/use-cases" variant="secondary">
+                View Use Cases
+              </CTAButton>
             </div>
           </FadeIn>
         </div>

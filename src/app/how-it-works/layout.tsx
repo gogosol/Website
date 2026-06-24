@@ -1,9 +1,9 @@
 ﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How It Works - QuantumHalon Gateway Architecture",
+  title: "How It Works - QuantumHalon Inline Architecture",
   description:
-    "Learn how QuantumHalon's crypto-agile gateway architecture protects traffic and supports phased post-quantum migration without requiring changes to existing infrastructure.",
+    "Learn how QuantumHalon sits inline, classifies traffic paths, selects policy modes, enforces post-quantum protection, and keeps the cloud out of the live packet path.",
 };
 
 export default function HowItWorksLayout({

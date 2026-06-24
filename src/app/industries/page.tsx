@@ -1,116 +1,140 @@
 "use client";
+
 import React from "react";
-import { motion } from "framer-motion";
-import { Building2, Heart, Landmark, Factory, Briefcase, CheckCircle } from "lucide-react";
-import SectionLabel from "@/components/SectionLabel";
 import CTAButton from "@/components/CTAButton";
-
-function FadeIn({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.55, delay, ease: [0.25, 0.1, 0.25, 1] }} className={className}>
-      {children}
-    </motion.div>
-  );
-}
-
-/* Mini topology for each industry */
-function IndustryTopology({ type }: { type: string }) {
-  const configs: Record<string, { nodes: string[]; pattern: string }> = {
-    finance: { nodes: ["Banks", "Trading", "Clearance"], pattern: "Inter-institution traffic" },
-    healthcare: { nodes: ["Hospital", "Clinic", "Research"], pattern: "Patient data transit" },
-    government: { nodes: ["Agency", "Dept", "Classified"], pattern: "Sovereign communications" },
-    infrastructure: { nodes: ["Control", "Remote", "SCADA"], pattern: "OT/ICS paths" },
-    enterprise: { nodes: ["HQ", "Branch", "Cloud"], pattern: "Distributed transit" },
-  };
-  const cfg = configs[type] || configs.enterprise;
-
-  return (
-    <svg viewBox="0 0 240 80" fill="none" className="w-full h-auto" aria-hidden="true">
-      {cfg.nodes.map((n, i) => (
-        <g key={i}>
-          <rect x={10 + i * 80} y="10" width="65" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
-          <text x={42.5 + i * 80} y="28" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="monospace">{n}</text>
-          {i < cfg.nodes.length - 1 && (
-            <line x1={75 + i * 80} y1="24" x2={10 + (i + 1) * 80} y2="24" stroke="rgba(14,165,233,0.3)" strokeWidth="1.5" strokeDasharray="3 3" className="anim-flow-dash" />
-          )}
-        </g>
-      ))}
-      {/* Gateway label */}
-      <rect x="40" y="50" width="160" height="22" rx="4" fill="rgba(14,165,233,0.06)" stroke="rgba(14,165,233,0.2)" strokeDasharray="3 3" />
-      <text x="120" y="64" textAnchor="middle" fill="rgba(14,165,233,0.5)" fontSize="6" fontFamily="monospace" letterSpacing="1">{cfg.pattern}</text>
-    </svg>
-  );
-}
+import {
+  FadeIn,
+  FeatureCard,
+  ImagePanel,
+  PageHero,
+  SectionHeader,
+} from "@/components/QuantumPage";
+import { Building2, CheckCircle, Factory, HeartPulse, Landmark, Lock, RadioTower, ShieldCheck } from "lucide-react";
 
 const industries = [
-  { key: "finance", icon: Building2, title: "Financial Services", tagline: "Data with decades of sensitivity.", benefits: ["Inter-institution traffic protection", "Regulatory readiness", "Governed migration"] },
-  { key: "healthcare", icon: Heart, title: "Healthcare", tagline: "Patient data cannot be un-compromised.", benefits: ["HIPAA-compatible deployment", "Cross-facility protection", "Clinical system continuity"] },
-  { key: "government", icon: Landmark, title: "Government", tagline: "Sovereign data. Mandated timelines.", benefits: ["Classification-level deployment", "Agency-by-agency rollout", "Mandate alignment"] },
-  { key: "infrastructure", icon: Factory, title: "Critical Infrastructure", tagline: "Protecting systems society depends on.", benefits: ["OT/ICS compatible gateway", "No legacy system changes", "Long-lifecycle alignment"] },
-  { key: "enterprise", icon: Briefcase, title: "Enterprise", tagline: "Complex, distributed, hybrid.", benefits: ["Multi-site coverage", "Cloud + on-prem paths", "Phased enterprise rollout"] },
+  {
+    icon: Building2,
+    title: "Financial services",
+    pressure: "Transaction records, payment rails, institutional exchange, and private customer data have long confidentiality horizons.",
+    outcome: "Deploy governed PQC protection on selected high-value traffic paths while broader application migration remains phased.",
+  },
+  {
+    icon: Landmark,
+    title: "Government and public sector",
+    pressure: "Procurement timelines, national security expectations, and sensitive citizen or agency data create early migration pressure.",
+    outcome: "Use inline protection to build evidence of practical transition without forcing every legacy system to change first.",
+  },
+  {
+    icon: Factory,
+    title: "Critical infrastructure and OT",
+    pressure: "Operational networks often contain long-life systems that cannot be redesigned quickly or touched casually.",
+    outcome: "Add path-level protection at network chokepoints while keeping endpoint behavior stable and exceptions explicit.",
+  },
+  {
+    icon: HeartPulse,
+    title: "Healthcare and life sciences",
+    pressure: "Patient records, genomics, research data, and clinical exchange may remain sensitive for decades.",
+    outcome: "Prioritize paths carrying long-lived medical data and support a gradual, auditable transition plan.",
+  },
+  {
+    icon: RadioTower,
+    title: "Advanced enterprise networks",
+    pressure: "Distributed sites, cloud paths, partners, and hybrid environments create too many migration surfaces for a single big-bang rewrite.",
+    outcome: "Protect the highest-value transit paths first and expand as policy readiness and operations mature.",
+  },
 ];
 
 export default function IndustriesPage() {
   return (
     <div className="min-h-screen bg-transparent selection:bg-white/30">
-      {/* Hero */}
-      <section className="relative pt-28 pb-8 lg:pt-40 lg:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-glow-orb w-[800px] h-[800px] bg-white top-[-200px] right-[-300px] opacity-10 hidden md:block" />
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto relative z-10">
-          <SectionLabel label="Industries" />
-          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
-            Purpose-built for{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">high-stakes industries.</span>
-          </h1>
-        </motion.div>
-      </section>
+      <PageHero
+        compact
+        label="Industries"
+        title="For organizations where data outlives today's encryption."
+        body="QuantumHalon is designed for environments where sensitive traffic moves across networks that cannot all be redesigned at once."
+        imageSrc="/images/industry-data-lifetime.png"
+        imageAlt="Minimal isometric illustration of a protected data vault connected to finance, government, healthcare, and infrastructure symbols."
+        chips={["Finance", "Government", "Critical infrastructure", "Healthcare", "Enterprise"]}
+        primaryCta={{ href: "/contact", label: "Talk to QCertify" }}
+        secondaryCta={{ href: "/use-cases", label: "Use Cases" }}
+      />
 
-      {/* Industry cards with mini topologies */}
-      <section className="pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-6">
-          {industries.map((ind, i) => (
-            <FadeIn key={i} delay={i * 0.05}>
-              <div className="glass-panel rounded-2xl p-6 lg:p-8">
-                <div className="grid lg:grid-cols-3 gap-6 items-center">
-                  {/* Icon + text */}
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                        <ind.icon className="w-5 h-5 text-[#0ea5e9]" />
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            label="Market Fit"
+            title="The common factor is not industry hype. It is data lifetime."
+            body="Post-quantum risk matters first where captured data will still be valuable when future quantum capability arrives."
+            align="center"
+          />
+          <div className="mt-10 space-y-4">
+            {industries.map((industry, index) => (
+              <FadeIn key={industry.title} delay={index * 0.04}>
+                <div className="glass-panel rounded-lg p-5 lg:p-6">
+                  <div className="grid gap-6 lg:grid-cols-[0.6fr_1fr_1fr] lg:items-center">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-[#0ea5e9]/30 bg-[#0ea5e9]/10 text-[#0ea5e9]">
+                        <industry.icon className="h-6 w-6" />
                       </div>
-                      <div>
-                        <h2 className="text-lg font-semibold text-white">{ind.title}</h2>
-                        <p className="text-slate-400 text-xs">{ind.tagline}</p>
-                      </div>
+                      <h2 className="text-lg font-semibold text-white">{industry.title}</h2>
+                    </div>
+                    <div className="rounded-lg border border-white/10 bg-black/35 p-4">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Pressure</div>
+                      <p className="mt-2 text-sm leading-6 text-slate-400">{industry.pressure}</p>
+                    </div>
+                    <div className="rounded-lg border border-[#0ea5e9]/20 bg-[#0ea5e9]/[0.04] p-4">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0ea5e9]/70">QuantumHalon outcome</div>
+                      <p className="mt-2 text-sm leading-6 text-slate-300">{industry.outcome}</p>
                     </div>
                   </div>
-                  {/* Mini topology */}
-                  <div>
-                    <IndustryTopology type={ind.key} />
-                  </div>
-                  {/* Benefits */}
-                  <div className="space-y-2">
-                    {ind.benefits.map((b, j) => (
-                      <div key={j} className="flex items-center gap-2">
-                        <CheckCircle className="w-3.5 h-3.5 text-[#0ea5e9] flex-shrink-0" />
-                        <span className="text-slate-300 text-xs">{b}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-28 relative overflow-hidden border-t border-white/5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md h-80 bg-white/[0.04] rounded-full blur-[120px] pointer-events-none" />
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <section className="border-y border-white/5 py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl text-white font-semibold tracking-tight mb-4">See how QCertify supports your industry.</h2>
-            <CTAButton href="/contact">Book a Demo</CTAButton>
+            <ImagePanel
+              src="/images/long-lived-vault.png"
+              alt="Minimal isometric illustration of a secure archive vault with data cubes and a confidentiality timeline."
+              caption="Long-lived data changes the urgency"
+            />
+          </FadeIn>
+          <div>
+            <SectionHeader
+              label="Executive Story"
+              title="Quantum readiness becomes an operating program."
+              body="Regulated buyers need more than a claim that PQC is supported. They need a phased plan, trust readiness, policy evidence, and a credible privacy boundary."
+            />
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {[
+                { icon: Lock, title: "Protect first", text: "Shield the most valuable traffic paths while deeper migrations continue." },
+                { icon: ShieldCheck, title: "Govern clearly", text: "Make exceptions and denied paths visible to the program." },
+                { icon: CheckCircle, title: "Prove progress", text: "Use deployment state, operational evidence, and policy records to show transition maturity." },
+                { icon: Landmark, title: "Support procurement", text: "Tell a credible PQC story before regulations and buyers compress the timeline." },
+              ].map((item, index) => (
+                <FadeIn key={item.title} delay={index * 0.05}>
+                  <FeatureCard icon={item.icon} title={item.title}>
+                    {item.text}
+                  </FeatureCard>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
+        <div className="absolute inset-0 circuit-mask opacity-70" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <FadeIn>
+            <SectionHeader label="Industry Fit" title="Start with the traffic your industry cannot afford to expose later." align="center" />
+            <div className="mt-8">
+              <CTAButton href="/contact">Discuss Your Industry</CTAButton>
+            </div>
           </FadeIn>
         </div>
       </section>

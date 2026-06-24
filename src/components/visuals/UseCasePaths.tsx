@@ -3,13 +3,13 @@ import React from "react";
 import { motion } from "framer-motion";
 
 /**
- * Asset F - Use Case Topology Cards
- * Four mini SVG deployment diagrams showing different QuantumHalon scenarios.
+ * Asset F - Use Case Path Cards
+ * Four mini SVG diagrams showing different high-level QuantumHalon scenarios.
  * Enhanced with 3D card hover, more particles, and interactive path highlighting.
  * QuantumHalon ("QH") labels preserved in all diagrams.
  */
 
-interface TopologyProps {
+interface PathCardProps {
   variant: "site-to-site" | "branch-to-core" | "cloud" | "partner";
   className?: string;
 }
@@ -149,9 +149,9 @@ function PartnerExchange() {
       <rect x="80" y="50" width="40" height="40" rx="12" fill="rgba(14,165,233,0.08)" stroke="rgba(14,165,233,0.35)" />
 
       <text x="100" y="73" textAnchor="middle" fill="rgba(14,165,233,0.7)" fontSize="6" fontFamily="monospace" fontWeight="700">QH</text>
-      {/* DMZ */}
+      {/* Exchange boundary */}
       <rect x="128" y="55" width="24" height="30" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)" strokeDasharray="2 2" />
-      <text x="140" y="73" textAnchor="middle" fill="rgba(255,255,255,0.25)" fontSize="5" fontFamily="monospace">DMZ</text>
+      <text x="140" y="73" textAnchor="middle" fill="rgba(255,255,255,0.25)" fontSize="5" fontFamily="monospace">BOUND</text>
       {/* Protected path */}
       <line x1="120" y1="70" x2="160" y2="70" stroke="rgba(14,165,233,0.4)" strokeWidth="2" strokeDasharray="4 3" className="anim-flow-dash" />
       {[0, 1].map((p) => (
@@ -178,15 +178,15 @@ function PartnerExchange() {
   );
 }
 
-const topologies: Record<TopologyProps["variant"], { component: React.FC; title: string; sub: string }> = {
+const pathCards: Record<PathCardProps["variant"], { component: React.FC; title: string; sub: string }> = {
   "site-to-site": { component: SiteToSite, title: "Site-to-Site", sub: "HQ ↔ Data Center" },
   "branch-to-core": { component: BranchToCore, title: "Branch-to-Core", sub: "Distributed branches → Central infra" },
   "cloud": { component: CloudHybrid, title: "Cloud Hybrid", sub: "On-prem ↔ Cloud provider" },
   "partner": { component: PartnerExchange, title: "Partner Exchange", sub: "Organization ↔ Third party" },
 };
 
-export default function UseCaseTopology({ variant, className = "" }: TopologyProps) {
-  const topo = topologies[variant];
+export default function UseCasePathCard({ variant, className = "" }: PathCardProps) {
+  const topo = pathCards[variant];
   const Diagram = topo.component;
 
   return (
@@ -210,13 +210,13 @@ export default function UseCaseTopology({ variant, className = "" }: TopologyPro
   );
 }
 
-export function UseCaseTopologyGrid() {
+export function UseCasePathGrid() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <UseCaseTopology variant="site-to-site" />
-      <UseCaseTopology variant="branch-to-core" />
-      <UseCaseTopology variant="cloud" />
-      <UseCaseTopology variant="partner" />
+      <UseCasePathCard variant="site-to-site" />
+      <UseCasePathCard variant="branch-to-core" />
+      <UseCasePathCard variant="cloud" />
+      <UseCasePathCard variant="partner" />
     </div>
   );
 }

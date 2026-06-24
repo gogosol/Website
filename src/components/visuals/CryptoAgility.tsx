@@ -5,15 +5,15 @@ import { LayoutGrid, Code, Cog, Shield } from "lucide-react";
 
 /**
  * Asset D - Crypto-Agility Visual
- * A stable "environment" sits on top. Below it, the crypto layer cycles through algorithms.
+ * A stable "environment" sits on top. Below it, the crypto layer cycles through governed profiles.
  * Enhanced with 3D flip transitions, holographic shimmer, and animated progress rings.
  * Shows: the system stays stable while cryptographic methods evolve underneath.
  */
-const algorithms = [
-  { label: "AES-256 + RSA", tag: "Classical", color: "rgba(255,255,255,0.5)", ringColor: "#94a3b8" },
-  { label: "AES-256 + ML-KEM", tag: "Hybrid", color: "#38bdf8", ringColor: "#38bdf8" },
-  { label: "ML-KEM + ML-DSA", tag: "Post-Quantum", color: "#0ea5e9", ringColor: "#0ea5e9" },
-  { label: "Next Standard", tag: "Future-Ready", color: "#22d3ee", ringColor: "#22d3ee" },
+const profiles = [
+  { label: "Baseline profile", tag: "Current", color: "rgba(255,255,255,0.5)", ringColor: "#94a3b8" },
+  { label: "Hybrid profile", tag: "Transition", color: "#38bdf8", ringColor: "#38bdf8" },
+  { label: "Post-quantum profile", tag: "Future-ready", color: "#0ea5e9", ringColor: "#0ea5e9" },
+  { label: "Next approved profile", tag: "Lifecycle", color: "#22d3ee", ringColor: "#22d3ee" },
 ];
 
 export default function CryptoAgility() {
@@ -21,12 +21,12 @@ export default function CryptoAgility() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % algorithms.length);
+      setActiveIndex((prev) => (prev + 1) % profiles.length);
     }, 3000);
     return () => clearInterval(timer);
   }, []);
 
-  const algo = algorithms[activeIndex];
+  const profile = profiles[activeIndex];
 
   return (
     <div className="w-full max-w-2xl mx-auto perspective-container">
@@ -81,7 +81,7 @@ export default function CryptoAgility() {
               <div
                 className="absolute left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
                 style={{
-                  backgroundColor: algo.color,
+                  backgroundColor: profile.color,
                   animation: `float-up 2s ease-in-out infinite ${i * 0.3}s`,
                   opacity: 0.5,
                 }}
@@ -101,9 +101,9 @@ export default function CryptoAgility() {
           transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           className="rounded-2xl p-5 border relative overflow-hidden"
           style={{
-            borderColor: `${algo.color}33`,
-            background: `linear-gradient(135deg, ${algo.color}0D 0%, transparent 60%)`,
-            boxShadow: `0 8px 32px rgba(0,0,0,0.3), 0 0 30px ${algo.color}15`,
+            borderColor: `${profile.color}33`,
+            background: `linear-gradient(135deg, ${profile.color}0D 0%, transparent 60%)`,
+            boxShadow: `0 8px 32px rgba(0,0,0,0.3), 0 0 30px ${profile.color}15`,
             transformStyle: "preserve-3d",
           }}
         >
@@ -112,7 +112,7 @@ export default function CryptoAgility() {
             <div
               className="h-full w-1/4 opacity-25"
               style={{
-                background: `linear-gradient(105deg, transparent 40%, ${algo.color}30 48%, ${algo.color}50 50%, ${algo.color}30 52%, transparent 60%)`,
+                background: `linear-gradient(105deg, transparent 40%, ${profile.color}30 48%, ${profile.color}50 50%, ${profile.color}30 52%, transparent 60%)`,
                 animation: "scan-line 3s ease-in-out infinite",
               }}
             />
@@ -123,11 +123,11 @@ export default function CryptoAgility() {
 
           <div className="flex items-center justify-between relative z-10">
             <div>
-              <div className="text-[10px] font-mono uppercase tracking-widest mb-1" style={{ color: algo.color }}>
-                Crypto Layer · {algo.tag}
+              <div className="text-[10px] font-mono uppercase tracking-widest mb-1" style={{ color: profile.color }}>
+                Crypto Layer · {profile.tag}
               </div>
               <div className="text-white font-medium text-lg tracking-tight">
-                {algo.label}
+                {profile.label}
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -137,22 +137,22 @@ export default function CryptoAgility() {
                 <circle
                   cx="18" cy="18" r="14"
                   fill="none"
-                  stroke={algo.ringColor}
+                  stroke={profile.ringColor}
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeDasharray="88"
                   strokeDashoffset="22"
-                  style={{ filter: `drop-shadow(0 0 4px ${algo.color})` }}
+                  style={{ filter: `drop-shadow(0 0 4px ${profile.color})` }}
                 >
                   <animateTransform attributeName="transform" type="rotate" values="0 18 18;360 18 18" dur="4s" repeatCount="indefinite" />
                 </circle>
               </svg>
               <div className="flex items-center gap-2">
                 <div className="relative">
-                  <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: algo.color }} />
-                  <div className="absolute inset-0 w-2 h-2 rounded-full animate-ping opacity-30" style={{ backgroundColor: algo.color }} />
+                  <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: profile.color }} />
+                  <div className="absolute inset-0 w-2 h-2 rounded-full animate-ping opacity-30" style={{ backgroundColor: profile.color }} />
                 </div>
-                <span className="text-xs font-mono" style={{ color: algo.color }}>
+                <span className="text-xs font-mono" style={{ color: profile.color }}>
                   Active
                 </span>
               </div>
@@ -161,20 +161,20 @@ export default function CryptoAgility() {
 
           {/* Progress indicator - enhanced */}
           <div className="flex gap-1.5 mt-4 relative z-10">
-            {algorithms.map((_, i) => (
+            {profiles.map((_, i) => (
               <div
                 key={i}
                 className="h-1.5 flex-1 rounded-full transition-all duration-700 relative overflow-hidden"
                 style={{
-                  backgroundColor: i === activeIndex ? algo.color : "rgba(255,255,255,0.06)",
-                  boxShadow: i === activeIndex ? `0 0 8px ${algo.color}60` : "none",
+                  backgroundColor: i === activeIndex ? profile.color : "rgba(255,255,255,0.06)",
+                  boxShadow: i === activeIndex ? `0 0 8px ${profile.color}60` : "none",
                 }}
               >
                 {i === activeIndex && (
                   <div
                     className="absolute inset-0 rounded-full"
                     style={{
-                      background: `linear-gradient(90deg, transparent, ${algo.color}80, transparent)`,
+                      background: `linear-gradient(90deg, transparent, ${profile.color}80, transparent)`,
                       animation: "scan-line 1.5s ease-in-out infinite",
                     }}
                   />

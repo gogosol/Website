@@ -1,15 +1,17 @@
 "use client";
+
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { CheckCircle, Send, Mail } from "lucide-react";
+import { CheckCircle, Mail, Send } from "lucide-react";
 import SectionLabel from "@/components/SectionLabel";
 
 const reasons = [
-  "See QuantumHalon deployed against a real architecture scenario",
-  "Understand how crypto-agile transition works in practice",
-  "Discuss your organization's specific traffic protection priorities",
-  "Evaluate phased deployment options for your environment",
-  "Explore how QuantumHalon aligns with your governance timeline",
+  "Map QuantumHalon to your protected traffic paths",
+  "Compare policy modes for real traffic paths",
+  "Discuss HNDL risk and data-lifetime priorities",
+  "Plan trust readiness for mediated protection",
+  "Align technical deployment with governance and procurement timelines",
 ];
 
 const industries = [
@@ -23,8 +25,9 @@ const industries = [
 
 const interests = [
   "Technical demo",
-  "Transition planning",
   "Architecture review",
+  "PQC readiness planning",
+  "Use case discussion",
   "General inquiry",
 ];
 
@@ -33,12 +36,12 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsSubmitting(true);
     setError("");
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
     try {
@@ -56,8 +59,8 @@ export default function ContactPage() {
       }
 
       setSubmitted(true);
-    } catch (err: any) {
-      setError(err.message || "An error occurred while sending your message. Please try again.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "An error occurred while sending your message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -65,250 +68,176 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-transparent selection:bg-white/30">
-      {/* Hero */}
-      <section className="relative pt-32 pb-12 lg:pt-44 lg:pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-glow-orb w-[600px] h-[600px] bg-[#0ea5e9] top-[-100px] right-[-200px] opacity-[0.04] hidden md:block" />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl relative z-10"
-        >
-          <SectionLabel label="Get in Touch" />
-          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
-            See how QuantumHalon{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
-              protects your traffic.
-            </span>
-          </h1>
-          <p className="text-lg lg:text-xl text-slate-300 max-w-2xl leading-relaxed font-light">
-            Book a technical demonstration with the QCertify team. We will walk
-            through deployment architecture, crypto-agile transition, and how
-            QuantumHalon fits your environment.
-          </p>
-        </motion.div>
+      <section className="relative overflow-hidden border-b border-white/5 pt-28 pb-16 lg:pt-40 lg:pb-20">
+        <div className="absolute inset-0 circuit-mask opacity-70" />
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <SectionLabel label="Contact" />
+            <h1 className="mt-5 text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+              See how QuantumHalon fits your traffic paths.
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+              Request a technical conversation with QCertify. We will focus on protected paths, policy modes, trust readiness, and realistic post-quantum transition priorities.
+            </p>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }}>
+            <div className="relative overflow-hidden rounded-lg border border-white/10 bg-white/[0.03]">
+              <div className="relative aspect-[16/9]">
+                <Image
+                  src="/images/protected-path-workshop.png"
+                  alt="Minimal isometric protected-path workshop illustration with QuantumHalon placed inline."
+                  fill
+                  preload
+                  sizes="(min-width: 1024px) 48vw, 100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgba(0,0,0,0.82)_100%)]" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* Form + Sidebar */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-5 gap-12">
-          {/* Reasons sidebar */}
+      <section className="py-16 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-5 lg:px-8">
           <div className="lg:col-span-2">
-            <h2 className="text-xl font-semibold text-white mb-6">
-              Reasons to get in touch
-            </h2>
-            <div className="space-y-3">
-              {reasons.map((reason, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-[#0ea5e9] flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-300 text-sm leading-relaxed">
-                    {reason}
-                  </span>
+            <h2 className="text-xl font-semibold text-white">Useful topics for the first call</h2>
+            <div className="mt-6 space-y-3">
+              {reasons.map((reason) => (
+                <div key={reason} className="flex items-start gap-3">
+                  <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#0ea5e9]" />
+                  <span className="text-sm leading-6 text-slate-300">{reason}</span>
                 </div>
               ))}
             </div>
 
-            <div className="mt-10 p-6 glass-panel rounded-xl">
-              <div className="flex items-center gap-3 mb-3">
-                <Mail className="w-5 h-5 text-white/60" />
-                <span className="text-white font-medium text-sm">
-                  Prefer email?
-                </span>
+            <div className="glass-panel mt-10 rounded-lg p-6">
+              <div className="mb-3 flex items-center gap-3">
+                <Mail className="h-5 w-5 text-white/60" />
+                <span className="text-sm font-medium text-white">Prefer email?</span>
               </div>
-              <a
-                href="mailto:contact@qcertify.io"
-                className="text-[#0ea5e9] hover:text-white transition-colors text-sm font-mono"
-              >
+              <a href="mailto:contact@qcertify.io" className="font-mono text-sm text-[#0ea5e9] transition-colors hover:text-white">
                 contact@qcertify.io
               </a>
             </div>
           </div>
 
-          {/* Form */}
           <div className="lg:col-span-3">
             {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="glass-panel-heavy rounded-2xl p-12 text-center"
-              >
-                <CheckCircle className="w-12 h-12 text-[#0ea5e9] mx-auto mb-4" />
-                <h3 className="text-2xl font-semibold text-white mb-3">
-                  Thank you.
-                </h3>
-                <p className="text-slate-400 text-base">
-                  A member of our team will respond within one business day.
-                </p>
+              <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} className="glass-panel-heavy rounded-lg p-12 text-center">
+                <CheckCircle className="mx-auto mb-4 h-12 w-12 text-[#0ea5e9]" />
+                <h3 className="mb-3 text-2xl font-semibold text-white">Thank you.</h3>
+                <p className="text-base text-slate-400">A member of our team will respond within one business day.</p>
               </motion.div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="glass-panel rounded-2xl p-8 lg:p-10 space-y-6"
-              >
-                {error && (
-                  <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-sm p-4 rounded-lg">
-                    {error}
-                  </div>
-                )}
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="firstName"
-                      className="block text-xs font-bold text-white uppercase tracking-widest mb-2"
-                    >
-                      First name *
-                    </label>
-                    <input
-                      id="firstName"
-                      name="firstName"
-                      type="text"
-                      required
-                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-[#0ea5e9]/50 focus:ring-1 focus:ring-[#0ea5e9]/30 transition-colors"
-                      placeholder="Jane"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="lastName"
-                      className="block text-xs font-bold text-white uppercase tracking-widest mb-2"
-                    >
-                      Last name *
-                    </label>
-                    <input
-                      id="lastName"
-                      name="lastName"
-                      type="text"
-                      required
-                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-[#0ea5e9]/50 focus:ring-1 focus:ring-[#0ea5e9]/30 transition-colors"
-                      placeholder="Carter"
-                    />
-                  </div>
+              <form onSubmit={handleSubmit} className="glass-panel rounded-lg p-6 sm:p-8 lg:p-10">
+                {error ? <div className="mb-6 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-300">{error}</div> : null}
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Field id="firstName" label="First name" placeholder="Jane" required />
+                  <Field id="lastName" label="Last name" placeholder="Carter" required />
                 </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-xs font-bold text-white uppercase tracking-widest mb-2"
-                  >
-                    Work email *
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-[#0ea5e9]/50 focus:ring-1 focus:ring-[#0ea5e9]/30 transition-colors"
-                    placeholder="jane@company.com"
-                  />
+                <div className="mt-5">
+                  <Field id="email" label="Work email" type="email" placeholder="jane@company.com" required />
                 </div>
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="company"
-                      className="block text-xs font-bold text-white uppercase tracking-widest mb-2"
-                    >
-                      Company *
-                    </label>
-                    <input
-                      id="company"
-                      name="company"
-                      type="text"
-                      required
-                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-[#0ea5e9]/50 focus:ring-1 focus:ring-[#0ea5e9]/30 transition-colors"
-                      placeholder="Acme Corp"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="jobTitle"
-                      className="block text-xs font-bold text-white uppercase tracking-widest mb-2"
-                    >
-                      Job title *
-                    </label>
-                    <input
-                      id="jobTitle"
-                      name="jobTitle"
-                      type="text"
-                      required
-                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-[#0ea5e9]/50 focus:ring-1 focus:ring-[#0ea5e9]/30 transition-colors"
-                      placeholder="CISO"
-                    />
-                  </div>
+                <div className="mt-5 grid gap-5 sm:grid-cols-2">
+                  <Field id="company" label="Company" placeholder="Company" required />
+                  <Field id="jobTitle" label="Job title" placeholder="CISO" required />
                 </div>
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="industry"
-                      className="block text-xs font-bold text-white uppercase tracking-widest mb-2"
-                    >
-                      Industry
-                    </label>
-                    <select
-                      id="industry"
-                      name="industry"
-                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#0ea5e9]/50 focus:ring-1 focus:ring-[#0ea5e9]/30 transition-colors appearance-none"
-                    >
-                      <option value="">Select industry</option>
-                      {industries.map((ind) => (
-                        <option key={ind} value={ind}>
-                          {ind}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="interest"
-                      className="block text-xs font-bold text-white uppercase tracking-widest mb-2"
-                    >
-                      Interest
-                    </label>
-                    <select
-                      id="interest"
-                      name="interest"
-                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#0ea5e9]/50 focus:ring-1 focus:ring-[#0ea5e9]/30 transition-colors appearance-none"
-                    >
-                      <option value="">What are you most interested in?</option>
-                      {interests.map((int) => (
-                        <option key={int} value={int}>
-                          {int}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                <div className="mt-5 grid gap-5 sm:grid-cols-2">
+                  <SelectField id="industry" label="Industry" options={industries} placeholder="Select industry" />
+                  <SelectField id="interest" label="Interest" options={interests} placeholder="What are you most interested in?" />
                 </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-xs font-bold text-white uppercase tracking-widest mb-2"
-                  >
+                <div className="mt-5">
+                  <label htmlFor="message" className="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-white">
                     Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
-                    className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-[#0ea5e9]/50 focus:ring-1 focus:ring-[#0ea5e9]/30 transition-colors resize-none"
-                    placeholder="Tell us about your requirements or questions..."
+                    className="w-full resize-none rounded-lg border border-white/10 bg-black/45 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-[#0ea5e9]/50 focus:outline-none focus:ring-1 focus:ring-[#0ea5e9]/30"
+                    placeholder="Tell us about your network, traffic paths, or PQC readiness goals..."
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-white glass-panel glass-interactive transition-all focus:outline-none focus:ring-2 focus:ring-[#0ea5e9] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="glass-panel glass-interactive mt-6 flex w-full items-center justify-center gap-2 rounded-lg px-8 py-4 font-bold text-white transition-all focus:outline-none focus:ring-2 focus:ring-[#0ea5e9] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <Send className="w-4 h-4" />
-                  {isSubmitting ? "Sending..." : "Request a Demo"}
+                  <Send className="h-4 w-4" />
+                  {isSubmitting ? "Sending..." : "Request a Technical Demo"}
                 </button>
-                <p className="text-xs text-slate-500 text-center leading-relaxed">
-                  Your information is handled with care. QCertify does not share
-                  contact details with third parties. A member of our team will
-                  respond within one business day.
+                <p className="mt-4 text-center text-xs leading-6 text-slate-500">
+                  QCertify uses your information only to respond to your request and does not share contact details with third parties.
                 </p>
               </form>
             )}
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function Field({
+  id,
+  label,
+  placeholder,
+  type = "text",
+  required = false,
+}: {
+  id: string;
+  label: string;
+  placeholder: string;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-white">
+        {label}
+        {required ? " *" : ""}
+      </label>
+      <input
+        id={id}
+        name={id}
+        type={type}
+        required={required}
+        className="w-full rounded-lg border border-white/10 bg-black/45 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-[#0ea5e9]/50 focus:outline-none focus:ring-1 focus:ring-[#0ea5e9]/30"
+        placeholder={placeholder}
+      />
+    </div>
+  );
+}
+
+function SelectField({
+  id,
+  label,
+  placeholder,
+  options,
+}: {
+  id: string;
+  label: string;
+  placeholder: string;
+  options: string[];
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-white">
+        {label}
+      </label>
+      <select
+        id={id}
+        name={id}
+        className="w-full appearance-none rounded-lg border border-white/10 bg-black/45 px-4 py-3 text-sm text-white transition-colors focus:border-[#0ea5e9]/50 focus:outline-none focus:ring-1 focus:ring-[#0ea5e9]/30"
+      >
+        <option value="">{placeholder}</option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

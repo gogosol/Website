@@ -1,199 +1,188 @@
-﻿"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import SectionLabel from "@/components/SectionLabel";
-import CTAButton from "@/components/CTAButton";
-import HeroArchitecture from "@/components/visuals/HeroArchitecture";
-import CryptoAgility from "@/components/visuals/CryptoAgility";
-import GhostDashboard from "@/components/visuals/GhostDashboard";
-import { UseCaseTopologyGrid } from "@/components/visuals/UseCaseTopology";
+"use client";
 
-function FadeIn({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.55, delay, ease: [0.25, 0.1, 0.25, 1] }} className={className}>
-      {children}
-    </motion.div>
-  );
-}
+import React from "react";
+import CTAButton from "@/components/CTAButton";
+import {
+  FadeIn,
+  FeatureCard,
+  ImagePanel,
+  InlineGatewayVisual,
+  ModeMatrixVisual,
+  PageHero,
+  PrivacyBoundary,
+  SectionHeader,
+  StatStrip,
+} from "@/components/QuantumPage";
+import { BadgeCheck, Cloud, KeyRound, LockKeyhole, RefreshCw, ShieldCheck, Workflow, Zap } from "lucide-react";
+
+const productPillars = [
+  {
+    icon: Workflow,
+    title: "Inline enterprise orchestrator",
+    text: "Classifies traffic at a high level, then applies the policy-selected protection outcome for that path.",
+  },
+  {
+    icon: LockKeyhole,
+    title: "Governed PQC crypto boundary",
+    text: "Protection profiles and transition behavior are selected through policy so coverage can evolve without redesigning the network.",
+  },
+  {
+    icon: KeyRound,
+    title: "Mode 1 trust distribution",
+    text: "Organizations prepare enterprise trust for mediated paths through their normal governance and rollout processes.",
+  },
+  {
+    icon: Cloud,
+    title: "Out-of-band cloud control",
+    text: "QCertify governance services coordinate deployment state and policy direction without becoming the live packet path.",
+  },
+];
 
 export default function ProductPage() {
   return (
     <div className="min-h-screen bg-transparent selection:bg-white/30">
-      {/* ─── Hero ─── */}
-      <section className="relative pt-28 pb-8 lg:pt-40 lg:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-glow-orb w-[800px] h-[800px] bg-white top-[-200px] left-[-300px] opacity-10 hidden md:block" />
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto mb-8 relative z-10">
-          <SectionLabel label="QuantumHalon" />
-          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
-            The Crypto-Agile Gateway for{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Enterprise Traffic Protection</span>
-          </h1>
-          <p className="text-lg text-slate-400 max-w-xl mx-auto font-light">
-            Software that applies stronger cryptographic protection to traffic between environments - and adapts as standards evolve.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
-            <CTAButton href="/contact">Book a Demo</CTAButton>
-            <CTAButton href="/how-it-works" variant="secondary">See the Architecture</CTAButton>
-          </div>
-        </motion.div>
+      <PageHero
+        compact
+        label="Product"
+        title="QuantumHalon is a post-quantum inline gateway fabric."
+        body="QuantumHalon protects selected enterprise traffic paths from a transparent inline position. It gives operators policy control over mediated protection, opaque protection, explicit passthrough, and blocking."
+        imageSrc="/images/product-focus.png"
+        imageAlt="Minimal isometric illustration of QuantumHalon as one focused inline product with policy, trust, protection, and migration symbols."
+        chips={["Mode 1", "Mode 2", "Passthrough", "Block"]}
+        primaryCta={{ href: "/contact", label: "Book a Technical Demo" }}
+        secondaryCta={{ href: "/how-it-works", label: "Architecture" }}
+      />
+
+      <section className="border-b border-white/5 py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <StatStrip
+            stats={[
+              { value: "Inline", label: "Gateway-level protection at governed chokepoints" },
+              { value: "Modes", label: "Policy-selected outcomes for selected paths" },
+              { value: "Private", label: "QCertify cloud stays outside live packet handling" },
+              { value: "Agile", label: "Migration behavior governed over time" },
+            ]}
+          />
+        </div>
       </section>
 
-      {/* ─── Architecture Deep-Dive ─── */}
-      <section className="py-16 lg:py-24 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="text-center max-w-2xl mx-auto mb-8">
-              <SectionLabel label="Architecture" />
-              <h2 className="text-3xl md:text-4xl text-white font-semibold tracking-tight mb-3">
-                Gateway-level protection applied where traffic moves.
-              </h2>
-              <p className="text-slate-400 text-base">
-                Deployed at network boundaries. No application changes. No endpoint agents.
-              </p>
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            label="What It Does"
+            title="A small set of modes covers the real migration problem."
+            body="QuantumHalon does not pretend every path should be treated the same. It lets the organization choose the protection behavior that matches the traffic, trust model, and operational constraints."
+            align="center"
+          />
+          <div className="mt-10">
+            <ModeMatrixVisual />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-white/5 py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-8">
+          <div>
+            <SectionHeader
+              label="Inline Fabric"
+              title="Gateway-level protection where traffic already moves."
+              body="QuantumHalon is inserted inline so selected traffic crosses the gateway by design. Existing application behavior remains stable while protection is governed at the path level."
+            />
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {productPillars.map((pillar, index) => (
+                <FadeIn key={pillar.title} delay={index * 0.05}>
+                  <FeatureCard icon={pillar.icon} title={pillar.title}>
+                    {pillar.text}
+                  </FeatureCard>
+                </FadeIn>
+              ))}
             </div>
-          </FadeIn>
+          </div>
           <FadeIn delay={0.1}>
-            <HeroArchitecture />
+            <InlineGatewayVisual />
           </FadeIn>
-          {/* Key attributes row */}
-          <FadeIn delay={0.2}>
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 mt-10">
+        </div>
+      </section>
+
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+          <FadeIn>
+            <ImagePanel
+              src="/images/crypto-agility-modules.png"
+              alt="Simple isometric illustration of interchangeable cryptographic modules governed by policy."
+              caption="Protection profiles move under governed policy"
+            />
+          </FadeIn>
+          <div>
+            <SectionHeader
+              label="Crypto Agility"
+              title="Protection evolves under policy. The network design stays stable."
+              body="QuantumHalon is designed for structured migrations: start with high-priority paths, govern compatibility decisions, and strengthen protection over time without exposing implementation mechanics on the public site."
+            />
+            <div className="mt-8 space-y-3">
               {[
-                "Gateway deployment",
-                "Crypto agility built-in",
-                "Hybrid PQC support",
-                "Phased rollout",
-                "No app changes",
-              ].map((attr, i) => (
-                <div key={i} className="p-3 glass-panel rounded-xl text-center">
-                  <span className="text-xs font-medium text-slate-300">{attr}</span>
+                "Hybrid profiles help protect traffic while the ecosystem catches up.",
+                "Opaque protection can preserve application behavior while reducing exposure.",
+                "Lifecycle governance can phase out unsuitable profiles before activation.",
+                "Policy changes can be staged without broad network redesign.",
+              ].map((item) => (
+                <div key={item} className="flex gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4">
+                  <BadgeCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#0ea5e9]" />
+                  <p className="text-sm leading-6 text-slate-300">{item}</p>
                 </div>
               ))}
             </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ─── Crypto Agility ─── */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <FadeIn>
-              <SectionLabel label="Crypto Agility" />
-              <h2 className="text-3xl md:text-4xl text-white font-semibold tracking-tight mb-3">
-                Crypto agility is not a feature.{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
-                  It is the architecture.
-                </span>
-              </h2>
-              <p className="text-slate-400 text-base mb-6 max-w-md">
-                The cryptographic methods change. The gateway stays the same. Policy-driven, not code-driven.
-              </p>
-              <div className="space-y-3">
-                {[
-                  "Swap algorithms without redeploying",
-                  "Run hybrid classical + PQC simultaneously",
-                  "Adapt when NIST updates standards",
-                  "Policy-driven selection per traffic path",
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#0ea5e9]" />
-                    <span className="text-sm text-slate-300">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <CryptoAgility />
-            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* ─── Ghost Dashboard ─── */}
-      <section className="py-16 lg:py-24 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="text-center max-w-2xl mx-auto mb-10">
-              <SectionLabel label="Control Plane" />
-              <h2 className="text-3xl md:text-4xl text-white font-semibold tracking-tight mb-3">
-                Full visibility into your cryptographic posture.
-              </h2>
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <GhostDashboard />
-          </FadeIn>
+      <section className="border-y border-white/5 py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            label="Privacy"
+            title="Designed so governance does not become packet surveillance."
+            body="The most important product promise is the boundary: QCertify governance services do not become the live packet path."
+            align="center"
+          />
+          <div className="mt-10">
+            <PrivacyBoundary />
+          </div>
         </div>
       </section>
 
-      {/* ─── Migration Phases ─── */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <SectionLabel label="Migration" />
-              <h2 className="text-3xl md:text-4xl text-white font-semibold tracking-tight mb-3">
-                Transition on your timeline. Not in a crisis.
-              </h2>
-            </div>
-          </FadeIn>
-          <div className="grid md:grid-cols-3 gap-5">
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            label="Operational Readiness"
+            title="Built around controlled deployment, not theoretical PQC slides."
+            align="center"
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
-              { phase: "Phase 1", title: "Identify & Protect", desc: "Deploy on highest-risk paths.", color: "#0ea5e9" },
-              { phase: "Phase 2", title: "Expand Coverage", desc: "Add gateways as confidence grows.", color: "#38bdf8" },
-              { phase: "Phase 3", title: "Full Transition", desc: "Evolve to full PQC readiness.", color: "#22d3ee" },
-            ].map((p, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="glass-panel glass-interactive rounded-xl p-6 group h-full relative overflow-hidden">
-                  {/* Progress bar at top */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-white/5">
-                    <div className="h-full" style={{ width: `${(i + 1) * 33.3}%`, backgroundColor: p.color }} />
-                  </div>
-                  <div className="text-xs font-mono font-bold uppercase tracking-widest mb-2 mt-2" style={{ color: p.color }}>
-                    {p.phase}
-                  </div>
-                  <h3 className="text-white font-medium text-lg mb-1">{p.title}</h3>
-                  <p className="text-slate-400 text-sm">{p.desc}</p>
-                </div>
+              { icon: ShieldCheck, title: "Controlled activation", text: "Gateways apply governed policy only after required deployment conditions are ready." },
+              { icon: RefreshCw, title: "Phased rollout", text: "Start with high-risk paths, learn from operational evidence, and expand without forcing a big-bang application rewrite." },
+              { icon: Zap, title: "Operational flexibility", text: "Operators can adjust protected-path behavior through governed rollout rather than broad network rework." },
+            ].map((item, index) => (
+              <FadeIn key={item.title} delay={index * 0.06}>
+                <FeatureCard icon={item.icon} title={item.title}>
+                  {item.text}
+                </FeatureCard>
               </FadeIn>
             ))}
           </div>
-          <FadeIn delay={0.3}>
-            <p className="text-slate-500 text-xs mt-6 text-center font-mono tracking-wide">
-              Each phase is controlled, reversible, and governed.
-            </p>
-          </FadeIn>
         </div>
       </section>
 
-      {/* ─── Deployment Scenarios ─── */}
-      <section className="py-16 lg:py-24 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
+        <div className="absolute inset-0 circuit-mask opacity-70" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-              <div>
-                <SectionLabel label="Deployment" />
-                <h2 className="text-3xl md:text-4xl text-white font-semibold tracking-tight">
-                  Deployment scenarios.
-                </h2>
-              </div>
-            </div>
-          </FadeIn>
-          <UseCaseTopologyGrid />
-        </div>
-      </section>
-
-      {/* ─── CTA ─── */}
-      <section className="py-28 lg:py-36 relative overflow-hidden border-t border-white/5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md h-80 bg-white/[0.04] rounded-full blur-[120px] pointer-events-none" />
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <FadeIn>
-            <h2 className="text-4xl md:text-5xl text-white font-semibold tracking-tight mb-4">See QuantumHalon in action.</h2>
-            <p className="text-lg text-slate-400 mb-8 max-w-xl mx-auto">Book a technical demo to see deployment, crypto-agile transitions, and how it fits your environment.</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <CTAButton href="/contact">Book a Demo</CTAButton>
-              <CTAButton href="/contact" variant="secondary">Discuss Your Strategy</CTAButton>
+            <SectionHeader label="Demo" title="See the mode matrix mapped to your traffic." align="center" />
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <CTAButton href="/contact">Book a Technical Demo</CTAButton>
+              <CTAButton href="/use-cases" variant="secondary">
+                View Use Cases
+              </CTAButton>
             </div>
           </FadeIn>
         </div>
@@ -201,4 +190,3 @@ export default function ProductPage() {
     </div>
   );
 }
-

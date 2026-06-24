@@ -1,9 +1,9 @@
 ﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Use Cases - Enterprise Traffic Protection & PQ Migration",
+  title: "Use Cases - Post-Quantum Traffic Protection Paths",
   description:
-    "See how organizations use QuantumHalon for site-to-site protection, branch security, and phased post-quantum transition in enterprise environments.",
+    "See how QuantumHalon supports selected enterprise paths, protected destinations, partner exchange, segmented environments, and compliance-sensitive egress.",
 };
 
 export default function UseCasesLayout({ children }: { children: React.ReactNode }) {

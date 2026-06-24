@@ -1,9 +1,9 @@
 ﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Book a Demo - See QuantumHalon in Action",
+  title: "Contact - QuantumHalon Technical Demo",
   description:
-    "Request a technical demonstration of QuantumHalon. See how QCertify's crypto-agile gateway software can protect your traffic and support your post-quantum transition.",
+    "Request a technical demonstration of QuantumHalon and discuss inline deployment, policy modes, trust readiness, and post-quantum readiness with QCertify.",
 };
 
 export default function ContactLayout({

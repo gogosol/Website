@@ -27,28 +27,31 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: radial-gradient(circle at 5% 15%, rgba(14, 165, 233, 0.03) 0%, transparent 40%),
-                    radial-gradient(circle at 90% 85%, rgba(255, 255, 255, 0.015) 0%, transparent 40%);
+  background-image:
+    linear-gradient(rgba(14, 165, 233, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.05), transparent 34%);
+  background-size: 72px 72px, 72px 72px, 100% 100%;
   background-attachment: fixed;
 }
 
 @layer utilities {
   .glass-panel {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
-    backdrop-filter: blur(40px) saturate(150%);
-    -webkit-backdrop-filter: blur(40px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
-    border-radius: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0.018) 100%);
+    backdrop-filter: blur(28px) saturate(145%);
+    -webkit-backdrop-filter: blur(28px) saturate(145%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 14px 44px 0 rgba(0, 0, 0, 0.48);
+    border-radius: 0.5rem;
   }
   
   .glass-panel-heavy {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
-    backdrop-filter: blur(60px) saturate(200%);
-    -webkit-backdrop-filter: blur(60px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.05), 0 15px 50px 0 rgba(0, 0, 0, 0.8);
-    border-radius: 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.025) 100%);
+    backdrop-filter: blur(38px) saturate(170%);
+    -webkit-backdrop-filter: blur(38px) saturate(170%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.04), 0 18px 55px 0 rgba(0, 0, 0, 0.72);
+    border-radius: 0.5rem;
   }
 
   .glass-interactive {
@@ -57,9 +60,9 @@ body {
   
   .glass-interactive:hover {
     border-color: rgba(14, 165, 233, 0.4);
-    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
-    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(14, 165, 233, 0.15), 0 0 25px rgba(14, 165, 233, 0.25);
-    transform: translateY(-4px) scale(1.01);
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%);
+    box-shadow: 0 14px 40px 0 rgba(0, 0, 0, 0.48), inset 0 0 18px rgba(14, 165, 233, 0.12), 0 0 20px rgba(14, 165, 233, 0.18);
+    transform: translateY(-2px);
   }
 
   .text-glow {
@@ -246,4 +249,24 @@ body {
 .anim-gradient-shift {
   background-size: 200% 200%;
   animation: gradient-shift 6s ease-in-out infinite;
+}
+
+.circuit-mask {
+  background-image:
+    linear-gradient(rgba(14, 165, 233, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.06) 1px, transparent 1px),
+    linear-gradient(135deg, transparent 0 48%, rgba(14, 165, 233, 0.05) 49% 51%, transparent 52% 100%);
+  background-size: 58px 58px, 58px 58px, 140px 140px;
+  mask-image: linear-gradient(180deg, transparent 0%, black 18%, black 72%, transparent 100%);
+}
+
+.encrypted-scan {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 34px,
+      rgba(14, 165, 233, 0.08) 35px,
+      transparent 36px 72px
+    );
+  mix-blend-mode: screen;
 }

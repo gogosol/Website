@@ -13,7 +13,7 @@ const navLinks = [
     children: [
       { href: "/use-cases", label: "Use Cases" },
       { href: "/industries", label: "Industries" },
-      { href: "/compliance", label: "Compliance & Readiness" },
+      { href: "/compliance", label: "Readiness" },
     ],
   },
   { href: "/resources", label: "Resources" },
@@ -25,17 +25,16 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const pathname = usePathname();
+  const closeMenus = () => {
+    setMobileMenuOpen(false);
+    setSolutionsOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    setMobileMenuOpen(false);
-    setSolutionsOpen(false);
-  }, [pathname]);
 
   return (
     <>
@@ -87,6 +86,7 @@ export default function Header() {
                         <Link
                           key={child.href}
                           href={child.href}
+                          onClick={closeMenus}
                           className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
                             pathname === child.href
                               ? "text-white bg-white/10"
@@ -103,6 +103,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href!}
+                  onClick={closeMenus}
                   className={`text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded ${
                     pathname === item.href
                       ? "text-white"
@@ -119,9 +120,10 @@ export default function Header() {
           <div className="hidden lg:flex items-center">
             <Link
               href="/contact"
-              className="relative group text-sm font-bold text-white glass-panel glass-interactive px-6 py-2.5 rounded-full overflow-hidden transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5e9]"
+              onClick={closeMenus}
+              className="relative group overflow-hidden rounded-lg px-5 py-2.5 text-sm font-bold text-white glass-panel glass-interactive transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5e9]"
             >
-              <span className="relative z-10 tracking-wide">Book a Demo</span>
+              <span className="relative z-10">Technical Demo</span>
             </Link>
           </div>
 
@@ -169,6 +171,7 @@ export default function Header() {
                         <Link
                           key={child.href}
                           href={child.href}
+                          onClick={closeMenus}
                           className="block px-3 py-2 rounded-md text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5"
                         >
                           {child.label}
@@ -181,6 +184,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href!}
+                  onClick={closeMenus}
                   className="block px-3 py-2.5 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-white/5"
                 >
                   {item.label}
@@ -189,9 +193,10 @@ export default function Header() {
             )}
             <Link
               href="/contact"
-              className="block px-3 py-3 mt-4 text-center rounded-full text-base font-bold glass-panel glass-interactive text-white"
+              onClick={closeMenus}
+              className="block rounded-lg px-3 py-3 mt-4 text-center text-base font-bold glass-panel glass-interactive text-white"
             >
-              Book a Demo
+              Technical Demo
             </Link>
           </div>
         </div>

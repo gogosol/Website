@@ -1,108 +1,143 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import SectionLabel from "@/components/SectionLabel";
-import CTAButton from "@/components/CTAButton";
-import UseCaseTopology from "@/components/visuals/UseCaseTopology";
 
-function FadeIn({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.55, delay, ease: [0.25, 0.1, 0.25, 1] }} className={className}>
-      {children}
-    </motion.div>
-  );
-}
+import React from "react";
+import CTAButton from "@/components/CTAButton";
+import {
+  FadeIn,
+  FeatureCard,
+  ImagePanel,
+  PageHero,
+  SectionHeader,
+} from "@/components/QuantumPage";
+import { Building2, Cloud, Factory, GitBranch, Landmark, Network, Route, ShieldCheck } from "lucide-react";
 
 const useCases = [
   {
-    variant: "site-to-site" as const,
-    title: "Protecting traffic between sites",
-    problem: "Data between facilities travels over vulnerable paths.",
-    solution: "Gateway pairs apply stronger crypto at each boundary.",
-    value: "No changes to applications at either site.",
+    icon: Route,
+    title: "North-south enterprise traffic",
+    problem: "Sensitive site or branch traffic crosses shared enterprise paths before every application is ready for PQC.",
+    fit: "QuantumHalon applies mode-specific protection at the inline chokepoint, starting with the paths where data lifetime creates the highest HNDL exposure.",
   },
   {
-    variant: "branch-to-core" as const,
-    title: "Securing branch-to-datacenter connections",
-    problem: "Branch offices carry sensitive data over shared links.",
-    solution: "Central gateway deployment protects all branch traffic.",
-    value: "Branches need no local upgrades.",
+    icon: Network,
+    title: "Site-to-site protected destinations",
+    problem: "Critical systems communicate across sites, but rewriting endpoints or legacy services would be slow and risky.",
+    fit: "Opaque protection can reduce exposure while the application stream stays unchanged.",
   },
   {
-    variant: "cloud" as const,
-    title: "Strengthening cloud connectivity",
-    problem: "Traffic to cloud providers crosses external networks.",
-    solution: "Gateway hardens crypto on cloud ingress/egress paths.",
-    value: "No changes to cloud workloads.",
+    icon: Building2,
+    title: "Partner exchange",
+    problem: "Third-party exchange paths often carry sensitive data but cannot assume synchronized application migrations.",
+    fit: "Use inline gateway enforcement at the boundary, then select the appropriate policy outcome for each path.",
   },
   {
-    variant: "partner" as const,
-    title: "Hardening partner data exchange",
-    problem: "Third-party data exchange paths carry sensitive information.",
-    solution: "Gateway-level protection at organizational boundaries.",
-    value: "DMZ-compatible, partner-transparent.",
+    icon: GitBranch,
+    title: "Internal segmented paths",
+    problem: "Sensitive internal traffic may cross shared enterprise paths and still need path-specific cryptographic governance.",
+    fit: "QuantumHalon supports high-level segmented-path policy thinking while keeping the public model intentionally abstract.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Compliance-sensitive egress",
+    problem: "Some traffic paths need governed exceptions and evidence that weak protection is not silently accepted.",
+    fit: "Policy can govern protection strength, exceptions, and explicit blocks for paths where compliance risk is high.",
   },
 ];
 
 export default function UseCasesPage() {
   return (
     <div className="min-h-screen bg-transparent selection:bg-white/30">
-      {/* Hero */}
-      <section className="relative pt-28 pb-8 lg:pt-40 lg:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-glow-orb w-[800px] h-[800px] bg-white top-[-200px] left-[-300px] opacity-10 hidden md:block" />
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto relative z-10">
-          <SectionLabel label="Use Cases" />
-          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
-            Protecting traffic across{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">the paths that matter most.</span>
-          </h1>
-        </motion.div>
-      </section>
+      <PageHero
+        compact
+        label="Use Cases"
+        title="Protect the paths where captured traffic would still matter later."
+        body="QuantumHalon is best suited to high-value communications where post-quantum migration cannot wait for a clean application rewrite."
+        imageSrc="/images/traffic-path-map.png"
+        imageAlt="Minimal isometric network map with a central QuantumHalon gateway connected to office, cloud, partner, and datacenter paths."
+        chips={["Sites", "Cloud", "Partners", "Segments", "Critical egress"]}
+        primaryCta={{ href: "/contact", label: "Discuss Your Paths" }}
+        secondaryCta={{ href: "/industries", label: "Industries" }}
+      />
 
-      {/* Use Cases with diagrams */}
-      <section className="pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-8">
-          {useCases.map((uc, i) => (
-            <FadeIn key={i} delay={i * 0.05}>
-              <div className="glass-panel rounded-2xl p-6 lg:p-8">
-                <div className="grid lg:grid-cols-2 gap-8 items-center">
-                  {/* Diagram */}
-                  <div className={`${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                    <UseCaseTopology variant={uc.variant} className="!rounded-none !border-0 !bg-transparent !bg-none !shadow-none !p-0 hover:!transform-none hover:!border-0 hover:!bg-transparent hover:!bg-none hover:!shadow-none" />
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            label="Traffic Patterns"
+            title="One inline model, multiple controlled outcomes."
+            body="Use cases are defined by traffic path and policy goal, not by decorative deployment diagrams. The gateway sits where traffic already crosses and applies the right behavior for each path."
+            align="center"
+          />
+          <div className="mt-10 grid gap-4 lg:grid-cols-2">
+            {useCases.map((item, index) => (
+              <FadeIn key={item.title} delay={index * 0.05}>
+                <div className="glass-panel h-full rounded-lg p-6">
+                  <div className="mb-5 flex items-center gap-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#0ea5e9]/30 bg-[#0ea5e9]/10 text-[#0ea5e9]">
+                      <item.icon className="h-5 w-5" />
+                    </div>
+                    <h2 className="text-lg font-semibold text-white">{item.title}</h2>
                   </div>
-                  {/* Content */}
-                  <div className={`${i % 2 === 1 ? "lg:order-1" : ""}`}>
-                    <h2 className="text-xl font-semibold text-white mb-4">{uc.title}</h2>
-                    <div className="space-y-3">
-                      <div>
-                        <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Problem</div>
-                        <p className="text-slate-400 text-sm">{uc.problem}</p>
-                      </div>
-                      <div>
-                        <div className="text-[10px] font-bold text-[#0ea5e9] uppercase tracking-widest mb-1">Solution</div>
-                        <p className="text-slate-300 text-sm">{uc.solution}</p>
-                      </div>
-                      <div>
-                        <div className="text-[10px] font-bold text-white uppercase tracking-widest mb-1">Value</div>
-                        <p className="text-slate-400 text-sm">{uc.value}</p>
-                      </div>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-lg border border-white/10 bg-black/35 p-4">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Problem</div>
+                      <p className="mt-2 text-sm leading-6 text-slate-400">{item.problem}</p>
+                    </div>
+                    <div className="rounded-lg border border-[#0ea5e9]/20 bg-[#0ea5e9]/[0.04] p-4">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0ea5e9]/70">QuantumHalon fit</div>
+                      <p className="mt-2 text-sm leading-6 text-slate-300">{item.fit}</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-28 relative overflow-hidden border-t border-white/5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md h-80 bg-white/[0.04] rounded-full blur-[120px] pointer-events-none" />
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <section className="border-y border-white/5 py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+          <div>
+            <SectionHeader
+              label="Where It Lands"
+              title="Useful when changing every system at once is the slow path."
+              body="QuantumHalon complements long-term application PQC migration with a practical protection layer for critical paths while deeper migration is planned, governed, and executed."
+            />
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {[
+                { icon: Cloud, title: "Hybrid cloud", text: "Protect selected cloud-to-site or site-to-cloud paths without rewriting every workload." },
+                { icon: Factory, title: "Legacy environments", text: "Keep old systems stable while adding path-level cryptographic protection." },
+                { icon: Landmark, title: "Sovereign traffic", text: "Create an auditable response for government and regulated environments." },
+                { icon: ShieldCheck, title: "Long-lived records", text: "Prioritize paths carrying records whose confidentiality horizon extends beyond current crypto assumptions." },
+              ].map((card, index) => (
+                <FadeIn key={card.title} delay={index * 0.05}>
+                  <FeatureCard icon={card.icon} title={card.title}>
+                    {card.text}
+                  </FeatureCard>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl text-white font-semibold tracking-tight mb-4">Discuss your use case.</h2>
-            <p className="text-lg text-slate-400 mb-8">Every environment is different. Let us show you how QuantumHalon fits.</p>
-            <CTAButton href="/contact">Book a Demo</CTAButton>
+            <ImagePanel
+              src="/images/hybrid-legacy-cloud.png"
+              alt="Minimal isometric illustration of legacy systems and cloud connected through a protected gateway path."
+              caption="Protect selected paths while endpoints stay stable"
+            />
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
+        <div className="absolute inset-0 circuit-mask opacity-70" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <FadeIn>
+            <SectionHeader label="Use Case Workshop" title="Bring your traffic map. We will map the protection model." align="center" />
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <CTAButton href="/contact">Discuss Your Use Case</CTAButton>
+              <CTAButton href="/how-it-works" variant="secondary">
+                See How It Works
+              </CTAButton>
+            </div>
           </FadeIn>
         </div>
       </section>

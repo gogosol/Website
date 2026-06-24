@@ -1,9 +1,9 @@
 ﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Compliance & Readiness - Cryptographic Transition Planning",
+  title: "Readiness - Post-Quantum Migration Planning",
   description:
-    "QCertify helps organizations prepare for cryptographic transition with phased deployment and governance-aligned readiness - supporting resilience and regulatory expectations.",
+    "QCertify helps organizations plan post-quantum readiness with cryptographic inventory, priority traffic paths, trust readiness, crypto agility, and evidence.",
 };
 
 export default function ComplianceLayout({ children }: { children: React.ReactNode }) {

@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 
 /**
  * Asset E - Ghost Dashboard
- * Conceptual product UI showing QuantumHalon gateway status, traffic topology, protection profile.
+ * Conceptual product UI showing QuantumHalon gateway status, traffic paths, and protection posture.
  * Enhanced with 3D tilt, live-updating counters, and glowing status indicators.
  * QuantumHalon is the product - preserved throughout.
  */
@@ -53,7 +53,7 @@ export default function GhostDashboard() {
         <div className="w-2.5 h-2.5 rounded-full bg-slate-500" />
         <div className="w-2.5 h-2.5 rounded-full bg-slate-400" />
         <span className="ml-3 text-[10px] font-mono text-slate-500 uppercase tracking-widest">
-          QuantumHalon · Control Plane
+          QuantumHalon · Governance
         </span>
         <div className="ml-auto flex items-center gap-1.5">
           <div className="relative">
@@ -69,14 +69,14 @@ export default function GhostDashboard() {
         <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={panelReveal}
           className="lg:col-span-3 lg:border-r border-b lg:border-b-0 border-white/5 p-4 space-y-2">
           <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-3 px-1">
-            Gateway Pairs
+            Gateway Paths
           </div>
           {[
-            { name: "HQ ↔ DC-East", status: "active", latency: "2ms" },
-            { name: "HQ ↔ DC-West", status: "active", latency: "5ms" },
-            { name: "Branch-01 ↔ Core", status: "active", latency: "8ms" },
-            { name: "Cloud ↔ On-Prem", status: "active", latency: "3ms" },
-            { name: "Partner ↔ DMZ", status: "standby", latency: "-" },
+            { name: "Path 01", status: "active", latency: "Ready" },
+            { name: "Path 02", status: "active", latency: "Ready" },
+            { name: "Path 03", status: "active", latency: "Ready" },
+            { name: "Path 04", status: "active", latency: "Ready" },
+            { name: "Path 05", status: "standby", latency: "Hold" },
           ].map((gw, i) => (
             <div key={i} className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.02] border border-white/5 hover:border-white/15 hover:bg-white/[0.04] transition-all group cursor-default relative overflow-hidden">
               {/* Hover shimmer */}
@@ -100,12 +100,12 @@ export default function GhostDashboard() {
           ))}
         </motion.div>
 
-        {/* ═══ CENTER: Topology View ═══ */}
+        {/* Center: path view */}
         <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={panelReveal}
           className="lg:col-span-5 lg:border-r border-b lg:border-b-0 border-white/5 p-4">
           <div className="flex items-center justify-between mb-3 px-1">
             <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest">
-              Traffic Topology
+              Traffic Paths
             </div>
             <div className="text-[9px] font-mono text-[#0ea5e9]/50">
               <AnimCounter target={12847} /> packets/s
@@ -134,11 +134,11 @@ export default function GhostDashboard() {
               </rect>
               {/* Satellite nodes - 3D */}
               {[
-                { x: 30, y: 40, label: "HQ" },
-                { x: 300, y: 40, label: "DC-E" },
-                { x: 30, y: 140, label: "BR-01" },
-                { x: 300, y: 140, label: "Cloud" },
-                { x: 165, y: 170, label: "Partner" },
+                { x: 30, y: 40, label: "Path A" },
+                { x: 300, y: 40, label: "Path B" },
+                { x: 30, y: 140, label: "Path C" },
+                { x: 300, y: 140, label: "Path D" },
+                { x: 165, y: 170, label: "Path E" },
               ].map((n, i) => (
                 <g key={i}>
                   {/* Connection line with glow */}
@@ -178,12 +178,12 @@ export default function GhostDashboard() {
             Protection Profile
           </div>
 
-          {/* Algorithm */}
+          {/* Profile */}
           <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5 relative overflow-hidden group hover:border-white/10 transition-all">
             <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-1 relative z-10">Algorithm</div>
-            <div className="text-sm text-white font-medium relative z-10">ML-KEM-768 + AES-256</div>
-            <div className="text-[10px] text-[#0ea5e9]/60 font-mono mt-0.5 relative z-10">Hybrid PQC Mode</div>
+            <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-1 relative z-10">Profile</div>
+            <div className="text-sm text-white font-medium relative z-10">Approved PQC profile</div>
+            <div className="text-[10px] text-[#0ea5e9]/60 font-mono mt-0.5 relative z-10">Governed transition</div>
           </div>
 
           {/* Policy */}
@@ -199,7 +199,7 @@ export default function GhostDashboard() {
           {/* Last Rotation */}
           <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5 relative overflow-hidden group hover:border-white/10 transition-all">
             <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-1 relative z-10">Last Key Rotation</div>
+            <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-1 relative z-10">Last Policy Review</div>
             <div className="text-sm text-white font-medium relative z-10">2 minutes ago</div>
             <div className="w-full h-1.5 mt-2 bg-white/5 rounded-full overflow-hidden relative z-10">
               <div className="h-full w-[8%] bg-gradient-to-r from-[#0ea5e9] to-[#38bdf8] rounded-full relative">

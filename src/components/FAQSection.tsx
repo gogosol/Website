@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { ChevronDown, Hexagon } from 'lucide-react';
 
 const faqs = [

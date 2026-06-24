@@ -148,7 +148,7 @@ export async function POST(request: Request) {
       : 'No message provided.';
 
     // Send the email using Resend
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'QCertify Contact Form <noreply@qcertify.io>',
       to: ['contact@qcertify.io'],
       replyTo: email,

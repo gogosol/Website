@@ -12,18 +12,18 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://qcertify.io"),
   title: {
-    default: "QCertify | Post-Quantum Cryptographic Protection for Organizations",
+    default: "QCertify | Inline Post-Quantum Protection with QuantumHalon",
     template: "%s | QCertify",
   },
   description:
-    "QCertify protects organizations for the post-quantum era. QuantumHalon is a crypto-agile gateway that applies Post-Quantum Cryptography to protect critical communications, reduce HNDL risk, and support gradual PQC transition.",
+    "QCertify builds QuantumHalon, a transparent inline gateway fabric that helps organizations protect critical traffic with policy-driven post-quantum cryptography and crypto agility.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "QCertify | Post-Quantum Cryptographic Protection for Organizations",
+    title: "QCertify | Inline Post-Quantum Protection with QuantumHalon",
     description:
-      "QCertify helps organizations adopt post-quantum protection in a practical, secure and credible way. QuantumHalon protects traffic today and enables phased PQC transition.",
+      "QuantumHalon protects selected enterprise traffic paths from an inline gateway position with policy-selected protection modes and cloud-out-of-path governance.",
     url: "https://qcertify.io",
     siteName: "QCertify",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "QCertify | Post-Quantum Cryptographic Protection",
+        alt: "QCertify | Inline Post-Quantum Protection",
       },
     ],
     locale: "en_US",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "QCertify | Post-Quantum Cryptographic Protection for Organizations",
+    title: "QCertify | Inline Post-Quantum Protection with QuantumHalon",
     description:
-      "QuantumHalon is a crypto-agile gateway that protects critical communications with Post-Quantum Cryptography.",
+      "QuantumHalon is a transparent inline gateway fabric for policy-driven post-quantum traffic protection.",
     images: ["/og-image.jpg"],
   },
 };

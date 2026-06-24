@@ -10,7 +10,7 @@ const footerLinks = {
   Solutions: [
     { href: "/use-cases", label: "Use Cases" },
     { href: "/industries", label: "Industries" },
-    { href: "/compliance", label: "Compliance & Readiness" },
+    { href: "/compliance", label: "Readiness" },
   ],
   Company: [
     { href: "/about", label: "About" },
@@ -35,7 +35,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs mb-6">
-              Protecting organizations for the post-quantum era. Practical post-quantum protection with QuantumHalon - reduce HNDL risk, meet regulatory demands, and transition with confidence.
+              Inline post-quantum traffic protection with QuantumHalon. Reduce Harvest Now, Decrypt Later exposure, govern crypto-agile migration, and keep the cloud out of the live packet path.
             </p>
             <a
               href="mailto:contact@qcertify.io"

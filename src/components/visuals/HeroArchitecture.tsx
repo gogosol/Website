@@ -244,7 +244,7 @@ export default function HeroArchitecture() {
         {/* Crypto layer label */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.5 }}
           className="mt-3 p-2.5 rounded-lg border border-dashed border-[#0ea5e9]/20 bg-[#0ea5e9]/[0.03] text-center">
-          <span className="text-[9px] font-mono text-[#0ea5e9]/50 uppercase tracking-widest">Crypto-Agile Engine · Hybrid PQC</span>
+          <span className="text-[9px] font-mono text-[#0ea5e9]/50 uppercase tracking-widest">Crypto-agile protection · Governed PQC</span>
         </motion.div>
       </div>
     </div>
