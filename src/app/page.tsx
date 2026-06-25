@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import CTAButton from "@/components/CTAButton";
 import {
   FadeIn,
@@ -8,8 +10,6 @@ import {
   ImagePanel,
   InlineGatewayVisual,
   LinkCard,
-  ModeMatrixVisual,
-  PageHero,
   PrivacyBoundary,
   SectionHeader,
   StatStrip,
@@ -18,35 +18,44 @@ import {
   migrationSteps,
 } from "@/components/QuantumPage";
 import SectionLabel from "@/components/SectionLabel";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ClipboardCheck, Network, Radar, ShieldCheck } from "lucide-react";
+
+const qcertifyApproach = [
+  {
+    icon: Radar,
+    title: "Find the pressure",
+    text: "Start with data lifetime, regulated paths, and procurement expectations instead of abstract quantum fear.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Protect what matters",
+    text: "Use practical PQC solutions where risk is highest while broader application migration continues.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Prove the program",
+    text: "Turn deployment progress, trust readiness, and policy decisions into evidence stakeholders can understand.",
+  },
+  {
+    icon: Network,
+    title: "Keep options open",
+    text: "Build for crypto agility so transition choices can evolve as standards, buyers, and infrastructure mature.",
+  },
+];
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-transparent selection:bg-white/30">
-      <PageHero
-        label="QuantumHalon by QCertify"
-        title="PQC protection."
-        accent="In the path."
-        body={
-          <>
-            A transparent inline gateway that protects critical enterprise traffic while applications keep moving.
-          </>
-        }
-        imageSrc="/images/inline-policy-fabric.png"
-        imageAlt="Minimal isometric illustration of a QuantumHalon gateway protecting packet traffic from quantum risk."
-        chips={["Inline gateway", "Hybrid PQC", "Cloud out-of-path"]}
-        primaryCta={{ href: "/contact", label: "Book a Technical Demo" }}
-        secondaryCta={{ href: "/product", label: "Explore QuantumHalon" }}
-      />
+      <HomeHero />
 
       <section className="border-b border-white/5 py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <StatStrip
             stats={[
-              { value: "Mode 1", label: "Mediated protection with central trust readiness" },
-              { value: "Mode 2", label: "Opaque protection for selected traffic paths" },
-              { value: "0", label: "Cloud packet-path dependency in live traffic" },
-              { value: "Policy", label: "Governed behavior for approved and denied paths" },
+              { value: "QCertify", label: "Post-quantum cybersecurity organization" },
+              { value: "QuantumHalon", label: "First solution: inline gateway protection" },
+              { value: "Evidence", label: "Readiness for procurement and governance" },
+              { value: "Agility", label: "Structured migration as standards mature" },
             ]}
           />
         </div>
@@ -57,8 +66,8 @@ export default function Home() {
           <div>
             <SectionHeader
               label="The Risk"
-              title="Harvest Now, Decrypt Later is a present-day collection problem."
-              body="Traffic captured today can remain valuable for years. QuantumHalon helps organizations protect long-lived data in transit now, while the wider post-quantum transition continues."
+              title="Harvest Now, Decrypt Later is a QCertify problem today."
+              body="Traffic captured today can remain valuable for years. QCertify builds PQC solutions that help organizations act before every application, vendor, and compliance workflow is ready at the same time."
             />
             <div className="mt-8 grid gap-3">
               {[
@@ -86,9 +95,9 @@ export default function Home() {
       <section className="border-y border-white/5 py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            label="Deployment Model"
-            title="Protection in the path, not fragile manual steering."
-            body="QuantumHalon is inserted inline at governed chokepoints. Existing applications keep working while selected paths receive policy-driven protection."
+            label="First Solution"
+            title="QuantumHalon is QCertify's inline gateway for traffic that cannot wait."
+            body="QCertify is the organization. QuantumHalon is the first solution: an inline gateway that applies governed post-quantum protection to selected enterprise paths while applications continue operating."
             align="center"
           />
           <FadeIn delay={0.1} className="mt-10">
@@ -107,23 +116,21 @@ export default function Home() {
       </section>
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8">
-          <FadeIn>
-            <ImagePanel
-              src="/images/mode-orchestrator.png"
-              alt="Minimal isometric illustration of a gateway directing traffic into protected, opaque, passthrough, and blocked paths."
-              caption="Four high-level policy outcomes"
-            />
-          </FadeIn>
-          <div>
-            <SectionHeader
-              label="Policy Modes"
-              title="One inline fabric. Four clear outcomes."
-              body="Each traffic path can be governed independently. The public website stays high-level; detailed deployment choices belong in technical review."
-            />
-            <div className="mt-8">
-              <ModeMatrixVisual />
-            </div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            label="QCertify Method"
+            title="A practical PQC program needs more than a standards slide."
+            body="QCertify separates the transition into work the business can actually execute: understand exposure, protect priority paths, produce evidence, and keep the migration adaptable."
+            align="center"
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {qcertifyApproach.map((item, index) => (
+              <FadeIn key={item.title} delay={index * 0.05}>
+                <FeatureCard icon={item.icon} title={item.title}>
+                  {item.text}
+                </FeatureCard>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
@@ -148,7 +155,7 @@ export default function Home() {
             <SectionHeader
               label="Structured Migration"
               title="Crypto agility without a big-bang rewrite."
-              body="QuantumHalon lets teams protect the highest-risk paths first, then expand coverage as trust readiness, policy, testing, and governance mature."
+              body="QCertify helps teams protect the highest-risk paths first, then expand coverage as trust readiness, policy, testing, and governance mature."
             />
             <div className="grid gap-4 md:grid-cols-2">
               {migrationSteps.map((step, index) => (
@@ -187,9 +194,9 @@ export default function Home() {
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-4 md:grid-cols-3">
-            <LinkCard href="/how-it-works" title="See the architecture" text="Understand where QuantumHalon sits, how modes are selected, and what remains private." />
-            <LinkCard href="/use-cases" title="Explore use cases" text="See how the same inline model applies to sites, datacenters, cloud paths, partner exchange, and segmented traffic." />
-            <LinkCard href="/compliance" title="Plan readiness" text="Frame PQC transition as a governed program with evidence, trust readiness, and crypto-agility milestones." />
+            <LinkCard href="/product" title="Explore QuantumHalon" text="See QCertify's first solution for inline post-quantum protection on selected enterprise paths." />
+            <LinkCard href="/use-cases" title="Explore use cases" text="Understand where path-level PQC protection can reduce long-lived traffic exposure." />
+            <LinkCard href="/compliance" title="Plan readiness" text="Frame PQC transition as a governed program with evidence, trust readiness, and real policy milestones." />
           </div>
         </div>
       </section>
@@ -203,7 +210,7 @@ export default function Home() {
               Protect critical traffic before the quantum deadline arrives.
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-400">
-              Book a technical walkthrough to map QuantumHalon to your protected paths, trust readiness, and post-quantum migration priorities.
+              Book a technical walkthrough to map QCertify&apos;s PQC approach, QuantumHalon fit, trust readiness, and post-quantum migration priorities.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <CTAButton href="/contact">Book a Technical Demo</CTAButton>
@@ -215,5 +222,72 @@ export default function Home() {
         </div>
       </section>
     </div>
+  );
+}
+
+function HomeHero() {
+  return (
+    <section className="relative min-h-[88vh] overflow-hidden border-b border-white/5 pt-28 pb-12 lg:pt-32">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/qcertify-command-hero.png"
+          alt="Minimal isometric QCertify command platform coordinating post-quantum security solution modules and protected data streams."
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover opacity-90"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(14,165,233,0.18),transparent_34%),linear-gradient(90deg,#000_0%,rgba(0,0,0,0.91)_31%,rgba(0,0,0,0.28)_72%,#000_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.42)_0%,rgba(0,0,0,0.08)_45%,#000_100%)]" />
+        <div className="absolute inset-0 circuit-mask opacity-55" />
+      </div>
+
+      <div className="relative z-10 mx-auto flex min-h-[calc(88vh-7rem)] max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }} className="max-w-4xl">
+          <SectionLabel label="QCertify" />
+          <h1 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.98] text-white sm:text-6xl lg:text-8xl">
+            Post-quantum security for the{" "}
+            <span className="bg-gradient-to-r from-white via-sky-200 to-[#0ea5e9] bg-clip-text text-transparent">
+              migration era.
+            </span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+            QCertify creates practical PQC solutions for organizations protecting long-lived data, regulated traffic, and trust programs that cannot wait for a perfect future migration.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-2">
+            {["PQC solutions", "QuantumHalon first", "Readiness evidence"].map((chip) => (
+              <span key={chip} className="rounded-md border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-300">
+                {chip}
+              </span>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <CTAButton href="/product">Explore QuantumHalon</CTAButton>
+            <CTAButton href="/compliance" variant="secondary">
+              Plan Readiness
+            </CTAButton>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.18, duration: 0.65 }}
+          className="mt-12 grid gap-3 md:grid-cols-3"
+        >
+          {[
+            { kicker: "Organization", title: "QCertify", text: "Builds post-quantum cybersecurity solutions for real migration programs." },
+            { kicker: "First solution", title: "QuantumHalon", text: "Inline gateway protection for selected enterprise traffic paths." },
+            { kicker: "Outcome", title: "Defensible readiness", text: "Evidence, governance, and crypto agility for regulated buyers." },
+          ].map((item) => (
+            <div key={item.title} className="glass-panel rounded-lg p-4">
+              <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0ea5e9]/70">{item.kicker}</div>
+              <h2 className="mt-2 text-base font-semibold text-white">{item.title}</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 }

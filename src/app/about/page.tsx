@@ -41,7 +41,7 @@ export default function AboutPage() {
         compact
         label="About QCertify"
         title="We build practical post-quantum protection for real networks."
-        body="QCertify is focused on QuantumHalon: an inline, crypto-agile gateway fabric for organizations that need to reduce quantum-era traffic risk without waiting for every application to be rewritten."
+        body="QCertify creates practical post-quantum cybersecurity solutions for organizations that need to reduce quantum-era risk without waiting for every application, vendor, and governance process to move at once. QuantumHalon is our first solution."
         imageSrc="/images/focused-mission.png"
         imageAlt="Minimal isometric illustration of a focused QuantumHalon gateway mission with a migration path and privacy boundary."
         chips={["Focused", "Technical", "Practical", "Privacy-aware"]}
@@ -74,14 +74,14 @@ export default function AboutPage() {
             <ImagePanel
               src="/images/quantumhalon-hero.png"
               alt="Minimal isometric QuantumHalon gateway appliance protecting packet traffic."
-              caption="One product focus: QuantumHalon"
+              caption="First solution: QuantumHalon"
             />
           </FadeIn>
           <div>
             <SectionHeader
-              label="What We Build"
-              title="A focused product, not a vague quantum-readiness platform."
-              body="QuantumHalon is designed to protect selected traffic paths with an inline gateway, policy-selected modes, and crypto agility. The product keeps governance and live packet enforcement clearly separated."
+              label="What We Build First"
+              title="A focused first solution, not a vague quantum-readiness promise."
+              body="QuantumHalon is designed to protect selected traffic paths with an inline gateway, policy-selected modes, and crypto agility. It is the first concrete solution in QCertify's broader post-quantum security work."
             />
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {[

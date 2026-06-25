@@ -398,7 +398,7 @@ export const homeCapabilities = [
 export const migrationSteps = [
   { title: "Discover protected paths", text: "Map sites, critical services, regulatory pressure, and data lifetime." },
   { title: "Choose the mode per path", text: "Use mediated protection, opaque protection, approved passthrough, or block according to policy." },
-  { title: "Roll out trust centrally", text: "Prepare enterprise trust for mediated paths through standard organizational distribution processes." },
+  { title: "Prepare trust readiness", text: "Prepare enterprise trust for mediated paths through standard organizational processes." },
   { title: "Expand with evidence", text: "Use deployment state, operational signals, and change records to prove progress without destabilizing the network." },
 ];
 
