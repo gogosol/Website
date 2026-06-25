@@ -12,18 +12,18 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://qcertify.io"),
   title: {
-    default: "QCertify | Inline Post-Quantum Protection with QuantumHalon",
+    default: "QCertify | Post-Quantum Cybersecurity Solutions",
     template: "%s | QCertify",
   },
   description:
-    "QCertify builds QuantumHalon, a transparent inline gateway fabric that helps organizations protect critical traffic with policy-driven post-quantum cryptography and crypto agility.",
+    "QCertify creates practical post-quantum cybersecurity solutions for organizations protecting long-lived data, regulated traffic, and governed migration programs.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "QCertify | Inline Post-Quantum Protection with QuantumHalon",
+    title: "QCertify | Post-Quantum Cybersecurity Solutions",
     description:
-      "QuantumHalon protects selected enterprise traffic paths from an inline gateway position with policy-selected protection modes and cloud-out-of-path governance.",
+      "QCertify builds PQC solutions for real migration pressure, including QuantumHalon, an inline gateway solution for selected enterprise traffic paths.",
     url: "https://qcertify.io",
     siteName: "QCertify",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "QCertify | Inline Post-Quantum Protection",
+        alt: "QCertify | Post-Quantum Cybersecurity Solutions",
       },
     ],
     locale: "en_US",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "QCertify | Inline Post-Quantum Protection with QuantumHalon",
+    title: "QCertify | Post-Quantum Cybersecurity Solutions",
     description:
-      "QuantumHalon is a transparent inline gateway fabric for policy-driven post-quantum traffic protection.",
+      "QCertify creates practical PQC solutions for long-lived data risk, readiness evidence, and regulated migration programs.",
     images: ["/og-image.jpg"],
   },
 };

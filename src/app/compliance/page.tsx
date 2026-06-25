@@ -9,7 +9,7 @@ import {
   PageHero,
   SectionHeader,
 } from "@/components/QuantumPage";
-import { ClipboardCheck, FileCheck2, KeyRound, ListChecks, RefreshCw, ShieldCheck, SlidersHorizontal, TimerReset } from "lucide-react";
+import { ClipboardCheck, ExternalLink, FileCheck2, KeyRound, ListChecks, RefreshCw, SlidersHorizontal, TimerReset } from "lucide-react";
 
 const readinessSteps = [
   {
@@ -35,12 +35,57 @@ const readinessSteps = [
   {
     icon: ClipboardCheck,
     title: "Collect evidence",
-    text: "Track deployment state, mode activation, gateway health, operational signals, and exception decisions.",
+    text: "Track deployment state, protected-path coverage, operational signals, and exception decisions.",
   },
   {
     icon: FileCheck2,
     title: "Prepare assurance packages",
     text: "Turn technical progress into material that security, risk, procurement, and auditors can understand.",
+  },
+];
+
+const policyMilestones = [
+  {
+    date: "Aug 2024",
+    title: "NIST standards approved",
+    text: "The first federal post-quantum cryptography standards moved the market from research into implementation planning.",
+    source: "NIST CSRC",
+    href: "https://csrc.nist.gov/news/2024/postquantum-cryptography-fips-approved",
+  },
+  {
+    date: "May 2023 + annually",
+    title: "U.S. federal inventory cadence",
+    text: "OMB M-23-02 directed agencies to submit prioritized cryptographic inventories by May 4, 2023 and annually thereafter.",
+    source: "OMB M-23-02",
+    href: "https://www.whitehouse.gov/wp-content/uploads/2022/11/M-23-02-M-Memo-on-Migrating-to-Post-Quantum-Cryptography.pdf",
+  },
+  {
+    date: "End 2026",
+    title: "EU transition starts",
+    text: "EU Member States should begin their transition to post-quantum cryptography by the end of 2026.",
+    source: "European Commission",
+    href: "https://digital-strategy.ec.europa.eu/en/news/eu-reinforces-its-cybersecurity-post-quantum-cryptography",
+  },
+  {
+    date: "Jan 1 2027",
+    title: "NSS new acquisitions",
+    text: "NSA/CNSSP 15 expects new National Security System acquisitions to be CNSA 2.0 compliant unless otherwise noted.",
+    source: "NSA CNSA 2.0 FAQ",
+    href: "https://media.defense.gov/2022/Sep/07/2003071836/-1/-1/0/CSI_CNSA_2.0_FAQ_.PDF",
+  },
+  {
+    date: "Dec 31 2030",
+    title: "Critical paths cannot wait",
+    text: "The EU roadmap targets critical infrastructure transition no later than 2030; NSA also sets a 2030 phase-out milestone for unsupported NSS equipment and services.",
+    source: "EU / NSA",
+    href: "https://digital-strategy.ec.europa.eu/en/library/coordinated-implementation-roadmap-transition-post-quantum-cryptography",
+  },
+  {
+    date: "Dec 31 2031 / 2035",
+    title: "Mandates and end-state goals",
+    text: "NSA/CNSSP 15 sets a 2031 mandate for NSS use unless otherwise noted, aligned to the U.S. 2035 quantum-resistance goal.",
+    source: "NSA CNSA 2.0 FAQ",
+    href: "https://media.defense.gov/2022/Sep/07/2003071836/-1/-1/0/CSI_CNSA_2.0_FAQ_.PDF",
   },
 ];
 
@@ -54,7 +99,7 @@ export default function CompliancePage() {
         body="QCertify helps organizations turn PQC from a future research topic into a controlled migration program with protected paths, explicit policy, and evidence."
         imageSrc="/images/readiness-roadmap.png"
         imageAlt="Minimal isometric illustration of a secure gateway connected to a readiness roadmap, checklist, and evidence folder."
-        chips={["NIST PQC", "CNSA 2.0 pressure", "HNDL risk", "Crypto agility"]}
+        chips={["NIST 2024", "EU 2026 / 2030", "NSS 2027+", "2035 goal"]}
         primaryCta={{ href: "/contact", label: "Plan Readiness" }}
         secondaryCta={{ href: "/resources", label: "Resources" }}
       />
@@ -83,28 +128,34 @@ export default function CompliancePage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
             <ImagePanel
-              src="/images/hndl-field.png"
-              alt="Minimal isometric illustration showing stored captured data and protected traffic."
-              caption="Readiness begins with data lifetime"
+              src="/images/pqc-deadline-pressure.png"
+              alt="Minimal isometric illustration of a calendar, checklist, protected data stream, shield, and distant quantum risk."
+              caption="Policy pressure is already calendar-driven"
             />
           </FadeIn>
           <div>
             <SectionHeader
-              label="Why Now"
-              title="Migration pressure arrives before quantum decryption does."
-              body="The risk is not only the future quantum computer. It is today's collection of traffic whose confidentiality must survive into that future."
+              label="Real Deadlines"
+              title="The PQC calendar is no longer theoretical."
+              body="QCertify helps organizations translate public-sector and regulated-market milestones into practical readiness work: inventory exposure, protect priority paths, and produce evidence before deadlines compress the program."
             />
-            <div className="mt-8 space-y-3">
-              {[
-                "NIST has standardized the first post-quantum cryptography families, moving the discussion from research to implementation planning.",
-                "Government and regulated buyers increasingly expect a defensible transition plan, not a one-line vendor claim.",
-                "Harvest Now, Decrypt Later risk prioritizes data with long retention and high confidentiality value.",
-                "Crypto agility helps organizations adapt as standards, profiles, and procurement rules mature.",
-              ].map((item) => (
-                <div key={item} className="flex gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4">
-                  <ShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#0ea5e9]" />
-                  <p className="text-sm leading-6 text-slate-300">{item}</p>
-                </div>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {policyMilestones.map((item) => (
+                <a
+                  key={`${item.date}-${item.title}`}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group rounded-lg border border-white/10 bg-white/[0.03] p-4 transition-colors hover:border-[#0ea5e9]/45 hover:bg-[#0ea5e9]/[0.06]"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0ea5e9]">{item.date}</div>
+                    <ExternalLink className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-slate-600 transition-colors group-hover:text-[#0ea5e9]" />
+                  </div>
+                  <h3 className="mt-2 text-sm font-semibold text-white">{item.title}</h3>
+                  <p className="mt-2 text-xs leading-5 text-slate-400">{item.text}</p>
+                  <div className="mt-3 font-mono text-[9px] uppercase tracking-[0.18em] text-slate-600">{item.source}</div>
+                </a>
               ))}
             </div>
           </div>
@@ -122,7 +173,7 @@ export default function CompliancePage() {
             {[
               { icon: TimerReset, title: "Phased deployment", text: "Protect the highest-risk paths first, then expand with evidence rather than rushing every system." },
               { icon: RefreshCw, title: "Crypto agility", text: "Let policy govern protection lifecycle, transition rules, and explicit exceptions." },
-              { icon: ClipboardCheck, title: "Evidence for stakeholders", text: "Turn deployment health, trust readiness, and policy changes into a credible readiness story." },
+              { icon: ClipboardCheck, title: "Evidence for stakeholders", text: "Turn deployment health, trust readiness, and policy changes into a credible readiness story for buyers, auditors, and boards." },
             ].map((item, index) => (
               <FadeIn key={item.title} delay={index * 0.06}>
                 <FeatureCard icon={item.icon} title={item.title}>
