@@ -44,6 +44,7 @@ export default function AboutPage() {
         body="QCertify creates practical post-quantum cybersecurity solutions for organizations that need to reduce quantum-era risk without waiting for every application, vendor, and governance process to move at once. QuantumHalon is our first solution."
         imageSrc="/images/generated/about-mission-instrument-plate.webp"
         imageAlt="Decorative monochrome technical plate showing a precision mission instrument."
+        plateMeta={["Subject / Mission instrument", "Context / QCertify company story", "Role / Decorative precision plate"]}
         chips={["Focused", "Technical", "Practical", "Privacy-aware"]}
         primaryCta={{ href: "/contact", label: "Talk to QCertify" }}
         secondaryCta={{ href: "/product", label: "Explore Product" }}
@@ -68,8 +69,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+      <section className="border-y border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap grid gap-10 lg:grid-cols-2 lg:items-center">
           <FadeIn>
             <ImagePanel
               src="/images/generated/about-gateway-closeup-plate.webp"
@@ -114,7 +115,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
+      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>

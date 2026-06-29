@@ -99,6 +99,7 @@ export default function CompliancePage() {
         body="QCertify helps organizations turn PQC from a future research topic into a controlled migration program with protected paths, explicit policy, and evidence."
         imageSrc="/images/generated/hndl-quantum-plate.webp"
         imageAlt="Decorative monochrome technical plate with a quantum computer and sparse data blocks."
+        plateMeta={["Subject / Quantum risk window", "Context / Readiness timeline", "Role / Decorative compliance plate"]}
         chips={["NIST 2024", "EU 2026 / 2030", "NSS 2027+", "2035 goal"]}
         primaryCta={{ href: "/contact", label: "Plan Readiness" }}
         secondaryCta={{ href: "/resources", label: "Resources" }}
@@ -124,8 +125,8 @@ export default function CompliancePage() {
         </div>
       </section>
 
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+      <section className="border-y border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap grid gap-10 lg:grid-cols-2 lg:items-center">
           <FadeIn>
             <ImagePanel
               src="/images/generated/compliance-policy-calendar-plate.webp"
@@ -139,22 +140,24 @@ export default function CompliancePage() {
               title="The PQC calendar is no longer theoretical."
               body="QCertify helps organizations translate public-sector and regulated-market milestones into practical readiness work: inventory exposure, protect priority paths, and produce evidence before deadlines compress the program."
             />
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <div className="mt-8 border-y border-black/10">
               {policyMilestones.map((item) => (
                 <a
                   key={`${item.date}-${item.title}`}
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group rounded-lg border border-white/10 bg-white/[0.03] p-4 transition-colors hover:border-[#126dff]/45 hover:bg-[#126dff]/[0.06]"
+                  className="group block border-b border-black/10 px-4 py-4 transition-colors last:border-b-0 hover:bg-[#126dff]/[0.045]"
                 >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#126dff]">{item.date}</div>
-                    <ExternalLink className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-slate-600 transition-colors group-hover:text-[#126dff]" />
+                  <div className="grid gap-3 sm:grid-cols-[88px_1fr_18px]">
+                    <div className="text-[10px] font-semibold uppercase text-[#126dff]">{item.date}</div>
+                    <div>
+                      <h3 className="text-sm font-semibold text-black">{item.title}</h3>
+                      <p className="mt-2 text-xs leading-5 text-black/[0.55]">{item.text}</p>
+                      <div className="mt-3 text-[9px] font-semibold uppercase text-black/[0.38]">{item.source}</div>
+                    </div>
+                    <ExternalLink className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-black/[0.32] transition-colors group-hover:text-[#126dff]" />
                   </div>
-                  <h3 className="mt-2 text-sm font-semibold text-white">{item.title}</h3>
-                  <p className="mt-2 text-xs leading-5 text-slate-400">{item.text}</p>
-                  <div className="mt-3 font-mono text-[9px] uppercase tracking-[0.18em] text-slate-600">{item.source}</div>
                 </a>
               ))}
             </div>
@@ -163,7 +166,7 @@ export default function CompliancePage() {
       </section>
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="editorial-wrap">
           <SectionHeader
             label="What QCertify Supports"
             title="Practical controls that fit a governed transition."
@@ -185,7 +188,7 @@ export default function CompliancePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
+      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>

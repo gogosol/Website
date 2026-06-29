@@ -48,13 +48,14 @@ export default function ProductPage() {
         body="QuantumHalon protects selected enterprise traffic paths from a transparent inline position. It gives operators policy control over mediated protection, opaque protection, explicit passthrough, and blocking."
         imageSrc="/images/generated/product-gateway-fabric-plate.webp"
         imageAlt="Decorative monochrome technical plate showing a vertical inline gateway fabric."
+        plateMeta={["Subject / Gateway fabric", "Context / QuantumHalon product", "Role / Decorative system plate"]}
         chips={["Mode 1", "Mode 2", "Passthrough", "Block"]}
         primaryCta={{ href: "/contact", label: "Book a Technical Demo" }}
         secondaryCta={{ href: "/how-it-works", label: "Architecture" }}
       />
 
-      <section className="border-b border-white/5 py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-black/10 py-10">
+        <div className="editorial-wrap">
           <StatStrip
             stats={[
               { value: "Inline", label: "Gateway-level protection at governed chokepoints" },
@@ -67,7 +68,7 @@ export default function ProductPage() {
       </section>
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="editorial-wrap">
           <SectionHeader
             label="What It Does"
             title="A small set of modes covers the real migration problem."
@@ -80,8 +81,8 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-8">
+      <section className="border-y border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
             <SectionHeader
               label="Inline Fabric"
@@ -105,7 +106,7 @@ export default function ProductPage() {
       </section>
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+        <div className="editorial-wrap grid gap-10 lg:grid-cols-2 lg:items-center">
           <FadeIn>
             <ImagePanel
               src="/images/generated/pqc-lattice-plate.webp"
@@ -119,16 +120,16 @@ export default function ProductPage() {
               title="Protection evolves under policy. The network design stays stable."
               body="QuantumHalon is designed for structured migrations: start with high-priority paths, govern compatibility decisions, and strengthen protection over time without exposing implementation mechanics on the public site."
             />
-            <div className="mt-8 space-y-3">
+            <div className="mt-8 border-y border-black/10">
               {[
                 "Hybrid profiles help protect traffic while the ecosystem catches up.",
                 "Opaque protection can preserve application behavior while reducing exposure.",
                 "Lifecycle governance can phase out unsuitable profiles before activation.",
                 "Policy changes can be staged without broad network redesign.",
               ].map((item) => (
-                <div key={item} className="flex gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4">
+                <div key={item} className="grid grid-cols-[24px_1fr] gap-3 border-b border-black/10 px-4 py-4 last:border-b-0">
                   <BadgeCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#126dff]" />
-                  <p className="text-sm leading-6 text-slate-300">{item}</p>
+                  <p className="text-sm leading-6 text-black/[0.62]">{item}</p>
                 </div>
               ))}
             </div>
@@ -136,8 +137,8 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="border-y border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap">
           <SectionHeader
             label="Privacy"
             title="Designed so governance does not become packet surveillance."
@@ -151,7 +152,7 @@ export default function ProductPage() {
       </section>
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="editorial-wrap">
           <SectionHeader
             label="Operational Readiness"
             title="Built around controlled deployment, not theoretical PQC slides."
@@ -173,7 +174,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
+      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>

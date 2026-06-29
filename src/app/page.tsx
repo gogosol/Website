@@ -10,7 +10,6 @@ import {
   KeyRound,
   LockKeyhole,
   Network,
-  ShieldCheck,
 } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import SectionLabel from "@/components/SectionLabel";
@@ -89,7 +88,7 @@ export default function Home() {
       <EditorialPlate
         src="/images/generated/home-hndl-archive-plate.webp"
         alt="Decorative monochrome technical plate showing a captured encrypted packet archive."
-        meta={["Version / Web", "Screen name / HNDL plate", "Source / Generated decorative image"]}
+        meta={["Subject / Captured traffic archive", "Context / HNDL exposure", "Role / Decorative risk plate"]}
       />
 
       <section className="border-b border-black/10 py-20 lg:py-28">
@@ -155,7 +154,7 @@ export default function Home() {
       <EditorialPlate
         src="/images/generated/inline-gateway-plate.webp"
         alt="Decorative monochrome technical plate showing an abstract inline gateway in a network path."
-        meta={["Version / Web", "Screen name / Inline gateway", "Source / Generated decorative image"]}
+        meta={["Subject / Inline gateway path", "Context / QuantumHalon fabric", "Role / Decorative product plate"]}
       />
 
       <section className="border-b border-black/10 py-20 lg:py-28">
@@ -202,9 +201,9 @@ export default function Home() {
                 />
               </div>
               <div className="grid grid-cols-3 border-t border-black/10 px-4 py-3 text-[9px] uppercase text-black/[0.45]">
-                <span>Version / Web</span>
-                <span>Screen name / Plane separation</span>
-                <span className="text-right">Source / Generated decorative image</span>
+                <span>Subject / Plane separation</span>
+                <span>Context / Governance out of path</span>
+                <span className="text-right">Role / Decorative architecture plate</span>
               </div>
             </div>
           </FadeIn>
@@ -236,15 +235,20 @@ export default function Home() {
           />
           <div className="mt-12 grid gap-px border-y border-black/10 bg-black/10 md:grid-cols-3">
             {[
-              { icon: ShieldCheck, title: "Protect priority traffic", text: "Start with the paths whose data lifetime creates the highest pressure." },
-              { icon: Network, title: "Keep operations stable", text: "Use an inline gateway model rather than a full endpoint rewrite on day one." },
-              { icon: GitBranch, title: "Expand with evidence", text: "Let policy, deployment state, and exception records tell the transition story." },
+              { step: "01", title: "Protect priority traffic", text: "Start with the paths whose data lifetime creates the highest pressure." },
+              { step: "02", title: "Keep operations stable", text: "Use an inline gateway model rather than a full endpoint rewrite on day one." },
+              { step: "03", title: "Expand with evidence", text: "Let policy, deployment state, and exception records tell the transition story." },
             ].map((item, index) => (
               <FadeIn key={item.title} delay={index * 0.05}>
-                <div className="h-full bg-[#f7f7f2] p-6">
-                  <item.icon className="h-5 w-5 text-[#126dff]" />
-                  <h3 className="mt-10 text-xl font-semibold text-black">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-black/[0.58]">{item.text}</p>
+                <div className="grid h-full grid-rows-[auto_1fr] bg-[#f7f7f2] p-6">
+                  <div className="flex items-center justify-between border-b border-black/10 pb-4">
+                    <span className="text-[10px] font-semibold uppercase text-[#126dff]">{item.step}</span>
+                    <span className="h-px w-16 bg-black/20" />
+                  </div>
+                  <div className="pt-7">
+                    <h3 className="text-xl font-semibold leading-tight text-black">{item.title}</h3>
+                    <p className="mt-4 text-sm leading-6 text-black/[0.58]">{item.text}</p>
+                  </div>
                 </div>
               </FadeIn>
             ))}
@@ -305,7 +309,7 @@ function HomeHero() {
           transition={{ duration: 0.65 }}
         >
           <BrandLogo className="mb-6 h-10 w-[184px]" priority />
-          <h1 className="max-w-7xl text-6xl font-medium leading-[0.82] text-black sm:text-7xl md:text-8xl lg:text-9xl xl:text-[9.25rem]">
+          <h1 className="max-w-6xl text-5xl font-medium leading-[0.9] text-black sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.2rem]">
             Post-Quantum
             <br />
             Security.
