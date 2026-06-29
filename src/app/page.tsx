@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import SectionLabel from "@/components/SectionLabel";
+import BrandLogo from "@/components/BrandLogo";
 import {
   FadeIn,
   InlineGatewayVisual,
@@ -86,8 +87,8 @@ export default function Home() {
       </section>
 
       <EditorialPlate
-        src="/images/generated/hndl-quantum-plate.webp"
-        alt="Decorative monochrome technical plate with a quantum computer and sparse data blocks."
+        src="/images/generated/home-hndl-archive-plate.webp"
+        alt="Decorative monochrome technical plate showing a captured encrypted packet archive."
         meta={["Version / Web", "Screen name / HNDL plate", "Source / Generated decorative image"]}
       />
 
@@ -303,7 +304,7 @@ function HomeHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65 }}
         >
-          <SectionLabel label="QCertify" />
+          <BrandLogo className="mb-6 h-10 w-[184px]" priority />
           <h1 className="max-w-7xl text-6xl font-medium leading-[0.82] text-black sm:text-7xl md:text-8xl lg:text-9xl xl:text-[9.25rem]">
             Post-Quantum
             <br />

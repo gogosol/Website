@@ -86,8 +86,8 @@ export default function ContactPage() {
             <div className="technical-plate">
               <div className="relative aspect-[16/9]">
                 <Image
-                  src="/images/generated/inline-gateway-plate.webp"
-                  alt="Decorative monochrome technical plate showing an abstract inline gateway."
+                  src="/images/generated/contact-workshop-map-plate.webp"
+                  alt="Decorative monochrome technical plate showing a protected-path workshop map."
                   fill
                   preload
                   sizes="(min-width: 1024px) 48vw, 100vw"

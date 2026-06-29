@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default function BrandLogo({
-  tone = "light",
+  tone = "dark",
   className = "",
   priority = false,
 }: {
@@ -17,7 +17,7 @@ export default function BrandLogo({
         fill
         priority={priority}
         sizes="220px"
-        className={`object-contain object-left ${tone === "light" ? "invert" : ""}`}
+        className={`object-contain object-left ${tone === "dark" ? "invert" : ""}`}
       />
     </span>
   );

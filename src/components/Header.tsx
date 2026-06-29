@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import BrandLogo from "@/components/BrandLogo";
 
 const navLinks = [
   { href: "/product", label: "Product" },
@@ -42,13 +43,10 @@ export default function Header() {
             <Link
               href="/"
               onClick={closeMenu}
-              className="inline-flex items-baseline gap-2 text-[15px] font-semibold text-black focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-black"
+              className="inline-flex items-center focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-black"
               aria-label="QCertify Home"
             >
-              <span className="text-[20px] leading-none">QCertify</span>
-              <span className="hidden text-[9px] font-medium uppercase text-black/[0.45] sm:inline">
-                Post-Quantum Security
-              </span>
+              <BrandLogo className="h-8 w-[146px]" priority />
             </Link>
 
             <nav className="hidden items-center justify-center gap-7 lg:flex" aria-label="Main navigation">

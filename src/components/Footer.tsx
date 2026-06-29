@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import BrandLogo from "@/components/BrandLogo";
 
 const footerLinks = {
   Product: [
@@ -24,9 +25,7 @@ export default function Footer() {
       <div className="editorial-wrap py-14 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.35fr_2fr]">
           <div>
-            <div className="text-5xl font-medium leading-[0.88] text-black sm:text-7xl">
-              QCertify.
-            </div>
+            <BrandLogo className="h-14 w-[254px] max-w-full sm:h-16 sm:w-[292px]" />
             <p className="mt-6 max-w-md text-sm leading-6 text-black/[0.58]">
               Inline post-quantum traffic protection for enterprise paths that
               cannot wait for a full application rewrite.
@@ -61,7 +60,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 text-[10px] uppercase text-black/[0.45] sm:flex-row">
-          <div>&copy; {new Date().getFullYear()} QCertify. All rights reserved.</div>
+          <div>&copy; {new Date().getFullYear()}. All rights reserved.</div>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-black">
               Privacy Policy

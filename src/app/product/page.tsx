@@ -46,8 +46,8 @@ export default function ProductPage() {
         label="Product"
         title="QuantumHalon is a post-quantum inline gateway fabric."
         body="QuantumHalon protects selected enterprise traffic paths from a transparent inline position. It gives operators policy control over mediated protection, opaque protection, explicit passthrough, and blocking."
-        imageSrc="/images/generated/inline-gateway-plate.webp"
-        imageAlt="Decorative monochrome technical plate showing an abstract inline gateway in a network path."
+        imageSrc="/images/generated/product-gateway-fabric-plate.webp"
+        imageAlt="Decorative monochrome technical plate showing a vertical inline gateway fabric."
         chips={["Mode 1", "Mode 2", "Passthrough", "Block"]}
         primaryCta={{ href: "/contact", label: "Book a Technical Demo" }}
         secondaryCta={{ href: "/how-it-works", label: "Architecture" }}

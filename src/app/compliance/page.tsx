@@ -128,8 +128,8 @@ export default function CompliancePage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
             <ImagePanel
-              src="/images/generated/pqc-lattice-plate.webp"
-              alt="Decorative monochrome technical lattice plate with sparse blue accent nodes."
+              src="/images/generated/compliance-policy-calendar-plate.webp"
+              alt="Decorative monochrome technical plate showing policy calendar and evidence objects."
               caption="Policy pressure is already calendar-driven"
             />
           </FadeIn>

@@ -43,8 +43,8 @@ export default function HowItWorksPage() {
         label="How It Works"
         title="A transparent inline path with policy-selected protection."
         body="QuantumHalon turns post-quantum protection into an enforceable network behavior without forcing every endpoint or application to move first."
-        imageSrc="/images/generated/control-data-plane-plate.webp"
-        imageAlt="Decorative monochrome technical plate suggesting separation between control plane and data plane."
+        imageSrc="/images/generated/how-packet-path-plate.webp"
+        imageAlt="Decorative monochrome technical plate showing protected packet movement through a path."
         chips={["Inline", "Classify", "Select Mode", "Enforce", "Report"]}
         primaryCta={{ href: "/contact", label: "Walk Through Your Paths" }}
         secondaryCta={{ href: "/product", label: "Product Details" }}
@@ -93,8 +93,8 @@ export default function HowItWorksPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
             <ImagePanel
-              src="/images/generated/inline-gateway-plate.webp"
-              alt="Decorative monochrome technical plate showing an abstract inline gateway in a network path."
+              src="/images/generated/how-mode-logic-plate.webp"
+              alt="Decorative monochrome technical plate suggesting four policy outcomes."
               caption="Mode behavior stays policy-driven"
             />
           </FadeIn>

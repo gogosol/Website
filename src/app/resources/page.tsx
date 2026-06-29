@@ -19,8 +19,8 @@ export default function ResourcesPage() {
         label="Resources"
         title="Clear thinking for post-quantum transition."
         body="Guides, explainers, and technical briefs for teams turning quantum risk into a practical network, security, and governance program."
-        imageSrc="/images/generated/pqc-lattice-plate.webp"
-        imageAlt="Decorative monochrome technical lattice plate with sparse blue accent nodes."
+        imageSrc="/images/generated/resources-library-plate.webp"
+        imageAlt="Decorative monochrome technical plate suggesting a library of technical briefs."
         chips={["Threat models", "Architecture", "Migration", "Governance"]}
         primaryCta={{ href: "/contact", label: "Ask a Question" }}
         secondaryCta={{ href: "/compliance", label: "Readiness" }}
@@ -77,8 +77,8 @@ export default function ResourcesPage() {
           </div>
           <FadeIn>
             <ImagePanel
-              src="/images/generated/control-data-plane-plate.webp"
-              alt="Decorative monochrome technical plate suggesting separated architecture planes."
+              src="/images/generated/resources-decision-guide-plate.webp"
+              alt="Decorative monochrome technical plate suggesting decision logic and mode selection."
               caption="Decision guides will stay high-level and operator-safe"
             />
           </FadeIn>

@@ -52,8 +52,8 @@ export default function IndustriesPage() {
         label="Industries"
         title="For organizations where data outlives today's encryption."
         body="QuantumHalon is designed for environments where sensitive traffic moves across networks that cannot all be redesigned at once."
-        imageSrc="/images/generated/hndl-quantum-plate.webp"
-        imageAlt="Decorative monochrome technical plate with a quantum computer and sparse data blocks."
+        imageSrc="/images/generated/industries-data-lifetime-plate.webp"
+        imageAlt="Decorative monochrome technical plate representing long-lived data across a time horizon."
         chips={["Finance", "Government", "Critical infrastructure", "Healthcare", "Enterprise"]}
         primaryCta={{ href: "/contact", label: "Talk to QCertify" }}
         secondaryCta={{ href: "/use-cases", label: "Use Cases" }}
@@ -98,8 +98,8 @@ export default function IndustriesPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
             <ImagePanel
-              src="/images/generated/pqc-lattice-plate.webp"
-              alt="Decorative monochrome technical lattice plate with sparse blue accent nodes."
+              src="/images/generated/industries-archive-vault-plate.webp"
+              alt="Decorative monochrome technical plate showing a protected long-lived archive vault."
               caption="Long-lived data changes the urgency"
             />
           </FadeIn>
