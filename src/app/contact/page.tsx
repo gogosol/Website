@@ -3,15 +3,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { CheckCircle, Mail, Send } from "lucide-react";
+import { CheckCircle2, Mail, Send } from "lucide-react";
 import SectionLabel from "@/components/SectionLabel";
 
 const reasons = [
-  "Map QuantumHalon to your protected traffic paths",
-  "Compare policy modes for real traffic paths",
+  "Map QuantumHalon to protected traffic paths",
+  "Compare policy modes for real routes",
   "Discuss HNDL risk and data-lifetime priorities",
   "Plan trust readiness for mediated protection",
-  "Align technical deployment with governance and procurement timelines",
+  "Align deployment with governance and procurement timelines",
 ];
 
 const industries = [
@@ -67,31 +67,32 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent selection:bg-white/30">
-      <section className="relative overflow-hidden border-b border-white/5 pt-28 pb-16 lg:pt-40 lg:pb-20">
-        <div className="absolute inset-0 circuit-mask opacity-70" />
-        <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-8">
+    <div className="min-h-screen selection:bg-[#126dff]/[0.15]">
+      <section className="relative overflow-hidden border-b border-black/10 pt-28 pb-14 lg:pt-36 lg:pb-20">
+        <div className="absolute inset-0 circuit-mask opacity-45" />
+        <div className="editorial-wrap relative z-10 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <SectionLabel label="Contact" />
-            <h1 className="mt-5 text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-              See how QuantumHalon fits your traffic paths.
+            <h1 className="mt-3 max-w-5xl text-5xl font-medium leading-[0.9] text-black sm:text-6xl lg:text-8xl">
+              Map the model to your traffic paths.
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-              Request a technical conversation with QCertify. We will focus on protected paths, policy modes, trust readiness, and realistic post-quantum transition priorities.
+            <p className="mt-7 max-w-2xl text-base leading-7 text-black/[0.62] sm:text-lg">
+              Request a technical conversation with QCertify. We focus on
+              protected paths, policy modes, trust readiness, and realistic
+              post-quantum transition priorities.
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }}>
-            <div className="relative overflow-hidden rounded-lg border border-white/10 bg-white/[0.03]">
+            <div className="technical-plate">
               <div className="relative aspect-[16/9]">
                 <Image
-                  src="/images/protected-path-workshop.png"
-                  alt="Minimal isometric protected-path workshop illustration with QuantumHalon placed inline."
+                  src="/images/generated/inline-gateway-plate.webp"
+                  alt="Decorative monochrome technical plate showing an abstract inline gateway."
                   fill
                   preload
                   sizes="(min-width: 1024px) 48vw, 100vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgba(0,0,0,0.82)_100%)]" />
               </div>
             </div>
           </motion.div>
@@ -99,24 +100,24 @@ export default function ContactPage() {
       </section>
 
       <section className="py-16 lg:py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-5 lg:px-8">
+        <div className="editorial-wrap grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <h2 className="text-xl font-semibold text-white">Useful topics for the first call</h2>
-            <div className="mt-6 space-y-3">
+            <h2 className="text-3xl font-medium leading-none text-black">Useful first-call topics</h2>
+            <div className="mt-8 grid gap-4">
               {reasons.map((reason) => (
-                <div key={reason} className="flex items-start gap-3">
-                  <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#0ea5e9]" />
-                  <span className="text-sm leading-6 text-slate-300">{reason}</span>
+                <div key={reason} className="grid grid-cols-[18px_1fr] gap-3 border-t border-black/10 pt-4">
+                  <CheckCircle2 className="mt-1 h-4 w-4 text-[#126dff]" />
+                  <span className="text-sm leading-6 text-black/[0.62]">{reason}</span>
                 </div>
               ))}
             </div>
 
-            <div className="glass-panel mt-10 rounded-lg p-6">
+            <div className="mt-10 border border-black/10 bg-white/[0.55] p-6">
               <div className="mb-3 flex items-center gap-3">
-                <Mail className="h-5 w-5 text-white/60" />
-                <span className="text-sm font-medium text-white">Prefer email?</span>
+                <Mail className="h-5 w-5 text-black/[0.45]" />
+                <span className="text-sm font-medium text-black">Prefer email?</span>
               </div>
-              <a href="mailto:contact@qcertify.io" className="font-mono text-sm text-[#0ea5e9] transition-colors hover:text-white">
+              <a href="mailto:contact@qcertify.io" className="border-b border-black pb-1 text-[11px] font-semibold uppercase text-black">
                 contact@qcertify.io
               </a>
             </div>
@@ -124,14 +125,14 @@ export default function ContactPage() {
 
           <div className="lg:col-span-3">
             {submitted ? (
-              <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} className="glass-panel-heavy rounded-lg p-12 text-center">
-                <CheckCircle className="mx-auto mb-4 h-12 w-12 text-[#0ea5e9]" />
-                <h3 className="mb-3 text-2xl font-semibold text-white">Thank you.</h3>
-                <p className="text-base text-slate-400">A member of our team will respond within one business day.</p>
+              <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="border border-black bg-white p-12 text-center">
+                <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-[#126dff]" />
+                <h3 className="mb-3 text-2xl font-semibold text-black">Thank you.</h3>
+                <p className="text-base text-black/[0.58]">A member of our team will respond within one business day.</p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="glass-panel rounded-lg p-6 sm:p-8 lg:p-10">
-                {error ? <div className="mb-6 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-300">{error}</div> : null}
+              <form onSubmit={handleSubmit} className="border border-black/10 bg-white/60 p-6 sm:p-8 lg:p-10">
+                {error ? <div className="mb-6 border border-[#ff6b5f] bg-[#ff6b5f]/[0.08] p-4 text-sm text-black">{error}</div> : null}
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field id="firstName" label="First name" placeholder="Jane" required />
                   <Field id="lastName" label="Last name" placeholder="Carter" required />
@@ -148,27 +149,27 @@ export default function ContactPage() {
                   <SelectField id="interest" label="Interest" options={interests} placeholder="What are you most interested in?" />
                 </div>
                 <div className="mt-5">
-                  <label htmlFor="message" className="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-white">
+                  <label htmlFor="message" className="mb-2 block text-[10px] font-semibold uppercase text-black">
                     Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
-                    className="w-full resize-none rounded-lg border border-white/10 bg-black/45 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-[#0ea5e9]/50 focus:outline-none focus:ring-1 focus:ring-[#0ea5e9]/30"
+                    className="w-full resize-none border border-black/15 bg-white px-4 py-3 text-sm text-black placeholder-black/[0.35] transition-colors focus:border-black focus:outline-none"
                     placeholder="Tell us about your network, traffic paths, or PQC readiness goals..."
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="glass-panel glass-interactive mt-6 flex w-full items-center justify-center gap-2 rounded-lg px-8 py-4 font-bold text-white transition-all focus:outline-none focus:ring-2 focus:ring-[#0ea5e9] disabled:cursor-not-allowed disabled:opacity-50"
+                  className="mt-6 flex w-full items-center justify-center gap-2 border border-black bg-black px-8 py-4 text-[11px] font-semibold uppercase text-[#fff] transition-colors hover:bg-transparent hover:text-black focus:outline-none focus:ring-1 focus:ring-black disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <Send className="h-4 w-4" />
                   {isSubmitting ? "Sending..." : "Request a Technical Demo"}
                 </button>
-                <p className="mt-4 text-center text-xs leading-6 text-slate-500">
-                  QCertify uses your information only to respond to your request and does not share contact details with third parties.
+                <p className="mt-4 text-center text-xs leading-6 text-black/[0.45]">
+                  QCertify uses your information only to respond to your request.
                 </p>
               </form>
             )}
@@ -194,7 +195,7 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-white">
+      <label htmlFor={id} className="mb-2 block text-[10px] font-semibold uppercase text-black">
         {label}
         {required ? " *" : ""}
       </label>
@@ -203,7 +204,7 @@ function Field({
         name={id}
         type={type}
         required={required}
-        className="w-full rounded-lg border border-white/10 bg-black/45 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-[#0ea5e9]/50 focus:outline-none focus:ring-1 focus:ring-[#0ea5e9]/30"
+        className="w-full border border-black/15 bg-white px-4 py-3 text-sm text-black placeholder-black/[0.35] transition-colors focus:border-black focus:outline-none"
         placeholder={placeholder}
       />
     </div>
@@ -223,13 +224,13 @@ function SelectField({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-white">
+      <label htmlFor={id} className="mb-2 block text-[10px] font-semibold uppercase text-black">
         {label}
       </label>
       <select
         id={id}
         name={id}
-        className="w-full appearance-none rounded-lg border border-white/10 bg-black/45 px-4 py-3 text-sm text-white transition-colors focus:border-[#0ea5e9]/50 focus:outline-none focus:ring-1 focus:ring-[#0ea5e9]/30"
+        className="w-full appearance-none border border-black/15 bg-white px-4 py-3 text-sm text-black transition-colors focus:border-black focus:outline-none"
       >
         <option value="">{placeholder}</option>
         {options.map((option) => (

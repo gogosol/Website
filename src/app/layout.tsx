@@ -56,7 +56,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} h-full antialiased bg-black text-white overflow-x-hidden`}
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} h-full antialiased bg-[#f7f7f2] text-[#050505] overflow-x-hidden`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden relative" suppressHydrationWarning>
         <GlobalParticles />

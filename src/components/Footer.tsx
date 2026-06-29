@@ -1,89 +1,73 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const footerLinks = {
   Product: [
     { href: "/product", label: "QuantumHalon" },
-    { href: "/how-it-works", label: "How It Works" },
-  ],
-  Solutions: [
+    { href: "/how-it-works", label: "Architecture" },
     { href: "/use-cases", label: "Use Cases" },
-    { href: "/industries", label: "Industries" },
+  ],
+  Program: [
     { href: "/compliance", label: "Readiness" },
+    { href: "/industries", label: "Industries" },
+    { href: "/resources", label: "Resources" },
   ],
   Company: [
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
-    { href: "/resources", label: "Resources" },
   ],
 };
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 relative z-10 mt-0">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <div className="relative h-8 w-[140px] mb-4">
-              <Image
-                src="/SF_White_Logo_Web.png"
-                alt="QCertify Logo"
-                fill
-                className="opacity-80 object-contain object-left"
-              />
+    <footer className="relative z-10 border-t border-black/10 bg-[#f7f7f2]">
+      <div className="editorial-wrap py-14 lg:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.35fr_2fr]">
+          <div>
+            <div className="text-5xl font-medium leading-[0.88] text-black sm:text-7xl">
+              QCertify.
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-xs mb-6">
-              Inline post-quantum traffic protection with QuantumHalon. Reduce Harvest Now, Decrypt Later exposure, govern crypto-agile migration, and keep the cloud out of the live packet path.
+            <p className="mt-6 max-w-md text-sm leading-6 text-black/[0.58]">
+              Inline post-quantum traffic protection for enterprise paths that
+              cannot wait for a full application rewrite.
             </p>
             <a
               href="mailto:contact@qcertify.io"
-              className="text-slate-400 hover:text-[#0ea5e9] transition-colors font-mono text-sm tracking-wide"
+              className="mt-8 inline-block border-b border-black pb-1 text-[11px] font-semibold uppercase text-black"
             >
               contact@qcertify.io
             </a>
           </div>
 
-          {/* Link columns */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4">
-                {category}
-              </h3>
-              <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-slate-400 hover:text-white text-sm transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="grid gap-8 border-t border-black/10 pt-8 sm:grid-cols-3 lg:border-t-0 lg:pt-0">
+            {Object.entries(footerLinks).map(([category, links]) => (
+              <div key={category}>
+                <h3 className="text-[10px] font-semibold uppercase text-black">{category}</h3>
+                <ul className="mt-5 grid gap-3">
+                  {links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-black/[0.58] transition-colors hover:text-black"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="text-slate-500 text-sm font-mono">
-            &copy; {new Date().getFullYear()} QCertify. All rights reserved.
-          </div>
-          <div className="flex gap-6 text-sm">
-            <Link
-              href="#"
-              className="text-slate-400 hover:text-white transition-colors"
-            >
+        <div className="mt-14 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 text-[10px] uppercase text-black/[0.45] sm:flex-row">
+          <div>&copy; {new Date().getFullYear()} QCertify. All rights reserved.</div>
+          <div className="flex gap-6">
+            <Link href="#" className="hover:text-black">
               Privacy Policy
             </Link>
-            <Link
-              href="#"
-              className="text-slate-400 hover:text-white transition-colors"
-            >
-              Terms of Service
+            <Link href="#" className="hover:text-black">
+              Terms
             </Link>
           </div>
         </div>
@@ -91,4 +75,3 @@ export default function Footer() {
     </footer>
   );
 }
-

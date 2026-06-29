@@ -52,8 +52,8 @@ export default function IndustriesPage() {
         label="Industries"
         title="For organizations where data outlives today's encryption."
         body="QuantumHalon is designed for environments where sensitive traffic moves across networks that cannot all be redesigned at once."
-        imageSrc="/images/industry-data-lifetime.png"
-        imageAlt="Minimal isometric illustration of a protected data vault connected to finance, government, healthcare, and infrastructure symbols."
+        imageSrc="/images/generated/hndl-quantum-plate.webp"
+        imageAlt="Decorative monochrome technical plate with a quantum computer and sparse data blocks."
         chips={["Finance", "Government", "Critical infrastructure", "Healthcare", "Enterprise"]}
         primaryCta={{ href: "/contact", label: "Talk to QCertify" }}
         secondaryCta={{ href: "/use-cases", label: "Use Cases" }}
@@ -73,7 +73,7 @@ export default function IndustriesPage() {
                 <div className="glass-panel rounded-lg p-5 lg:p-6">
                   <div className="grid gap-6 lg:grid-cols-[0.6fr_1fr_1fr] lg:items-center">
                     <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-[#0ea5e9]/30 bg-[#0ea5e9]/10 text-[#0ea5e9]">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-[#126dff]/30 bg-[#126dff]/10 text-[#126dff]">
                         <industry.icon className="h-6 w-6" />
                       </div>
                       <h2 className="text-lg font-semibold text-white">{industry.title}</h2>
@@ -82,8 +82,8 @@ export default function IndustriesPage() {
                       <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Pressure</div>
                       <p className="mt-2 text-sm leading-6 text-slate-400">{industry.pressure}</p>
                     </div>
-                    <div className="rounded-lg border border-[#0ea5e9]/20 bg-[#0ea5e9]/[0.04] p-4">
-                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0ea5e9]/70">QuantumHalon outcome</div>
+                    <div className="rounded-lg border border-[#126dff]/20 bg-[#126dff]/[0.04] p-4">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#126dff]/70">QuantumHalon outcome</div>
                       <p className="mt-2 text-sm leading-6 text-slate-300">{industry.outcome}</p>
                     </div>
                   </div>
@@ -98,8 +98,8 @@ export default function IndustriesPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
             <ImagePanel
-              src="/images/long-lived-vault.png"
-              alt="Minimal isometric illustration of a secure archive vault with data cubes and a confidentiality timeline."
+              src="/images/generated/pqc-lattice-plate.webp"
+              alt="Decorative monochrome technical lattice plate with sparse blue accent nodes."
               caption="Long-lived data changes the urgency"
             />
           </FadeIn>

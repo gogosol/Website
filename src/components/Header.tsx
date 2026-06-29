@@ -1,21 +1,15 @@
 "use client";
-import React, { useState, useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/product", label: "Product" },
-  { href: "/how-it-works", label: "How It Works" },
-  {
-    label: "Solutions",
-    children: [
-      { href: "/use-cases", label: "Use Cases" },
-      { href: "/industries", label: "Industries" },
-      { href: "/compliance", label: "Readiness" },
-    ],
-  },
+  { href: "/how-it-works", label: "Architecture" },
+  { href: "/use-cases", label: "Use Cases" },
+  { href: "/compliance", label: "Readiness" },
   { href: "/resources", label: "Resources" },
   { href: "/about", label: "About" },
 ];
@@ -23,184 +17,106 @@ const navLinks = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
   const pathname = usePathname();
-  const closeMenus = () => {
-    setMobileMenuOpen(false);
-    setSolutionsOpen(false);
-  };
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => setIsScrolled(window.scrollY > 14);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const closeMenu = () => setMobileMenuOpen(false);
+
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 z-50 w-full border-b transition-colors duration-300 ${
           isScrolled || mobileMenuOpen
-            ? "bg-black/80 backdrop-blur-xl border-b border-white/10"
-            : "bg-transparent"
+            ? "border-black/[0.12] bg-[#f7f7f2]/[0.92] backdrop-blur-xl"
+            : "border-black/[0.08] bg-[#f7f7f2]/[0.72] backdrop-blur-md"
         }`}
       >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center" aria-label="QCertify Home">
-            <div className="relative h-10 w-[160px]">
-              <Image
-                src="/SF_White_Logo_Web.png"
-                alt="QCertify Logo"
-                fill
-                loading="eager"
-                className="object-contain object-left"
-              />
-            </div>
-          </Link>
-
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center space-x-8" aria-label="Main Navigation">
-            {navLinks.map((item) =>
-              item.children ? (
-                <div key={item.label} className="relative">
-                  <button
-                    onClick={() => setSolutionsOpen(!solutionsOpen)}
-                    onMouseEnter={() => setSolutionsOpen(true)}
-                    className="flex items-center gap-1 text-sm font-medium text-slate-300 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
-                  >
-                    {item.label}
-                    <ChevronDown
-                      className={`w-3.5 h-3.5 transition-transform ${
-                        solutionsOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {solutionsOpen && (
-                    <div
-                      className="absolute top-full left-0 mt-2 w-56 bg-black/90 backdrop-blur-xl rounded-xl p-2 border border-white/10 shadow-2xl"
-                      onMouseLeave={() => setSolutionsOpen(false)}
-                    >
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={closeMenus}
-                          className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                            pathname === child.href
-                              ? "text-white bg-white/10"
-                              : "text-slate-300 hover:text-white hover:bg-white/5"
-                          }`}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href!}
-                  onClick={closeMenus}
-                  className={`text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded ${
-                    pathname === item.href
-                      ? "text-white"
-                      : "text-slate-300 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              )
-            )}
-          </nav>
-
-          {/* CTA */}
-          <div className="hidden lg:flex items-center">
+        <div className="editorial-wrap">
+          <div className="grid h-16 grid-cols-[1fr_auto] items-center gap-4 lg:grid-cols-[1fr_2fr_1fr]">
             <Link
-              href="/contact"
-              onClick={closeMenus}
-              className="relative group overflow-hidden rounded-lg px-5 py-2.5 text-sm font-bold text-white glass-panel glass-interactive transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5e9]"
+              href="/"
+              onClick={closeMenu}
+              className="inline-flex items-baseline gap-2 text-[15px] font-semibold text-black focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-black"
+              aria-label="QCertify Home"
             >
-              <span className="relative z-10">Technical Demo</span>
+              <span className="text-[20px] leading-none">QCertify</span>
+              <span className="hidden text-[9px] font-medium uppercase text-black/[0.45] sm:inline">
+                Post-Quantum Security
+              </span>
             </Link>
-          </div>
 
-          {/* Mobile toggle */}
-          <div className="lg:hidden flex items-center">
+            <nav className="hidden items-center justify-center gap-7 lg:flex" aria-label="Main navigation">
+              {navLinks.map((item) => {
+                const active = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`relative text-[10px] font-semibold uppercase text-black/[0.55] transition-colors hover:text-black focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-black ${
+                      active ? "text-black" : ""
+                    }`}
+                  >
+                    {active ? (
+                      <span className="absolute -left-3 top-1/2 h-1.5 w-1.5 -translate-y-1/2 bg-[#126dff]" />
+                    ) : null}
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <div className="hidden justify-end lg:flex">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 border border-black px-4 py-2 text-[10px] font-semibold uppercase text-black transition-colors hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-black"
+              >
+                Technical Demo
+                <span className="h-px w-5 bg-current transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-slate-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded p-1"
+              type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              className="inline-flex h-10 w-10 items-center justify-center border border-black/15 text-black lg:hidden"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle mobile menu"
             >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="h-6 w-6" aria-hidden="true" />
-              )}
+              {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
           </div>
         </div>
-      </div>
-
       </header>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-20 z-50 bg-black/98 backdrop-blur-xl border-t border-white/10 overflow-y-auto">
-          <div className="px-4 pt-4 pb-6 space-y-1">
-            {navLinks.map((item) =>
-              item.children ? (
-                <div key={item.label}>
-                  <button
-                    onClick={() => setSolutionsOpen(!solutionsOpen)}
-                    className="flex items-center justify-between w-full px-3 py-2.5 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-white/5"
-                  >
-                    {item.label}
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform ${
-                        solutionsOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {solutionsOpen && (
-                    <div className="pl-4 space-y-1">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={closeMenus}
-                          className="block px-3 py-2 rounded-md text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href!}
-                  onClick={closeMenus}
-                  className="block px-3 py-2.5 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-white/5"
-                >
-                  {item.label}
-                </Link>
-              )
-            )}
+      {mobileMenuOpen ? (
+        <div className="fixed inset-x-0 top-16 z-40 border-b border-black/[0.12] bg-[#f7f7f2] lg:hidden">
+          <nav className="editorial-wrap grid gap-px py-3" aria-label="Mobile navigation">
+            {navLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                className="border-t border-black/10 py-4 text-[12px] font-semibold uppercase text-black"
+              >
+                {item.label}
+              </Link>
+            ))}
             <Link
               href="/contact"
-              onClick={closeMenus}
-              className="block rounded-lg px-3 py-3 mt-4 text-center text-base font-bold glass-panel glass-interactive text-white"
+              onClick={closeMenu}
+              className="mt-2 border border-black px-4 py-3 text-center text-[12px] font-semibold uppercase text-black"
             >
               Technical Demo
             </Link>
-          </div>
+          </nav>
         </div>
-      )}
+      ) : null}
     </>
   );
 }

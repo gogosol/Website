@@ -46,8 +46,8 @@ export default function ProductPage() {
         label="Product"
         title="QuantumHalon is a post-quantum inline gateway fabric."
         body="QuantumHalon protects selected enterprise traffic paths from a transparent inline position. It gives operators policy control over mediated protection, opaque protection, explicit passthrough, and blocking."
-        imageSrc="/images/product-focus.png"
-        imageAlt="Minimal isometric illustration of QuantumHalon as one focused inline product with policy, trust, protection, and migration symbols."
+        imageSrc="/images/generated/inline-gateway-plate.webp"
+        imageAlt="Decorative monochrome technical plate showing an abstract inline gateway in a network path."
         chips={["Mode 1", "Mode 2", "Passthrough", "Block"]}
         primaryCta={{ href: "/contact", label: "Book a Technical Demo" }}
         secondaryCta={{ href: "/how-it-works", label: "Architecture" }}
@@ -108,8 +108,8 @@ export default function ProductPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
             <ImagePanel
-              src="/images/crypto-agility-modules.png"
-              alt="Simple isometric illustration of interchangeable cryptographic modules governed by policy."
+              src="/images/generated/pqc-lattice-plate.webp"
+              alt="Decorative monochrome technical lattice plate with sparse blue accent nodes."
               caption="Protection profiles move under governed policy"
             />
           </FadeIn>
@@ -127,7 +127,7 @@ export default function ProductPage() {
                 "Policy changes can be staged without broad network redesign.",
               ].map((item) => (
                 <div key={item} className="flex gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4">
-                  <BadgeCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#0ea5e9]" />
+                  <BadgeCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#126dff]" />
                   <p className="text-sm leading-6 text-slate-300">{item}</p>
                 </div>
               ))}

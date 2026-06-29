@@ -52,8 +52,8 @@ export default function UseCasesPage() {
         label="Use Cases"
         title="Protect the paths where captured traffic would still matter later."
         body="QuantumHalon is best suited to high-value communications where post-quantum migration cannot wait for a clean application rewrite."
-        imageSrc="/images/traffic-path-map.png"
-        imageAlt="Minimal isometric network map with a central QuantumHalon gateway connected to office, cloud, partner, and datacenter paths."
+        imageSrc="/images/generated/inline-gateway-plate.webp"
+        imageAlt="Decorative monochrome technical plate showing an abstract inline gateway in a network path."
         chips={["Sites", "Cloud", "Partners", "Segments", "Critical egress"]}
         primaryCta={{ href: "/contact", label: "Discuss Your Paths" }}
         secondaryCta={{ href: "/industries", label: "Industries" }}
@@ -72,7 +72,7 @@ export default function UseCasesPage() {
               <FadeIn key={item.title} delay={index * 0.05}>
                 <div className="glass-panel h-full rounded-lg p-6">
                   <div className="mb-5 flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#0ea5e9]/30 bg-[#0ea5e9]/10 text-[#0ea5e9]">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#126dff]/30 bg-[#126dff]/10 text-[#126dff]">
                       <item.icon className="h-5 w-5" />
                     </div>
                     <h2 className="text-lg font-semibold text-white">{item.title}</h2>
@@ -82,8 +82,8 @@ export default function UseCasesPage() {
                       <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Problem</div>
                       <p className="mt-2 text-sm leading-6 text-slate-400">{item.problem}</p>
                     </div>
-                    <div className="rounded-lg border border-[#0ea5e9]/20 bg-[#0ea5e9]/[0.04] p-4">
-                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0ea5e9]/70">QuantumHalon fit</div>
+                    <div className="rounded-lg border border-[#126dff]/20 bg-[#126dff]/[0.04] p-4">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#126dff]/70">QuantumHalon fit</div>
                       <p className="mt-2 text-sm leading-6 text-slate-300">{item.fit}</p>
                     </div>
                   </div>
@@ -119,8 +119,8 @@ export default function UseCasesPage() {
           </div>
           <FadeIn>
             <ImagePanel
-              src="/images/hybrid-legacy-cloud.png"
-              alt="Minimal isometric illustration of legacy systems and cloud connected through a protected gateway path."
+              src="/images/generated/control-data-plane-plate.webp"
+              alt="Decorative monochrome technical plate suggesting separated architecture planes."
               caption="Protect selected paths while endpoints stay stable"
             />
           </FadeIn>

@@ -43,8 +43,8 @@ export default function HowItWorksPage() {
         label="How It Works"
         title="A transparent inline path with policy-selected protection."
         body="QuantumHalon turns post-quantum protection into an enforceable network behavior without forcing every endpoint or application to move first."
-        imageSrc="/images/local-packet-path.png"
-        imageAlt="Minimal isometric QuantumHalon gateway appliance protecting packet cubes."
+        imageSrc="/images/generated/control-data-plane-plate.webp"
+        imageAlt="Decorative monochrome technical plate suggesting separation between control plane and data plane."
         chips={["Inline", "Classify", "Select Mode", "Enforce", "Report"]}
         primaryCta={{ href: "/contact", label: "Walk Through Your Paths" }}
         secondaryCta={{ href: "/product", label: "Product Details" }}
@@ -75,7 +75,7 @@ export default function HowItWorksPage() {
             {flowSteps.map((step, index) => (
               <FadeIn key={step.title} delay={index * 0.05}>
                 <div className="grid gap-4 rounded-lg border border-white/10 bg-white/[0.03] p-5 sm:grid-cols-[64px_1fr]">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-[#0ea5e9]/30 bg-[#0ea5e9]/10 font-mono text-sm font-semibold text-[#0ea5e9]">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-[#126dff]/30 bg-[#126dff]/10 font-mono text-sm font-semibold text-[#126dff]">
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <div>
@@ -93,8 +93,8 @@ export default function HowItWorksPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
             <ImagePanel
-              src="/images/mode-selector.png"
-              alt="Minimal isometric illustration showing one gateway splitting traffic into four policy outcomes."
+              src="/images/generated/inline-gateway-plate.webp"
+              alt="Decorative monochrome technical plate showing an abstract inline gateway in a network path."
               caption="Mode behavior stays policy-driven"
             />
           </FadeIn>

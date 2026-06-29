@@ -6,8 +6,9 @@ interface SectionLabelProps {
 
 export default function SectionLabel({ label }: SectionLabelProps) {
   return (
-    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-xs font-bold uppercase tracking-[0.2em] text-slate-300 mb-6 backdrop-blur-md">
-      {label}
+    <div className="mb-4 inline-grid grid-cols-[10px_auto] items-center gap-2 text-[10px] font-semibold uppercase leading-none text-black/[0.55]">
+      <span className="h-1.5 w-1.5 bg-[#126dff]" />
+      <span>{label}</span>
     </div>
   );
 }

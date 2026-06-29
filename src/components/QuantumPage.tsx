@@ -76,52 +76,34 @@ export function PageHero({
 }) {
   return (
     <section
-      className={`relative overflow-hidden border-b border-white/5 ${
-        compact ? "pt-28 pb-16 lg:pt-36 lg:pb-20" : "min-h-[78vh] pt-28 pb-14 lg:pt-32 lg:pb-16"
+      className={`relative overflow-hidden border-b border-black/10 ${
+        compact ? "pt-28 pb-14 lg:pt-36 lg:pb-20" : "min-h-[78vh] pt-28 pb-14 lg:pt-32 lg:pb-16"
       }`}
     >
-      {imageSrc ? (
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={imageSrc}
-            alt={imageAlt || ""}
-            fill
-            preload={!compact}
-            sizes="100vw"
-            className="object-cover opacity-80"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,#000_0%,rgba(0,0,0,0.88)_26%,rgba(0,0,0,0.34)_62%,#000_100%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.12)_45%,#000_100%)]" />
-          <div className="absolute inset-0 circuit-mask opacity-70" />
-        </div>
-      ) : (
-        <div className="absolute inset-0 z-0 circuit-mask opacity-70" />
-      )}
+      <div className="absolute inset-0 z-0 circuit-mask opacity-50" />
 
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
+      <div className="editorial-wrap relative z-10 grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
+        <div>
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
             <SectionLabel label={label} />
             <h1
-              className={`mt-5 max-w-4xl font-semibold leading-[1.01] text-white ${
-                compact ? "text-4xl sm:text-5xl lg:text-6xl" : "text-5xl sm:text-6xl lg:text-8xl"
+              className={`mt-3 max-w-5xl font-medium leading-[0.9] text-black ${
+                compact ? "text-5xl sm:text-6xl lg:text-7xl" : "text-6xl sm:text-7xl lg:text-8xl"
               }`}
             >
               {title}
               {accent ? (
                 <>
                   {" "}
-                  <span className="bg-gradient-to-r from-white via-sky-200 to-[#0ea5e9] bg-clip-text text-transparent">
-                    {accent}
-                  </span>
+                  <span className="text-[#126dff]">{accent}</span>
                 </>
               ) : null}
             </h1>
-            <div className="mt-6 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">{body}</div>
+            <div className="mt-7 max-w-xl text-base leading-7 text-black/[0.62] sm:text-lg">{body}</div>
             {chips.length ? (
-              <div className="mt-7 flex flex-wrap gap-2">
+              <div className="mt-8 grid gap-2 border-t border-black/10 pt-4 sm:grid-cols-2">
                 {chips.map((chip) => (
-                  <span key={chip} className="rounded-md border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-300">
+                  <span key={chip} className="border-l border-black/20 pl-3 text-[10px] font-semibold uppercase leading-5 text-black/[0.58]">
                     {chip}
                   </span>
                 ))}
@@ -137,6 +119,30 @@ export function PageHero({
             </div>
           </motion.div>
         </div>
+        {imageSrc ? (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.12, duration: 0.65 }}
+            className="technical-plate min-h-[280px]"
+          >
+            <div className="relative aspect-[16/9]">
+              <Image
+                src={imageSrc}
+                alt={imageAlt || ""}
+                fill
+                preload={!compact}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="grid grid-cols-3 border-t border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45]">
+              <span>Version / Web</span>
+              <span>System / QCertify</span>
+              <span className="text-right">Source / Generated plate</span>
+            </div>
+          </motion.div>
+        ) : null}
       </div>
     </section>
   );
@@ -156,8 +162,8 @@ export function SectionHeader({
   return (
     <FadeIn className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <SectionLabel label={label} />
-      <h2 className="mt-4 text-3xl font-semibold leading-tight text-white md:text-5xl">{title}</h2>
-      {body ? <div className="mt-4 text-base leading-7 text-slate-400">{body}</div> : null}
+      <h2 className="mt-3 text-4xl font-medium leading-[0.95] text-black md:text-6xl">{title}</h2>
+      {body ? <div className="mt-5 text-base leading-7 text-black/60">{body}</div> : null}
     </FadeIn>
   );
 }
@@ -174,15 +180,15 @@ export function FeatureCard({
   meta?: string;
 }) {
   return (
-    <div className="glass-panel glass-interactive group h-full rounded-lg p-5">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-[#0ea5e9] transition-colors group-hover:border-[#0ea5e9]/40 group-hover:bg-[#0ea5e9]/10">
+    <div className="glass-panel glass-interactive group h-full p-5">
+      <div className="mb-5 flex items-center justify-between gap-3">
+        <div className="flex h-10 w-10 items-center justify-center border border-black/[0.12] bg-white text-[#126dff] transition-colors group-hover:border-black">
           <Icon className="h-5 w-5" />
         </div>
-        {meta ? <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">{meta}</span> : null}
+        {meta ? <span className="text-[10px] uppercase text-black/[0.45]">{meta}</span> : null}
       </div>
-      <h3 className="text-base font-semibold text-white">{title}</h3>
-      <div className="mt-2 text-sm leading-6 text-slate-400">{children}</div>
+      <h3 className="text-base font-semibold text-black">{title}</h3>
+      <div className="mt-2 text-sm leading-6 text-black/[0.58]">{children}</div>
     </div>
   );
 }
@@ -199,14 +205,12 @@ export function ImagePanel({
   preload?: boolean;
 }) {
   return (
-    <div className="relative overflow-hidden rounded-lg border border-white/10 bg-white/[0.025]">
+    <div className="technical-plate">
       <div className="relative aspect-[16/9]">
         <Image src={src} alt={alt} fill preload={preload} sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,rgba(0,0,0,0.82)_100%)]" />
-        <div className="absolute inset-0 encrypted-scan opacity-70" />
       </div>
       {caption ? (
-        <div className="border-t border-white/10 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
+        <div className="border-t border-black/10 px-4 py-3 text-[10px] uppercase text-black/[0.45]">
           {caption}
         </div>
       ) : null}
@@ -220,11 +224,11 @@ export function StatStrip({
   stats: { value: string; label: string }[];
 }) {
   return (
-    <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 md:grid-cols-4">
+    <div className="grid grid-cols-2 border-y border-black/10 md:grid-cols-4">
       {stats.map((stat) => (
-        <div key={stat.label} className="bg-black/80 p-4">
-          <div className="text-lg font-semibold text-white">{stat.value}</div>
-          <div className="mt-1 text-xs leading-5 text-slate-500">{stat.label}</div>
+        <div key={stat.label} className="border-r border-black/10 bg-white/[0.35] p-4 last:border-r-0">
+          <div className="text-lg font-semibold text-black">{stat.value}</div>
+          <div className="mt-1 text-xs leading-5 text-black/50">{stat.label}</div>
         </div>
       ))}
     </div>
@@ -263,16 +267,16 @@ export function ModeMatrixVisual() {
     <div className="grid gap-4 md:grid-cols-2">
       {modeCards.map(({ icon: Icon, title, kicker, text }, index) => (
         <FadeIn key={title} delay={index * 0.05}>
-          <div className="relative h-full overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] p-5">
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0ea5e9]/70 to-transparent" />
+          <div className="relative h-full overflow-hidden border border-black/10 bg-white/[0.45] p-5">
+            <div className="absolute inset-x-0 top-0 h-px bg-black" />
             <div className="flex items-start gap-4">
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg border border-[#0ea5e9]/25 bg-[#0ea5e9]/10 text-[#0ea5e9]">
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center border border-black/[0.12] bg-white text-[#126dff]">
                 <Icon className="h-5 w-5" />
               </div>
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0ea5e9]/70">{kicker}</div>
-            <h3 className="mt-1 text-lg font-semibold text-white">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{text}</p>
+                <div className="text-[10px] font-semibold uppercase text-[#126dff]">{kicker}</div>
+                <h3 className="mt-1 text-lg font-semibold text-black">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-black/[0.58]">{text}</p>
               </div>
             </div>
           </div>
@@ -284,10 +288,10 @@ export function ModeMatrixVisual() {
 
 export function InlineGatewayVisual() {
   return (
-    <div className="relative overflow-hidden rounded-lg border border-white/10 bg-black/70 p-5 sm:p-6">
-      <div className="absolute inset-0 circuit-mask opacity-60" />
+    <div className="relative overflow-hidden border border-black/10 bg-white/[0.45] p-5 sm:p-6">
+      <div className="absolute inset-0 circuit-mask opacity-45" />
       <div className="relative z-10">
-        <div className="text-center font-mono text-[10px] uppercase tracking-[0.24em] text-slate-500">
+        <div className="text-center text-[10px] font-semibold uppercase text-black/[0.45]">
           Traffic path: inline, transparent, policy-governed
         </div>
 
@@ -296,36 +300,36 @@ export function InlineGatewayVisual() {
             Existing users and applications continue through the planned flow.
           </DiagramNode>
 
-          <div className="hidden h-px bg-[linear-gradient(90deg,transparent,rgba(148,163,184,0.45),transparent)] lg:block" />
+          <div className="hidden h-px bg-black/25 lg:block" />
 
-          <div className="rounded-lg border border-[#0ea5e9]/45 bg-[#0ea5e9]/[0.08] p-4 shadow-[0_0_40px_rgba(14,165,233,0.12)]">
-            <div className="rounded-lg border border-white/10 bg-black/35 p-4 text-center">
-              <div className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0ea5e9]">
+          <div className="border border-[#126dff]/45 bg-[#126dff]/[0.045] p-4">
+            <div className="border border-black/10 bg-white/[0.70] p-4 text-center">
+              <div className="text-[11px] font-semibold uppercase text-[#126dff]">
                 QuantumHalon
               </div>
-              <h3 className="mt-3 text-xl font-semibold leading-tight text-white">
+              <h3 className="mt-3 text-xl font-semibold leading-tight text-black">
                 Inline gateway
               </h3>
-              <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-slate-400">
+              <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-black/[0.58]">
                 Classify traffic at a high level, apply the selected mode, and enforce governed policy.
               </p>
-              <div className="mt-4 inline-flex items-center gap-2 rounded-md border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 text-xs text-emerald-300">
-                <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              <div className="mt-4 inline-flex items-center gap-2 border border-black/[0.12] bg-white px-3 py-1.5 text-xs text-black/60">
+                <span className="h-2 w-2 bg-[#126dff]" />
                 Policy ready
               </div>
             </div>
           </div>
 
-          <div className="hidden h-px bg-[linear-gradient(90deg,transparent,rgba(14,165,233,0.7),transparent)] lg:block" />
+          <div className="hidden h-px bg-[#126dff]/55 lg:block" />
 
           <DiagramNode title="Network edge" eyebrow="Destination side">
             Protected paths continue toward their intended destinations.
           </DiagramNode>
         </div>
 
-        <div className="mx-auto mt-5 max-w-xl rounded-lg border border-white/10 bg-white/[0.03] p-4 text-center">
-          <div className="text-sm font-semibold text-white">QCertify governance stays out of path</div>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+        <div className="mx-auto mt-5 max-w-xl border border-black/10 bg-white/[0.55] p-4 text-center">
+          <div className="text-sm font-semibold text-black">QCertify governance stays out of path</div>
+          <p className="mt-2 text-sm leading-6 text-black/[0.58]">
             Policy direction and operational signals are exchanged separately from live packets.
           </p>
         </div>
@@ -344,10 +348,10 @@ function DiagramNode({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-lg border border-white/10 bg-white/[0.035] p-4">
-      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">{eyebrow}</div>
-      <h3 className="mt-2 text-lg font-semibold leading-tight text-white">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-slate-400">{children}</p>
+    <div className="border border-black/10 bg-white/[0.55] p-4">
+      <div className="text-[10px] font-semibold uppercase text-black/[0.45]">{eyebrow}</div>
+      <h3 className="mt-2 text-lg font-semibold leading-tight text-black">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-black/[0.58]">{children}</p>
     </div>
   );
 }
@@ -457,13 +461,13 @@ export function LinkCard({
   text: string;
 }) {
   return (
-    <Link href={href} className="glass-panel glass-interactive group block h-full rounded-lg p-5">
+    <Link href={href} className="glass-panel glass-interactive group block h-full p-5">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-base font-semibold text-white">{title}</h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">{text}</p>
+          <h3 className="text-base font-semibold text-black">{title}</h3>
+          <p className="mt-2 text-sm leading-6 text-black/[0.58]">{text}</p>
         </div>
-        <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-slate-500 transition-colors group-hover:text-[#0ea5e9]" />
+        <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-black/[0.35] transition-colors group-hover:text-[#126dff]" />
       </div>
     </Link>
   );

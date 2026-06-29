@@ -97,8 +97,8 @@ export default function CompliancePage() {
         label="Post-Quantum Readiness"
         title="Post-quantum readiness is becoming a procurement and governance issue."
         body="QCertify helps organizations turn PQC from a future research topic into a controlled migration program with protected paths, explicit policy, and evidence."
-        imageSrc="/images/readiness-roadmap.png"
-        imageAlt="Minimal isometric illustration of a secure gateway connected to a readiness roadmap, checklist, and evidence folder."
+        imageSrc="/images/generated/hndl-quantum-plate.webp"
+        imageAlt="Decorative monochrome technical plate with a quantum computer and sparse data blocks."
         chips={["NIST 2024", "EU 2026 / 2030", "NSS 2027+", "2035 goal"]}
         primaryCta={{ href: "/contact", label: "Plan Readiness" }}
         secondaryCta={{ href: "/resources", label: "Resources" }}
@@ -128,8 +128,8 @@ export default function CompliancePage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
             <ImagePanel
-              src="/images/pqc-deadline-pressure.png"
-              alt="Minimal isometric illustration of a calendar, checklist, protected data stream, shield, and distant quantum risk."
+              src="/images/generated/pqc-lattice-plate.webp"
+              alt="Decorative monochrome technical lattice plate with sparse blue accent nodes."
               caption="Policy pressure is already calendar-driven"
             />
           </FadeIn>
@@ -146,11 +146,11 @@ export default function CompliancePage() {
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group rounded-lg border border-white/10 bg-white/[0.03] p-4 transition-colors hover:border-[#0ea5e9]/45 hover:bg-[#0ea5e9]/[0.06]"
+                  className="group rounded-lg border border-white/10 bg-white/[0.03] p-4 transition-colors hover:border-[#126dff]/45 hover:bg-[#126dff]/[0.06]"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0ea5e9]">{item.date}</div>
-                    <ExternalLink className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-slate-600 transition-colors group-hover:text-[#0ea5e9]" />
+                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#126dff]">{item.date}</div>
+                    <ExternalLink className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-slate-600 transition-colors group-hover:text-[#126dff]" />
                   </div>
                   <h3 className="mt-2 text-sm font-semibold text-white">{item.title}</h3>
                   <p className="mt-2 text-xs leading-5 text-slate-400">{item.text}</p>

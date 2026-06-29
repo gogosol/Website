@@ -3,188 +3,248 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  GitBranch,
+  KeyRound,
+  LockKeyhole,
+  Network,
+  ShieldCheck,
+} from "lucide-react";
 import CTAButton from "@/components/CTAButton";
+import SectionLabel from "@/components/SectionLabel";
 import {
   FadeIn,
-  FeatureCard,
-  ImagePanel,
   InlineGatewayVisual,
   LinkCard,
-  PrivacyBoundary,
   SectionHeader,
   StatStrip,
-  audienceCards,
-  homeCapabilities,
-  migrationSteps,
 } from "@/components/QuantumPage";
-import SectionLabel from "@/components/SectionLabel";
-import { CheckCircle, ClipboardCheck, Network, Radar, ShieldCheck } from "lucide-react";
 
-const qcertifyApproach = [
-  {
-    icon: Radar,
-    title: "Find the pressure",
-    text: "Start with data lifetime, regulated paths, and procurement expectations instead of abstract quantum fear.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Protect what matters",
-    text: "Use practical PQC solutions where risk is highest while broader application migration continues.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Prove the program",
-    text: "Turn deployment progress, trust readiness, and policy decisions into evidence stakeholders can understand.",
-  },
+const metadata = [
+  { label: "Organization", value: "QCertify" },
+  { label: "First solution", value: "QuantumHalon" },
+  { label: "Threat model", value: "Harvest Now, Decrypt Later" },
+  { label: "Deployment", value: "Inline gateway fabric" },
+];
+
+const principles = [
   {
     icon: Network,
-    title: "Keep options open",
-    text: "Build for crypto agility so transition choices can evolve as standards, buyers, and infrastructure mature.",
+    title: "Inline placement",
+    text: "Put protection where selected enterprise traffic already moves.",
   },
+  {
+    icon: LockKeyhole,
+    title: "Bounded custody",
+    text: "Keep live packet handling local to deployed gateways.",
+  },
+  {
+    icon: GitBranch,
+    title: "Phased adoption",
+    text: "Protect priority paths while application migration continues.",
+  },
+  {
+    icon: KeyRound,
+    title: "Crypto agility",
+    text: "Let policy govern protection behavior as standards mature.",
+  },
+];
+
+const modeRows = [
+  ["01", "Mediated protection", "For paths where trusted handling is appropriate."],
+  ["02", "Opaque protection", "For traffic that should remain application-stable."],
+  ["03", "Explicit passthrough", "For approved paths outside active protection."],
+  ["04", "Policy block", "For flows that should stop rather than silently downgrade."],
+];
+
+const useCases = [
+  "Branch-to-HQ paths",
+  "Partner exchange",
+  "Critical system egress",
+  "Hybrid cloud transit",
+  "Internal segmented services",
 ];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-transparent selection:bg-white/30">
+    <div className="min-h-screen selection:bg-[#126dff]/[0.15]">
       <HomeHero />
 
-      <section className="border-b border-white/5 py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-black/10 py-8">
+        <div className="editorial-wrap">
           <StatStrip
             stats={[
               { value: "QCertify", label: "Post-quantum cybersecurity organization" },
-              { value: "QuantumHalon", label: "First solution: inline gateway protection" },
-              { value: "Evidence", label: "Readiness for procurement and governance" },
-              { value: "Agility", label: "Structured migration as standards mature" },
+              { value: "QuantumHalon", label: "Inline gateway protection" },
+              { value: "Private path", label: "Governance outside live packet flow" },
+              { value: "Evidence", label: "Readiness for procurement and risk teams" },
             ]}
           />
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+      <EditorialPlate
+        src="/images/generated/hndl-quantum-plate.webp"
+        alt="Decorative monochrome technical plate with a quantum computer and sparse data blocks."
+        meta={["Version / Web", "Screen name / HNDL plate", "Source / Generated decorative image"]}
+      />
+
+      <section className="border-b border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <FadeIn>
+            <SectionLabel label="The Risk" />
+            <h2 className="max-w-5xl text-6xl font-medium leading-[0.84] text-black sm:text-7xl lg:text-8xl">
+              Harvest Now.
+              <br />
+              Decrypt Later.
+            </h2>
+          </FadeIn>
+
+          <FadeIn delay={0.1} className="border-t border-black pt-5 lg:mt-24">
+            <p className="text-xl leading-8 text-black">
+              Traffic captured today can remain valuable for years. QCertify
+              focuses on the paths where data lifetime turns future quantum
+              capability into a present operating problem.
+            </p>
+            <div className="mt-8 grid gap-4">
+              {[
+                "Prioritize communications whose confidentiality horizon outlives current cryptography.",
+                "Apply path-level protection before every endpoint and application can migrate.",
+                "Give security, risk, and procurement teams a defensible transition story.",
+              ].map((item) => (
+                <div key={item} className="grid grid-cols-[18px_1fr] gap-3 border-t border-black/10 pt-4">
+                  <CheckCircle2 className="mt-1 h-4 w-4 text-[#126dff]" />
+                  <p className="text-sm leading-6 text-black/60">{item}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="border-b border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <SectionHeader
+              label="First Solution"
+              title="QuantumHalon protects selected paths without rebuilding the network."
+              body="The gateway sits inline at governed chokepoints. Policy selects the behavior per traffic path while QCertify governance remains outside live packet handling."
+            />
+            <FadeIn delay={0.1}>
+              <InlineGatewayVisual />
+            </FadeIn>
+          </div>
+
+          <div className="mt-12 grid gap-px border-y border-black/10 bg-black/10 lg:grid-cols-4">
+            {principles.map((item, index) => (
+              <FadeIn key={item.title} delay={index * 0.05}>
+                <div className="h-full bg-[#f7f7f2] p-5">
+                  <item.icon className="h-5 w-5 text-[#126dff]" />
+                  <h3 className="mt-8 text-lg font-semibold text-black">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-black/[0.58]">{item.text}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <EditorialPlate
+        src="/images/generated/inline-gateway-plate.webp"
+        alt="Decorative monochrome technical plate showing an abstract inline gateway in a network path."
+        meta={["Version / Web", "Screen name / Inline gateway", "Source / Generated decorative image"]}
+      />
+
+      <section className="border-b border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+          <FadeIn>
+            <SectionLabel label="Protection Modes" />
+            <h2 className="text-6xl font-medium leading-[0.84] text-black sm:text-7xl lg:text-8xl">
+              One gateway.
+              <br />
+              Different decisions.
+            </h2>
+            <p className="mt-7 max-w-xl text-base leading-7 text-black/60">
+              The product does not flatten every path into one answer. It lets
+              the organization choose the right operating behavior for the
+              traffic, trust model, and exception posture.
+            </p>
+          </FadeIn>
+
+          <div className="border-t border-black">
+            {modeRows.map(([number, title, text], index) => (
+              <FadeIn key={title} delay={index * 0.04}>
+                <div className="grid gap-4 border-b border-black/10 py-6 sm:grid-cols-[72px_0.8fr_1fr]">
+                  <div className="text-[10px] font-semibold uppercase text-[#126dff]">{number}</div>
+                  <h3 className="text-xl font-semibold leading-tight text-black">{title}</h3>
+                  <p className="text-sm leading-6 text-black/[0.58]">{text}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <FadeIn>
+            <div className="technical-plate">
+              <div className="relative aspect-[16/9]">
+                <Image
+                  src="/images/generated/control-data-plane-plate.webp"
+                  alt="Decorative monochrome technical plate suggesting separation between control plane and data plane."
+                  fill
+                  sizes="(min-width: 1024px) 52vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="grid grid-cols-3 border-t border-black/10 px-4 py-3 text-[9px] uppercase text-black/[0.45]">
+                <span>Version / Web</span>
+                <span>Screen name / Plane separation</span>
+                <span className="text-right">Source / Generated decorative image</span>
+              </div>
+            </div>
+          </FadeIn>
           <div>
             <SectionHeader
-              label="The Risk"
-              title="Harvest Now, Decrypt Later is a QCertify problem today."
-              body="Traffic captured today can remain valuable for years. QCertify builds PQC solutions that help organizations act before every application, vendor, and compliance workflow is ready at the same time."
+              label="Architecture"
+              title="Control plane and data plane stay cleanly separated."
+              body="The public model is intentionally simple: gateways handle selected traffic locally, while governance coordinates policy, deployment state, and readiness evidence out of band."
             />
             <div className="mt-8 grid gap-3">
-              {[
-                "Prioritize paths where data sensitivity outlives current cryptography.",
-                "Apply stronger protection without waiting for every app owner to migrate.",
-                "Show a governed, phased response to quantum-era procurement pressure.",
-              ].map((item) => (
-                <div key={item} className="flex gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4">
-                  <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#0ea5e9]" />
-                  <p className="text-sm leading-6 text-slate-300">{item}</p>
+              {useCases.map((item) => (
+                <div key={item} className="flex items-center justify-between border-t border-black/10 py-3">
+                  <span className="text-sm font-medium text-black">{item}</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-black/[0.35]" />
                 </div>
               ))}
             </div>
           </div>
-          <FadeIn delay={0.1}>
-            <ImagePanel
-              src="/images/hndl-capture-window.png"
-              alt="Minimal isometric illustration showing a normal computer storing blue encrypted data in a jar, then a future quantum computer decrypting it into orange exposed data."
-              caption="Store encrypted traffic now. Break it later."
-            />
-          </FadeIn>
         </div>
       </section>
 
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="border-b border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap">
           <SectionHeader
-            label="First Solution"
-            title="QuantumHalon is QCertify's inline gateway for traffic that cannot wait."
-            body="QCertify is the organization. QuantumHalon is the first solution: an inline gateway that applies governed post-quantum protection to selected enterprise paths while applications continue operating."
+            label="Program Logic"
+            title="A practical PQC transition is a sequence, not a slogan."
+            body="QCertify separates the work into exposure, protected paths, trust readiness, crypto agility, and evidence for stakeholders."
             align="center"
           />
-          <FadeIn delay={0.1} className="mt-10">
-            <InlineGatewayVisual />
-          </FadeIn>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {homeCapabilities.map((cap, index) => (
-              <FadeIn key={cap.title} delay={index * 0.05}>
-                <FeatureCard icon={cap.icon} title={cap.title}>
-                  {cap.text}
-                </FeatureCard>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            label="QCertify Method"
-            title="A practical PQC program needs more than a standards slide."
-            body="QCertify separates the transition into work the business can actually execute: understand exposure, protect priority paths, produce evidence, and keep the migration adaptable."
-            align="center"
-          />
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {qcertifyApproach.map((item, index) => (
+          <div className="mt-12 grid gap-px border-y border-black/10 bg-black/10 md:grid-cols-3">
+            {[
+              { icon: ShieldCheck, title: "Protect priority traffic", text: "Start with the paths whose data lifetime creates the highest pressure." },
+              { icon: Network, title: "Keep operations stable", text: "Use an inline gateway model rather than a full endpoint rewrite on day one." },
+              { icon: GitBranch, title: "Expand with evidence", text: "Let policy, deployment state, and exception records tell the transition story." },
+            ].map((item, index) => (
               <FadeIn key={item.title} delay={index * 0.05}>
-                <FeatureCard icon={item.icon} title={item.title}>
-                  {item.text}
-                </FeatureCard>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            label="Privacy Boundary"
-            title="Governance stays separate from live traffic."
-            body="QuantumHalon is built around a clean boundary between live packet handling and QCertify governance services."
-            align="center"
-          />
-          <div className="mt-10">
-            <PrivacyBoundary />
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-            <SectionHeader
-              label="Structured Migration"
-              title="Crypto agility without a big-bang rewrite."
-              body="QCertify helps teams protect the highest-risk paths first, then expand coverage as trust readiness, policy, testing, and governance mature."
-            />
-            <div className="grid gap-4 md:grid-cols-2">
-              {migrationSteps.map((step, index) => (
-                <FadeIn key={step.title} delay={index * 0.05}>
-                  <div className="h-full rounded-lg border border-white/10 bg-white/[0.03] p-5">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0ea5e9]">Step {index + 1}</div>
-                    <h3 className="mt-3 text-base font-semibold text-white">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-400">{step.text}</p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            label="Who It Helps"
-            title="Built for teams protecting traffic with long-lived value."
-            align="center"
-          />
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {audienceCards.map((card, index) => (
-              <FadeIn key={card.title} delay={index * 0.06}>
-                <FeatureCard icon={card.icon} title={card.title}>
-                  {card.text}
-                </FeatureCard>
+                <div className="h-full bg-[#f7f7f2] p-6">
+                  <item.icon className="h-5 w-5 text-[#126dff]" />
+                  <h3 className="mt-10 text-xl font-semibold text-black">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-black/[0.58]">{item.text}</p>
+                </div>
               </FadeIn>
             ))}
           </div>
@@ -192,32 +252,40 @@ export default function Home() {
       </section>
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="editorial-wrap">
           <div className="grid gap-4 md:grid-cols-3">
-            <LinkCard href="/product" title="Explore QuantumHalon" text="See QCertify's first solution for inline post-quantum protection on selected enterprise paths." />
-            <LinkCard href="/use-cases" title="Explore use cases" text="Understand where path-level PQC protection can reduce long-lived traffic exposure." />
-            <LinkCard href="/compliance" title="Plan readiness" text="Frame PQC transition as a governed program with evidence, trust readiness, and real policy milestones." />
+            <LinkCard
+              href="/product"
+              title="Explore QuantumHalon"
+              text="See the inline gateway model, policy modes, and architecture boundary."
+            />
+            <LinkCard
+              href="/use-cases"
+              title="Map use cases"
+              text="Identify where path-level PQC protection reduces long-lived traffic exposure."
+            />
+            <LinkCard
+              href="/compliance"
+              title="Plan readiness"
+              text="Frame migration as a governed program with evidence and milestones."
+            />
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
-        <div className="absolute inset-0 circuit-mask opacity-70" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <section className="border-t border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <FadeIn>
             <SectionLabel label="Next Step" />
-            <h2 className="mt-4 text-4xl font-semibold leading-tight text-white md:text-6xl">
+            <h2 className="max-w-5xl text-5xl font-medium leading-[0.9] text-black sm:text-6xl lg:text-8xl">
               Protect critical traffic before the quantum deadline arrives.
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-400">
-              Book a technical walkthrough to map QCertify&apos;s PQC approach, QuantumHalon fit, trust readiness, and post-quantum migration priorities.
-            </p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <CTAButton href="/contact">Book a Technical Demo</CTAButton>
-              <CTAButton href="/product" variant="secondary">
-                Product Details
-              </CTAButton>
-            </div>
+          </FadeIn>
+          <FadeIn delay={0.1} className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <CTAButton href="/contact">Book a Technical Demo</CTAButton>
+            <CTAButton href="/product" variant="secondary">
+              Product Details
+            </CTAButton>
           </FadeIn>
         </div>
       </section>
@@ -227,66 +295,82 @@ export default function Home() {
 
 function HomeHero() {
   return (
-    <section className="relative min-h-[88vh] overflow-hidden border-b border-white/5 pt-28 pb-12 lg:pt-32">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/qcertify-command-hero.png"
-          alt="Minimal isometric QCertify command platform coordinating post-quantum security solution modules and protected data streams."
-          fill
-          preload
-          sizes="100vw"
-          className="object-cover opacity-90"
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(14,165,233,0.18),transparent_34%),linear-gradient(90deg,#000_0%,rgba(0,0,0,0.91)_31%,rgba(0,0,0,0.28)_72%,#000_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.42)_0%,rgba(0,0,0,0.08)_45%,#000_100%)]" />
-        <div className="absolute inset-0 circuit-mask opacity-55" />
-      </div>
-
-      <div className="relative z-10 mx-auto flex min-h-[calc(88vh-7rem)] max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }} className="max-w-4xl">
-          <SectionLabel label="QCertify" />
-          <h1 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.98] text-white sm:text-6xl lg:text-8xl">
-            Post-quantum security for the{" "}
-            <span className="bg-gradient-to-r from-white via-sky-200 to-[#0ea5e9] bg-clip-text text-transparent">
-              migration era.
-            </span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-            QCertify creates practical PQC solutions for organizations protecting long-lived data, regulated traffic, and trust programs that cannot wait for a perfect future migration.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-2">
-            {["PQC solutions", "QuantumHalon first", "Readiness evidence"].map((chip) => (
-              <span key={chip} className="rounded-md border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-300">
-                {chip}
-              </span>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <CTAButton href="/product">Explore QuantumHalon</CTAButton>
-            <CTAButton href="/compliance" variant="secondary">
-              Plan Readiness
-            </CTAButton>
-          </div>
-        </motion.div>
-
+    <section className="relative min-h-[92svh] overflow-hidden border-b border-black/10 pt-24">
+      <div className="absolute inset-0 circuit-mask opacity-45" />
+      <div className="editorial-wrap relative z-10 flex min-h-[calc(92svh-6rem)] flex-col justify-between pb-8 pt-8 lg:pt-12">
         <motion.div
-          initial={{ opacity: 0, y: 22 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.18, duration: 0.65 }}
-          className="mt-12 grid gap-3 md:grid-cols-3"
+          transition={{ duration: 0.65 }}
         >
-          {[
-            { kicker: "Organization", title: "QCertify", text: "Builds post-quantum cybersecurity solutions for real migration programs." },
-            { kicker: "First solution", title: "QuantumHalon", text: "Inline gateway protection for selected enterprise traffic paths." },
-            { kicker: "Outcome", title: "Defensible readiness", text: "Evidence, governance, and crypto agility for regulated buyers." },
-          ].map((item) => (
-            <div key={item.title} className="glass-panel rounded-lg p-4">
-              <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0ea5e9]/70">{item.kicker}</div>
-              <h2 className="mt-2 text-base font-semibold text-white">{item.title}</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
-            </div>
-          ))}
+          <SectionLabel label="QCertify" />
+          <h1 className="max-w-7xl text-6xl font-medium leading-[0.82] text-black sm:text-7xl md:text-8xl lg:text-9xl xl:text-[9.25rem]">
+            Post-Quantum
+            <br />
+            Security.
+            <br />
+            Without Rebuilding
+            <br />
+            Your Network.
+          </h1>
         </motion.div>
+
+        <div className="grid gap-8 pt-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.12, duration: 0.65 }}
+            className="grid gap-5 border-t border-black pt-5 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {metadata.map((item) => (
+              <div key={item.label} className="metadata">
+                <strong>{item.label}</strong>
+                {item.value}
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.18, duration: 0.65 }}
+            className="technical-plate"
+          >
+            <div className="relative aspect-[16/9]">
+              <Image
+                src="/images/generated/quantum-computer-plate.webp"
+                alt="Decorative monochrome technical plate showing a quantum computer."
+                fill
+                priority
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EditorialPlate({
+  src,
+  alt,
+  meta,
+}: {
+  src: string;
+  alt: string;
+  meta: [string, string, string];
+}) {
+  return (
+    <section className="technical-plate">
+      <div className="relative aspect-[16/7] min-h-[280px]">
+        <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
+      </div>
+      <div className="editorial-wrap grid grid-cols-3 gap-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45]">
+        <span>{meta[0]}</span>
+        <span>{meta[1]}</span>
+        <span className="text-right">{meta[2]}</span>
       </div>
     </section>
   );

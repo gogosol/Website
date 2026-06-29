@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface CTAButtonProps {
   href: string;
@@ -15,24 +15,20 @@ export default function CTAButton({
   variant = "primary",
   className = "",
 }: CTAButtonProps) {
-  if (variant === "secondary") {
-    return (
-      <Link
-        href={href}
-        className={`inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-white border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5e9] ${className}`}
-      >
-        {children}
-        <ArrowRight className="w-4 h-4" />
-      </Link>
-    );
-  }
+  const primary =
+    "border-black bg-black text-[#fff] hover:bg-transparent hover:text-black";
+  const secondary =
+    "border-black/25 bg-transparent text-black hover:border-black hover:bg-white";
 
   return (
     <Link
       href={href}
-      className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-white glass-panel glass-interactive transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5e9] ${className}`}
+      className={`group inline-flex items-center justify-between gap-5 border px-5 py-3 text-[11px] font-semibold uppercase leading-none transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-black ${
+        variant === "primary" ? primary : secondary
+      } ${className}`}
     >
-      {children}
+      <span>{children}</span>
+      <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </Link>
   );
 }

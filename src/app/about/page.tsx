@@ -42,8 +42,8 @@ export default function AboutPage() {
         label="About QCertify"
         title="We build practical post-quantum protection for real networks."
         body="QCertify creates practical post-quantum cybersecurity solutions for organizations that need to reduce quantum-era risk without waiting for every application, vendor, and governance process to move at once. QuantumHalon is our first solution."
-        imageSrc="/images/focused-mission.png"
-        imageAlt="Minimal isometric illustration of a focused QuantumHalon gateway mission with a migration path and privacy boundary."
+        imageSrc="/images/generated/quantum-computer-plate.webp"
+        imageAlt="Decorative monochrome technical plate showing a quantum computer."
         chips={["Focused", "Technical", "Practical", "Privacy-aware"]}
         primaryCta={{ href: "/contact", label: "Talk to QCertify" }}
         secondaryCta={{ href: "/product", label: "Explore Product" }}
@@ -72,8 +72,8 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <FadeIn>
             <ImagePanel
-              src="/images/quantumhalon-hero.png"
-              alt="Minimal isometric QuantumHalon gateway appliance protecting packet traffic."
+              src="/images/generated/inline-gateway-plate.webp"
+              alt="Decorative monochrome technical plate showing an abstract inline gateway in a network path."
               caption="First solution: QuantumHalon"
             />
           </FadeIn>

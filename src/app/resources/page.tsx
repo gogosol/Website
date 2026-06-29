@@ -19,8 +19,8 @@ export default function ResourcesPage() {
         label="Resources"
         title="Clear thinking for post-quantum transition."
         body="Guides, explainers, and technical briefs for teams turning quantum risk into a practical network, security, and governance program."
-        imageSrc="/images/resource-library.png"
-        imageAlt="Minimal isometric illustration of a post-quantum security resource library with documents, shield, and lock symbols."
+        imageSrc="/images/generated/pqc-lattice-plate.webp"
+        imageAlt="Decorative monochrome technical lattice plate with sparse blue accent nodes."
         chips={["Threat models", "Architecture", "Migration", "Governance"]}
         primaryCta={{ href: "/contact", label: "Ask a Question" }}
         secondaryCta={{ href: "/compliance", label: "Readiness" }}
@@ -39,7 +39,7 @@ export default function ResourcesPage() {
               <FadeIn key={topic.category} delay={index * 0.05}>
                 <div className="glass-panel h-full rounded-lg p-6">
                   <div className="mb-5 flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#0ea5e9]/30 bg-[#0ea5e9]/10 text-[#0ea5e9]">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#126dff]/30 bg-[#126dff]/10 text-[#126dff]">
                       <topic.icon className="h-5 w-5" />
                     </div>
                     <h2 className="text-lg font-semibold text-white">{topic.category}</h2>
@@ -77,8 +77,8 @@ export default function ResourcesPage() {
           </div>
           <FadeIn>
             <ImagePanel
-              src="/images/mode-decision-guide.png"
-              alt="Minimal isometric illustration of a decision compass connected to shield, opaque, forward, and stop path symbols."
+              src="/images/generated/control-data-plane-plate.webp"
+              alt="Decorative monochrome technical plate suggesting separated architecture planes."
               caption="Decision guides will stay high-level and operator-safe"
             />
           </FadeIn>
