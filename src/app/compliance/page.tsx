@@ -25,7 +25,7 @@ const readinessSteps = [
   {
     icon: KeyRound,
     title: "Plan trust readiness",
-    text: "For mediated protection, prepare required trust through centralized enterprise processes before activation.",
+    text: "For paths that require trusted handling, prepare required trust through centralized enterprise processes before activation.",
   },
   {
     icon: RefreshCw,
@@ -69,7 +69,7 @@ const policyMilestones = [
   {
     date: "Jan 1 2027",
     title: "NSS new acquisitions",
-    text: "NSA/CNSSP 15 expects new National Security System acquisitions to be CNSA 2.0 compliant unless otherwise noted.",
+    text: "NSA/CNSSP 15 expects new National Security System acquisitions to align with CNSA 2.0 unless otherwise noted.",
     source: "NSA CNSA 2.0 FAQ",
     href: "https://media.defense.gov/2022/Sep/07/2003071836/-1/-1/0/CSI_CNSA_2.0_FAQ_.PDF",
   },
@@ -99,7 +99,7 @@ export default function CompliancePage() {
         body="QCertify helps organizations turn PQC from a future research topic into a controlled migration program with protected paths, explicit policy, and evidence."
         imageSrc="/images/generated/hndl-quantum-plate.webp"
         imageAlt="Decorative monochrome technical plate with a quantum computer and sparse data blocks."
-        plateMeta={["Subject / Quantum risk window", "Context / Readiness timeline", "Role / Decorative compliance plate"]}
+        plateCaption="Quantum risk turns readiness into a calendar problem"
         chips={["NIST 2024", "EU 2026 / 2030", "NSS 2027+", "2035 goal"]}
         primaryCta={{ href: "/contact", label: "Plan Readiness" }}
         secondaryCta={{ href: "/resources", label: "Resources" }}
@@ -110,7 +110,7 @@ export default function CompliancePage() {
           <SectionHeader
             label="Readiness Program"
             title="The work is bigger than choosing a crypto profile."
-            body="A credible PQC transition needs inventory, traffic prioritization, trust readiness, policy governance, exception decisions, and evidence that protected paths are actually protected."
+            body="A credible PQC transition needs inventory, traffic prioritization, trust readiness, policy governance, exception decisions, and evidence that protected paths are operating as intended."
             align="center"
           />
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -176,7 +176,7 @@ export default function CompliancePage() {
             {[
               { icon: TimerReset, title: "Phased deployment", text: "Protect the highest-risk paths first, then expand with evidence rather than rushing every system." },
               { icon: RefreshCw, title: "Crypto agility", text: "Let policy govern protection lifecycle, transition rules, and explicit exceptions." },
-              { icon: ClipboardCheck, title: "Evidence for stakeholders", text: "Turn deployment health, trust readiness, and policy changes into a credible readiness story for buyers, auditors, and boards." },
+              { icon: ClipboardCheck, title: "Evidence for stakeholders", text: "Turn rollout state, trust readiness, and policy changes into a credible readiness story for buyers, auditors, and boards." },
             ].map((item, index) => (
               <FadeIn key={item.title} delay={index * 0.06}>
                 <FeatureCard icon={item.icon} title={item.title}>

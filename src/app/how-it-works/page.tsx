@@ -23,15 +23,15 @@ const flowSteps = [
   },
   {
     title: "Mode engine selects behavior",
-    text: "Policy chooses mediated protection, opaque protection, approved passthrough, or block for each selected path.",
+    text: "Policy chooses governed protection, opaque behavior, approved passthrough, or block for each selected path.",
   },
   {
-    title: "Crypto boundary enforces",
+    title: "Protection boundary enforces",
     text: "The selected mode applies the approved protection behavior for that path.",
   },
   {
-    title: "Evidence proves state",
-    text: "Operators receive deployment and coverage evidence without making cloud services the live traffic path.",
+    title: "Evidence records state",
+    text: "Operators receive deployment and coverage records without making cloud services the live traffic path.",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function HowItWorksPage() {
         body="QuantumHalon turns post-quantum protection into an enforceable network behavior without forcing every endpoint or application to move first."
         imageSrc="/images/generated/how-packet-path-plate.webp"
         imageAlt="Decorative monochrome technical plate showing protected packet movement through a path."
-        plateMeta={["Subject / Packet path", "Context / Inline enforcement", "Role / Decorative flow plate"]}
+        plateCaption="Protected packet movement through a local inline path"
         chips={["Inline", "Classify", "Select Mode", "Enforce", "Report"]}
         primaryCta={{ href: "/contact", label: "Walk Through Your Paths" }}
         secondaryCta={{ href: "/product", label: "Product Details" }}
@@ -96,19 +96,19 @@ export default function HowItWorksPage() {
             <ImagePanel
               src="/images/generated/how-mode-logic-plate.webp"
               alt="Decorative monochrome technical plate suggesting four policy outcomes."
-              caption="Mode behavior stays policy-driven"
+              caption="Mode logic separates traffic behavior from application rewrites"
             />
           </FadeIn>
           <div>
             <SectionHeader
               label="Mode Logic"
               title="The same gateway can make different decisions for different paths."
-              body="Mode 1 provides mediated protection. Mode 2 protects opaque paths. Passthrough is explicit. Block stops traffic according to policy."
+              body="The public model stays simple: protected behavior, opaque behavior, approved passthrough, or block. Detailed mode mechanics belong in technical briefings."
             />
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {[
-                { icon: ShieldCheck, title: "Mode 1", text: "Mediated protection for paths where trusted handling is appropriate." },
-                { icon: Network, title: "Mode 2", text: "Opaque protection for paths where application behavior should remain unchanged." },
+                { icon: ShieldCheck, title: "Governed protection", text: "For paths where trusted handling is appropriate." },
+                { icon: Network, title: "Opaque behavior", text: "For paths where application behavior should remain unchanged." },
                 { icon: Route, title: "Passthrough", text: "Approved transparent forwarding for paths outside active protection." },
                 { icon: Radar, title: "Block", text: "Policy denial that stops the flow instead of silently downgrading." },
               ].map((item, index) => (
@@ -127,21 +127,26 @@ export default function HowItWorksPage() {
         <div className="editorial-wrap">
           <SectionHeader
             label="Trust Model"
-            title="Mode 1 starts with clear enterprise trust readiness."
-            body="For mediated protection, organizations prepare the required trust through standard enterprise rollout processes before activation. Detailed trust architecture is reserved for technical review."
+            title="Governed protection starts with clear enterprise trust readiness."
+            body="For paths that require trusted handling, organizations prepare the required trust through standard enterprise rollout processes before activation. Detailed trust architecture is reserved for technical review."
             align="center"
           />
-          <div className="mt-10 grid gap-4 md:grid-cols-4">
+          <div className="mt-10 border-y border-black/10">
             {[
-              { icon: GitBranch, title: "Prepare trust", text: "Use normal enterprise rollout controls to prepare systems for mediated protection." },
-              { icon: KeyRound, title: "Activate Mode 1", text: "Turn on mediated protection only for approved paths after trust readiness is confirmed." },
+              { icon: GitBranch, title: "Prepare trust", text: "Use normal enterprise rollout controls before activating governed protection." },
+              { icon: KeyRound, title: "Activate approved paths", text: "Turn on trusted handling only for approved paths after readiness is confirmed." },
               { icon: Cloud, title: "Keep custody bounded", text: "Sensitive trust operations remain inside controlled custody boundaries." },
               { icon: EyeOff, title: "Preserve the boundary", text: "Mode choices keep visibility and payload handling explicit." },
             ].map((item, index) => (
               <FadeIn key={item.title} delay={index * 0.05}>
-                <FeatureCard icon={item.icon} title={item.title}>
-                  {item.text}
-                </FeatureCard>
+                <div className="grid gap-4 border-b border-black/10 px-4 py-5 last:border-b-0 md:grid-cols-[72px_0.55fr_1fr] md:items-start">
+                  <div className="flex items-center gap-3">
+                    <item.icon className="h-4 w-4 text-[#126dff]" />
+                    <span className="text-[10px] font-semibold uppercase text-[#126dff]">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold leading-tight text-black">{item.title}</h3>
+                  <p className="text-sm leading-6 text-black/[0.58]">{item.text}</p>
+                </div>
               </FadeIn>
             ))}
           </div>

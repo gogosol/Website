@@ -58,7 +58,7 @@ export function PageHero({
   body,
   imageSrc,
   imageAlt,
-  plateMeta,
+  plateCaption,
   chips = [],
   primaryCta = { href: "/contact", label: "Technical Demo" },
   secondaryCta,
@@ -70,17 +70,13 @@ export function PageHero({
   body: React.ReactNode;
   imageSrc?: string;
   imageAlt?: string;
-  plateMeta?: [string, string, string];
+  plateCaption?: string;
   chips?: string[];
   primaryCta?: { href: string; label: string };
   secondaryCta?: { href: string; label: string };
   compact?: boolean;
 }) {
-  const imageMeta = plateMeta ?? [
-    `Context / ${label}`,
-    "Asset / Decorative technical plate",
-    "Role / Visual narrative support",
-  ];
+  const imageCaption = plateCaption ?? `${label} visualizes the page theme as a decorative technical plate`;
 
   return (
     <section
@@ -144,10 +140,8 @@ export function PageHero({
                 className="object-cover"
               />
             </div>
-            <div className="grid grid-cols-3 gap-3 border-t border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45]">
-              <span>{imageMeta[0]}</span>
-              <span>{imageMeta[1]}</span>
-              <span className="text-right">{imageMeta[2]}</span>
+            <div className="border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
+              {imageCaption}
             </div>
           </motion.div>
         ) : null}
@@ -188,15 +182,18 @@ export function FeatureCard({
   meta?: string;
 }) {
   return (
-    <div className="glass-panel glass-interactive group h-full p-5">
-      <div className="mb-5 flex items-center justify-between gap-3">
-        <div className="flex h-10 w-10 items-center justify-center border border-black/[0.12] bg-white text-[#126dff] transition-colors group-hover:border-black">
-          <Icon className="h-5 w-5" />
+    <div className="group h-full border-t border-black/10 py-5">
+      <div className="flex items-start gap-4">
+        <div className="mt-0.5 flex w-12 flex-shrink-0 items-center gap-3">
+          <Icon className="h-4 w-4 text-[#126dff]" />
+          <span className="h-px flex-1 bg-black/20 transition-colors group-hover:bg-[#126dff]/45" />
         </div>
-        {meta ? <span className="text-[10px] uppercase text-black/[0.45]">{meta}</span> : null}
+        <div>
+          {meta ? <div className="mb-2 text-[10px] uppercase leading-4 text-black/[0.45]">{meta}</div> : null}
+          <h3 className="text-base font-semibold leading-tight text-black">{title}</h3>
+          <div className="mt-3 text-sm leading-6 text-black/[0.58]">{children}</div>
+        </div>
       </div>
-      <h3 className="text-base font-semibold text-black">{title}</h3>
-      <div className="mt-2 text-sm leading-6 text-black/[0.58]">{children}</div>
     </div>
   );
 }
@@ -218,7 +215,7 @@ export function ImagePanel({
         <Image src={src} alt={alt} fill preload={preload} sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
       </div>
       {caption ? (
-        <div className="border-t border-black/10 px-4 py-3 text-[10px] uppercase text-black/[0.45]">
+        <div className="border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
           {caption}
         </div>
       ) : null}
@@ -246,14 +243,14 @@ export function StatStrip({
 const modeCards = [
   {
     icon: Layers,
-    title: "Mode 1",
-    kicker: "Mediated protection",
+    title: "Governed protection",
+    kicker: "Trusted handling",
     text: "For paths that require trusted mediation, QuantumHalon applies policy-selected post-quantum protection while preserving a bounded governance model.",
   },
   {
     icon: Lock,
-    title: "Mode 2",
-    kicker: "Opaque path protection",
+    title: "Opaque behavior",
+    kicker: "Application-stable protection",
     text: "For paths that should remain opaque, QuantumHalon protects transit without exposing application payloads to cloud services.",
   },
   {
@@ -272,21 +269,19 @@ const modeCards = [
 
 export function ModeMatrixVisual() {
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="border-y border-black/10">
       {modeCards.map(({ icon: Icon, title, kicker, text }, index) => (
         <FadeIn key={title} delay={index * 0.05}>
-          <div className="relative h-full overflow-hidden border border-black/10 bg-white/[0.45] p-5">
-            <div className="absolute inset-x-0 top-0 h-px bg-black" />
-            <div className="flex items-start gap-4">
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center border border-black/[0.12] bg-white text-[#126dff]">
-                <Icon className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-[10px] font-semibold uppercase text-[#126dff]">{kicker}</div>
-                <h3 className="mt-1 text-lg font-semibold text-black">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-black/[0.58]">{text}</p>
-              </div>
+          <div className="grid gap-4 border-b border-black/10 px-4 py-6 last:border-b-0 md:grid-cols-[72px_0.65fr_1fr] md:items-start">
+            <div className="flex items-center gap-3">
+              <Icon className="h-4 w-4 text-[#126dff]" />
+              <span className="text-[10px] font-semibold uppercase text-[#126dff]">{String(index + 1).padStart(2, "0")}</span>
             </div>
+            <div>
+              <div className="text-[10px] font-semibold uppercase text-black/[0.42]">{kicker}</div>
+              <h3 className="mt-1 text-xl font-semibold leading-tight text-black">{title}</h3>
+            </div>
+            <p className="text-sm leading-6 text-black/[0.58]">{text}</p>
           </div>
         </FadeIn>
       ))}
@@ -295,87 +290,72 @@ export function ModeMatrixVisual() {
 }
 
 export function InlineGatewayVisual() {
+  const modes = ["Trusted", "Opaque", "Passthrough", "Block"];
+
   return (
     <div
       className="technical-plate relative overflow-hidden bg-white/[0.55]"
       role="img"
-      aria-label="Technical plate showing enterprise traffic passing through a QuantumHalon inline gateway while QCertify governance remains out of the live packet path."
+      aria-label="Technical plate showing bidirectional enterprise traffic crossing a QuantumHalon inline gateway while QCertify governance remains out of the live packet path."
     >
       <div className="grid grid-cols-[1fr_auto] border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45]">
-        <span>Traffic path / Local packet plane</span>
+        <span>Bidirectional traffic path / Local packet plane</span>
         <span className="text-right">Governance / Out of band</span>
       </div>
 
-      <div className="relative aspect-[16/8] min-h-[340px]">
-        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 960 480" preserveAspectRatio="none" aria-hidden="true">
+      <div className="relative overflow-hidden px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 960 520" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <pattern id="gateway-grid" width="48" height="48" patternUnits="userSpaceOnUse">
               <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(0,0,0,0.055)" strokeWidth="1" />
             </pattern>
-            <linearGradient id="gateway-sheen" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stopColor="#126dff" stopOpacity="0.12" />
-              <stop offset="0.48" stopColor="#ffffff" stopOpacity="0" />
-              <stop offset="1" stopColor="#126dff" stopOpacity="0.10" />
-            </linearGradient>
           </defs>
-
           <rect width="960" height="480" fill="url(#gateway-grid)" />
-          <path d="M 70 240 H 890" stroke="rgba(0,0,0,0.42)" strokeWidth="1.2" />
-          <path d="M 70 258 H 890" stroke="rgba(0,0,0,0.14)" strokeWidth="1" />
-          <path d="M 70 338 C 236 315 350 326 480 338 C 618 351 728 363 890 338" fill="none" stroke="rgba(18,109,255,0.58)" strokeWidth="1" strokeDasharray="6 9" />
-
-          <rect x="390" y="78" width="180" height="300" fill="url(#gateway-sheen)" stroke="rgba(18,109,255,0.62)" strokeWidth="1" />
-          <path d="M 480 52 V 406" stroke="rgba(0,0,0,0.20)" strokeWidth="1" />
-          <path d="M 390 240 H 570" stroke="#126dff" strokeWidth="2" />
-          <circle cx="390" cy="240" r="4" fill="#126dff" />
-          <circle cx="570" cy="240" r="4" fill="#126dff" />
-
         </svg>
 
-        <div className="absolute inset-0 hidden md:block">
-          <div className="absolute left-6 top-[35%] max-w-[230px] -translate-y-1/2">
-            <div className="text-[10px] font-semibold uppercase leading-4 text-black/[0.45]">Source side</div>
-            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Enterprise traffic</h3>
-            <p className="mt-12 text-sm leading-6 text-black/[0.58]">Users and applications stay on the planned route.</p>
-          </div>
+        <div className="relative z-10">
+          <div className="grid gap-5 lg:grid-cols-[1fr_220px_1fr] lg:items-center">
+            <div className="border-y border-black/10 bg-white/45 p-4">
+              <div className="text-[10px] font-semibold uppercase leading-4 text-black/[0.45]">Traffic side A</div>
+              <h3 className="mt-2 text-xl font-semibold leading-tight text-black">Protected path side</h3>
+              <p className="mt-4 text-sm leading-6 text-black/[0.58]">Traffic can approach the inline gateway from either direction.</p>
+            </div>
 
-          <div className="absolute left-1/2 top-[36%] w-60 -translate-x-1/2 -translate-y-1/2 text-center">
-            <div className="text-[10px] font-semibold uppercase leading-4 text-[#126dff]">QuantumHalon</div>
-            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Inline gateway</h3>
-            <p className="mt-20 text-sm leading-6 text-black/[0.58]">Classify path / select mode / enforce policy</p>
-            <div className="mt-3 inline-flex items-center gap-2 border border-black/15 bg-white px-3 py-1.5 text-xs text-black/60">
-              <span className="h-2 w-2 bg-[#126dff]" />
-              Policy ready
+            <div className="relative py-6 lg:py-10">
+              <div className="absolute left-0 right-0 top-1/2 hidden h-px -translate-y-1/2 bg-black/25 lg:block" />
+              <div className="absolute left-0 right-0 top-[calc(50%+18px)] hidden h-px -translate-y-1/2 bg-black/10 lg:block" />
+              <div className="relative border border-[#126dff]/70 bg-white/85 px-5 py-6 text-center shadow-[0_18px_45px_rgba(18,109,255,0.08)]">
+                <div className="text-[10px] font-semibold uppercase leading-4 text-[#126dff]">QuantumHalon</div>
+                <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Inline gateway</h3>
+                <p className="mx-auto mt-4 max-w-40 text-sm leading-6 text-black/[0.58]">Classify path and apply selected mode.</p>
+                <div className="mt-5 inline-flex items-center gap-2 border border-black/15 bg-white px-3 py-1.5 text-xs text-black/60">
+                  <span className="h-2 w-2 bg-[#126dff]" />
+                  Policy ready
+                </div>
+              </div>
+            </div>
+
+            <div className="border-y border-black/10 bg-white/45 p-4 lg:text-right">
+              <div className="text-[10px] font-semibold uppercase leading-4 text-black/[0.45]">Traffic side B</div>
+              <h3 className="mt-2 text-xl font-semibold leading-tight text-black">Adjacent path side</h3>
+              <p className="mt-4 text-sm leading-6 text-black/[0.58]">The same governed path can carry return traffic under the same policy model.</p>
             </div>
           </div>
 
-          <div className="absolute right-6 top-[35%] max-w-[230px] -translate-y-1/2">
-            <div className="text-[10px] font-semibold uppercase leading-4 text-black/[0.45]">Destination side</div>
-            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Network edge</h3>
-            <p className="mt-12 text-sm leading-6 text-black/[0.58]">Protected paths continue to intended destinations.</p>
+          <div className="mt-6 grid border-y border-black/10 sm:grid-cols-4">
+            {modes.map((mode, index) => (
+              <div key={mode} className="border-b border-black/10 px-4 py-3 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
+                <div className="text-[10px] font-semibold uppercase text-[#126dff]">{String(index + 1).padStart(2, "0")}</div>
+                <div className="mt-1 text-sm font-semibold text-black">{mode}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 grid gap-4 border-t border-black/10 pt-4 text-sm leading-6 text-black/[0.58] md:grid-cols-[0.58fr_1fr]">
+            <strong className="text-black">QCertify governance stays out of path</strong>
+            <span>Policy direction and operational signals move separately from live packets, so cloud governance does not become the packet route.</span>
           </div>
         </div>
-      </div>
-
-      <div className="grid gap-0 border-t border-black/10 md:hidden">
-        {[
-          ["01", "Enterprise traffic", "Users and applications stay on the planned route."],
-          ["02", "QuantumHalon inline gateway", "Classify path, select mode, and enforce policy."],
-          ["03", "Network edge", "Protected paths continue to intended destinations."],
-        ].map(([number, title, text]) => (
-          <div key={title} className="grid grid-cols-[40px_1fr] gap-3 border-b border-black/10 px-4 py-4 last:border-b-0">
-            <span className="text-[10px] font-semibold uppercase text-[#126dff]">{number}</span>
-            <span>
-              <strong className="block text-sm text-black">{title}</strong>
-              <span className="mt-1 block text-sm leading-6 text-black/[0.58]">{text}</span>
-            </span>
-          </div>
-        ))}
-      </div>
-
-      <div className="grid gap-4 border-t border-black/10 px-4 py-4 text-sm leading-6 text-black/[0.58] md:grid-cols-[0.68fr_1fr]">
-        <strong className="text-black">QCertify governance stays out of path</strong>
-        <span>Policy direction and operational signals move separately from live packets, keeping the plate clean and the operating model easy to read.</span>
       </div>
     </div>
   );
@@ -426,8 +406,8 @@ export const homeCapabilities = [
 
 export const migrationSteps = [
   { title: "Discover protected paths", text: "Map sites, critical services, regulatory pressure, and data lifetime." },
-  { title: "Choose the mode per path", text: "Use mediated protection, opaque protection, approved passthrough, or block according to policy." },
-  { title: "Prepare trust readiness", text: "Prepare enterprise trust for mediated paths through standard organizational processes." },
+  { title: "Choose behavior per path", text: "Use governed protection, opaque behavior, approved passthrough, or block according to policy." },
+  { title: "Prepare trust readiness", text: "Prepare enterprise trust for paths that require trusted handling through standard organizational processes." },
   { title: "Expand with evidence", text: "Use deployment state, operational signals, and change records to prove progress without destabilizing the network." },
 ];
 
@@ -452,7 +432,7 @@ export const resourceTopics = [
     icon: Server,
     items: [
       "Inline gateway deployment at network chokepoints",
-      "Mode 1 vs Mode 2 decision patterns",
+      "Protection behavior decision patterns",
       "Privacy boundaries and controlled enforcement",
     ],
   },
@@ -461,7 +441,7 @@ export const resourceTopics = [
     icon: Activity,
     items: [
       "Crypto agility operating models",
-      "Trust readiness for mediated protection",
+      "Trust readiness for governed rollout",
       "Evidence for regulated transition programs",
     ],
   },

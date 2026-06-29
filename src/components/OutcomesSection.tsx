@@ -4,10 +4,10 @@ import { FastForward, Eye, Shield, ActivitySquare } from 'lucide-react';
 
 export default function OutcomesSection() {
   const outcomes = [
-    { value: "Visibility", label: "Clear executive dashboarding translating technical risk into strategic readiness.", icon: <Eye /> },
-    { value: "Velocity", label: "Faster readiness coordination with automated evidence collection.", icon: <FastForward /> },
-    { value: "Trust", label: "Stronger partner and customer trust through reviewable, defensible reporting.", icon: <Shield /> },
-    { value: "Efficiency", label: "Sharply reduced manual effort across highly fragmented technical teams.", icon: <ActivitySquare /> }
+    { value: "Visibility", label: "Clearer executive view of traffic-path risk and readiness work.", icon: <Eye /> },
+    { value: "Velocity", label: "Faster coordination around protected paths and rollout decisions.", icon: <FastForward /> },
+    { value: "Trust", label: "More defensible conversations with buyers, auditors, and risk teams.", icon: <Shield /> },
+    { value: "Focus", label: "Less drift across fragmented technical and governance teams.", icon: <ActivitySquare /> }
   ];
 
   return (
@@ -15,7 +15,7 @@ export default function OutcomesSection() {
       <div className="bg-glow-orb w-[600px] h-[600px] bg-white bottom-[-200px] left-[-300px] opacity-[0.03]"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <h2 className="text-3xl md:text-5xl text-white font-semibold tracking-tight mb-16 text-center text-glow">
-          Measurable confidence.
+          Practical confidence.
         </h2>
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -44,7 +44,7 @@ export default function AboutPage() {
         body="QCertify creates practical post-quantum cybersecurity solutions for organizations that need to reduce quantum-era risk without waiting for every application, vendor, and governance process to move at once. QuantumHalon is our first solution."
         imageSrc="/images/generated/about-mission-instrument-plate.webp"
         imageAlt="Decorative monochrome technical plate showing a precision mission instrument."
-        plateMeta={["Subject / Mission instrument", "Context / QCertify company story", "Role / Decorative precision plate"]}
+        plateCaption="Precision instrument for practical post-quantum work"
         chips={["Focused", "Technical", "Practical", "Privacy-aware"]}
         primaryCta={{ href: "/contact", label: "Talk to QCertify" }}
         secondaryCta={{ href: "/product", label: "Explore Product" }}
@@ -57,12 +57,19 @@ export default function AboutPage() {
             title="The hard part is not knowing PQC is coming. It is deploying it credibly."
             body="Most organizations cannot pause the business while every endpoint, application, partner path, trust store, and legacy system is migrated. QCertify exists to make early protection possible in that messy middle."
           />
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="border-y border-black/10">
             {convictions.map((item, index) => (
               <FadeIn key={item.title} delay={index * 0.05}>
-                <FeatureCard icon={item.icon} title={item.title}>
-                  {item.text}
-                </FeatureCard>
+                <div className="grid gap-4 border-b border-black/10 px-4 py-5 last:border-b-0 sm:grid-cols-[64px_1fr]">
+                  <div className="flex items-center gap-3">
+                    <item.icon className="h-4 w-4 text-[#126dff]" />
+                    <span className="text-[10px] font-semibold uppercase text-[#126dff]">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold leading-tight text-black">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-black/[0.58]">{item.text}</p>
+                  </div>
+                </div>
               </FadeIn>
             ))}
           </div>
@@ -75,7 +82,7 @@ export default function AboutPage() {
             <ImagePanel
               src="/images/generated/about-gateway-closeup-plate.webp"
               alt="Decorative monochrome macro plate showing a gateway surface and protected path."
-              caption="First solution: QuantumHalon"
+              caption="QuantumHalon is the first concrete QCertify solution"
             />
           </FadeIn>
           <div>
@@ -88,8 +95,8 @@ export default function AboutPage() {
               {[
                 { icon: ShieldCheck, title: "Protect now", text: "Reduce HNDL exposure on critical paths while the deeper migration continues." },
                 { icon: Lock, title: "Bound custody", text: "Keep sensitive trust operations inside controlled custody boundaries." },
-                { icon: Compass, title: "Guide migration", text: "Help teams choose which paths need mediated protection, opaque protection, passthrough, or block." },
-                { icon: Shield, title: "Avoid hype", text: "Communicate the real architecture and the real gaps instead of promising magic PQC." },
+                { icon: Compass, title: "Guide migration", text: "Help teams choose which paths need governed protection, opaque behavior, passthrough, or block." },
+                { icon: Shield, title: "Avoid hype", text: "Communicate the real architecture and the real boundaries instead of promising magic PQC." },
               ].map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.05}>
                   <FeatureCard icon={item.icon} title={item.title}>

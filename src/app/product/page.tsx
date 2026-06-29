@@ -23,13 +23,13 @@ const productPillars = [
   },
   {
     icon: LockKeyhole,
-    title: "Governed PQC crypto boundary",
+    title: "Governed protection boundary",
     text: "Protection profiles and transition behavior are selected through policy so coverage can evolve without redesigning the network.",
   },
   {
     icon: KeyRound,
-    title: "Mode 1 trust distribution",
-    text: "Organizations prepare enterprise trust for mediated paths through their normal governance and rollout processes.",
+    title: "Trust readiness",
+    text: "Organizations prepare the required enterprise trust through normal governance and rollout processes before activation.",
   },
   {
     icon: Cloud,
@@ -45,11 +45,11 @@ export default function ProductPage() {
         compact
         label="Product"
         title="QuantumHalon is a post-quantum inline gateway fabric."
-        body="QuantumHalon protects selected enterprise traffic paths from a transparent inline position. It gives operators policy control over mediated protection, opaque protection, explicit passthrough, and blocking."
+        body="QuantumHalon protects selected enterprise traffic paths from a transparent inline position. It gives operators policy control over protected paths, explicit passthrough, and blocking without describing implementation details on the public site."
         imageSrc="/images/generated/product-gateway-fabric-plate.webp"
         imageAlt="Decorative monochrome technical plate showing a vertical inline gateway fabric."
-        plateMeta={["Subject / Gateway fabric", "Context / QuantumHalon product", "Role / Decorative system plate"]}
-        chips={["Mode 1", "Mode 2", "Passthrough", "Block"]}
+        plateCaption="Inline gateway fabric for governed post-quantum paths"
+        chips={["Trusted handling", "Opaque behavior", "Passthrough", "Block"]}
         primaryCta={{ href: "/contact", label: "Book a Technical Demo" }}
         secondaryCta={{ href: "/how-it-works", label: "Architecture" }}
       />
@@ -89,12 +89,19 @@ export default function ProductPage() {
               title="Gateway-level protection where traffic already moves."
               body="QuantumHalon is inserted inline so selected traffic crosses the gateway by design. Existing application behavior remains stable while protection is governed at the path level."
             />
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="mt-8 border-y border-black/10">
               {productPillars.map((pillar, index) => (
                 <FadeIn key={pillar.title} delay={index * 0.05}>
-                  <FeatureCard icon={pillar.icon} title={pillar.title}>
-                    {pillar.text}
-                  </FeatureCard>
+                  <div className="grid gap-4 border-b border-black/10 px-4 py-5 last:border-b-0 sm:grid-cols-[56px_1fr]">
+                    <div className="flex items-center gap-3">
+                      <pillar.icon className="h-4 w-4 text-[#126dff]" />
+                      <span className="text-[10px] font-semibold uppercase text-[#126dff]">{String(index + 1).padStart(2, "0")}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold leading-tight text-black">{pillar.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-black/[0.58]">{pillar.text}</p>
+                    </div>
+                  </div>
                 </FadeIn>
               ))}
             </div>
@@ -111,7 +118,7 @@ export default function ProductPage() {
             <ImagePanel
               src="/images/generated/pqc-lattice-plate.webp"
               alt="Decorative monochrome technical lattice plate with sparse blue accent nodes."
-              caption="Protection profiles move under governed policy"
+              caption="Governed protection profiles can change without redrawing the network"
             />
           </FadeIn>
           <div>
@@ -122,7 +129,7 @@ export default function ProductPage() {
             />
             <div className="mt-8 border-y border-black/10">
               {[
-                "Hybrid profiles help protect traffic while the ecosystem catches up.",
+                "Policy-selected profiles help protect traffic while the ecosystem catches up.",
                 "Opaque protection can preserve application behavior while reducing exposure.",
                 "Lifecycle governance can phase out unsuitable profiles before activation.",
                 "Policy changes can be staged without broad network redesign.",
@@ -155,12 +162,12 @@ export default function ProductPage() {
         <div className="editorial-wrap">
           <SectionHeader
             label="Operational Readiness"
-            title="Built around controlled deployment, not theoretical PQC slides."
+            title="Built around controlled rollout, not theoretical PQC slides."
             align="center"
           />
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
-              { icon: ShieldCheck, title: "Controlled activation", text: "Gateways apply governed policy only after required deployment conditions are ready." },
+              { icon: ShieldCheck, title: "Controlled activation", text: "Gateways apply governed policy only after required rollout conditions are ready." },
               { icon: RefreshCw, title: "Phased rollout", text: "Start with high-risk paths, learn from operational evidence, and expand without forcing a big-bang application rewrite." },
               { icon: Zap, title: "Operational flexibility", text: "Operators can adjust protected-path behavior through governed rollout rather than broad network rework." },
             ].map((item, index) => (

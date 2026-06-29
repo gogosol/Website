@@ -7,22 +7,22 @@ export default function PlatformCapabilities() {
     {
       title: "Readiness Intelligence",
       icon: <BarChart className="w-5 h-5" />,
-      features: ["Posture assessments", "Maturity scoring", "Risk visibility", "Roadmap planning"]
+      features: ["Path prioritization", "Risk visibility", "Readiness planning", "Stakeholder context"]
     },
     {
       title: "Assurance Operations",
       icon: <CheckCircle2 className="w-5 h-5" />,
-      features: ["Task orchestration", "Evidence collection", "Approvals and review flows", "Audit trail generation"]
+      features: ["Evidence planning", "Exception records", "Review workflows", "Readiness notes"]
     },
     {
       title: "Governance & Controls",
       icon: <Search className="w-5 h-5" />,
-      features: ["Framework mapping", "Policy alignment", "Control ownership", "Cross-team coordination"]
+      features: ["Policy alignment", "Trust readiness", "Control ownership", "Cross-team coordination"]
     },
     {
       title: "Reporting & Trust Artifacts",
       icon: <FileText className="w-5 h-5" />,
-      features: ["Executive dashboards", "Exportable reports", "Board-ready summaries", "Customer trust packages"]
+      features: ["Executive summaries", "Readiness briefs", "Procurement notes", "Technical review inputs"]
     }
   ];
 
@@ -34,10 +34,10 @@ export default function PlatformCapabilities() {
         <div className="mb-16 md:flex justify-between items-end">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-5xl text-white font-semibold tracking-tight mb-6">
-              The infrastructure behind certifiable readiness.
+              Practical structure for post-quantum readiness.
             </h2>
             <p className="text-slate-300 text-lg leading-relaxed">
-              Enterprise capabilities for evidence, assurance, and action. QCertify transforms disparate compliance functions into a single scalable system of record.
+              Capabilities for prioritizing traffic paths, planning governed rollout, and explaining readiness without overstating certification or implementation details.
             </p>
           </div>
         </div>

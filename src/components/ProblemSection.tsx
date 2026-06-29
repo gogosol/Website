@@ -12,7 +12,7 @@ const problems = [
   {
     icon: <ListTodo className="w-5 h-5 text-white/80" />,
     title: "No audit-ready workflow",
-    desc: "Existing workflows are manual, making repeatable certification prep almost impossible."
+    desc: "Existing workflows are manual, making repeatable readiness evidence difficult to maintain."
   },
   {
     icon: <Users className="w-5 h-5 text-white/80" />,
@@ -35,10 +35,10 @@ export default function ProblemSection() {
         <div className="max-w-3xl mb-16">
           <h2 className="text-3xl md:text-5xl text-white font-semibold tracking-tight mb-6 leading-tight">
             The challenge is not knowing change is coming. <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">The challenge is proving you are prepared.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">The challenge is showing disciplined progress.</span>
           </h2>
           <p className="text-slate-300 text-lg leading-relaxed">
-            Quantum readiness is not just a technical issue. It is an assurance problem. Most organizations are not operationally ready for quantum-era trust demands, leaving their readiness work fragmented and vulnerable to gaps.
+            Quantum readiness is not just a technical issue. It is an operating problem. Most organizations need a practical way to prioritize protected paths, track decisions, and explain progress without overstating maturity.
           </p>
         </div>
 

@@ -5,23 +5,23 @@ import { ChevronDown, Hexagon } from 'lucide-react';
 const faqs = [
   {
     q: "What does QCertify actually do?",
-    a: "QCertify is a platform for operationalizing infrastructure-level trust. It provides a system of record for organizations to assess, document, and defend their cryptographic readiness and overall security posture, replacing fragmented spreadsheets with an auditable workflow."
+    a: "QCertify builds practical post-quantum security solutions. Its first solution, QuantumHalon, helps organizations protect selected traffic paths while keeping migration, policy, and evidence work understandable."
   },
   {
     q: "Is QCertify a compliance tool, certification platform, or readiness system?",
-    a: "It is an assurance platform that unifies all three. While typical GRC tools operate at a high-level policy tier, QCertify is designed specifically for the depth and rigor required for cryptographic transitions and next-generation technical certifications."
+    a: "QCertify is not positioned as a generic compliance platform. The public focus is governed post-quantum transition: protected paths, readiness evidence, and clear technical boundaries."
   },
   {
     q: "Does it replace existing GRC workflows?",
-    a: "No. QCertify augments existing GRC environments (like Archer or AuditBoard) by providing purpose-built workflows, evidence pipelines, and framework mappings specific to complex technical transitions that generalist tools handle poorly."
+    a: "No. QCertify is intended to complement existing governance and risk programs by clarifying which traffic paths, trust steps, and readiness evidence matter for post-quantum migration."
   },
   {
     q: "How does QCertify support post-quantum readiness?",
-    a: "The platform tracks the discovery of vulnerable assets, maps them against compliance mandates (e.g., NIST PQC standards), coordinates remediation tasks across siloed teams, and stores cryptographic transition evidence in a secure, reviewable ledger."
+    a: "QCertify helps teams reason about long-lived data exposure, prioritize protected paths, and prepare evidence for buyers, auditors, and risk teams without publishing implementation mechanics."
   },
   {
     q: "Is the platform suitable for highly regulated environments?",
-    a: "Yes. QCertify is architected with advanced RBAC, comprehensive event logging, and secure compartmentalization. It is built explicitly for defense-adjacent, financial, and critical infrastructure environments where data provenance is paramount."
+    a: "QCertify is designed for serious regulated conversations, but public materials avoid claiming certifications, production hardening, or assurance controls that have not been independently validated."
   }
 ];
 

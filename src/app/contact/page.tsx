@@ -10,7 +10,7 @@ const reasons = [
   "Map QuantumHalon to protected traffic paths",
   "Compare policy modes for real routes",
   "Discuss HNDL risk and data-lifetime priorities",
-  "Plan trust readiness for mediated protection",
+  "Plan trust readiness for governed rollout",
   "Align deployment with governance and procurement timelines",
 ];
 

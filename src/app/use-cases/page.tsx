@@ -49,7 +49,7 @@ export default function UseCasesPage() {
         body="QuantumHalon is best suited to high-value communications where post-quantum migration cannot wait for a clean application rewrite."
         imageSrc="/images/generated/use-cases-traffic-map-plate.webp"
         imageAlt="Decorative monochrome technical plate suggesting multiple enterprise traffic paths."
-        plateMeta={["Subject / Enterprise traffic map", "Context / Use-case selection", "Role / Decorative path plate"]}
+        plateCaption="Enterprise traffic paths become the unit of protection"
         chips={["Sites", "Cloud", "Partners", "Segments", "Critical egress"]}
         primaryCta={{ href: "/contact", label: "Discuss Your Paths" }}
         secondaryCta={{ href: "/industries", label: "Industries" }}
@@ -120,7 +120,7 @@ export default function UseCasesPage() {
             <ImagePanel
               src="/images/generated/use-cases-hybrid-legacy-plate.webp"
               alt="Decorative monochrome technical plate showing a legacy path connected to a modern endpoint."
-              caption="Protect selected paths while endpoints stay stable"
+              caption="Selected path protection keeps legacy endpoints stable"
             />
           </FadeIn>
         </div>

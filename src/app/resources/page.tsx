@@ -21,7 +21,7 @@ export default function ResourcesPage() {
         body="Guides, explainers, and technical briefs for teams turning quantum risk into a practical network, security, and governance program."
         imageSrc="/images/generated/resources-library-plate.webp"
         imageAlt="Decorative monochrome technical plate suggesting a library of technical briefs."
-        plateMeta={["Subject / Technical brief library", "Context / Resource index", "Role / Decorative archive plate"]}
+        plateCaption="Technical briefs organized around migration decisions"
         chips={["Threat models", "Architecture", "Migration", "Governance"]}
         primaryCta={{ href: "/contact", label: "Ask a Question" }}
         secondaryCta={{ href: "/compliance", label: "Readiness" }}
@@ -70,8 +70,8 @@ export default function ResourcesPage() {
           <div>
             <SectionHeader
               label="Featured Brief"
-              title="Mode 1 vs Mode 2: choosing the right protection behavior."
-              body="A practical decision guide for when TLS-aware mediation, opaque traffic wrapping, passthrough, or block makes sense in a post-quantum transition program."
+              title="Choosing the right protection behavior."
+              body="A practical decision guide for when governed protection, opaque behavior, approved passthrough, or block makes sense in a post-quantum transition program."
             />
             <div className="mt-8">
               <CTAButton href="/contact" variant="secondary">
@@ -83,7 +83,7 @@ export default function ResourcesPage() {
             <ImagePanel
               src="/images/generated/resources-decision-guide-plate.webp"
               alt="Decorative monochrome technical plate suggesting decision logic and mode selection."
-              caption="Decision guides will stay high-level and operator-safe"
+              caption="Decision guides stay high-level and operator-safe"
             />
           </FadeIn>
         </div>

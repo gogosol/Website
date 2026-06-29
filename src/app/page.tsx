@@ -16,7 +16,6 @@ import SectionLabel from "@/components/SectionLabel";
 import BrandLogo from "@/components/BrandLogo";
 import {
   FadeIn,
-  InlineGatewayVisual,
   LinkCard,
   SectionHeader,
   StatStrip,
@@ -88,7 +87,7 @@ export default function Home() {
       <EditorialPlate
         src="/images/generated/home-hndl-archive-plate.webp"
         alt="Decorative monochrome technical plate showing a captured encrypted packet archive."
-        meta={["Subject / Captured traffic archive", "Context / HNDL exposure", "Role / Decorative risk plate"]}
+        caption="Captured traffic archives can outlive today's encryption"
       />
 
       <section className="border-b border-black/10 py-20 lg:py-28">
@@ -133,7 +132,7 @@ export default function Home() {
               body="The gateway sits inline at governed chokepoints. Policy selects the behavior per traffic path while QCertify governance remains outside live packet handling."
             />
             <FadeIn delay={0.1}>
-              <InlineGatewayVisual />
+              <HomeInlineDiagram />
             </FadeIn>
           </div>
 
@@ -154,7 +153,7 @@ export default function Home() {
       <EditorialPlate
         src="/images/generated/inline-gateway-plate.webp"
         alt="Decorative monochrome technical plate showing an abstract inline gateway in a network path."
-        meta={["Subject / Inline gateway path", "Context / QuantumHalon fabric", "Role / Decorative product plate"]}
+        caption="Inline gateway protection belongs in the existing path"
       />
 
       <section className="border-b border-black/10 py-20 lg:py-28">
@@ -200,10 +199,8 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="grid grid-cols-3 border-t border-black/10 px-4 py-3 text-[9px] uppercase text-black/[0.45]">
-                <span>Subject / Plane separation</span>
-                <span>Context / Governance out of path</span>
-                <span className="text-right">Role / Decorative architecture plate</span>
+              <div className="border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
+                Governance stays separate from live packet handling
               </div>
             </div>
           </FadeIn>
@@ -298,6 +295,61 @@ export default function Home() {
   );
 }
 
+function HomeInlineDiagram() {
+  return (
+    <div className="technical-plate overflow-hidden">
+      <div className="border-b border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
+        High-level model / inline protection point
+      </div>
+      <div className="relative min-h-[280px] p-6 sm:p-8">
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 900 340" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <pattern id="home-diagram-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(0,0,0,0.045)" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="900" height="340" fill="url(#home-diagram-grid)" />
+          <path d="M 92 174 H 808" stroke="rgba(0,0,0,0.30)" strokeWidth="1.2" />
+          <path d="M 92 194 H 808" stroke="rgba(0,0,0,0.12)" strokeWidth="1" />
+          <path d="M 450 68 V 274" stroke="rgba(0,0,0,0.18)" strokeWidth="1" />
+          <path d="M 362 174 H 538" stroke="#126dff" strokeWidth="2" />
+          <circle cx="362" cy="174" r="4" fill="#126dff" />
+          <circle cx="538" cy="174" r="4" fill="#126dff" />
+        </svg>
+
+        <div className="relative z-10 grid min-h-[230px] gap-6 sm:grid-cols-[1fr_220px_1fr] sm:items-center">
+          <div className="max-w-xs">
+            <div className="text-[10px] font-semibold uppercase leading-4 text-black/[0.45]">01 / existing path</div>
+            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Traffic keeps moving</h3>
+            <p className="mt-4 text-sm leading-6 text-black/[0.58]">
+              Selected enterprise paths continue through the planned network route.
+            </p>
+          </div>
+
+          <div className="border border-[#126dff]/70 bg-white/80 px-5 py-6 text-center shadow-[0_18px_45px_rgba(18,109,255,0.08)]">
+            <div className="text-[10px] font-semibold uppercase leading-4 text-[#126dff]">QuantumHalon</div>
+            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Inline gateway</h3>
+            <p className="mx-auto mt-4 max-w-36 text-sm leading-6 text-black/[0.58]">
+              One governed decision point.
+            </p>
+          </div>
+
+          <div className="max-w-xs sm:justify-self-end">
+            <div className="text-[10px] font-semibold uppercase leading-4 text-black/[0.45]">02 / policy outcome</div>
+            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Protect, pass, or block</h3>
+            <p className="mt-4 text-sm leading-6 text-black/[0.58]">
+              Policy selects the behavior for each protected path.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
+        QCertify governance remains outside live packet handling
+      </div>
+    </div>
+  );
+}
+
 function HomeHero() {
   return (
     <section className="relative min-h-[92svh] overflow-hidden border-b border-black/10 pt-24">
@@ -351,6 +403,9 @@ function HomeHero() {
                 className="object-cover"
               />
             </div>
+            <div className="border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
+              Quantum hardware marks the future risk horizon
+            </div>
           </motion.div>
         </div>
       </div>
@@ -361,21 +416,19 @@ function HomeHero() {
 function EditorialPlate({
   src,
   alt,
-  meta,
+  caption,
 }: {
   src: string;
   alt: string;
-  meta: [string, string, string];
+  caption: string;
 }) {
   return (
     <section className="technical-plate">
       <div className="relative aspect-[16/7] min-h-[280px]">
         <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
       </div>
-      <div className="editorial-wrap grid grid-cols-3 gap-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45]">
-        <span>{meta[0]}</span>
-        <span>{meta[1]}</span>
-        <span className="text-right">{meta[2]}</span>
+      <div className="editorial-wrap py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
+        {caption}
       </div>
     </section>
   );
