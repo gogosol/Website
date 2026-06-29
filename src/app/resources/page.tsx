@@ -21,34 +21,38 @@ export default function ResourcesPage() {
         body="Guides, explainers, and technical briefs for teams turning quantum risk into a practical network, security, and governance program."
         imageSrc="/images/generated/resources-library-plate.webp"
         imageAlt="Decorative monochrome technical plate suggesting a library of technical briefs."
+        plateMeta={["Subject / Technical brief library", "Context / Resource index", "Role / Decorative archive plate"]}
         chips={["Threat models", "Architecture", "Migration", "Governance"]}
         primaryCta={{ href: "/contact", label: "Ask a Question" }}
         secondaryCta={{ href: "/compliance", label: "Readiness" }}
       />
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="editorial-wrap">
           <SectionHeader
             label="Content Library"
             title="Built for security, architecture, and risk teams."
             body="The resource library is organized around the questions organizations actually need to answer before they can deploy PQC responsibly."
             align="center"
           />
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="mt-12 border-y border-black/10">
             {resourceTopics.map((topic, index) => (
               <FadeIn key={topic.category} delay={index * 0.05}>
-                <div className="glass-panel h-full rounded-lg p-6">
-                  <div className="mb-5 flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#126dff]/30 bg-[#126dff]/10 text-[#126dff]">
-                      <topic.icon className="h-5 w-5" />
+                <div className="grid gap-0 border-b border-black/10 last:border-b-0 lg:grid-cols-[0.42fr_1fr]">
+                  <div className="flex items-start gap-4 px-4 py-6">
+                    <topic.icon className="mt-1 h-5 w-5 flex-shrink-0 text-[#126dff]" />
+                    <div>
+                      <div className="text-[10px] font-semibold uppercase text-black/[0.42]">
+                        Category {String(index + 1).padStart(2, "0")}
+                      </div>
+                      <h2 className="mt-2 text-xl font-semibold leading-tight text-black">{topic.category}</h2>
                     </div>
-                    <h2 className="text-lg font-semibold text-white">{topic.category}</h2>
                   </div>
-                  <div className="space-y-3">
+                  <div className="grid border-t border-black/10 lg:border-l lg:border-t-0 md:grid-cols-2">
                     {topic.items.map((item) => (
-                      <div key={item} className="group flex items-center justify-between gap-4 rounded-lg border border-white/10 bg-black/35 p-4">
-                        <span className="text-sm leading-6 text-slate-300">{item}</span>
-                        <span className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                      <div key={item} className="group flex min-h-24 items-center justify-between gap-4 border-b border-black/10 px-4 py-4 last:border-b-0 md:border-r md:odd:border-r md:even:border-r-0">
+                        <span className="text-sm leading-6 text-black/[0.62]">{item}</span>
+                        <span className="flex shrink-0 items-center gap-1 text-[10px] font-semibold uppercase text-black/[0.42] transition-colors group-hover:text-[#126dff]">
                           Soon <ArrowRight className="h-3 w-3" />
                         </span>
                       </div>
@@ -61,8 +65,8 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+      <section className="border-y border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
             <SectionHeader
               label="Featured Brief"
@@ -85,7 +89,7 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
+      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>

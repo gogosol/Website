@@ -9,35 +9,30 @@ import {
   PageHero,
   SectionHeader,
 } from "@/components/QuantumPage";
-import { Building2, Cloud, Factory, GitBranch, Landmark, Network, Route, ShieldCheck } from "lucide-react";
+import { Cloud, Factory, Landmark, ShieldCheck } from "lucide-react";
 
 const useCases = [
   {
-    icon: Route,
     title: "North-south enterprise traffic",
     problem: "Sensitive site or branch traffic crosses shared enterprise paths before every application is ready for PQC.",
     fit: "QuantumHalon applies mode-specific protection at the inline chokepoint, starting with the paths where data lifetime creates the highest HNDL exposure.",
   },
   {
-    icon: Network,
     title: "Site-to-site protected destinations",
     problem: "Critical systems communicate across sites, but rewriting endpoints or legacy services would be slow and risky.",
     fit: "Opaque protection can reduce exposure while the application stream stays unchanged.",
   },
   {
-    icon: Building2,
     title: "Partner exchange",
     problem: "Third-party exchange paths often carry sensitive data but cannot assume synchronized application migrations.",
     fit: "Use inline gateway enforcement at the boundary, then select the appropriate policy outcome for each path.",
   },
   {
-    icon: GitBranch,
     title: "Internal segmented paths",
     problem: "Sensitive internal traffic may cross shared enterprise paths and still need path-specific cryptographic governance.",
     fit: "QuantumHalon supports high-level segmented-path policy thinking while keeping the public model intentionally abstract.",
   },
   {
-    icon: ShieldCheck,
     title: "Compliance-sensitive egress",
     problem: "Some traffic paths need governed exceptions and evidence that weak protection is not silently accepted.",
     fit: "Policy can govern protection strength, exceptions, and explicit blocks for paths where compliance risk is high.",
@@ -54,38 +49,42 @@ export default function UseCasesPage() {
         body="QuantumHalon is best suited to high-value communications where post-quantum migration cannot wait for a clean application rewrite."
         imageSrc="/images/generated/use-cases-traffic-map-plate.webp"
         imageAlt="Decorative monochrome technical plate suggesting multiple enterprise traffic paths."
+        plateMeta={["Subject / Enterprise traffic map", "Context / Use-case selection", "Role / Decorative path plate"]}
         chips={["Sites", "Cloud", "Partners", "Segments", "Critical egress"]}
         primaryCta={{ href: "/contact", label: "Discuss Your Paths" }}
         secondaryCta={{ href: "/industries", label: "Industries" }}
       />
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="editorial-wrap">
           <SectionHeader
             label="Traffic Patterns"
             title="One inline model, multiple controlled outcomes."
             body="Use cases are defined by traffic path and policy goal, not by decorative deployment diagrams. The gateway sits where traffic already crosses and applies the right behavior for each path."
             align="center"
           />
-          <div className="mt-10 grid gap-4 lg:grid-cols-2">
+          <div className="mt-12 border-y border-black/10">
+            <div className="hidden grid-cols-[0.7fr_1fr_1fr] border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45] lg:grid">
+              <span>Traffic pattern</span>
+              <span>Operating pressure</span>
+              <span>QuantumHalon fit</span>
+            </div>
             {useCases.map((item, index) => (
               <FadeIn key={item.title} delay={index * 0.05}>
-                <div className="glass-panel h-full rounded-lg p-6">
-                  <div className="mb-5 flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#126dff]/30 bg-[#126dff]/10 text-[#126dff]">
-                      <item.icon className="h-5 w-5" />
+                <div className="grid gap-5 border-b border-black/10 px-4 py-7 last:border-b-0 lg:grid-cols-[0.7fr_1fr_1fr] lg:gap-8">
+                  <div>
+                    <div className="text-[10px] font-semibold uppercase text-[#126dff]">
+                      {String(index + 1).padStart(2, "0")}
                     </div>
-                    <h2 className="text-lg font-semibold text-white">{item.title}</h2>
+                    <h2 className="mt-3 max-w-sm text-xl font-semibold leading-tight text-black">{item.title}</h2>
                   </div>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="rounded-lg border border-white/10 bg-black/35 p-4">
-                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Problem</div>
-                      <p className="mt-2 text-sm leading-6 text-slate-400">{item.problem}</p>
-                    </div>
-                    <div className="rounded-lg border border-[#126dff]/20 bg-[#126dff]/[0.04] p-4">
-                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#126dff]/70">QuantumHalon fit</div>
-                      <p className="mt-2 text-sm leading-6 text-slate-300">{item.fit}</p>
-                    </div>
+                  <div>
+                    <div className="text-[10px] font-semibold uppercase text-black/[0.42] lg:hidden">Operating pressure</div>
+                    <p className="mt-2 text-sm leading-6 text-black/[0.58] lg:mt-0">{item.problem}</p>
+                  </div>
+                  <div className="border-l border-[#126dff]/25 pl-4">
+                    <div className="text-[10px] font-semibold uppercase text-[#126dff] lg:hidden">QuantumHalon fit</div>
+                    <p className="mt-2 text-sm leading-6 text-black/[0.64] lg:mt-0">{item.fit}</p>
                   </div>
                 </div>
               </FadeIn>
@@ -94,8 +93,8 @@ export default function UseCasesPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+      <section className="border-y border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
             <SectionHeader
               label="Where It Lands"
@@ -127,7 +126,7 @@ export default function UseCasesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
+      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>

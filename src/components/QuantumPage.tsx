@@ -58,6 +58,7 @@ export function PageHero({
   body,
   imageSrc,
   imageAlt,
+  plateMeta,
   chips = [],
   primaryCta = { href: "/contact", label: "Technical Demo" },
   secondaryCta,
@@ -69,11 +70,18 @@ export function PageHero({
   body: React.ReactNode;
   imageSrc?: string;
   imageAlt?: string;
+  plateMeta?: [string, string, string];
   chips?: string[];
   primaryCta?: { href: string; label: string };
   secondaryCta?: { href: string; label: string };
   compact?: boolean;
 }) {
+  const imageMeta = plateMeta ?? [
+    `Context / ${label}`,
+    "Asset / Decorative technical plate",
+    "Role / Visual narrative support",
+  ];
+
   return (
     <section
       className={`relative overflow-hidden border-b border-black/10 ${
@@ -136,10 +144,10 @@ export function PageHero({
                 className="object-cover"
               />
             </div>
-            <div className="grid grid-cols-3 border-t border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45]">
-              <span>Version / Web</span>
-              <span>System / QCertify</span>
-              <span className="text-right">Source / Generated plate</span>
+            <div className="grid grid-cols-3 gap-3 border-t border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45]">
+              <span>{imageMeta[0]}</span>
+              <span>{imageMeta[1]}</span>
+              <span className="text-right">{imageMeta[2]}</span>
             </div>
           </motion.div>
         ) : null}
@@ -288,70 +296,87 @@ export function ModeMatrixVisual() {
 
 export function InlineGatewayVisual() {
   return (
-    <div className="relative overflow-hidden border border-black/10 bg-white/[0.45] p-5 sm:p-6">
-      <div className="absolute inset-0 circuit-mask opacity-45" />
-      <div className="relative z-10">
-        <div className="text-center text-[10px] font-semibold uppercase text-black/[0.45]">
-          Traffic path: inline, transparent, policy-governed
-        </div>
+    <div
+      className="technical-plate relative overflow-hidden bg-white/[0.55]"
+      role="img"
+      aria-label="Technical plate showing enterprise traffic passing through a QuantumHalon inline gateway while QCertify governance remains out of the live packet path."
+    >
+      <div className="grid grid-cols-[1fr_auto] border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45]">
+        <span>Traffic path / Local packet plane</span>
+        <span className="text-right">Governance / Out of band</span>
+      </div>
 
-        <div className="mt-7 grid gap-4 lg:grid-cols-[1fr_72px_1.5fr_72px_1fr] lg:items-center">
-          <DiagramNode title="Enterprise traffic" eyebrow="Source side">
-            Existing users and applications continue through the planned flow.
-          </DiagramNode>
+      <div className="relative aspect-[16/8] min-h-[340px]">
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 960 480" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <pattern id="gateway-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(0,0,0,0.055)" strokeWidth="1" />
+            </pattern>
+            <linearGradient id="gateway-sheen" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stopColor="#126dff" stopOpacity="0.12" />
+              <stop offset="0.48" stopColor="#ffffff" stopOpacity="0" />
+              <stop offset="1" stopColor="#126dff" stopOpacity="0.10" />
+            </linearGradient>
+          </defs>
 
-          <div className="hidden h-px bg-black/25 lg:block" />
+          <rect width="960" height="480" fill="url(#gateway-grid)" />
+          <path d="M 70 240 H 890" stroke="rgba(0,0,0,0.42)" strokeWidth="1.2" />
+          <path d="M 70 258 H 890" stroke="rgba(0,0,0,0.14)" strokeWidth="1" />
+          <path d="M 70 338 C 236 315 350 326 480 338 C 618 351 728 363 890 338" fill="none" stroke="rgba(18,109,255,0.58)" strokeWidth="1" strokeDasharray="6 9" />
 
-          <div className="border border-[#126dff]/45 bg-[#126dff]/[0.045] p-4">
-            <div className="border border-black/10 bg-white/[0.70] p-4 text-center">
-              <div className="text-[11px] font-semibold uppercase text-[#126dff]">
-                QuantumHalon
-              </div>
-              <h3 className="mt-3 text-xl font-semibold leading-tight text-black">
-                Inline gateway
-              </h3>
-              <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-black/[0.58]">
-                Classify traffic at a high level, apply the selected mode, and enforce governed policy.
-              </p>
-              <div className="mt-4 inline-flex items-center gap-2 border border-black/[0.12] bg-white px-3 py-1.5 text-xs text-black/60">
-                <span className="h-2 w-2 bg-[#126dff]" />
-                Policy ready
-              </div>
+          <rect x="390" y="78" width="180" height="300" fill="url(#gateway-sheen)" stroke="rgba(18,109,255,0.62)" strokeWidth="1" />
+          <path d="M 480 52 V 406" stroke="rgba(0,0,0,0.20)" strokeWidth="1" />
+          <path d="M 390 240 H 570" stroke="#126dff" strokeWidth="2" />
+          <circle cx="390" cy="240" r="4" fill="#126dff" />
+          <circle cx="570" cy="240" r="4" fill="#126dff" />
+
+        </svg>
+
+        <div className="absolute inset-0 hidden md:block">
+          <div className="absolute left-6 top-[35%] max-w-[230px] -translate-y-1/2">
+            <div className="text-[10px] font-semibold uppercase leading-4 text-black/[0.45]">Source side</div>
+            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Enterprise traffic</h3>
+            <p className="mt-12 text-sm leading-6 text-black/[0.58]">Users and applications stay on the planned route.</p>
+          </div>
+
+          <div className="absolute left-1/2 top-[36%] w-60 -translate-x-1/2 -translate-y-1/2 text-center">
+            <div className="text-[10px] font-semibold uppercase leading-4 text-[#126dff]">QuantumHalon</div>
+            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Inline gateway</h3>
+            <p className="mt-20 text-sm leading-6 text-black/[0.58]">Classify path / select mode / enforce policy</p>
+            <div className="mt-3 inline-flex items-center gap-2 border border-black/15 bg-white px-3 py-1.5 text-xs text-black/60">
+              <span className="h-2 w-2 bg-[#126dff]" />
+              Policy ready
             </div>
           </div>
 
-          <div className="hidden h-px bg-[#126dff]/55 lg:block" />
-
-          <DiagramNode title="Network edge" eyebrow="Destination side">
-            Protected paths continue toward their intended destinations.
-          </DiagramNode>
-        </div>
-
-        <div className="mx-auto mt-5 max-w-xl border border-black/10 bg-white/[0.55] p-4 text-center">
-          <div className="text-sm font-semibold text-black">QCertify governance stays out of path</div>
-          <p className="mt-2 text-sm leading-6 text-black/[0.58]">
-            Policy direction and operational signals are exchanged separately from live packets.
-          </p>
+          <div className="absolute right-6 top-[35%] max-w-[230px] -translate-y-1/2">
+            <div className="text-[10px] font-semibold uppercase leading-4 text-black/[0.45]">Destination side</div>
+            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Network edge</h3>
+            <p className="mt-12 text-sm leading-6 text-black/[0.58]">Protected paths continue to intended destinations.</p>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
 
-function DiagramNode({
-  title,
-  eyebrow,
-  children,
-}: {
-  title: string;
-  eyebrow: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="border border-black/10 bg-white/[0.55] p-4">
-      <div className="text-[10px] font-semibold uppercase text-black/[0.45]">{eyebrow}</div>
-      <h3 className="mt-2 text-lg font-semibold leading-tight text-black">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-black/[0.58]">{children}</p>
+      <div className="grid gap-0 border-t border-black/10 md:hidden">
+        {[
+          ["01", "Enterprise traffic", "Users and applications stay on the planned route."],
+          ["02", "QuantumHalon inline gateway", "Classify path, select mode, and enforce policy."],
+          ["03", "Network edge", "Protected paths continue to intended destinations."],
+        ].map(([number, title, text]) => (
+          <div key={title} className="grid grid-cols-[40px_1fr] gap-3 border-b border-black/10 px-4 py-4 last:border-b-0">
+            <span className="text-[10px] font-semibold uppercase text-[#126dff]">{number}</span>
+            <span>
+              <strong className="block text-sm text-black">{title}</strong>
+              <span className="mt-1 block text-sm leading-6 text-black/[0.58]">{text}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="grid gap-4 border-t border-black/10 px-4 py-4 text-sm leading-6 text-black/[0.58] md:grid-cols-[0.68fr_1fr]">
+        <strong className="text-black">QCertify governance stays out of path</strong>
+        <span>Policy direction and operational signals move separately from live packets, keeping the plate clean and the operating model easy to read.</span>
+      </div>
     </div>
   );
 }

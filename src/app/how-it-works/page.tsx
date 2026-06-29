@@ -45,6 +45,7 @@ export default function HowItWorksPage() {
         body="QuantumHalon turns post-quantum protection into an enforceable network behavior without forcing every endpoint or application to move first."
         imageSrc="/images/generated/how-packet-path-plate.webp"
         imageAlt="Decorative monochrome technical plate showing protected packet movement through a path."
+        plateMeta={["Subject / Packet path", "Context / Inline enforcement", "Role / Decorative flow plate"]}
         chips={["Inline", "Classify", "Select Mode", "Enforce", "Report"]}
         primaryCta={{ href: "/contact", label: "Walk Through Your Paths" }}
         secondaryCta={{ href: "/product", label: "Product Details" }}
@@ -64,23 +65,23 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+      <section className="border-y border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <SectionHeader
             label="Flow"
             title="Five steps from raw traffic to governed protection."
             body="This is deliberately high-level. The public site explains the operating model; detailed policy and crypto mechanics stay inside the product and technical briefings."
           />
-          <div className="space-y-3">
+          <div className="border-y border-black/10">
             {flowSteps.map((step, index) => (
               <FadeIn key={step.title} delay={index * 0.05}>
-                <div className="grid gap-4 rounded-lg border border-white/10 bg-white/[0.03] p-5 sm:grid-cols-[64px_1fr]">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-[#126dff]/30 bg-[#126dff]/10 font-mono text-sm font-semibold text-[#126dff]">
+                <div className="grid gap-4 border-b border-black/10 px-4 py-5 last:border-b-0 sm:grid-cols-[64px_1fr]">
+                  <div className="text-sm font-semibold text-[#126dff]">
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-white">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-400">{step.text}</p>
+                    <h3 className="text-base font-semibold text-black">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-black/[0.58]">{step.text}</p>
                   </div>
                 </div>
               </FadeIn>
@@ -90,7 +91,7 @@ export default function HowItWorksPage() {
       </section>
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+        <div className="editorial-wrap grid gap-10 lg:grid-cols-2 lg:items-center">
           <FadeIn>
             <ImagePanel
               src="/images/generated/how-mode-logic-plate.webp"
@@ -122,8 +123,8 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/5 py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="border-y border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap">
           <SectionHeader
             label="Trust Model"
             title="Mode 1 starts with clear enterprise trust readiness."
@@ -147,7 +148,7 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-white/5 py-24 lg:py-32">
+      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
