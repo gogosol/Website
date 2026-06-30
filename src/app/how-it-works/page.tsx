@@ -47,7 +47,7 @@ export default function HowItWorksPage() {
         imageAlt="Decorative monochrome technical plate showing protected packet movement through a path."
         plateCaption="Protected packet movement through a local inline path"
         chips={["Inline", "Classify", "Select Mode", "Enforce", "Report"]}
-        primaryCta={{ href: "/contact", label: "Walk Through Your Paths" }}
+        primaryCta={{ href: "/contact", label: "Protected Path Review" }}
         secondaryCta={{ href: "/product", label: "Product Details" }}
       />
 
@@ -157,7 +157,7 @@ export default function HowItWorksPage() {
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeader label="Technical Walkthrough" title="Map the model to your protected paths." align="center" />
+            <SectionHeader label="Technical Walkthrough" title="Map the model to client protected paths." align="center" />
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <CTAButton href="/contact">Book a Walkthrough</CTAButton>
               <CTAButton href="/use-cases" variant="secondary">

@@ -168,7 +168,7 @@ export default function ProductPage() {
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
               { icon: ShieldCheck, title: "Controlled activation", text: "Gateways apply governed policy only after required rollout conditions are ready." },
-              { icon: RefreshCw, title: "Phased rollout", text: "Start with high-risk paths, learn from operational evidence, and expand without forcing a big-bang application rewrite." },
+              { icon: RefreshCw, title: "Phased rollout", text: "High-risk paths can be protected first, then expanded through operational evidence without forcing a big-bang application rewrite." },
               { icon: Zap, title: "Operational flexibility", text: "Operators can adjust protected-path behavior through governed rollout rather than broad network rework." },
             ].map((item, index) => (
               <FadeIn key={item.title} delay={index * 0.06}>
@@ -185,7 +185,7 @@ export default function ProductPage() {
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeader label="Demo" title="See the mode matrix mapped to your traffic." align="center" />
+            <SectionHeader label="Demo" title="Review the mode matrix mapped to enterprise traffic." align="center" />
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <CTAButton href="/contact">Book a Technical Demo</CTAButton>
               <CTAButton href="/use-cases" variant="secondary">

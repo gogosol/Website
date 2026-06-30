@@ -23,7 +23,7 @@ export default function ResourcesPage() {
         imageAlt="Decorative monochrome technical plate suggesting a library of technical briefs."
         plateCaption="Technical briefs organized around migration decisions"
         chips={["Threat models", "Architecture", "Migration", "Governance"]}
-        primaryCta={{ href: "/contact", label: "Ask a Question" }}
+        primaryCta={{ href: "/contact", label: "Technical Inquiry" }}
         secondaryCta={{ href: "/compliance", label: "Readiness" }}
       />
 
@@ -75,7 +75,7 @@ export default function ResourcesPage() {
             />
             <div className="mt-8">
               <CTAButton href="/contact" variant="secondary">
-                Request the Brief
+                Request Brief
               </CTAButton>
             </div>
           </div>
@@ -93,9 +93,9 @@ export default function ResourcesPage() {
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeader label="Talk to Us" title="Need a technical answer before the public brief is live?" align="center" />
+            <SectionHeader label="Technical Inquiry" title="Technical questions can be reviewed before the public brief is live." align="center" />
             <div className="mt-8">
-              <CTAButton href="/contact">Contact QCertify</CTAButton>
+              <CTAButton href="/contact">Submit Inquiry</CTAButton>
             </div>
           </FadeIn>
         </div>

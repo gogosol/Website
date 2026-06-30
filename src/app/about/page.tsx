@@ -40,20 +40,20 @@ export default function AboutPage() {
       <PageHero
         compact
         label="About QCertify"
-        title="We build practical post-quantum protection for real networks."
-        body="QCertify creates practical post-quantum cybersecurity solutions for organizations that need to reduce quantum-era risk without waiting for every application, vendor, and governance process to move at once. QuantumHalon is our first solution."
+        title="Practical post-quantum protection for real networks."
+        body="QCertify creates practical post-quantum cybersecurity solutions for organizations that need to reduce quantum-era risk without waiting for every application, vendor, and governance process to move at once. QuantumHalon is the first QCertify solution."
         imageSrc="/images/generated/about-mission-instrument-plate.webp"
         imageAlt="Decorative monochrome technical plate showing a precision mission instrument."
         plateCaption="Precision instrument for practical post-quantum work"
         chips={["Focused", "Technical", "Practical", "Privacy-aware"]}
-        primaryCta={{ href: "/contact", label: "Talk to QCertify" }}
+        primaryCta={{ href: "/contact", label: "Technical Consultation" }}
         secondaryCta={{ href: "/product", label: "Explore Product" }}
       />
 
       <section className="py-20 lg:py-28">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:px-8">
           <SectionHeader
-            label="Why We Exist"
+            label="Purpose"
             title="The hard part is not knowing PQC is coming. It is deploying it credibly."
             body="Most organizations cannot pause the business while every endpoint, application, partner path, trust store, and legacy system is migrated. QCertify exists to make early protection possible in that messy middle."
           />
@@ -87,7 +87,7 @@ export default function AboutPage() {
           </FadeIn>
           <div>
             <SectionHeader
-              label="What We Build First"
+              label="First Solution"
               title="A focused first solution, not a vague quantum-readiness promise."
               body="QuantumHalon is designed to protect selected traffic paths with an inline gateway, policy-selected modes, and crypto agility. It is the first concrete solution in QCertify's broader post-quantum security work."
             />
@@ -113,7 +113,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
             <SectionHeader
-              label="Our Position"
+              label="Position"
               title="Post-quantum security should be understandable, deployable, and defensible."
               body="The website uses simple high-level visuals on purpose. The goal is to make the security model easy to grasp while keeping implementation-specific details inside technical conversations."
               align="center"
@@ -126,9 +126,9 @@ export default function AboutPage() {
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeader label="Conversation" title="If quantum readiness feels abstract, we will make it concrete." align="center" />
+            <SectionHeader label="Consultation" title="Quantum readiness becomes concrete when mapped to real protected paths." align="center" />
             <div className="mt-8">
-              <CTAButton href="/contact">Talk to QCertify</CTAButton>
+              <CTAButton href="/contact">Request Consultation</CTAButton>
             </div>
           </FadeIn>
         </div>

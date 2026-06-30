@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { CheckCircle2, Mail, Send } from "lucide-react";
 import SectionLabel from "@/components/SectionLabel";
+import { FadeIn, RevealText } from "@/components/QuantumPage";
 
 const reasons = [
   "Map QuantumHalon to protected traffic paths",
@@ -60,7 +61,7 @@ export default function ContactPage() {
 
       setSubmitted(true);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "An error occurred while sending your message. Please try again.");
+      setError(err instanceof Error ? err.message : "The request could not be submitted. Please retry.");
     } finally {
       setIsSubmitting(false);
     }
@@ -74,10 +75,10 @@ export default function ContactPage() {
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <SectionLabel label="Contact" />
             <h1 className="mt-3 max-w-5xl text-5xl font-medium leading-[0.9] text-black sm:text-6xl lg:text-8xl">
-              Map the model to your traffic paths.
+              <RevealText text="Map QuantumHalon to protected traffic paths." />
             </h1>
             <p className="mt-7 max-w-2xl text-base leading-7 text-black/[0.62] sm:text-lg">
-              Request a technical conversation with QCertify. We focus on
+              Request a technical conversation with QCertify focused on
               protected paths, policy modes, trust readiness, and realistic
               post-quantum transition priorities.
             </p>
@@ -102,17 +103,26 @@ export default function ContactPage() {
       <section className="py-16 lg:py-24">
         <div className="editorial-wrap grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <h2 className="text-3xl font-medium leading-none text-black">Useful first-call topics</h2>
+            <h2 className="text-3xl font-medium leading-none text-black">
+              <RevealText text="Useful first-call topics" />
+            </h2>
             <div className="mt-8 grid gap-4">
-              {reasons.map((reason) => (
-                <div key={reason} className="grid grid-cols-[18px_1fr] gap-3 border-t border-black/10 pt-4">
+              {reasons.map((reason, index) => (
+                <motion.div
+                  key={reason}
+                  className="grid grid-cols-[18px_1fr] gap-3 border-t border-black/10 pt-4"
+                  initial={{ opacity: 0, x: -14 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-70px" }}
+                  transition={{ delay: index * 0.04, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
                   <CheckCircle2 className="mt-1 h-4 w-4 text-[#126dff]" />
                   <span className="text-sm leading-6 text-black/[0.62]">{reason}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <div className="mt-10 border border-black/10 bg-white/[0.55] p-6">
+            <FadeIn delay={0.08} className="mt-10 border border-black/10 bg-white/[0.55] p-6">
               <div className="mb-3 flex items-center gap-3">
                 <Mail className="h-5 w-5 text-black/[0.45]" />
                 <span className="text-sm font-medium text-black">Prefer email?</span>
@@ -120,15 +130,15 @@ export default function ContactPage() {
               <a href="mailto:contact@qcertify.io" className="border-b border-black pb-1 text-[11px] font-semibold uppercase text-black">
                 contact@qcertify.io
               </a>
-            </div>
+            </FadeIn>
           </div>
 
           <div className="lg:col-span-3">
             {submitted ? (
               <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="border border-black bg-white p-12 text-center">
                 <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-[#126dff]" />
-                <h3 className="mb-3 text-2xl font-semibold text-black">Thank you.</h3>
-                <p className="text-base text-black/[0.58]">A member of our team will respond within one business day.</p>
+                <h3 className="mb-3 text-2xl font-semibold text-black">Request received.</h3>
+                <p className="text-base text-black/[0.58]">A QCertify representative responds within one business day.</p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="border border-black/10 bg-white/60 p-6 sm:p-8 lg:p-10">
@@ -146,7 +156,7 @@ export default function ContactPage() {
                 </div>
                 <div className="mt-5 grid gap-5 sm:grid-cols-2">
                   <SelectField id="industry" label="Industry" options={industries} placeholder="Select industry" />
-                  <SelectField id="interest" label="Interest" options={interests} placeholder="What are you most interested in?" />
+                  <SelectField id="interest" label="Interest" options={interests} placeholder="Select primary interest" />
                 </div>
                 <div className="mt-5">
                   <label htmlFor="message" className="mb-2 block text-[10px] font-semibold uppercase text-black">
@@ -157,7 +167,7 @@ export default function ContactPage() {
                     name="message"
                     rows={4}
                     className="w-full resize-none border border-black/15 bg-white px-4 py-3 text-sm text-black placeholder-black/[0.35] transition-colors focus:border-black focus:outline-none"
-                    placeholder="Tell us about your network, traffic paths, or PQC readiness goals..."
+                    placeholder="Describe the network, traffic paths, or PQC readiness goals..."
                   />
                 </div>
                 <button
@@ -169,7 +179,7 @@ export default function ContactPage() {
                   {isSubmitting ? "Sending..." : "Request a Technical Demo"}
                 </button>
                 <p className="mt-4 text-center text-xs leading-6 text-black/[0.45]">
-                  QCertify uses your information only to respond to your request.
+                  Submitted information is used only to respond to the request.
                 </p>
               </form>
             )}

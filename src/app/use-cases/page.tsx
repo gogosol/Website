@@ -14,7 +14,7 @@ import { Cloud, Factory, Landmark, ShieldCheck } from "lucide-react";
 const useCases = [
   {
     title: "North-south enterprise traffic",
-    problem: "Sensitive site or branch traffic crosses shared enterprise paths before every application is ready for PQC.",
+    problem: "Sensitive site or branch traffic crosses shared enterprise paths before application-wide PQC migration is complete.",
     fit: "QuantumHalon applies mode-specific protection at the inline chokepoint, starting with the paths where data lifetime creates the highest HNDL exposure.",
   },
   {
@@ -51,7 +51,7 @@ export default function UseCasesPage() {
         imageAlt="Decorative monochrome technical plate suggesting multiple enterprise traffic paths."
         plateCaption="Enterprise traffic paths become the unit of protection"
         chips={["Sites", "Cloud", "Partners", "Segments", "Critical egress"]}
-        primaryCta={{ href: "/contact", label: "Discuss Your Paths" }}
+        primaryCta={{ href: "/contact", label: "Discuss Protected Paths" }}
         secondaryCta={{ href: "/industries", label: "Industries" }}
       />
 
@@ -130,9 +130,9 @@ export default function UseCasesPage() {
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeader label="Use Case Workshop" title="Bring your traffic map. We will map the protection model." align="center" />
+            <SectionHeader label="Use Case Workshop" title="Traffic maps can be translated into a protected-path model." align="center" />
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <CTAButton href="/contact">Discuss Your Use Case</CTAButton>
+              <CTAButton href="/contact">Discuss Use Case</CTAButton>
               <CTAButton href="/how-it-works" variant="secondary">
                 See How It Works
               </CTAButton>

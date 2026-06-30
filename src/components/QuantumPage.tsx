@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import {
   Activity,
   ArrowRight,
@@ -29,6 +29,87 @@ import SectionLabel from "@/components/SectionLabel";
 
 type IconType = React.ComponentType<{ className?: string }>;
 
+const smoothEase = [0.22, 1, 0.36, 1] as const;
+
+function splitText(text: string) {
+  return text.split(/(\s+)/).filter(Boolean);
+}
+
+export function RevealText({
+  text,
+  className = "",
+  delay = 0,
+  stagger = 0.026,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+  stagger?: number;
+}) {
+  return (
+    <motion.span
+      aria-label={text}
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            delayChildren: delay,
+            staggerChildren: stagger,
+          },
+        },
+      }}
+    >
+      {splitText(text).map((token, index) =>
+        token.trim() ? (
+          <span key={`${token}-${index}`} aria-hidden="true" className="inline-block overflow-hidden align-bottom">
+            <motion.span
+              className="inline-block will-change-transform"
+              variants={{
+                hidden: { opacity: 0, y: "105%" },
+                visible: {
+                  opacity: 1,
+                  y: "0%",
+                  transition: { duration: 0.72, ease: smoothEase },
+                },
+              }}
+            >
+              {token}
+            </motion.span>
+          </span>
+        ) : (
+          <span key={`space-${index}`} aria-hidden="true">
+            {token}
+          </span>
+        ),
+      )}
+    </motion.span>
+  );
+}
+
+export function RevealLines({
+  lines,
+  className = "",
+  delay = 0,
+}: {
+  lines: string[];
+  className?: string;
+  delay?: number;
+}) {
+  return (
+    <span className={`block ${className}`}>
+      {lines.map((line, index) => (
+        <span key={line} className="block">
+          <RevealText text={line} delay={delay + index * 0.08} />
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export function FadeIn({
   children,
   className = "",
@@ -43,7 +124,7 @@ export function FadeIn({
       initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.58, delay, ease: smoothEase }}
       className={className}
     >
       {children}
@@ -95,11 +176,11 @@ export function PageHero({
                 compact ? "text-5xl sm:text-6xl lg:text-7xl" : "text-6xl sm:text-7xl lg:text-8xl"
               }`}
             >
-              {title}
+              <RevealText text={title} />
               {accent ? (
                 <>
                   {" "}
-                  <span className="text-[#126dff]">{accent}</span>
+                  <RevealText text={accent} className="text-[#126dff]" delay={0.12} />
                 </>
               ) : null}
             </h1>
@@ -125,9 +206,9 @@ export function PageHero({
         </div>
         {imageSrc ? (
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.12, duration: 0.65 }}
+            initial={{ opacity: 0, y: 24, clipPath: "inset(0 0 14% 0)" }}
+            animate={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }}
+            transition={{ delay: 0.12, duration: 0.75, ease: smoothEase }}
             className="technical-plate min-h-[280px]"
           >
             <div className="relative aspect-[16/9]">
@@ -164,9 +245,99 @@ export function SectionHeader({
   return (
     <FadeIn className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <SectionLabel label={label} />
-      <h2 className="mt-3 text-4xl font-medium leading-[0.95] text-black md:text-6xl">{title}</h2>
+      <h2 className="mt-3 text-4xl font-medium leading-[0.95] text-black md:text-6xl">
+        {typeof title === "string" ? <RevealText text={title} /> : title}
+      </h2>
       {body ? <div className="mt-5 text-base leading-7 text-black/60">{body}</div> : null}
     </FadeIn>
+  );
+}
+
+export function ScrollStatement({
+  label,
+  text,
+  caption,
+  metadata = [],
+}: {
+  label: string;
+  text: string;
+  caption: string;
+  metadata?: string[];
+}) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.82", "end 0.68"],
+  });
+  const words = text.split(/\s+/);
+
+  return (
+    <section ref={ref} className="relative min-h-[138svh] border-b border-black/10">
+      <div className="sticky top-16 flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-16">
+        <div className="absolute inset-0 circuit-mask opacity-35" />
+        <div className="editorial-wrap relative z-10 grid w-full gap-12 lg:grid-cols-[0.42fr_1fr] lg:items-end">
+          <div>
+            <SectionLabel label={label} />
+            <p className="mt-5 max-w-sm text-sm leading-6 text-black/[0.58]">{caption}</p>
+            {metadata.length ? (
+              <div className="mt-8 grid gap-px border-y border-black/10 bg-black/10 sm:grid-cols-3 lg:grid-cols-1">
+                {metadata.map((item, index) => (
+                  <div key={item} className="bg-[#f7f7f2] px-4 py-3">
+                    <div className="text-[10px] font-semibold uppercase text-[#126dff]">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                    <div className="mt-1 text-xs leading-5 text-black/[0.58]">{item}</div>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </div>
+
+          <div>
+            <p
+              aria-label={text}
+              className="max-w-6xl text-4xl font-medium leading-[0.98] text-black sm:text-5xl md:text-6xl lg:text-7xl"
+            >
+              {words.map((word, index) => (
+                <ScrollStatementWord
+                  key={`${word}-${index}`}
+                  word={word}
+                  index={index}
+                  total={words.length}
+                  progress={scrollYProgress}
+                />
+              ))}
+            </p>
+            <div className="mt-10 h-px overflow-hidden bg-black/10">
+              <motion.div className="h-full origin-left bg-[#126dff]" style={{ scaleX: scrollYProgress }} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ScrollStatementWord({
+  word,
+  index,
+  total,
+  progress,
+}: {
+  word: string;
+  index: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  const start = Math.max(0, (index / total) * 0.64 - 0.02);
+  const end = Math.min(0.82, start + 0.12);
+  const opacity = useTransform(progress, [start, end], [0.14, 1]);
+  const y = useTransform(progress, [start, end], [16, 0]);
+
+  return (
+    <motion.span aria-hidden="true" className="mr-[0.22em] inline-block will-change-transform" style={{ opacity, y }}>
+      {word}
+    </motion.span>
   );
 }
 
@@ -182,7 +353,11 @@ export function FeatureCard({
   meta?: string;
 }) {
   return (
-    <div className="group h-full border-t border-black/10 py-5">
+    <motion.div
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="group h-full border-t border-black/10 py-5"
+    >
       <div className="flex items-start gap-4">
         <div className="mt-0.5 flex w-12 flex-shrink-0 items-center gap-3">
           <Icon className="h-4 w-4 text-[#126dff]" />
@@ -194,7 +369,7 @@ export function FeatureCard({
           <div className="mt-3 text-sm leading-6 text-black/[0.58]">{children}</div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -210,16 +385,28 @@ export function ImagePanel({
   preload?: boolean;
 }) {
   return (
-    <div className="technical-plate">
-      <div className="relative aspect-[16/9]">
+    <motion.div
+      className="technical-plate"
+      initial={{ opacity: 0.92, clipPath: "inset(0 0 10% 0)" }}
+      whileInView={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, ease: smoothEase }}
+    >
+      <motion.div
+        className="relative aspect-[16/9]"
+        initial={{ scale: 1.035 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 1.1, ease: smoothEase }}
+      >
         <Image src={src} alt={alt} fill preload={preload} sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
-      </div>
+      </motion.div>
       {caption ? (
         <div className="border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
           {caption}
         </div>
       ) : null}
-    </div>
+    </motion.div>
   );
 }
 
@@ -229,14 +416,30 @@ export function StatStrip({
   stats: { value: string; label: string }[];
 }) {
   return (
-    <div className="grid grid-cols-2 border-y border-black/10 md:grid-cols-4">
+    <motion.div
+      className="grid grid-cols-2 border-y border-black/10 md:grid-cols-4"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-70px" }}
+      variants={{
+        hidden: {},
+        visible: { transition: { staggerChildren: 0.06 } },
+      }}
+    >
       {stats.map((stat) => (
-        <div key={stat.label} className="border-r border-black/10 bg-white/[0.35] p-4 last:border-r-0">
+        <motion.div
+          key={stat.label}
+          className="border-r border-black/10 bg-white/[0.35] p-4 last:border-r-0"
+          variants={{
+            hidden: { opacity: 0, y: 16 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: smoothEase } },
+          }}
+        >
           <div className="text-lg font-semibold text-black">{stat.value}</div>
           <div className="mt-1 text-xs leading-5 text-black/50">{stat.label}</div>
-        </div>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }
 
