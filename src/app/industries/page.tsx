@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import CTAButton from "@/components/CTAButton";
 import {
+  ClosingCta,
   FadeIn,
   FeatureCard,
   ImagePanel,
@@ -53,6 +53,8 @@ export default function IndustriesPage() {
         chips={["Finance", "Government", "Critical infrastructure", "Healthcare", "Enterprise"]}
         primaryCta={{ href: "/contact", label: "Technical Consultation" }}
         secondaryCta={{ href: "/use-cases", label: "Use Cases" }}
+        textMotion="slide-left"
+        imageMotion="scale"
       />
 
       <section className="py-20 lg:py-28">
@@ -62,6 +64,7 @@ export default function IndustriesPage() {
             title="The common factor is not industry hype. It is data lifetime."
             body="Post-quantum risk matters first where captured data will still be valuable when future quantum capability arrives."
             align="center"
+            motionStyle="slide-left"
           />
           <div className="mt-12 border-y border-black/10">
             <div className="hidden grid-cols-[0.58fr_1fr_1fr] border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45] lg:grid">
@@ -70,7 +73,7 @@ export default function IndustriesPage() {
               <span>Transition outcome</span>
             </div>
             {industries.map((industry, index) => (
-              <FadeIn key={industry.title} delay={index * 0.04}>
+              <FadeIn key={industry.title} delay={index * 0.04} motionStyle={index % 2 === 0 ? "slide-right" : "slide-left"}>
                 <div className="grid gap-5 border-b border-black/10 px-4 py-7 last:border-b-0 lg:grid-cols-[0.58fr_1fr_1fr] lg:gap-8">
                   <div>
                     <div className="text-[10px] font-semibold uppercase text-[#126dff]">
@@ -100,6 +103,8 @@ export default function IndustriesPage() {
               src="/images/generated/industries-archive-vault-plate.webp"
               alt="Decorative monochrome technical plate showing a protected long-lived archive vault."
               caption="Long-lived records change the urgency curve"
+              motionStyle="clip-up"
+              imageMotion="scale"
             />
           </FadeIn>
           <div>
@@ -126,17 +131,12 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
-        <div className="absolute inset-0 circuit-mask opacity-70" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <FadeIn>
-            <SectionHeader label="Industry Fit" title="Prioritize traffic that regulated industries cannot afford to expose later." align="center" />
-            <div className="mt-8">
-              <CTAButton href="/contact">Discuss Industry Fit</CTAButton>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <ClosingCta
+        label="Industry Fit"
+        title="Prioritize traffic that regulated industries cannot afford to expose later."
+        actions={[{ href: "/contact", label: "Discuss Industry Fit" }]}
+        motionStyle="slide-left"
+      />
     </div>
   );
 }

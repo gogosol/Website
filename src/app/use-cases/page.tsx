@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import CTAButton from "@/components/CTAButton";
 import {
+  ClosingCta,
   FadeIn,
   FeatureCard,
   ImagePanel,
@@ -53,6 +53,8 @@ export default function UseCasesPage() {
         chips={["Sites", "Cloud", "Partners", "Segments", "Critical egress"]}
         primaryCta={{ href: "/contact", label: "Discuss Protected Paths" }}
         secondaryCta={{ href: "/industries", label: "Industries" }}
+        textMotion="soft-blur"
+        imageMotion="scale"
       />
 
       <section className="py-20 lg:py-28">
@@ -62,6 +64,7 @@ export default function UseCasesPage() {
             title="One inline model, multiple controlled outcomes."
             body="Use cases are defined by traffic path and policy goal, not by decorative deployment diagrams. The gateway sits where traffic already crosses and applies the right behavior for each path."
             align="center"
+            motionStyle="soft-blur"
           />
           <div className="mt-12 border-y border-black/10">
             <div className="hidden grid-cols-[0.7fr_1fr_1fr] border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45] lg:grid">
@@ -70,7 +73,7 @@ export default function UseCasesPage() {
               <span>QuantumHalon fit</span>
             </div>
             {useCases.map((item, index) => (
-              <FadeIn key={item.title} delay={index * 0.05}>
+              <FadeIn key={item.title} delay={index * 0.05} motionStyle={index % 2 === 0 ? "slide-right" : "slide-left"}>
                 <div className="grid gap-5 border-b border-black/10 px-4 py-7 last:border-b-0 lg:grid-cols-[0.7fr_1fr_1fr] lg:gap-8">
                   <div>
                     <div className="text-[10px] font-semibold uppercase text-[#126dff]">
@@ -121,25 +124,22 @@ export default function UseCasesPage() {
               src="/images/generated/use-cases-hybrid-legacy-plate.webp"
               alt="Decorative monochrome technical plate showing a legacy path connected to a modern endpoint."
               caption="Selected path protection keeps legacy endpoints stable"
+              motionStyle="scale"
+              imageMotion="clip-up"
             />
           </FadeIn>
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
-        <div className="absolute inset-0 circuit-mask opacity-70" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <FadeIn>
-            <SectionHeader label="Use Case Workshop" title="Traffic maps can be translated into a protected-path model." align="center" />
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <CTAButton href="/contact">Discuss Use Case</CTAButton>
-              <CTAButton href="/how-it-works" variant="secondary">
-                See How It Works
-              </CTAButton>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <ClosingCta
+        label="Use Case Workshop"
+        title="Traffic maps can be translated into a protected-path model."
+        actions={[
+          { href: "/contact", label: "Discuss Use Case" },
+          { href: "/how-it-works", label: "Architecture", variant: "secondary" },
+        ]}
+        motionStyle="slide-right"
+      />
     </div>
   );
 }

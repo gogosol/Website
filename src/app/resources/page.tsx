@@ -3,6 +3,7 @@
 import React from "react";
 import CTAButton from "@/components/CTAButton";
 import {
+  ClosingCta,
   FadeIn,
   ImagePanel,
   PageHero,
@@ -25,6 +26,8 @@ export default function ResourcesPage() {
         chips={["Threat models", "Architecture", "Migration", "Governance"]}
         primaryCta={{ href: "/contact", label: "Technical Inquiry" }}
         secondaryCta={{ href: "/compliance", label: "Readiness" }}
+        textMotion="scale"
+        imageMotion="slide-right"
       />
 
       <section className="py-20 lg:py-28">
@@ -34,10 +37,11 @@ export default function ResourcesPage() {
             title="Built for security, architecture, and risk teams."
             body="The resource library is organized around the questions organizations actually need to answer before they can deploy PQC responsibly."
             align="center"
+            motionStyle="scale"
           />
           <div className="mt-12 border-y border-black/10">
             {resourceTopics.map((topic, index) => (
-              <FadeIn key={topic.category} delay={index * 0.05}>
+              <FadeIn key={topic.category} delay={index * 0.05} motionStyle={index % 2 === 0 ? "slide-right" : "slide-left"}>
                 <div className="grid gap-0 border-b border-black/10 last:border-b-0 lg:grid-cols-[0.42fr_1fr]">
                   <div className="flex items-start gap-4 px-4 py-6">
                     <topic.icon className="mt-1 h-5 w-5 flex-shrink-0 text-[#126dff]" />
@@ -84,22 +88,19 @@ export default function ResourcesPage() {
               src="/images/generated/resources-decision-guide-plate.webp"
               alt="Decorative monochrome technical plate suggesting decision logic and mode selection."
               caption="Decision guides stay high-level and operator-safe"
+              motionStyle="slide-left"
+              imageMotion="scale"
             />
           </FadeIn>
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
-        <div className="absolute inset-0 circuit-mask opacity-70" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <FadeIn>
-            <SectionHeader label="Technical Inquiry" title="Technical questions can be reviewed before the public brief is live." align="center" />
-            <div className="mt-8">
-              <CTAButton href="/contact">Submit Inquiry</CTAButton>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <ClosingCta
+        label="Technical Inquiry"
+        title="Technical questions can be reviewed before the public brief is live."
+        actions={[{ href: "/contact", label: "Submit Inquiry" }]}
+        motionStyle="scale"
+      />
     </div>
   );
 }

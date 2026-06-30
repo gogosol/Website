@@ -11,14 +11,13 @@ import {
   LockKeyhole,
   Network,
 } from "lucide-react";
-import CTAButton from "@/components/CTAButton";
 import SectionLabel from "@/components/SectionLabel";
 import BrandLogo from "@/components/BrandLogo";
 import {
+  ClosingCta,
   FadeIn,
   LinkCard,
   RevealLines,
-  RevealText,
   ScrollStatement,
   SectionHeader,
   StatStrip,
@@ -281,22 +280,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-black/10 py-20 lg:py-28">
-        <div className="editorial-wrap grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-          <FadeIn>
-            <SectionLabel label="Next Step" />
-            <h2 className="max-w-5xl text-5xl font-medium leading-[0.9] text-black sm:text-6xl lg:text-8xl">
-              <RevealText text="Critical traffic should be protected before the quantum deadline arrives." />
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.1} className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-            <CTAButton href="/contact">Book a Technical Demo</CTAButton>
-            <CTAButton href="/product" variant="secondary">
-              Product Details
-            </CTAButton>
-          </FadeIn>
-        </div>
-      </section>
+      <ClosingCta
+        label="Next Step"
+        title="Critical traffic should be protected before the quantum deadline arrives."
+        align="split"
+        actions={[
+          { href: "/contact", label: "Book a Technical Demo" },
+          { href: "/product", label: "Product Details", variant: "secondary" },
+        ]}
+        motionStyle="clip-up"
+      />
     </div>
   );
 }

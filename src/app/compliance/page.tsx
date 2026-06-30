@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import CTAButton from "@/components/CTAButton";
 import {
+  ClosingCta,
   FadeIn,
   FeatureCard,
   ImagePanel,
@@ -103,6 +103,8 @@ export default function CompliancePage() {
         chips={["NIST 2024", "EU 2026 / 2030", "NSS 2027+", "2035 goal"]}
         primaryCta={{ href: "/contact", label: "Plan Readiness" }}
         secondaryCta={{ href: "/resources", label: "Resources" }}
+        textMotion="slide-left"
+        imageMotion="soft-blur"
       />
 
       <section className="py-20 lg:py-28">
@@ -112,10 +114,11 @@ export default function CompliancePage() {
             title="The work is bigger than choosing a crypto profile."
             body="A credible PQC transition needs inventory, traffic prioritization, trust readiness, policy governance, exception decisions, and evidence that protected paths are operating as intended."
             align="center"
+            motionStyle="slide-left"
           />
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {readinessSteps.map((step, index) => (
-              <FadeIn key={step.title} delay={index * 0.04}>
+              <FadeIn key={step.title} delay={index * 0.04} motionStyle={index % 3 === 0 ? "clip-up" : "rise"}>
                 <FeatureCard icon={step.icon} title={step.title}>
                   {step.text}
                 </FeatureCard>
@@ -132,6 +135,8 @@ export default function CompliancePage() {
               src="/images/generated/compliance-policy-calendar-plate.webp"
               alt="Decorative monochrome technical plate showing policy calendar and evidence objects."
               caption="Policy pressure is already calendar-driven"
+              motionStyle="clip-up"
+              imageMotion="soft-blur"
             />
           </FadeIn>
           <div>
@@ -141,24 +146,25 @@ export default function CompliancePage() {
               body="QCertify helps organizations translate public-sector and regulated-market milestones into practical readiness work: inventory exposure, protect priority paths, and produce evidence before deadlines compress the program."
             />
             <div className="mt-8 border-y border-black/10">
-              {policyMilestones.map((item) => (
-                <a
-                  key={`${item.date}-${item.title}`}
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group block border-b border-black/10 px-4 py-4 transition-colors last:border-b-0 hover:bg-[#126dff]/[0.045]"
-                >
-                  <div className="grid gap-3 sm:grid-cols-[88px_1fr_18px]">
-                    <div className="text-[10px] font-semibold uppercase text-[#126dff]">{item.date}</div>
-                    <div>
-                      <h3 className="text-sm font-semibold text-black">{item.title}</h3>
-                      <p className="mt-2 text-xs leading-5 text-black/[0.55]">{item.text}</p>
-                      <div className="mt-3 text-[9px] font-semibold uppercase text-black/[0.38]">{item.source}</div>
+              {policyMilestones.map((item, index) => (
+                <FadeIn key={`${item.date}-${item.title}`} delay={index * 0.035} motionStyle="slide-left">
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group block border-b border-black/10 px-4 py-4 transition-colors last:border-b-0 hover:bg-[#126dff]/[0.045]"
+                  >
+                    <div className="grid gap-3 sm:grid-cols-[88px_1fr_18px]">
+                      <div className="text-[10px] font-semibold uppercase text-[#126dff]">{item.date}</div>
+                      <div>
+                        <h3 className="text-sm font-semibold text-black">{item.title}</h3>
+                        <p className="mt-2 text-xs leading-5 text-black/[0.55]">{item.text}</p>
+                        <div className="mt-3 text-[9px] font-semibold uppercase text-black/[0.38]">{item.source}</div>
+                      </div>
+                      <ExternalLink className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-black/[0.32] transition-colors group-hover:text-[#126dff]" />
                     </div>
-                    <ExternalLink className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-black/[0.32] transition-colors group-hover:text-[#126dff]" />
-                  </div>
-                </a>
+                  </a>
+                </FadeIn>
               ))}
             </div>
           </div>
@@ -188,17 +194,12 @@ export default function CompliancePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
-        <div className="absolute inset-0 circuit-mask opacity-70" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <FadeIn>
-            <SectionHeader label="Readiness Planning" title="Prioritize the protected paths that audit and procurement teams cannot ignore." align="center" />
-            <div className="mt-8">
-              <CTAButton href="/contact">Discuss Readiness</CTAButton>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <ClosingCta
+        label="Readiness Planning"
+        title="Prioritize the protected paths that audit and procurement teams cannot ignore."
+        actions={[{ href: "/contact", label: "Discuss Readiness" }]}
+        motionStyle="slide-left"
+      />
     </div>
   );
 }

@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import CTAButton from "@/components/CTAButton";
 import {
+  ClosingCta,
   FadeIn,
   FeatureCard,
   ImagePanel,
@@ -48,6 +48,8 @@ export default function AboutPage() {
         chips={["Focused", "Technical", "Practical", "Privacy-aware"]}
         primaryCta={{ href: "/contact", label: "Technical Consultation" }}
         secondaryCta={{ href: "/product", label: "Explore Product" }}
+        textMotion="soft-blur"
+        imageMotion="clip-up"
       />
 
       <section className="py-20 lg:py-28">
@@ -56,10 +58,11 @@ export default function AboutPage() {
             label="Purpose"
             title="The hard part is not knowing PQC is coming. It is deploying it credibly."
             body="Most organizations cannot pause the business while every endpoint, application, partner path, trust store, and legacy system is migrated. QCertify exists to make early protection possible in that messy middle."
+            motionStyle="slide-right"
           />
           <div className="border-y border-black/10">
             {convictions.map((item, index) => (
-              <FadeIn key={item.title} delay={index * 0.05}>
+              <FadeIn key={item.title} delay={index * 0.05} motionStyle="slide-left">
                 <div className="grid gap-4 border-b border-black/10 px-4 py-5 last:border-b-0 sm:grid-cols-[64px_1fr]">
                   <div className="flex items-center gap-3">
                     <item.icon className="h-4 w-4 text-[#126dff]" />
@@ -83,6 +86,8 @@ export default function AboutPage() {
               src="/images/generated/about-gateway-closeup-plate.webp"
               alt="Decorative monochrome macro plate showing a gateway surface and protected path."
               caption="QuantumHalon is the first concrete QCertify solution"
+              motionStyle="scale"
+              imageMotion="soft-blur"
             />
           </FadeIn>
           <div>
@@ -122,17 +127,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
-        <div className="absolute inset-0 circuit-mask opacity-70" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <FadeIn>
-            <SectionHeader label="Consultation" title="Quantum readiness becomes concrete when mapped to real protected paths." align="center" />
-            <div className="mt-8">
-              <CTAButton href="/contact">Request Consultation</CTAButton>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <ClosingCta
+        label="Consultation"
+        title="Quantum readiness becomes concrete when mapped to real protected paths."
+        actions={[{ href: "/contact", label: "Request Consultation" }]}
+        motionStyle="soft-blur"
+      />
     </div>
   );
 }

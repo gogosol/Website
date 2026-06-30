@@ -28,8 +28,33 @@ import CTAButton from "@/components/CTAButton";
 import SectionLabel from "@/components/SectionLabel";
 
 type IconType = React.ComponentType<{ className?: string }>;
+type MotionStyle = "rise" | "slide-left" | "slide-right" | "clip-up" | "scale" | "soft-blur";
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
+
+function revealMotion(style: MotionStyle) {
+  switch (style) {
+    case "slide-left":
+      return { initial: { opacity: 0, x: 28 }, animate: { opacity: 1, x: 0 } };
+    case "slide-right":
+      return { initial: { opacity: 0, x: -28 }, animate: { opacity: 1, x: 0 } };
+    case "clip-up":
+      return {
+        initial: { opacity: 0, y: 18, clipPath: "inset(0 0 18% 0)" },
+        animate: { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" },
+      };
+    case "scale":
+      return { initial: { opacity: 0, scale: 0.96 }, animate: { opacity: 1, scale: 1 } };
+    case "soft-blur":
+      return {
+        initial: { opacity: 0, y: 18, filter: "blur(8px)" },
+        animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+      };
+    case "rise":
+    default:
+      return { initial: { opacity: 0, y: 22 }, animate: { opacity: 1, y: 0 } };
+  }
+}
 
 function splitText(text: string) {
   return text.split(/(\s+)/).filter(Boolean);
@@ -114,15 +139,19 @@ export function FadeIn({
   children,
   className = "",
   delay = 0,
+  motionStyle = "rise",
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  motionStyle?: MotionStyle;
 }) {
+  const motionPreset = revealMotion(motionStyle);
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={motionPreset.initial}
+      whileInView={motionPreset.animate}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.58, delay, ease: smoothEase }}
       className={className}
@@ -144,6 +173,8 @@ export function PageHero({
   primaryCta = { href: "/contact", label: "Technical Demo" },
   secondaryCta,
   compact = false,
+  textMotion = "rise",
+  imageMotion = "clip-up",
 }: {
   label: string;
   title: string;
@@ -156,8 +187,12 @@ export function PageHero({
   primaryCta?: { href: string; label: string };
   secondaryCta?: { href: string; label: string };
   compact?: boolean;
+  textMotion?: MotionStyle;
+  imageMotion?: MotionStyle;
 }) {
   const imageCaption = plateCaption ?? `${label} visualizes the page theme as a decorative technical plate`;
+  const textMotionPreset = revealMotion(textMotion);
+  const imageMotionPreset = revealMotion(imageMotion);
 
   return (
     <section
@@ -169,7 +204,7 @@ export function PageHero({
 
       <div className="editorial-wrap relative z-10 grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
         <div>
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
+          <motion.div initial={textMotionPreset.initial} animate={textMotionPreset.animate} transition={{ duration: 0.65, ease: smoothEase }}>
             <SectionLabel label={label} />
             <h1
               className={`mt-3 max-w-5xl font-medium leading-[0.9] text-black ${
@@ -206,8 +241,8 @@ export function PageHero({
         </div>
         {imageSrc ? (
           <motion.div
-            initial={{ opacity: 0, y: 24, clipPath: "inset(0 0 14% 0)" }}
-            animate={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }}
+            initial={imageMotionPreset.initial}
+            animate={imageMotionPreset.animate}
             transition={{ delay: 0.12, duration: 0.75, ease: smoothEase }}
             className="technical-plate min-h-[280px]"
           >
@@ -236,14 +271,16 @@ export function SectionHeader({
   title,
   body,
   align = "left",
+  motionStyle = "rise",
 }: {
   label: string;
   title: React.ReactNode;
   body?: React.ReactNode;
   align?: "left" | "center";
+  motionStyle?: MotionStyle;
 }) {
   return (
-    <FadeIn className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+    <FadeIn motionStyle={motionStyle} className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <SectionLabel label={label} />
       <h2 className="mt-3 text-4xl font-medium leading-[0.95] text-black md:text-6xl">
         {typeof title === "string" ? <RevealText text={title} /> : title}
@@ -378,24 +415,31 @@ export function ImagePanel({
   alt,
   caption,
   preload = false,
+  motionStyle = "clip-up",
+  imageMotion = "scale",
 }: {
   src: string;
   alt: string;
   caption?: string;
   preload?: boolean;
+  motionStyle?: MotionStyle;
+  imageMotion?: MotionStyle;
 }) {
+  const panelMotion = revealMotion(motionStyle);
+  const mediaMotion = revealMotion(imageMotion);
+
   return (
     <motion.div
       className="technical-plate"
-      initial={{ opacity: 0.92, clipPath: "inset(0 0 10% 0)" }}
-      whileInView={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
+      initial={panelMotion.initial}
+      whileInView={panelMotion.animate}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, ease: smoothEase }}
     >
       <motion.div
         className="relative aspect-[16/9]"
-        initial={{ scale: 1.035 }}
-        whileInView={{ scale: 1 }}
+        initial={mediaMotion.initial}
+        whileInView={mediaMotion.animate}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 1.1, ease: smoothEase }}
       >
@@ -407,6 +451,51 @@ export function ImagePanel({
         </div>
       ) : null}
     </motion.div>
+  );
+}
+
+export function ClosingCta({
+  label,
+  title,
+  actions,
+  align = "center",
+  motionStyle = "soft-blur",
+}: {
+  label: string;
+  title: string;
+  actions: { href: string; label: string; variant?: "primary" | "secondary" }[];
+  align?: "center" | "split";
+  motionStyle?: MotionStyle;
+}) {
+  const centered = align === "center";
+
+  return (
+    <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
+      <div className="absolute inset-0 circuit-mask opacity-70" />
+      <div
+        className={`editorial-wrap relative z-10 grid gap-8 ${
+          centered ? "mx-auto max-w-4xl text-center" : "lg:grid-cols-[1fr_auto] lg:items-end"
+        }`}
+      >
+        <FadeIn motionStyle={motionStyle} className={centered ? "mx-auto max-w-4xl" : ""}>
+          <SectionLabel label={label} />
+          <h2 className="mt-3 text-4xl font-medium leading-[0.95] text-black md:text-6xl">
+            <RevealText text={title} />
+          </h2>
+        </FadeIn>
+        <FadeIn
+          delay={0.08}
+          motionStyle={centered ? "rise" : "slide-left"}
+          className={`flex flex-col gap-3 sm:flex-row ${centered ? "justify-center" : "lg:flex-col"}`}
+        >
+          {actions.map((action) => (
+            <CTAButton key={`${action.href}-${action.label}`} href={action.href} variant={action.variant}>
+              {action.label}
+            </CTAButton>
+          ))}
+        </FadeIn>
+      </div>
+    </section>
   );
 }
 

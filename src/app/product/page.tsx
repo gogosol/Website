@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import CTAButton from "@/components/CTAButton";
 import {
+  ClosingCta,
   FadeIn,
   FeatureCard,
   ImagePanel,
@@ -52,6 +52,8 @@ export default function ProductPage() {
         chips={["Trusted handling", "Opaque behavior", "Passthrough", "Block"]}
         primaryCta={{ href: "/contact", label: "Book a Technical Demo" }}
         secondaryCta={{ href: "/how-it-works", label: "Architecture" }}
+        textMotion="slide-right"
+        imageMotion="clip-up"
       />
 
       <section className="border-b border-black/10 py-10">
@@ -74,6 +76,7 @@ export default function ProductPage() {
             title="A small set of modes covers the real migration problem."
             body="QuantumHalon does not pretend every path should be treated the same. It lets the organization choose the protection behavior that matches the traffic, trust model, and operational constraints."
             align="center"
+            motionStyle="soft-blur"
           />
           <div className="mt-10">
             <ModeMatrixVisual />
@@ -91,7 +94,7 @@ export default function ProductPage() {
             />
             <div className="mt-8 border-y border-black/10">
               {productPillars.map((pillar, index) => (
-                <FadeIn key={pillar.title} delay={index * 0.05}>
+                <FadeIn key={pillar.title} delay={index * 0.05} motionStyle="slide-right">
                   <div className="grid gap-4 border-b border-black/10 px-4 py-5 last:border-b-0 sm:grid-cols-[56px_1fr]">
                     <div className="flex items-center gap-3">
                       <pillar.icon className="h-4 w-4 text-[#126dff]" />
@@ -106,7 +109,7 @@ export default function ProductPage() {
               ))}
             </div>
           </div>
-          <FadeIn delay={0.1}>
+          <FadeIn delay={0.1} motionStyle="slide-left">
             <InlineGatewayVisual />
           </FadeIn>
         </div>
@@ -119,6 +122,8 @@ export default function ProductPage() {
               src="/images/generated/pqc-lattice-plate.webp"
               alt="Decorative monochrome technical lattice plate with sparse blue accent nodes."
               caption="Governed protection profiles can change without redrawing the network"
+              motionStyle="slide-right"
+              imageMotion="scale"
             />
           </FadeIn>
           <div>
@@ -181,20 +186,15 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
-        <div className="absolute inset-0 circuit-mask opacity-70" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <FadeIn>
-            <SectionHeader label="Demo" title="Review the mode matrix mapped to enterprise traffic." align="center" />
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <CTAButton href="/contact">Book a Technical Demo</CTAButton>
-              <CTAButton href="/use-cases" variant="secondary">
-                View Use Cases
-              </CTAButton>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <ClosingCta
+        label="Demo"
+        title="Review the mode matrix mapped to enterprise traffic."
+        actions={[
+          { href: "/contact", label: "Book a Technical Demo" },
+          { href: "/use-cases", label: "View Use Cases", variant: "secondary" },
+        ]}
+        motionStyle="soft-blur"
+      />
     </div>
   );
 }

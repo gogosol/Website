@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import CTAButton from "@/components/CTAButton";
 import {
+  ClosingCta,
   FadeIn,
   FeatureCard,
   ImagePanel,
@@ -49,6 +49,8 @@ export default function HowItWorksPage() {
         chips={["Inline", "Classify", "Select Mode", "Enforce", "Report"]}
         primaryCta={{ href: "/contact", label: "Protected Path Review" }}
         secondaryCta={{ href: "/product", label: "Product Details" }}
+        textMotion="clip-up"
+        imageMotion="slide-left"
       />
 
       <section className="py-20 lg:py-28">
@@ -58,8 +60,9 @@ export default function HowItWorksPage() {
             title="The gateway sits in the path. The cloud does not."
             body="The live packet path stays local to deployed gateways. QCertify governance services coordinate policy and operational state separately from packet handling."
             align="center"
+            motionStyle="clip-up"
           />
-          <FadeIn delay={0.1} className="mt-10">
+          <FadeIn delay={0.1} className="mt-10" motionStyle="scale">
             <InlineGatewayVisual />
           </FadeIn>
         </div>
@@ -71,10 +74,11 @@ export default function HowItWorksPage() {
             label="Flow"
             title="Five steps from raw traffic to governed protection."
             body="This is deliberately high-level. The public site explains the operating model; detailed policy and crypto mechanics stay inside the product and technical briefings."
+            motionStyle="slide-right"
           />
           <div className="border-y border-black/10">
             {flowSteps.map((step, index) => (
-              <FadeIn key={step.title} delay={index * 0.05}>
+              <FadeIn key={step.title} delay={index * 0.05} motionStyle="slide-left">
                 <div className="grid gap-4 border-b border-black/10 px-4 py-5 last:border-b-0 sm:grid-cols-[64px_1fr]">
                   <div className="text-sm font-semibold text-[#126dff]">
                     {String(index + 1).padStart(2, "0")}
@@ -97,6 +101,8 @@ export default function HowItWorksPage() {
               src="/images/generated/how-mode-logic-plate.webp"
               alt="Decorative monochrome technical plate suggesting four policy outcomes."
               caption="Mode logic separates traffic behavior from application rewrites"
+              motionStyle="slide-right"
+              imageMotion="soft-blur"
             />
           </FadeIn>
           <div>
@@ -153,20 +159,15 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-black/10 py-24 lg:py-32">
-        <div className="absolute inset-0 circuit-mask opacity-70" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <FadeIn>
-            <SectionHeader label="Technical Walkthrough" title="Map the model to client protected paths." align="center" />
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <CTAButton href="/contact">Book a Walkthrough</CTAButton>
-              <CTAButton href="/use-cases" variant="secondary">
-                View Use Cases
-              </CTAButton>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <ClosingCta
+        label="Technical Walkthrough"
+        title="Map the model to client protected paths."
+        actions={[
+          { href: "/contact", label: "Book a Walkthrough" },
+          { href: "/use-cases", label: "View Use Cases", variant: "secondary" },
+        ]}
+        motionStyle="clip-up"
+      />
     </div>
   );
 }
