@@ -192,7 +192,7 @@ export default function CompliancePage() {
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeader label="Readiness Planning" title="Start with the paths your audit story cannot ignore." align="center" />
+            <SectionHeader label="Readiness Planning" title="Prioritize the protected paths that audit and procurement teams cannot ignore." align="center" />
             <div className="mt-8">
               <CTAButton href="/contact">Discuss Readiness</CTAButton>
             </div>

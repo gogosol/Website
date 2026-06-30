@@ -29,11 +29,11 @@ export default function HeroSection() {
             Protecting organizations <br/>for the <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#0ea5e9]">post-quantum era.</span>
           </h1>
           <p className="text-lg lg:text-xl text-slate-300 mb-10 max-w-lg leading-relaxed font-light">
-            QCertify protects critical communications and systems with Post-Quantum Cryptography. QuantumHalon is our crypto-agile gateway, reducing HNDL risk and enabling gradual PQC transition.
+            QCertify protects critical communications and systems with Post-Quantum Cryptography. QuantumHalon is a crypto-agile gateway that reduces HNDL risk and enables gradual PQC transition.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/contact" className="relative group overflow-hidden inline-flex justify-center items-center gap-2 px-8 py-4 rounded-full font-bold transition-all glass-panel glass-interactive text-white focus:outline-none focus:ring-2 focus:ring-[#0ea5e9]">
-              <span className="relative z-10 shadow-sm">Talk to QCertify</span>
+              <span className="relative z-10 shadow-sm">Technical Consultation</span>
             </Link>
             <Link href="/product" className="inline-flex justify-center items-center gap-2 glass-panel glass-interactive px-8 py-4 rounded-full font-medium transition-all text-white focus:outline-none focus:ring-2 focus:ring-[#0ea5e9]">
               Explore QuantumHalon <ArrowRight className="w-4 h-4 text-white group-hover:text-[#0ea5e9] transition-colors" />

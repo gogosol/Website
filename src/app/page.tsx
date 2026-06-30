@@ -17,6 +17,9 @@ import BrandLogo from "@/components/BrandLogo";
 import {
   FadeIn,
   LinkCard,
+  RevealLines,
+  RevealText,
+  ScrollStatement,
   SectionHeader,
   StatStrip,
 } from "@/components/QuantumPage";
@@ -95,9 +98,7 @@ export default function Home() {
           <FadeIn>
             <SectionLabel label="The Risk" />
             <h2 className="max-w-5xl text-6xl font-medium leading-[0.84] text-black sm:text-7xl lg:text-8xl">
-              Harvest Now.
-              <br />
-              Decrypt Later.
+              <RevealLines lines={["Harvest Now.", "Decrypt Later."]} />
             </h2>
           </FadeIn>
 
@@ -111,7 +112,7 @@ export default function Home() {
               {[
                 "Prioritize communications whose confidentiality horizon outlives current cryptography.",
                 "Apply path-level protection before every endpoint and application can migrate.",
-                "Give security, risk, and procurement teams a defensible transition story.",
+                "Give security, risk, and procurement teams a defensible readiness record.",
               ].map((item) => (
                 <div key={item} className="grid grid-cols-[18px_1fr] gap-3 border-t border-black/10 pt-4">
                   <CheckCircle2 className="mt-1 h-4 w-4 text-[#126dff]" />
@@ -122,6 +123,13 @@ export default function Home() {
           </FadeIn>
         </div>
       </section>
+
+      <ScrollStatement
+        label="Why Timing Matters"
+        text="Encrypted traffic captured today may remain sensitive long enough to become readable in the quantum era. Priority paths need protection before application-wide migration is complete."
+        caption="Organizations can reduce Harvest Now, Decrypt Later exposure by prioritizing data lifetime, inline enforcement, and transition evidence."
+        metadata={["Long-lived sensitive data", "Inline protected paths", "Readiness evidence"]}
+      />
 
       <section className="border-b border-black/10 py-20 lg:py-28">
         <div className="editorial-wrap">
@@ -161,9 +169,7 @@ export default function Home() {
           <FadeIn>
             <SectionLabel label="Protection Modes" />
             <h2 className="text-6xl font-medium leading-[0.84] text-black sm:text-7xl lg:text-8xl">
-              One gateway.
-              <br />
-              Different decisions.
+              <RevealLines lines={["One gateway.", "Different decisions."]} />
             </h2>
             <p className="mt-7 max-w-xl text-base leading-7 text-black/60">
               The product does not flatten every path into one answer. It lets
@@ -232,9 +238,9 @@ export default function Home() {
           />
           <div className="mt-12 grid gap-px border-y border-black/10 bg-black/10 md:grid-cols-3">
             {[
-              { step: "01", title: "Protect priority traffic", text: "Start with the paths whose data lifetime creates the highest pressure." },
+              { step: "01", title: "Protect priority traffic", text: "Priority paths are defined by data lifetime, exposure, and operating pressure." },
               { step: "02", title: "Keep operations stable", text: "Use an inline gateway model rather than a full endpoint rewrite on day one." },
-              { step: "03", title: "Expand with evidence", text: "Let policy, deployment state, and exception records tell the transition story." },
+              { step: "03", title: "Expand with evidence", text: "Use policy, deployment state, and exception records to document transition progress." },
             ].map((item, index) => (
               <FadeIn key={item.title} delay={index * 0.05}>
                 <div className="grid h-full grid-rows-[auto_1fr] bg-[#f7f7f2] p-6">
@@ -259,7 +265,7 @@ export default function Home() {
             <LinkCard
               href="/product"
               title="Explore QuantumHalon"
-              text="See the inline gateway model, policy modes, and architecture boundary."
+              text="Review the inline gateway model, policy modes, and architecture boundary."
             />
             <LinkCard
               href="/use-cases"
@@ -280,7 +286,7 @@ export default function Home() {
           <FadeIn>
             <SectionLabel label="Next Step" />
             <h2 className="max-w-5xl text-5xl font-medium leading-[0.9] text-black sm:text-6xl lg:text-8xl">
-              Protect critical traffic before the quantum deadline arrives.
+              <RevealText text="Critical traffic should be protected before the quantum deadline arrives." />
             </h2>
           </FadeIn>
           <FadeIn delay={0.1} className="flex flex-col gap-3 sm:flex-row lg:flex-col">
@@ -362,13 +368,7 @@ function HomeHero() {
         >
           <BrandLogo className="mb-6 h-10 w-[184px]" priority />
           <h1 className="max-w-6xl text-5xl font-medium leading-[0.9] text-black sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.2rem]">
-            Post-Quantum
-            <br />
-            Security.
-            <br />
-            Without Rebuilding
-            <br />
-            Your Network.
+            <RevealLines lines={["Post-Quantum", "Security.", "Without Network", "Rebuilds."]} />
           </h1>
         </motion.div>
 
@@ -423,13 +423,25 @@ function EditorialPlate({
   caption: string;
 }) {
   return (
-    <section className="technical-plate">
-      <div className="relative aspect-[16/7] min-h-[280px]">
+    <motion.section
+      className="technical-plate"
+      initial={{ opacity: 0.95, clipPath: "inset(0 0 12% 0)" }}
+      whileInView={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <motion.div
+        className="relative aspect-[16/7] min-h-[280px]"
+        initial={{ scale: 1.035 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+      >
         <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
-      </div>
+      </motion.div>
       <div className="editorial-wrap py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
         {caption}
       </div>
-    </section>
+    </motion.section>
   );
 }

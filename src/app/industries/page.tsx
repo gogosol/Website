@@ -51,7 +51,7 @@ export default function IndustriesPage() {
         imageAlt="Decorative monochrome technical plate representing long-lived data across a time horizon."
         plateCaption="Data lifetime determines where quantum pressure starts"
         chips={["Finance", "Government", "Critical infrastructure", "Healthcare", "Enterprise"]}
-        primaryCta={{ href: "/contact", label: "Talk to QCertify" }}
+        primaryCta={{ href: "/contact", label: "Technical Consultation" }}
         secondaryCta={{ href: "/use-cases", label: "Use Cases" }}
       />
 
@@ -130,9 +130,9 @@ export default function IndustriesPage() {
         <div className="absolute inset-0 circuit-mask opacity-70" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeader label="Industry Fit" title="Start with the traffic your industry cannot afford to expose later." align="center" />
+            <SectionHeader label="Industry Fit" title="Prioritize traffic that regulated industries cannot afford to expose later." align="center" />
             <div className="mt-8">
-              <CTAButton href="/contact">Discuss Your Industry</CTAButton>
+              <CTAButton href="/contact">Discuss Industry Fit</CTAButton>
             </div>
           </FadeIn>
         </div>
