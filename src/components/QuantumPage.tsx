@@ -210,7 +210,7 @@ export function PageHero({
           <motion.div initial={textMotionPreset.initial} animate={textMotionPreset.animate} transition={{ duration: 0.65, ease: smoothEase }}>
             <SectionLabel label={label} />
             <h1
-              className={`mt-3 max-w-5xl break-words font-medium leading-[0.94] text-black ${
+              className={`mt-3 max-w-5xl break-words font-medium leading-[1.02] text-black ${
                 compact
                   ? "text-[clamp(1.9rem,7.8vw,4.5rem)] sm:text-6xl lg:text-7xl"
                   : "text-[clamp(2.15rem,8.8vw,6rem)] sm:text-7xl lg:text-8xl"
@@ -287,7 +287,7 @@ export function SectionHeader({
   return (
     <FadeIn motionStyle={motionStyle} className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <SectionLabel label={label} />
-      <h2 className="mt-3 break-words text-[clamp(1.55rem,6.8vw,3.75rem)] font-medium leading-[1] text-black md:text-6xl">
+      <h2 className="mt-3 break-words text-[clamp(1.55rem,6.8vw,3.75rem)] font-medium leading-[1.08] text-black md:text-6xl">
         {typeof title === "string" ? <RevealText text={title} /> : title}
       </h2>
       {body ? <div className="mt-5 text-base leading-7 text-black/60">{body}</div> : null}
@@ -484,7 +484,7 @@ export function ClosingCta({
       >
         <FadeIn motionStyle={motionStyle} className={centered ? "mx-auto max-w-4xl" : ""}>
           <SectionLabel label={label} />
-          <h2 className="mt-3 break-words text-[clamp(1.55rem,6.8vw,3.75rem)] font-medium leading-[1] text-black md:text-6xl">
+          <h2 className="mt-3 break-words text-[clamp(1.55rem,6.8vw,3.75rem)] font-medium leading-[1.08] text-black md:text-6xl">
             <RevealText text={title} />
           </h2>
         </FadeIn>

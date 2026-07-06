@@ -74,7 +74,7 @@ export default function ContactPage() {
         <div className="editorial-wrap relative z-10 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <SectionLabel label="Contact" />
-            <h1 className="mt-3 max-w-5xl text-5xl font-medium leading-[0.9] text-black sm:text-6xl lg:text-8xl">
+            <h1 className="mt-3 max-w-5xl text-5xl font-medium leading-[1.02] text-black sm:text-6xl lg:text-8xl">
               <RevealText text="Map QuantumHalon to protected traffic paths." />
             </h1>
             <p className="mt-7 max-w-2xl text-base leading-7 text-black/[0.62] sm:text-lg">

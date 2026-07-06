@@ -87,7 +87,7 @@ export default function PacketJourney({ steps }: { steps: JourneyStep[] }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -18 }}
                 transition={{ duration: 0.3, ease: smoothEase }}
-                className="text-7xl font-medium leading-[0.85] text-black sm:text-8xl lg:text-9xl"
+                className="text-7xl font-medium leading-[0.98] text-black sm:text-8xl lg:text-9xl"
                 aria-hidden="true"
               >
                 {String(activeStep + 1).padStart(2, "0")}

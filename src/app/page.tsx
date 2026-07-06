@@ -111,7 +111,7 @@ export default function Home() {
         <div className="editorial-wrap grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <FadeIn>
             <SectionLabel label="The Risk" />
-            <h2 className="max-w-5xl text-6xl font-medium leading-[0.84] text-black sm:text-7xl lg:text-8xl">
+            <h2 className="max-w-5xl text-6xl font-medium leading-[0.98] text-black sm:text-7xl lg:text-8xl">
               <RevealLines lines={["Harvest Now.", "Decrypt Later."]} />
             </h2>
           </FadeIn>
@@ -182,7 +182,7 @@ export default function Home() {
         <div className="editorial-wrap grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <FadeIn>
             <SectionLabel label="Protection Modes" />
-            <h2 className="text-6xl font-medium leading-[0.84] text-black sm:text-7xl lg:text-8xl">
+            <h2 className="text-6xl font-medium leading-[0.98] text-black sm:text-7xl lg:text-8xl">
               <RevealLines lines={["One gateway.", "Different decisions."]} />
             </h2>
             <p className="mt-7 max-w-xl text-base leading-7 text-black/60">
@@ -379,65 +379,35 @@ function HomeInlineDiagram() {
   );
 }
 
-function HeroOutlineText({
-  text,
-  units,
-  delay,
-  widthEm,
-  fillBackground = false,
-  className = "",
-}: {
-  text: string;
-  units: number;
-  delay: number;
-  widthEm?: number;
-  fillBackground?: boolean;
-  className?: string;
-}) {
-  return (
-    <motion.span
-      aria-label={text}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className={`inline-block overflow-visible align-baseline leading-none ${className}`}
-      style={{ width: `${widthEm ?? (units + 8) / 100}em` }}
-    >
-      <span className="sr-only">{text}</span>
-      <svg
-        aria-hidden="true"
-        focusable="false"
-        viewBox={`0 0 ${units + 8} 100`}
-        preserveAspectRatio={widthEm ? "none" : "xMinYMid meet"}
-        className="block h-[1em] w-full overflow-visible"
-      >
-        <text
-          x="4"
-          y="80"
-          fill={fillBackground ? "var(--paper)" : "none"}
-          stroke="currentColor"
-          strokeLinejoin="miter"
-          strokeMiterlimit="4"
-          strokeWidth={fillBackground ? "3.8" : "1.35"}
-          paintOrder={fillBackground ? "stroke fill" : "normal"}
-          vectorEffect="non-scaling-stroke"
-          style={{
-            fontFamily: "var(--font-inter), Arial, Helvetica, sans-serif",
-            fontSize: 100,
-            fontWeight: 500,
-          }}
-        >
-          {text}
-        </text>
-      </svg>
-    </motion.span>
-  );
-}
-
 function HomeHero() {
   return (
     <section className="relative min-h-[92svh] overflow-hidden border-b border-black/10 pt-24">
-      <div className="absolute inset-0 circuit-mask opacity-45" />
+      <picture className="absolute inset-0 block">
+        <source media="(max-width: 639px)" srcSet="/images/generated/qcertify-quantumhalon-hero-mobile-v1.png" />
+        <img
+          src="/images/generated/qcertify-quantumhalon-hero-bg-v2.png"
+          alt=""
+          fetchPriority="high"
+          className="h-full w-full object-cover object-center"
+        />
+      </picture>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 sm:hidden"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(247,247,242,0.36) 0%, rgba(247,247,242,0.30) 48%, rgba(247,247,242,0.20) 100%), linear-gradient(180deg, rgba(247,247,242,0.42) 0%, rgba(247,247,242,0.14) 48%, rgba(247,247,242,0.58) 100%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 hidden sm:block"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(247,247,242,0.58) 0%, rgba(247,247,242,0.50) 34%, rgba(247,247,242,0.30) 68%, rgba(247,247,242,0.18) 100%), linear-gradient(180deg, rgba(247,247,242,0.56) 0%, rgba(247,247,242,0.16) 48%, rgba(247,247,242,0.66) 100%)",
+        }}
+      />
+      <div className="absolute inset-0 circuit-mask opacity-25" />
       <div className="editorial-wrap relative z-10 flex min-h-[calc(92svh-6rem)] flex-col justify-between pb-8 pt-8 lg:pt-12">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -453,31 +423,18 @@ function HomeHero() {
             <span className="text-black/[0.45]">Harvest now, decrypt later is already running</span>
           </div>
 
-          <h1 className="max-w-6xl text-[clamp(2.15rem,9.2vw,7.2rem)] font-medium leading-[0.98] text-black sm:text-[clamp(2.35rem,10vw,7.2rem)] sm:leading-[0.94]">
+          <h1 className="max-w-[min(94vw,62rem)] text-[clamp(2rem,7.4vw,5.35rem)] font-medium leading-[1.08] text-black sm:text-[clamp(2.25rem,7.2vw,5.85rem)] lg:text-[clamp(3rem,5.9vw,6.2rem)]">
             <span className="block">
               <RevealText text="Post-Quantum" immediate />
             </span>
             <span className="block">
               <RevealText text="Security." delay={0.08} immediate />
             </span>
-            <span className="block sm:hidden">
-              <HeroOutlineText text="Without Network" units={810} delay={0.16} fillBackground />
+            <span className="block">
+              <RevealText text="Without Network" delay={0.16} immediate />
             </span>
-            <span className="block sm:hidden">
-              <HeroOutlineText text="Rebuild" units={357} delay={0.24} fillBackground />
-              <motion.span
-                aria-hidden="true"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.9, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="anim-hold-blink ml-3 inline-block h-[0.14em] w-[0.14em] bg-[#126dff] align-baseline"
-              />
-            </span>
-            <span className="hidden sm:block">
-              <HeroOutlineText text="Without Network" units={810} delay={0.16} fillBackground />
-            </span>
-            <span className="hidden sm:block">
-              <HeroOutlineText text="Rebuild" units={357} delay={0.24} fillBackground />
+            <span className="block">
+              <RevealText text="Rebuild" delay={0.24} immediate />
               <motion.span
                 aria-hidden="true"
                 initial={{ opacity: 0, scale: 0 }}
@@ -487,6 +444,20 @@ function HomeHero() {
               />
             </span>
           </h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.22, duration: 0.65 }}
+            className="mt-8 grid gap-5 border-t border-black pt-5 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {metadata.map((item) => (
+              <div key={item.label} className="metadata">
+                <strong>{item.label}</strong>
+                {item.value}
+              </div>
+            ))}
+          </motion.div>
 
           <div className="mt-9 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <motion.p
@@ -512,51 +483,6 @@ function HomeHero() {
             </motion.div>
           </div>
         </motion.div>
-
-        <div className="grid gap-8 pt-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.12, duration: 0.65 }}
-            className="grid gap-5 border-t border-black pt-5 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {metadata.map((item) => (
-              <div key={item.label} className="metadata">
-                <strong>{item.label}</strong>
-                {item.value}
-              </div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.18, duration: 0.65 }}
-            className="technical-plate"
-          >
-            <div className="relative aspect-[16/9] overflow-hidden">
-              <Image
-                src="/images/generated/quantum-computer-plate.webp"
-                alt="Decorative monochrome technical plate showing a quantum computer."
-                fill
-                preload
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
-              />
-              <div
-                aria-hidden="true"
-                className="anim-plate-scan pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-transparent via-[#126dff]/[0.07] to-transparent"
-              />
-            </div>
-            <div className="grid grid-cols-[1fr_auto] items-center gap-4 border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
-              <span>Quantum hardware marks the future risk horizon</span>
-              <span className="flex items-center gap-2 text-[9px] font-semibold text-black/[0.42]">
-                <span className="anim-hold-blink h-1.5 w-1.5 bg-[#126dff]" />
-                Monitoring
-              </span>
-            </div>
-          </motion.div>
-        </div>
       </div>
     </section>
   );

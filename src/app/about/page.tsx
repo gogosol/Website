@@ -84,7 +84,7 @@ export default function AboutPage() {
                     </span>
                     <item.icon className="h-4 w-4 text-[#126dff]" />
                   </div>
-                  <h3 className="mt-10 max-w-xl text-3xl font-medium leading-[0.95] text-black sm:text-5xl">
+                  <h3 className="mt-10 max-w-xl text-3xl font-medium leading-[1.05] text-black sm:text-5xl">
                     {item.title}
                   </h3>
                   <p className="mt-6 max-w-xl text-sm leading-7 text-black/[0.58] sm:text-base">{item.text}</p>
