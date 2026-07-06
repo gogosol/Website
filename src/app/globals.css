@@ -167,7 +167,9 @@ img {
 
   .text-outline {
     color: transparent;
+    -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 1.5px var(--ink);
+    paint-order: stroke fill;
   }
 
   @media (max-width: 640px) {

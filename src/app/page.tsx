@@ -398,38 +398,49 @@ function HomeHero() {
             <span className="text-black/[0.45]">Harvest now, decrypt later is already running</span>
           </div>
 
-          <h1 className="max-w-6xl text-[clamp(2.35rem,10vw,7.2rem)] font-medium leading-[0.94] text-black">
+          <h1 className="max-w-6xl text-[clamp(2.15rem,9.2vw,7.2rem)] font-medium leading-[0.98] text-black sm:text-[clamp(2.35rem,10vw,7.2rem)] sm:leading-[0.94]">
             <span className="block">
               <RevealText text="Post-Quantum" immediate />
             </span>
             <span className="block">
               <RevealText text="Security." delay={0.08} immediate />
             </span>
-            <span className="block text-outline sm:hidden">
-              <RevealText text="Without" delay={0.16} immediate />
-            </span>
-            <span className="block text-outline sm:hidden">
-              <RevealText text="Network" delay={0.22} immediate />
-            </span>
-            <span className="block sm:hidden">
-              <span className="text-outline">
-                <RevealText text="Rebuild" delay={0.28} immediate />
-              </span>
+            <span className="block whitespace-nowrap leading-[1.12] sm:hidden">
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.16, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="text-outline inline-block text-[clamp(1.35rem,6.2vw,2rem)]"
+              >
+                Without Network Rebuild
+              </motion.span>
               <motion.span
                 aria-hidden="true"
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.9, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="anim-hold-blink ml-3 inline-block h-[0.14em] w-[0.14em] bg-[#126dff] align-baseline"
+                className="anim-hold-blink ml-2 inline-block h-[0.12em] w-[0.12em] bg-[#126dff] align-baseline"
               />
             </span>
             <span className="hidden text-outline sm:block">
-              <RevealText text="Without Network" delay={0.16} immediate />
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.16, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-block"
+              >
+                Without Network
+              </motion.span>
             </span>
             <span className="hidden sm:block">
-              <span className="text-outline">
-                <RevealText text="Rebuild" delay={0.24} immediate />
-              </span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.24, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="text-outline inline-block"
+              >
+                Rebuild
+              </motion.span>
               <motion.span
                 aria-hidden="true"
                 initial={{ opacity: 0, scale: 0 }}
