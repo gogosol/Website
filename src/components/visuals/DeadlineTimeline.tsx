@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { CountUp } from "@/components/Editorial";
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
@@ -57,10 +56,25 @@ export default function DeadlineTimeline({ className = "" }: { className?: strin
     { label: "EU critical infrastructure", deadline: "Dec 31 2030", days: now ? daysUntil(new Date(Date.UTC(2030, 11, 31))) : 0 },
     { label: "U.S. end-state goal", deadline: "Dec 31 2035", days: now ? daysUntil(new Date(Date.UTC(2035, 11, 31))) : 0 },
   ];
+  const mobileTimeline = milestones.reduce<Array<{ kind: "milestone"; item: Milestone } | { kind: "now" }>>(
+    (items, item, index) => {
+      const previousYear = index === 0 ? AXIS_START : milestones[index - 1].year;
+      if (nowYear && nowYear > previousYear && nowYear <= item.year) {
+        items.push({ kind: "now" });
+      }
+      items.push({ kind: "milestone", item });
+      return items;
+    },
+    [],
+  );
+
+  if (nowYear && nowYear > milestones[milestones.length - 1].year) {
+    mobileTimeline.push({ kind: "now" });
+  }
 
   return (
     <div className={`technical-plate bg-white/[0.55] ${className}`} role="region" aria-label="Post-quantum regulatory timeline from 2023 to 2036 with live countdowns">
-      <div className="grid grid-cols-[1fr_auto] gap-4 border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45]">
+      <div className="grid gap-2 border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45] sm:grid-cols-[1fr_auto] sm:gap-4">
         <span>Regulatory horizon / 2023 → 2036</span>
         <span className="flex items-center gap-2">
           <span className="anim-hold-blink h-1.5 w-1.5 bg-[#126dff]" />
@@ -68,7 +82,38 @@ export default function DeadlineTimeline({ className = "" }: { className?: strin
         </span>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="md:hidden">
+        <div className="relative px-4 py-5">
+          <div className="absolute bottom-6 left-[25px] top-6 w-px bg-black/15" aria-hidden="true" />
+          <div className="space-y-4">
+            {mobileTimeline.map((entry, index) => {
+              if (entry.kind === "now") {
+                return (
+                  <div key={`now-${index}`} className="relative pl-7">
+                    <span className="anim-hold-blink absolute left-0 top-3 h-3 w-3 bg-[#126dff]" aria-hidden="true" />
+                    <div className="border border-[#126dff]/40 bg-white px-3 py-3 shadow-[0_12px_30px_rgba(18,109,255,0.06)]">
+                      <div className="text-[9px] font-semibold uppercase leading-4 text-[#126dff]">Now</div>
+                      <div className="mt-1 text-sm font-semibold leading-5 text-black">{nowLabel}</div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <div key={entry.item.title} className="relative pl-7">
+                  <span className="absolute left-0 top-3 h-3 w-3 border border-black/30 bg-[#f7f7f2]" aria-hidden="true" />
+                  <div className="border border-black/10 bg-white/[0.72] px-3 py-3">
+                    <div className="text-[9px] font-semibold uppercase leading-4 text-[#126dff]">{entry.item.date}</div>
+                    <div className="mt-1 text-sm font-semibold leading-5 text-black">{entry.item.title}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="hidden overflow-x-auto md:block">
         <div className="relative min-w-[860px] px-10 py-6">
           <div className="relative h-[250px]">
             {/* axis */}
@@ -165,15 +210,17 @@ export default function DeadlineTimeline({ className = "" }: { className?: strin
         </div>
       </div>
 
-      <div className="grid border-t border-black/10 sm:grid-cols-3">
+      <div className="grid gap-px border-t border-black/10 bg-black/10 md:grid-cols-3">
         {countdowns.map((item) => (
-          <div key={item.label} className="border-b border-black/10 px-4 py-4 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
+          <div key={item.label} className="bg-[#f7f7f2] px-4 py-4">
             <div className="text-[9px] font-semibold uppercase leading-4 text-black/[0.42]">
               {item.label} · {item.deadline}
             </div>
-            <div className="mt-2 text-3xl font-medium leading-none text-black tabular-nums sm:text-4xl">
-              <CountUp value={item.days} duration={1.8} />
-              <span className="ml-2 text-[10px] font-semibold uppercase text-black/[0.4]">days left</span>
+            <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-black tabular-nums">
+              <span className="text-4xl font-medium leading-none">
+                {now ? item.days.toLocaleString("en-US") : "..."}
+              </span>
+              <span className="text-[10px] font-semibold uppercase leading-4 text-black/[0.4]">days left</span>
             </div>
           </div>
         ))}

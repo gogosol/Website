@@ -398,19 +398,37 @@ function HomeHero() {
             <span className="text-black/[0.45]">Harvest now, decrypt later is already running</span>
           </div>
 
-          <h1 className="max-w-6xl text-5xl font-medium leading-[0.9] text-black sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.2rem]">
+          <h1 className="max-w-6xl text-[clamp(2.35rem,10vw,7.2rem)] font-medium leading-[0.94] text-black">
             <span className="block">
-              <RevealText text="Post-Quantum" />
+              <RevealText text="Post-Quantum" immediate />
             </span>
             <span className="block">
-              <RevealText text="Security." delay={0.08} />
+              <RevealText text="Security." delay={0.08} immediate />
             </span>
-            <span className="block text-outline">
-              <RevealText text="Without Network" delay={0.16} />
+            <span className="block text-outline sm:hidden">
+              <RevealText text="Without" delay={0.16} immediate />
             </span>
-            <span className="block">
+            <span className="block text-outline sm:hidden">
+              <RevealText text="Network" delay={0.22} immediate />
+            </span>
+            <span className="block sm:hidden">
               <span className="text-outline">
-                <RevealText text="Rebuilds" delay={0.24} />
+                <RevealText text="Rebuild" delay={0.28} immediate />
+              </span>
+              <motion.span
+                aria-hidden="true"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.9, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="anim-hold-blink ml-3 inline-block h-[0.14em] w-[0.14em] bg-[#126dff] align-baseline"
+              />
+            </span>
+            <span className="hidden text-outline sm:block">
+              <RevealText text="Without Network" delay={0.16} immediate />
+            </span>
+            <span className="hidden sm:block">
+              <span className="text-outline">
+                <RevealText text="Rebuild" delay={0.24} immediate />
               </span>
               <motion.span
                 aria-hidden="true"
@@ -427,7 +445,7 @@ function HomeHero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-xl border-l-2 border-[#126dff] pl-4 text-base leading-7 text-black/[0.65] sm:text-lg sm:leading-8"
+              className="max-w-[21rem] border-l-2 border-[#126dff] pl-4 text-[15px] leading-7 text-black/[0.65] sm:max-w-xl sm:text-lg sm:leading-8"
             >
               Traffic captured today gets decrypted tomorrow. QuantumHalon drops
               post-quantum protection onto the paths you already operate —

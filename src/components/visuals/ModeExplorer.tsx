@@ -89,14 +89,14 @@ export default function ModeExplorer({ className = "" }: { className?: string })
       role="region"
       aria-label="QuantumHalon mode explorer: select a policy outcome to preview the path behavior"
     >
-      <div className="grid grid-cols-[1fr_auto] gap-4 border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45]">
+      <div className="grid gap-2 border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45] sm:grid-cols-[1fr_auto] sm:gap-4">
         <span>Mode explorer / select a policy outcome</span>
         <span>{String(activeIndex + 1).padStart(2, "0")} / 04</span>
       </div>
 
       <div className="grid lg:grid-cols-[260px_1fr]">
         <div
-          className="grid grid-cols-2 border-b border-black/10 lg:grid-cols-1 lg:border-b-0 lg:border-r"
+          className="grid border-b border-black/10 sm:grid-cols-2 lg:grid-cols-1 lg:border-b-0 lg:border-r"
           aria-label="Policy modes"
         >
           {modes.map((item, index) => {
@@ -107,7 +107,7 @@ export default function ModeExplorer({ className = "" }: { className?: string })
                 type="button"
                 aria-pressed={active}
                 onClick={() => setActiveIndex(index)}
-                className={`relative border-b border-r border-black/10 px-4 py-4 text-left transition-colors last:border-r-0 lg:border-r-0 lg:px-5 lg:py-5 lg:last:border-b-0 focus-visible:outline focus-visible:outline-1 focus-visible:-outline-offset-4 focus-visible:outline-black ${
+                className={`relative border-b border-black/10 px-4 py-4 text-left transition-colors sm:border-r sm:last:border-r-0 lg:border-r-0 lg:px-5 lg:py-5 lg:last:border-b-0 focus-visible:outline focus-visible:outline-1 focus-visible:-outline-offset-4 focus-visible:outline-black ${
                   active ? "bg-white" : "hover:bg-white/[0.6]"
                 }`}
               >
@@ -136,9 +136,9 @@ export default function ModeExplorer({ className = "" }: { className?: string })
         </div>
 
         <div>
-          <div className="relative min-h-[260px] overflow-hidden px-4 py-8 sm:px-6">
+          <div className="relative min-h-[420px] overflow-hidden px-4 py-8 sm:min-h-[260px] sm:px-6">
             <svg
-              className="absolute inset-0 h-full w-full"
+              className="absolute inset-0 hidden h-full w-full sm:block"
               viewBox="0 0 800 300"
               preserveAspectRatio="none"
               aria-hidden="true"
@@ -222,9 +222,12 @@ export default function ModeExplorer({ className = "" }: { className?: string })
               ) : null}
             </svg>
 
-            <div className="relative z-10 grid min-h-[190px] grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-6">
-              <div className="max-w-[130px] justify-self-start sm:max-w-[180px]">
-                <div className="border border-black/15 bg-white/80 px-3 py-2.5 sm:px-4 sm:py-3">
+            <div aria-hidden="true" className="absolute left-1/2 top-12 h-[calc(100%-6rem)] w-px -translate-x-1/2 bg-black/15 sm:hidden" />
+            <div aria-hidden="true" className={`absolute left-1/2 top-[42%] h-[72px] w-px -translate-x-1/2 ${isBlock ? "bg-[#ff6b5f]" : isPassthrough ? "bg-black/30" : "bg-[#126dff]" } sm:hidden`} />
+
+            <div className="relative z-10 grid min-h-[340px] grid-cols-1 items-center justify-items-center gap-4 sm:min-h-[190px] sm:grid-cols-[1fr_auto_1fr] sm:gap-6">
+              <div className="w-full max-w-[220px] justify-self-center sm:max-w-[180px] sm:justify-self-start">
+                <div className="border border-black/15 bg-white/90 px-3 py-2.5 text-center sm:bg-white/80 sm:px-4 sm:py-3 sm:text-left">
                   <div className="text-[9px] font-semibold uppercase leading-4 text-black/[0.45]">Source</div>
                   <div className="mt-1 text-xs font-semibold text-black sm:text-sm">Selected path</div>
                 </div>
@@ -235,7 +238,7 @@ export default function ModeExplorer({ className = "" }: { className?: string })
                   borderColor: isBlock ? "rgba(255,107,95,0.85)" : isPassthrough ? "rgba(5,5,5,0.25)" : "rgba(18,109,255,0.7)",
                 }}
                 transition={{ duration: 0.35 }}
-                className="justify-self-center border bg-white/90 px-4 py-4 text-center sm:px-6 sm:py-5"
+                className="w-full max-w-[260px] justify-self-center border bg-white/95 px-4 py-4 text-center sm:w-auto sm:max-w-none sm:bg-white/90 sm:px-6 sm:py-5"
                 style={{ borderWidth: 1 }}
               >
                 <div className="text-[9px] font-semibold uppercase leading-4 text-[#126dff]">QuantumHalon</div>
@@ -261,11 +264,11 @@ export default function ModeExplorer({ className = "" }: { className?: string })
                 </AnimatePresence>
               </motion.div>
 
-              <div className="max-w-[130px] justify-self-end sm:max-w-[180px]">
+              <div className="w-full max-w-[220px] justify-self-center sm:max-w-[180px] sm:justify-self-end">
                 <motion.div
                   animate={{ opacity: isBlock ? 0.35 : 1 }}
                   transition={{ duration: 0.35 }}
-                  className="border border-black/15 bg-white/80 px-3 py-2.5 text-right sm:px-4 sm:py-3"
+                  className="border border-black/15 bg-white/90 px-3 py-2.5 text-center sm:bg-white/80 sm:px-4 sm:py-3 sm:text-right"
                 >
                   <div className="text-[9px] font-semibold uppercase leading-4 text-black/[0.45]">Destination</div>
                   <div className="mt-1 text-xs font-semibold text-black sm:text-sm">Protected side</div>
@@ -281,10 +284,10 @@ export default function ModeExplorer({ className = "" }: { className?: string })
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.22 }}
-              className="grid border-t border-black/10 sm:grid-cols-3"
+              className="grid border-t border-black/10 md:grid-cols-3"
             >
               {mode.properties.map(([label, value]) => (
-                <div key={label} className="border-b border-black/10 px-4 py-3 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
+                <div key={label} className="border-b border-black/10 px-4 py-3 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
                   <div className="text-[9px] font-semibold uppercase leading-4 text-black/[0.42]">{label}</div>
                   <div className="mt-1 text-xs font-semibold text-black">{value}</div>
                 </div>
@@ -292,7 +295,7 @@ export default function ModeExplorer({ className = "" }: { className?: string })
             </motion.div>
           </AnimatePresence>
 
-          <div className="grid grid-cols-[1fr_auto] gap-4 border-t border-black/10 px-4 py-3">
+          <div className="grid gap-2 border-t border-black/10 px-4 py-3 sm:grid-cols-[1fr_auto] sm:gap-4">
             <AnimatePresence mode="wait">
               <motion.span
                 key={mode.id}
@@ -305,7 +308,7 @@ export default function ModeExplorer({ className = "" }: { className?: string })
                 {mode.caption}
               </motion.span>
             </AnimatePresence>
-            <span className="text-[9px] uppercase leading-4 text-black/[0.35]">Policy decides per path</span>
+            <span className="text-[9px] uppercase leading-4 text-black/[0.35] sm:text-right">Policy decides per path</span>
           </div>
         </div>
       </div>

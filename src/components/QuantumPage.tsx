@@ -35,9 +35,9 @@ const smoothEase = [0.22, 1, 0.36, 1] as const;
 function revealMotion(style: MotionStyle) {
   switch (style) {
     case "slide-left":
-      return { initial: { opacity: 0, x: 28 }, animate: { opacity: 1, x: 0 } };
+      return { initial: { opacity: 0, x: 14 }, animate: { opacity: 1, x: 0 } };
     case "slide-right":
-      return { initial: { opacity: 0, x: -28 }, animate: { opacity: 1, x: 0 } };
+      return { initial: { opacity: 0, x: -14 }, animate: { opacity: 1, x: 0 } };
     case "clip-up":
       return {
         initial: { opacity: 0, y: 18, clipPath: "inset(0 0 18% 0)" },
@@ -65,19 +65,22 @@ export function RevealText({
   className = "",
   delay = 0,
   stagger = 0.026,
+  immediate = false,
 }: {
   text: string;
   className?: string;
   delay?: number;
   stagger?: number;
+  immediate?: boolean;
 }) {
   return (
     <motion.span
       aria-label={text}
       className={className}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      animate={immediate ? "visible" : undefined}
+      whileInView={immediate ? undefined : "visible"}
+      viewport={immediate ? undefined : { once: true, margin: "-80px" }}
       variants={{
         hidden: {},
         visible: {
@@ -207,15 +210,17 @@ export function PageHero({
           <motion.div initial={textMotionPreset.initial} animate={textMotionPreset.animate} transition={{ duration: 0.65, ease: smoothEase }}>
             <SectionLabel label={label} />
             <h1
-              className={`mt-3 max-w-5xl font-medium leading-[0.9] text-black ${
-                compact ? "text-5xl sm:text-6xl lg:text-7xl" : "text-6xl sm:text-7xl lg:text-8xl"
+              className={`mt-3 max-w-5xl break-words font-medium leading-[0.94] text-black ${
+                compact
+                  ? "text-[clamp(1.9rem,7.8vw,4.5rem)] sm:text-6xl lg:text-7xl"
+                  : "text-[clamp(2.15rem,8.8vw,6rem)] sm:text-7xl lg:text-8xl"
               }`}
             >
-              <RevealText text={title} />
+              <RevealText text={title} immediate />
               {accent ? (
                 <>
                   {" "}
-                  <RevealText text={accent} className="text-[#126dff]" delay={0.12} />
+                  <RevealText text={accent} className="text-[#126dff]" delay={0.12} immediate />
                 </>
               ) : null}
             </h1>
@@ -282,7 +287,7 @@ export function SectionHeader({
   return (
     <FadeIn motionStyle={motionStyle} className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <SectionLabel label={label} />
-      <h2 className="mt-3 text-4xl font-medium leading-[0.95] text-black md:text-6xl">
+      <h2 className="mt-3 break-words text-[clamp(1.55rem,6.8vw,3.75rem)] font-medium leading-[1] text-black md:text-6xl">
         {typeof title === "string" ? <RevealText text={title} /> : title}
       </h2>
       {body ? <div className="mt-5 text-base leading-7 text-black/60">{body}</div> : null}
@@ -309,8 +314,8 @@ export function ScrollStatement({
   const words = text.split(/\s+/);
 
   return (
-    <section ref={ref} className="relative min-h-[138svh] border-b border-black/10">
-      <div className="sticky top-16 flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-16">
+    <section ref={ref} className="relative overflow-hidden border-b border-black/10 py-20 lg:py-28">
+      <div className="relative">
         <div className="absolute inset-0 circuit-mask opacity-35" />
         <div className="editorial-wrap relative z-10 grid w-full gap-12 lg:grid-cols-[0.42fr_1fr] lg:items-end">
           <div>
@@ -479,7 +484,7 @@ export function ClosingCta({
       >
         <FadeIn motionStyle={motionStyle} className={centered ? "mx-auto max-w-4xl" : ""}>
           <SectionLabel label={label} />
-          <h2 className="mt-3 text-4xl font-medium leading-[0.95] text-black md:text-6xl">
+          <h2 className="mt-3 break-words text-[clamp(1.55rem,6.8vw,3.75rem)] font-medium leading-[1] text-black md:text-6xl">
             <RevealText text={title} />
           </h2>
         </FadeIn>
