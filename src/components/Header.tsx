@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import BrandLogo from "@/components/BrandLogo";
@@ -19,6 +20,12 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { scrollYProgress } = useScroll();
+  const readingProgress = useSpring(scrollYProgress, {
+    stiffness: 180,
+    damping: 32,
+    mass: 0.4,
+  });
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 14);
@@ -90,31 +97,51 @@ export default function Header() {
             </button>
           </div>
         </div>
+        <motion.div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-[-1px] h-[2px] origin-left bg-[#126dff]"
+          style={{ scaleX: readingProgress }}
+        />
       </header>
 
-      {mobileMenuOpen ? (
-        <div className="fixed inset-x-0 top-16 z-40 border-b border-black/[0.12] bg-[#f7f7f2] lg:hidden">
-          <nav className="editorial-wrap grid gap-px py-3" aria-label="Mobile navigation">
-            {navLinks.map((item) => (
+      <AnimatePresence>
+        {mobileMenuOpen ? (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-x-0 top-16 z-40 border-b border-black/[0.12] bg-[#f7f7f2] lg:hidden"
+          >
+            <nav className="editorial-wrap grid gap-px py-3" aria-label="Mobile navigation">
+              {navLinks.map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.03 * index, duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="flex items-center justify-between border-t border-black/10 py-4 text-[12px] font-semibold uppercase text-black"
+                  >
+                    {item.label}
+                    <span className="text-[10px] text-black/[0.35]">{String(index + 1).padStart(2, "0")}</span>
+                  </Link>
+                </motion.div>
+              ))}
               <Link
-                key={item.href}
-                href={item.href}
+                href="/contact"
                 onClick={closeMenu}
-                className="border-t border-black/10 py-4 text-[12px] font-semibold uppercase text-black"
+                className="mt-2 border border-black px-4 py-3 text-center text-[12px] font-semibold uppercase text-black"
               >
-                {item.label}
+                Technical Demo
               </Link>
-            ))}
-            <Link
-              href="/contact"
-              onClick={closeMenu}
-              className="mt-2 border border-black px-4 py-3 text-center text-[12px] font-semibold uppercase text-black"
-            >
-              Technical Demo
-            </Link>
-          </nav>
-        </div>
-      ) : null}
+            </nav>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </>
   );
 }

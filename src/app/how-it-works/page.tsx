@@ -10,28 +10,34 @@ import {
   PageHero,
   SectionHeader,
 } from "@/components/QuantumPage";
+import PacketJourney, { type JourneyStep } from "@/components/visuals/PacketJourney";
 import { Cloud, EyeOff, GitBranch, KeyRound, Network, Radar, Route, ShieldCheck } from "lucide-react";
 
-const flowSteps = [
+const flowSteps: JourneyStep[] = [
   {
     title: "Traffic crosses the inline gateway",
     text: "QuantumHalon is placed at a governed chokepoint. Protected paths cross it by design.",
+    meta: "Ingress",
   },
   {
     title: "Classifier resolves the path",
     text: "The gateway classifies traffic at a high level using policy-relevant network context.",
+    meta: "Classify",
   },
   {
     title: "Mode engine selects behavior",
     text: "Policy chooses governed protection, opaque behavior, approved passthrough, or block for each selected path.",
+    meta: "Select mode",
   },
   {
     title: "Protection boundary enforces",
     text: "The selected mode applies the approved protection behavior for that path.",
+    meta: "Enforce",
   },
   {
     title: "Evidence records state",
     text: "Operators receive deployment and coverage records without making cloud services the live traffic path.",
+    meta: "Report",
   },
 ];
 
@@ -69,27 +75,15 @@ export default function HowItWorksPage() {
       </section>
 
       <section className="border-y border-black/10 py-20 lg:py-28">
-        <div className="editorial-wrap grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="editorial-wrap">
           <SectionHeader
             label="Flow"
             title="Five steps from raw traffic to governed protection."
-            body="This is deliberately high-level. The public site explains the operating model; detailed policy and crypto mechanics stay inside the product and technical briefings."
+            body="Scroll the pipeline. This is deliberately high-level: the public site explains the operating model, while detailed policy and crypto mechanics stay inside the product and technical briefings."
             motionStyle="slide-right"
           />
-          <div className="border-y border-black/10">
-            {flowSteps.map((step, index) => (
-              <FadeIn key={step.title} delay={index * 0.05} motionStyle="slide-left">
-                <div className="grid gap-4 border-b border-black/10 px-4 py-5 last:border-b-0 sm:grid-cols-[64px_1fr]">
-                  <div className="text-sm font-semibold text-[#126dff]">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-black">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-black/[0.58]">{step.text}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
+          <div className="mt-14 lg:mt-20">
+            <PacketJourney steps={flowSteps} />
           </div>
         </div>
       </section>

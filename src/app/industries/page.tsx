@@ -9,6 +9,7 @@ import {
   PageHero,
   SectionHeader,
 } from "@/components/QuantumPage";
+import DataLifetimeChart from "@/components/visuals/DataLifetimeChart";
 import { CheckCircle, Landmark, Lock, ShieldCheck } from "lucide-react";
 
 const industries = [
@@ -66,6 +67,9 @@ export default function IndustriesPage() {
             align="center"
             motionStyle="slide-left"
           />
+          <FadeIn delay={0.1} motionStyle="clip-up" className="mt-10">
+            <DataLifetimeChart />
+          </FadeIn>
           <div className="mt-12 border-y border-black/10">
             <div className="hidden grid-cols-[0.58fr_1fr_1fr] border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45] lg:grid">
               <span>Industry</span>

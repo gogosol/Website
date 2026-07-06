@@ -14,24 +14,31 @@ import { Compass, EyeOff, GitBranch, Lock, Network, Shield, ShieldCheck, Target 
 const convictions = [
   {
     icon: Target,
-    title: "Quantum risk is operational",
+    title: "Quantum risk is operational.",
     text: "It is not solved by a slide about crypto choices. It is solved through deployment readiness, policy, evidence, and disciplined migration.",
   },
   {
     icon: Network,
-    title: "Placement matters",
+    title: "Placement matters.",
     text: "Protected traffic should cross the enforcement point by design, with clear ownership and controlled policy.",
   },
   {
     icon: GitBranch,
-    title: "Migration must be phased",
+    title: "Migration must be phased.",
     text: "Organizations need compatibility decisions, exception control, and evidence while the ecosystem moves toward post-quantum defaults.",
   },
   {
     icon: EyeOff,
-    title: "Privacy boundaries matter",
+    title: "Privacy boundaries matter.",
     text: "Governance services should not turn into unnecessary cloud access to live packet contents.",
   },
+];
+
+const dossier = [
+  { label: "Focus", value: "Post-quantum cybersecurity" },
+  { label: "First solution", value: "QuantumHalon" },
+  { label: "Placement", value: "Inline gateway fabric" },
+  { label: "Boundary", value: "Cloud out of the packet path" },
 ];
 
 export default function AboutPage() {
@@ -53,27 +60,47 @@ export default function AboutPage() {
       />
 
       <section className="py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:px-8">
-          <SectionHeader
-            label="Purpose"
-            title="The hard part is not knowing PQC is coming. It is deploying it credibly."
-            body="Most organizations cannot pause the business while every endpoint, application, partner path, trust store, and legacy system is migrated. QCertify exists to make early protection possible in that messy middle."
-            motionStyle="slide-right"
-          />
-          <div className="border-y border-black/10">
+        <div className="editorial-wrap grid gap-12 lg:grid-cols-[0.42fr_1fr] lg:gap-16">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <SectionHeader
+              label="Manifesto"
+              title="The hard part is not knowing PQC is coming. It is deploying it credibly."
+              body="Most organizations cannot pause the business while every endpoint, application, partner path, trust store, and legacy system is migrated. QCertify exists to make early protection possible in that messy middle. Four convictions guide the work."
+              motionStyle="slide-right"
+            />
+          </div>
+
+          <div>
             {convictions.map((item, index) => (
-              <FadeIn key={item.title} delay={index * 0.05} motionStyle="slide-left">
-                <div className="grid gap-4 border-b border-black/10 px-4 py-5 last:border-b-0 sm:grid-cols-[64px_1fr]">
-                  <div className="flex items-center gap-3">
+              <div
+                key={item.title}
+                className="sticky mb-8"
+                style={{ top: `${104 + index * 20}px` }}
+              >
+                <div className="border border-black/20 bg-[#f7f7f2] p-6 sm:p-10">
+                  <div className="flex items-center justify-between border-b border-black/10 pb-4">
+                    <span className="text-[10px] font-semibold uppercase text-[#126dff]">
+                      Conviction {String(index + 1).padStart(2, "0")} / {String(convictions.length).padStart(2, "0")}
+                    </span>
                     <item.icon className="h-4 w-4 text-[#126dff]" />
-                    <span className="text-[10px] font-semibold uppercase text-[#126dff]">{String(index + 1).padStart(2, "0")}</span>
                   </div>
-                  <div>
-                    <h3 className="text-base font-semibold leading-tight text-black">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-black/[0.58]">{item.text}</p>
+                  <h3 className="mt-10 max-w-xl text-3xl font-medium leading-[0.95] text-black sm:text-5xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-6 max-w-xl text-sm leading-7 text-black/[0.58] sm:text-base">{item.text}</p>
+                  <div className="mt-12 flex items-center justify-between border-t border-black/10 pt-3 text-[9px] font-semibold uppercase text-black/[0.38]">
+                    <span>QCertify operating principle</span>
+                    <span aria-hidden="true" className="flex gap-1">
+                      {convictions.map((_, dotIndex) => (
+                        <span
+                          key={dotIndex}
+                          className={`h-1.5 w-1.5 ${dotIndex <= index ? "bg-[#126dff]" : "bg-black/[0.15]"}`}
+                        />
+                      ))}
+                    </span>
                   </div>
                 </div>
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>
@@ -123,6 +150,14 @@ export default function AboutPage() {
               body="The website uses simple high-level visuals on purpose. The goal is to make the security model easy to grasp while keeping implementation-specific details inside technical conversations."
               align="center"
             />
+          </FadeIn>
+          <FadeIn delay={0.12} className="mt-12 grid gap-5 border-t border-black pt-5 text-left sm:grid-cols-2 lg:grid-cols-4">
+            {dossier.map((item) => (
+              <div key={item.label} className="metadata">
+                <strong>{item.label}</strong>
+                {item.value}
+              </div>
+            ))}
           </FadeIn>
         </div>
       </section>

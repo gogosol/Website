@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -12,16 +12,29 @@ import {
   Network,
 } from "lucide-react";
 import SectionLabel from "@/components/SectionLabel";
-import BrandLogo from "@/components/BrandLogo";
+import CTAButton from "@/components/CTAButton";
+import { Marquee } from "@/components/Editorial";
 import {
   ClosingCta,
   FadeIn,
   LinkCard,
   RevealLines,
+  RevealText,
   ScrollStatement,
   SectionHeader,
   StatStrip,
 } from "@/components/QuantumPage";
+
+const tickerItems = [
+  "Harvest now, decrypt later",
+  "Hybrid PQC profiles",
+  "Inline gateway fabric",
+  "Crypto agility under policy",
+  "Zero network rebuild",
+  "Governed exception control",
+  "Readiness evidence",
+  "Control plane out of path",
+];
 
 const metadata = [
   { label: "Organization", value: "QCertify" },
@@ -72,6 +85,8 @@ export default function Home() {
   return (
     <div className="min-h-screen selection:bg-[#126dff]/[0.15]">
       <HomeHero />
+
+      <Marquee items={tickerItems} className="border-t-0" />
 
       <section className="border-b border-black/10 py-8">
         <div className="editorial-wrap">
@@ -311,9 +326,24 @@ function HomeInlineDiagram() {
           <path d="M 92 174 H 808" stroke="rgba(0,0,0,0.30)" strokeWidth="1.2" />
           <path d="M 92 194 H 808" stroke="rgba(0,0,0,0.12)" strokeWidth="1" />
           <path d="M 450 68 V 274" stroke="rgba(0,0,0,0.18)" strokeWidth="1" />
-          <path d="M 362 174 H 538" stroke="#126dff" strokeWidth="2" />
-          <circle cx="362" cy="174" r="4" fill="#126dff" />
-          <circle cx="538" cy="174" r="4" fill="#126dff" />
+          <path
+            d="M 362 174 H 538"
+            stroke="#126dff"
+            strokeWidth="2"
+            strokeDasharray="6 6"
+            className="anim-flow-dash"
+          />
+          <motion.rect
+            y="169"
+            width="10"
+            height="10"
+            fill="#126dff"
+            initial={{ x: 88, opacity: 0 }}
+            animate={{ x: [88, 802], opacity: [0, 1, 1, 1, 0] }}
+            transition={{ duration: 3.6, repeat: Infinity, ease: "linear", repeatDelay: 0.6 }}
+          />
+          <rect x="358" y="170" width="8" height="8" fill="#126dff" className="anim-pulse-glow" />
+          <rect x="534" y="170" width="8" height="8" fill="#126dff" className="anim-pulse-glow" />
         </svg>
 
         <div className="relative z-10 grid min-h-[230px] gap-6 sm:grid-cols-[1fr_220px_1fr] sm:items-center">
@@ -359,10 +389,62 @@ function HomeHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65 }}
         >
-          <BrandLogo className="mb-6 h-10 w-[184px]" priority />
+          <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-black/10 pb-4 text-[10px] font-semibold uppercase leading-none">
+            <span className="flex items-center gap-2 text-black">
+              <span className="anim-hold-blink h-2 w-2 bg-[#126dff]" />
+              Post-quantum cybersecurity
+            </span>
+            <span className="hidden h-3 w-px bg-black/20 sm:block" />
+            <span className="text-black/[0.45]">Harvest now, decrypt later is already running</span>
+          </div>
+
           <h1 className="max-w-6xl text-5xl font-medium leading-[0.9] text-black sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.2rem]">
-            <RevealLines lines={["Post-Quantum", "Security.", "Without Network", "Rebuilds."]} />
+            <span className="block">
+              <RevealText text="Post-Quantum" />
+            </span>
+            <span className="block">
+              <RevealText text="Security." delay={0.08} />
+            </span>
+            <span className="block text-outline">
+              <RevealText text="Without Network" delay={0.16} />
+            </span>
+            <span className="block">
+              <span className="text-outline">
+                <RevealText text="Rebuilds" delay={0.24} />
+              </span>
+              <motion.span
+                aria-hidden="true"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.9, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="anim-hold-blink ml-3 inline-block h-[0.14em] w-[0.14em] bg-[#126dff] align-baseline sm:ml-4"
+              />
+            </span>
           </h1>
+
+          <div className="mt-9 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-xl border-l-2 border-[#126dff] pl-4 text-base leading-7 text-black/[0.65] sm:text-lg sm:leading-8"
+            >
+              Traffic captured today gets decrypted tomorrow. QuantumHalon drops
+              post-quantum protection onto the paths you already operate —
+              inline, policy-governed, live in days.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.62, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col gap-3 sm:flex-row"
+            >
+              <CTAButton href="/contact">Book a Technical Demo</CTAButton>
+              <CTAButton href="/how-it-works" variant="secondary">
+                See How It Works
+              </CTAButton>
+            </motion.div>
+          </div>
         </motion.div>
 
         <div className="grid gap-8 pt-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
@@ -386,18 +468,26 @@ function HomeHero() {
             transition={{ delay: 0.18, duration: 0.65 }}
             className="technical-plate"
           >
-            <div className="relative aspect-[16/9]">
+            <div className="relative aspect-[16/9] overflow-hidden">
               <Image
                 src="/images/generated/quantum-computer-plate.webp"
                 alt="Decorative monochrome technical plate showing a quantum computer."
                 fill
-                priority
+                preload
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="object-cover"
               />
+              <div
+                aria-hidden="true"
+                className="anim-plate-scan pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-transparent via-[#126dff]/[0.07] to-transparent"
+              />
             </div>
-            <div className="border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
-              Quantum hardware marks the future risk horizon
+            <div className="grid grid-cols-[1fr_auto] items-center gap-4 border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
+              <span>Quantum hardware marks the future risk horizon</span>
+              <span className="flex items-center gap-2 text-[9px] font-semibold text-black/[0.42]">
+                <span className="anim-hold-blink h-1.5 w-1.5 bg-[#126dff]" />
+                Monitoring
+              </span>
             </div>
           </motion.div>
         </div>
@@ -415,23 +505,27 @@ function EditorialPlate({
   alt: string;
   caption: string;
 }) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-7%", "7%"]);
+
   return (
     <motion.section
+      ref={ref}
       className="technical-plate"
       initial={{ opacity: 0.95, clipPath: "inset(0 0 12% 0)" }}
       whileInView={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
-      <motion.div
-        className="relative aspect-[16/7] min-h-[280px]"
-        initial={{ scale: 1.035 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
-      </motion.div>
+      <div className="relative aspect-[16/7] min-h-[280px] overflow-hidden">
+        <motion.div className="absolute inset-[-8%_0]" style={{ y: parallaxY }}>
+          <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
+        </motion.div>
+      </div>
       <div className="editorial-wrap py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
         {caption}
       </div>

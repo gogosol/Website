@@ -9,6 +9,7 @@ import {
   PageHero,
   SectionHeader,
 } from "@/components/QuantumPage";
+import TrafficPathMap from "@/components/visuals/TrafficPathMap";
 import { Cloud, Factory, Landmark, ShieldCheck } from "lucide-react";
 
 const useCases = [
@@ -66,6 +67,9 @@ export default function UseCasesPage() {
             align="center"
             motionStyle="soft-blur"
           />
+          <FadeIn delay={0.1} motionStyle="clip-up" className="mt-10">
+            <TrafficPathMap />
+          </FadeIn>
           <div className="mt-12 border-y border-black/10">
             <div className="hidden grid-cols-[0.7fr_1fr_1fr] border-b border-black/10 px-4 py-3 text-[9px] uppercase leading-4 text-black/[0.45] lg:grid">
               <span>Traffic pattern</span>

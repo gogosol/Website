@@ -15,7 +15,7 @@ export default function BrandLogo({
         src="/SF_White_Logo_Web.png"
         alt="QCertify"
         fill
-        priority={priority}
+        preload={priority}
         sizes="220px"
         className={`object-contain object-left ${tone === "dark" ? "invert" : ""}`}
       />

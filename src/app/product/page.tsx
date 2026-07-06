@@ -7,12 +7,12 @@ import {
   FeatureCard,
   ImagePanel,
   InlineGatewayVisual,
-  ModeMatrixVisual,
   PageHero,
   PrivacyBoundary,
   SectionHeader,
   StatStrip,
 } from "@/components/QuantumPage";
+import ModeExplorer from "@/components/visuals/ModeExplorer";
 import { BadgeCheck, Cloud, KeyRound, LockKeyhole, RefreshCw, ShieldCheck, Workflow, Zap } from "lucide-react";
 
 const productPillars = [
@@ -74,13 +74,13 @@ export default function ProductPage() {
           <SectionHeader
             label="What It Does"
             title="A small set of modes covers the real migration problem."
-            body="QuantumHalon does not pretend every path should be treated the same. It lets the organization choose the protection behavior that matches the traffic, trust model, and operational constraints."
+            body="QuantumHalon does not pretend every path should be treated the same. Select a mode below to preview how the same inline gateway treats a path differently under policy."
             align="center"
             motionStyle="soft-blur"
           />
-          <div className="mt-10">
-            <ModeMatrixVisual />
-          </div>
+          <FadeIn delay={0.1} motionStyle="clip-up" className="mt-10">
+            <ModeExplorer />
+          </FadeIn>
         </div>
       </section>
 

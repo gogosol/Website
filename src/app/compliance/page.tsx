@@ -9,6 +9,7 @@ import {
   PageHero,
   SectionHeader,
 } from "@/components/QuantumPage";
+import DeadlineTimeline from "@/components/visuals/DeadlineTimeline";
 import { ClipboardCheck, ExternalLink, FileCheck2, KeyRound, ListChecks, RefreshCw, SlidersHorizontal, TimerReset } from "lucide-react";
 
 const readinessSteps = [
@@ -129,6 +130,21 @@ export default function CompliancePage() {
       </section>
 
       <section className="border-y border-black/10 py-20 lg:py-28">
+        <div className="editorial-wrap">
+          <SectionHeader
+            label="The Clock"
+            title="Deadlines are public. The countdown is already running."
+            body="Public-sector milestones set the pace for regulated markets. The markers below are drawn against the real calendar."
+            align="center"
+            motionStyle="clip-up"
+          />
+          <FadeIn delay={0.1} motionStyle="clip-up" className="mt-10">
+            <DeadlineTimeline />
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="border-b border-black/10 py-20 lg:py-28">
         <div className="editorial-wrap grid gap-10 lg:grid-cols-2 lg:items-center">
           <FadeIn>
             <ImagePanel
