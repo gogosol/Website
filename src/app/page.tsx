@@ -379,6 +379,61 @@ function HomeInlineDiagram() {
   );
 }
 
+function HeroOutlineText({
+  text,
+  units,
+  delay,
+  widthEm,
+  fillBackground = false,
+  className = "",
+}: {
+  text: string;
+  units: number;
+  delay: number;
+  widthEm?: number;
+  fillBackground?: boolean;
+  className?: string;
+}) {
+  return (
+    <motion.span
+      aria-label={text}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className={`inline-block overflow-visible align-baseline leading-none ${className}`}
+      style={{ width: `${widthEm ?? (units + 8) / 100}em` }}
+    >
+      <span className="sr-only">{text}</span>
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        viewBox={`0 0 ${units + 8} 100`}
+        preserveAspectRatio={widthEm ? "none" : "xMinYMid meet"}
+        className="block h-[1em] w-full overflow-visible"
+      >
+        <text
+          x="4"
+          y="80"
+          fill={fillBackground ? "var(--paper)" : "none"}
+          stroke="currentColor"
+          strokeLinejoin="miter"
+          strokeMiterlimit="4"
+          strokeWidth={fillBackground ? "3.8" : "1.35"}
+          paintOrder={fillBackground ? "stroke fill" : "normal"}
+          vectorEffect="non-scaling-stroke"
+          style={{
+            fontFamily: "var(--font-inter), Arial, Helvetica, sans-serif",
+            fontSize: 100,
+            fontWeight: 500,
+          }}
+        >
+          {text}
+        </text>
+      </svg>
+    </motion.span>
+  );
+}
+
 function HomeHero() {
   return (
     <section className="relative min-h-[92svh] overflow-hidden border-b border-black/10 pt-24">
@@ -405,42 +460,24 @@ function HomeHero() {
             <span className="block">
               <RevealText text="Security." delay={0.08} immediate />
             </span>
-            <span className="block whitespace-nowrap leading-[1.12] sm:hidden">
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.16, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="text-outline inline-block text-[clamp(1.35rem,6.2vw,2rem)]"
-              >
-                Without Network Rebuild
-              </motion.span>
+            <span className="block sm:hidden">
+              <HeroOutlineText text="Without Network" units={810} delay={0.16} fillBackground />
+            </span>
+            <span className="block sm:hidden">
+              <HeroOutlineText text="Rebuild" units={357} delay={0.24} fillBackground />
               <motion.span
                 aria-hidden="true"
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.9, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="anim-hold-blink ml-2 inline-block h-[0.12em] w-[0.12em] bg-[#126dff] align-baseline"
+                className="anim-hold-blink ml-3 inline-block h-[0.14em] w-[0.14em] bg-[#126dff] align-baseline"
               />
             </span>
-            <span className="hidden text-outline sm:block">
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.16, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block"
-              >
-                Without Network
-              </motion.span>
+            <span className="hidden sm:block">
+              <HeroOutlineText text="Without Network" units={810} delay={0.16} fillBackground />
             </span>
             <span className="hidden sm:block">
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.24, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="text-outline inline-block"
-              >
-                Rebuild
-              </motion.span>
+              <HeroOutlineText text="Rebuild" units={357} delay={0.24} fillBackground />
               <motion.span
                 aria-hidden="true"
                 initial={{ opacity: 0, scale: 0 }}
