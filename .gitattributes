@@ -1,0 +1,10 @@
+# Deliberately narrow. This repository has never had a .gitattributes, and
+# adding `* text=auto` now would renormalise every tracked file in one commit,
+# which is not worth the churn. Only the served artefacts that must be
+# byte-stable are pinned.
+
+# security.txt is served verbatim from public/ and is a candidate for a
+# detached PGP signature (RFC 9116 recommends signing). A checkout that
+# rewrites its line endings would invalidate that signature and change what
+# researchers fetch depending on which machine built the site.
+public/.well-known/security.txt text eol=lf

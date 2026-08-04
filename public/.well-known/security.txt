@@ -4,8 +4,11 @@
 # the product has no QCertify-operated host to probe. This domain is the entry
 # point for reports about QuantumHalon, the QCertify Vendor Plane services
 # (exchange / updates / portal), and this site.
+#
+# QCertify runs one mailbox and every channel routes to it; there is no
+# separate security@ address. Please mark the subject line clearly.
 
-Contact: mailto:security@qcertify.io
+Contact: mailto:contact@qcertify.io
 Expires: 2027-02-04T00:00:00.000Z
 Preferred-Languages: en, pt
 Canonical: https://qcertify.io/.well-known/security.txt
