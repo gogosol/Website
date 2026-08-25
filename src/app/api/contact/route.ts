@@ -1,194 +1,122 @@
-import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { NextResponse } from "next/server";
+import { Resend } from "resend";
+import { contactSchema, priorityPathLabels } from "@/lib/contact";
 
-/**
- * Escapes HTML special characters to prevent HTML injection in email templates.
- */
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+export const runtime = "nodejs";
+
+const WINDOW_MS = 10 * 60 * 1000;
+const MAX_ATTEMPTS = 5;
+const attempts = new Map<string, { count: number; resetAt: number }>();
+
+function allowedOrigins(request: Request) {
+  const current = new URL(request.url).origin;
+  const configured = (process.env.CONTACT_ALLOWED_ORIGINS ?? "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+  return new Set([current, "https://qcertify.io", "https://www.qcertify.io", ...configured]);
 }
 
-/**
- * Validates that a string looks like a valid email address.
- */
-function isValidEmail(email: string): boolean {
-  // RFC 5322 simplified — catches the vast majority of invalid inputs
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254;
+function clientKey(request: Request) {
+  return (
+    request.headers.get("cf-connecting-ip") ??
+    request.headers.get("x-real-ip") ??
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    "unknown"
+  );
 }
 
-/**
- * Validates origin to mitigate CSRF.
- * Allows requests from the production domain and localhost (dev).
- */
-function isAllowedOrigin(request: Request): boolean {
-  const origin = request.headers.get('origin') || '';
-  const referer = request.headers.get('referer') || '';
+function rateLimited(key: string) {
+  const now = Date.now();
+  for (const [entryKey, entry] of attempts) {
+    if (entry.resetAt <= now) attempts.delete(entryKey);
+  }
 
-  const source = origin || referer;
-  if (!source) return false;
-
-  try {
-    const url = new URL(source);
-    const allowedHosts = [
-      'qcertify.io',
-      'www.qcertify.io',
-      'localhost',
-      '127.0.0.1',
-    ];
-    return allowedHosts.includes(url.hostname);
-  } catch {
+  const entry = attempts.get(key);
+  if (!entry || entry.resetAt <= now) {
+    attempts.set(key, { count: 1, resetAt: now + WINDOW_MS });
     return false;
   }
+  entry.count += 1;
+  return entry.count > MAX_ATTEMPTS;
 }
-
-// Maximum field lengths to prevent abuse
-const MAX_LENGTHS = {
-  firstName: 100,
-  lastName: 100,
-  email: 254,
-  company: 100,
-  jobTitle: 100,
-  industry: 200,
-  interest: 200,
-  message: 5000,
-} as const;
-
-// Allowed field names to prevent mass assignment
-const ALLOWED_FIELDS = new Set(Object.keys(MAX_LENGTHS));
 
 export async function POST(request: Request) {
-  // CSRF: validate request origin
-  if (!isAllowedOrigin(request)) {
+  const contentType = request.headers.get("content-type") ?? "";
+  const contentLength = Number(request.headers.get("content-length") ?? "0");
+  if (!contentType.includes("application/json") || contentLength > 16_384) {
+    return NextResponse.json({ ok: false, message: "Invalid request." }, { status: 415 });
+  }
+
+  const origin = request.headers.get("origin");
+  if (origin && !allowedOrigins(request).has(origin)) {
+    return NextResponse.json({ ok: false, message: "Invalid request." }, { status: 403 });
+  }
+
+  if (rateLimited(clientKey(request))) {
     return NextResponse.json(
-      { error: 'Forbidden' },
-      { status: 403 }
+      { ok: false, message: "Please wait before trying again." },
+      { status: 429, headers: { "Retry-After": "600" } },
     );
   }
 
+  let body: unknown;
   try {
-    // Initialize inside the request handler to avoid errors during Next.js static build
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ ok: false, message: "Invalid request." }, { status: 400 });
+  }
 
-    const body = await request.json();
-
-    // Mass assignment protection: reject unknown fields
-    const bodyKeys = Object.keys(body);
-    for (const key of bodyKeys) {
-      if (!ALLOWED_FIELDS.has(key)) {
-        return NextResponse.json(
-          { error: 'Invalid field submitted' },
-          { status: 400 }
-        );
-      }
-    }
-
-    const {
-      firstName,
-      lastName,
-      email,
-      company,
-      jobTitle,
-      industry,
-      interest,
-      message,
-    } = body;
-
-    // Required field validation
-    if (!firstName || !lastName || !email || !company || !jobTitle) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      );
-    }
-
-    // Type validation: all fields must be strings
-    const allFields = { firstName, lastName, email, company, jobTitle, industry, interest, message };
-    for (const [key, value] of Object.entries(allFields)) {
-      if (value !== undefined && value !== null && typeof value !== 'string') {
-        return NextResponse.json(
-          { error: `Field "${key}" must be a string` },
-          { status: 400 }
-        );
-      }
-    }
-
-    // Length validation
-    for (const [key, value] of Object.entries(allFields)) {
-      if (typeof value === 'string' && value.length > MAX_LENGTHS[key as keyof typeof MAX_LENGTHS]) {
-        return NextResponse.json(
-          { error: `Field "${key}" exceeds maximum length` },
-          { status: 400 }
-        );
-      }
-    }
-
-    // Email format validation
-    if (!isValidEmail(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email address' },
-        { status: 400 }
-      );
-    }
-
-    // Escape all user inputs before embedding in HTML email
-    const safeFirstName = escapeHtml(firstName);
-    const safeLastName = escapeHtml(lastName);
-    const safeEmail = escapeHtml(email);
-    const safeCompany = escapeHtml(company);
-    const safeJobTitle = escapeHtml(jobTitle);
-    const safeIndustry = escapeHtml(industry || 'Not specified');
-    const safeInterest = escapeHtml(interest || 'Not specified');
-    const safeMessage = message
-      ? escapeHtml(message).replace(/\n/g, '<br/>')
-      : 'No message provided.';
-
-    // Send the email using Resend
-    const { error } = await resend.emails.send({
-      from: 'QCertify Contact Form <noreply@qcertify.io>',
-      to: ['contact@qcertify.io'],
-      replyTo: email,
-      subject: `New Contact Form Submission from ${safeFirstName} ${safeLastName} (${safeCompany})`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${safeFirstName} ${safeLastName}</p>
-        <p><strong>Email:</strong> ${safeEmail}</p>
-        <p><strong>Company:</strong> ${safeCompany}</p>
-        <p><strong>Job Title:</strong> ${safeJobTitle}</p>
-        <p><strong>Industry:</strong> ${safeIndustry}</p>
-        <p><strong>Interest:</strong> ${safeInterest}</p>
-        <br/>
-        <p><strong>Message:</strong></p>
-        <p>${safeMessage}</p>
-      `,
-    });
-
-    if (error) {
-      console.error('Error from Resend:', error);
-      return NextResponse.json(
-        { error: 'Failed to send email. Please try again later.' },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json({ success: true });
-  } catch (err: unknown) {
-    console.error('Error handling contact form:', err);
+  const parsed = contactSchema.safeParse(body);
+  if (!parsed.success) {
     return NextResponse.json(
-      { error: 'An unexpected error occurred. Please try again later.' },
-      { status: 500 }
+      { ok: false, message: "Check the form and try again." },
+      { status: 400 },
     );
   }
-}
 
-// Explicit 405 for non-POST methods
-export async function GET() {
-  return NextResponse.json(
-    { error: 'Method not allowed' },
-    { status: 405 }
-  );
+  if (parsed.data.website) {
+    return NextResponse.json({ ok: true, message: "Request received." });
+  }
+
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return NextResponse.json(
+      { ok: false, message: "Email delivery is not configured yet." },
+      { status: 503 },
+    );
+  }
+
+  const resend = new Resend(apiKey);
+  const to = process.env.CONTACT_TO_EMAIL ?? "contact@qcertify.io";
+  const from = process.env.CONTACT_FROM_EMAIL ?? "QCertify website <noreply@qcertify.io>";
+  const { name, email, company, priorityPath, message } = parsed.data;
+
+  const result = await resend.emails.send({
+    from,
+    to: [to],
+    replyTo: email,
+    subject: `Architecture review — ${company}`,
+    text: [
+      "New QCertify architecture review request",
+      "",
+      `Name: ${name}`,
+      `Work email: ${email}`,
+      `Company: ${company}`,
+      `Priority path: ${priorityPathLabels[priorityPath]}`,
+      "",
+      "Context:",
+      message || "Not provided",
+    ].join("\n"),
+  });
+
+  if (result.error) {
+    console.error("[contact] Resend delivery failed", { name: result.error.name });
+    return NextResponse.json(
+      { ok: false, message: "We could not send this request. Email contact@qcertify.io instead." },
+      { status: 502 },
+    );
+  }
+
+  return NextResponse.json({ ok: true, message: "Request received. We’ll be in touch." });
 }

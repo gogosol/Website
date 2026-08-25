@@ -18,6 +18,14 @@ const securityHeaders = [
     value: "camera=(), microphone=(), geolocation=()",
   },
   {
+    key: "Cross-Origin-Opener-Policy",
+    value: "same-origin",
+  },
+  {
+    key: "X-Permitted-Cross-Domain-Policies",
+    value: "none",
+  },
+  {
     key: "X-DNS-Prefetch-Control",
     value: "on",
   },
@@ -25,13 +33,12 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  images: {
-    unoptimized: true,
+  turbopack: {
+    root: __dirname,
   },
   async headers() {
     return [
       {
-        // Apply security headers to all routes
         source: "/(.*)",
         headers: securityHeaders,
       },

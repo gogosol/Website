@@ -1,526 +1,377 @@
-"use client";
-
-import React, { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
 import {
+  ArrowDownRight,
   ArrowUpRight,
-  CheckCircle2,
-  GitBranch,
-  KeyRound,
-  LockKeyhole,
+  Check,
+  CircleDashed,
+  FileCheck2,
+  Fingerprint,
   Network,
+  Orbit,
+  Route,
 } from "lucide-react";
-import SectionLabel from "@/components/SectionLabel";
-import CTAButton from "@/components/CTAButton";
-import { Marquee } from "@/components/Editorial";
-import {
-  ClosingCta,
-  FadeIn,
-  LinkCard,
-  RevealLines,
-  RevealText,
-  ScrollStatement,
-  SectionHeader,
-  StatStrip,
-} from "@/components/QuantumPage";
+import { ContactForm } from "@/components/qcertify/ContactForm";
+import { Navigation } from "@/components/qcertify/Navigation";
+import { ProtectionDial } from "@/components/qcertify/ProtectionDial";
+import { HeroReveal, Reveal } from "@/components/qcertify/Reveal";
+import { VerificationCore } from "@/components/qcertify/VerificationCore";
+import { RegulationTimeline } from "@/components/qcertify/RegulationTimeline";
+import styles from "./home.module.css";
 
-const tickerItems = [
-  "Harvest now, decrypt later",
-  "Hybrid PQC profiles",
-  "Inline gateway fabric",
-  "Crypto agility under policy",
-  "Zero network rebuild",
-  "Governed exception control",
-  "Readiness evidence",
-  "Control plane out of path",
+const exactCryptoClaim =
+  "Hybrid classical+ML-KEM-768 key establishment protecting against harvest-now/decrypt-later; authentication is classical X.509 (ECDSA P-384 default).";
+
+const pressureLabels = ["NIST PQC", "CNSA 2.0", "NIS2", "DORA", "EU CRA"];
+
+const process = [
+  {
+    number: "01",
+    title: "Place",
+    text: "Insert the gateway at a governed network chokepoint. Existing routes bring selected traffic to it by topology.",
+    meta: "PHYSICAL INLINE",
+  },
+  {
+    number: "02",
+    title: "Observe",
+    text: "Discover exposed traffic classes from bounded metadata, then probe the strongest feasible protection path.",
+    meta: "METADATA ONLY · MODE 2 FIRST",
+  },
+  {
+    number: "03",
+    title: "Approve",
+    text: "Choose a mode, scope, profile, fallback floor, and exception posture. Publish one signed, versioned policy.",
+    meta: "HUMAN DECISION · ATOMIC POLICY",
+  },
+  {
+    number: "04",
+    title: "Enforce",
+    text: "Gateways apply the policy locally. In-flight connections finish on their original mode; new flows use the update.",
+    meta: "LOCAL DATA PLANE · HOT RELOAD",
+  },
 ];
 
-const metadata = [
-  { label: "Organization", value: "QCertify" },
-  { label: "First solution", value: "QuantumHalon" },
-  { label: "Threat model", value: "Harvest Now, Decrypt Later" },
-  { label: "Deployment", value: "Inline gateway fabric" },
-];
-
-const principles = [
+const benefits = [
+  {
+    icon: Route,
+    index: "A",
+    title: "Adopt by path, not by rewrite.",
+    text: "Start where data lifetime and exposure justify action. Existing applications keep their protocol behavior.",
+    foot: "INLINE BY TOPOLOGY",
+  },
+  {
+    icon: FileCheck2,
+    index: "B",
+    title: "Change cryptography through policy.",
+    text: "Profiles, fallback floors, trust, and exceptions move as signed configuration—not scattered application work.",
+    foot: "SIGNED · VERSIONED · REVERSIBLE",
+  },
   {
     icon: Network,
-    title: "Inline placement",
-    text: "Put protection where selected enterprise traffic already moves.",
+    index: "C",
+    title: "Keep the authority customer-side.",
+    text: "The customer control plane holds enrolment, policy, certificate custody, telemetry, and audit. It stays off the packet path.",
+    foot: "CUSTOMER CONTROLLED",
   },
-  {
-    icon: LockKeyhole,
-    title: "Bounded custody",
-    text: "Keep live packet handling local to deployed gateways.",
-  },
-  {
-    icon: GitBranch,
-    title: "Phased adoption",
-    text: "Protect priority paths while application migration continues.",
-  },
-  {
-    icon: KeyRound,
-    title: "Crypto agility",
-    text: "Let policy govern protection behavior as standards mature.",
-  },
-];
-
-const modeRows = [
-  ["01", "Mediated protection", "For paths where trusted handling is appropriate."],
-  ["02", "Opaque protection", "For traffic that should remain application-stable."],
-  ["03", "Explicit passthrough", "For approved paths outside active protection."],
-  ["04", "Policy block", "For flows that should stop rather than silently downgrade."],
-];
-
-const useCases = [
-  "Branch-to-HQ paths",
-  "Partner exchange",
-  "Critical system egress",
-  "Hybrid cloud transit",
-  "Internal segmented services",
 ];
 
 export default function Home() {
   return (
-    <div className="min-h-screen selection:bg-[#126dff]/[0.15]">
-      <HomeHero />
+    <div id="top" className={styles.siteShell}>
+      <a className={styles.skipLink} href="#main-content">Skip to content</a>
+      <Navigation />
 
-      <Marquee items={tickerItems} className="border-t-0" />
+      <main id="main-content">
+        <section className={styles.hero} aria-labelledby="hero-title">
+          <div className={styles.heroNoise} aria-hidden="true" />
+          <div className={styles.heroGlow} aria-hidden="true" />
+          <div className={styles.heroGrid}>
+            <div className={styles.heroCopy}>
+              <HeroReveal>
+                <h1 id="hero-title">
+                  The quantum transition.<br />
+                  <span>In line.</span>
+                </h1>
+              </HeroReveal>
+              <HeroReveal delay={0.1}>
+                <p className={styles.heroLead}>
+                  Customer-controlled gateways and an off-path control plane for critical traffic that cannot wait for every application to change.
+                </p>
+              </HeroReveal>
+              <HeroReveal delay={0.2}>
+                <div className={styles.heroActions}>
+                  <a className={styles.primaryButton} href="#contact">
+                    Request architecture review <ArrowUpRight aria-hidden="true" size={14} />
+                  </a>
+                  <a className={styles.secondaryButton} href="#platform">
+                    See the platform <ArrowDownRight aria-hidden="true" size={14} />
+                  </a>
+                </div>
+              </HeroReveal>
+            </div>
 
-      <section className="border-b border-black/10 py-8">
-        <div className="editorial-wrap">
-          <StatStrip
-            stats={[
-              { value: "QCertify", label: "Post-quantum cybersecurity organization" },
-              { value: "QuantumHalon", label: "Inline gateway protection" },
-              { value: "Private path", label: "Governance outside live packet flow" },
-              { value: "Evidence", label: "Readiness for procurement and risk teams" },
-            ]}
-          />
-        </div>
-      </section>
+            <HeroReveal className={styles.heroVisual} delay={0.2} y={12}>
+              <VerificationCore />
+              <p className={styles.visuallyHidden}>
+                Abstract verification core showing policy-controlled traffic crossing an inline enforcement point.
+              </p>
+            </HeroReveal>
+          </div>
+        </section>
 
-      <EditorialPlate
-        src="/images/generated/home-hndl-archive-plate.webp"
-        alt="Decorative monochrome technical plate showing a captured encrypted packet archive."
-        caption="Captured traffic archives can outlive today's encryption"
-      />
+        <section id="risk" className={styles.section} aria-labelledby="hndl-title">
+          <div className={styles.sectionGrid}>
+            <Reveal className={styles.sectionIntro}>
+              <p className={styles.sectionLabel}>01 / THE HNDL PROBLEM</p>
+              <h2 id="hndl-title">The breach can happen before the breakthrough.</h2>
+            </Reveal>
+            <Reveal className={styles.sectionAside} delay={0.08}>
+              <p>Harvest-now/decrypt-later moves the decision point to today.</p>
+              <span>DATA LIFETIME BECOMES THE CLOCK</span>
+            </Reveal>
+          </div>
 
-      <section className="border-b border-black/10 py-20 lg:py-28">
-        <div className="editorial-wrap grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <FadeIn>
-            <SectionLabel label="The Risk" />
-            <h2 className="max-w-5xl text-6xl font-medium leading-[0.98] text-black sm:text-7xl lg:text-8xl">
-              <RevealLines lines={["Harvest Now.", "Decrypt Later."]} />
-            </h2>
-          </FadeIn>
+          <Reveal className={styles.archivePanel} delay={0.1}>
+            <div className={styles.archiveHeader}>
+              <span>HNDL / EXPOSURE SEQUENCE</span>
+              <span>TIME →</span>
+            </div>
+            <div className={styles.archiveTimeline}>
+              <div className={styles.archiveFlow} aria-hidden="true">
+                {Array.from({ length: 18 }, (_, index) => <i key={index} />)}
+              </div>
+              <div className={styles.archiveVault} aria-hidden="true">
+                <span /><span /><span /><span /><span />
+                <b>ARCHIVE</b>
+              </div>
+              <div className={styles.futureField} aria-hidden="true">
+                <span /><span /><span />
+              </div>
+              <div className={styles.archiveStep} data-step="01">
+                <b>Capture</b>
+                <p>Encrypted traffic is collected.</p>
+              </div>
+              <div className={styles.archiveStep} data-step="02">
+                <b>Retain</b>
+                <p>Ciphertext outlives the moment.</p>
+              </div>
+              <div className={styles.archiveStep} data-step="03">
+                <b>Wait</b>
+                <p>The attack surface changes.</p>
+              </div>
+            </div>
+            <div className={styles.archiveFooter}>
+              <span>SENSITIVE NOW</span>
+              <div><i /><i /><i /><i /></div>
+              <span>VALUABLE LATER</span>
+            </div>
+          </Reveal>
+        </section>
 
-          <FadeIn delay={0.1} className="border-t border-black pt-5 lg:mt-24">
-            <p className="text-xl leading-8 text-black">
-              Traffic captured today can remain valuable for years. QCertify
-              focuses on the paths where data lifetime turns future quantum
-              capability into a present operating problem.
-            </p>
-            <div className="mt-8 grid gap-4">
+        <section id="regulation" className={`${styles.section} ${styles.regulationSection}`} aria-labelledby="regulation-title">
+          <div className={styles.regulationGrid}>
+            <Reveal>
+              <p className={styles.sectionLabel}>02 / THE OPERATING PRESSURE</p>
+              <h2 id="regulation-title">The algorithm changed. The operating model has to follow.</h2>
+              <p className={styles.regulationLead}>
+                PQC migration spans inventory, policy, rollout, exceptions, and evidence—not only primitive selection.
+              </p>
+            </Reveal>
+
+            <Reveal className={styles.pressureStack} delay={0.08}>
+              <div><span>01</span><strong>Inventory</strong><p>Know which paths carry long-lived value.</p></div>
+              <div><span>02</span><strong>Migration policy</strong><p>Decide where hybrid protection applies.</p></div>
+              <div><span>03</span><strong>Evidence</strong><p>Show what changed, where, and under whose approval.</p></div>
+            </Reveal>
+          </div>
+          <Reveal className={styles.pressureContext} delay={0.12}>
+            <div className={styles.pressureLabels}>
+              {pressureLabels.map((label) => <span key={label}>{label}</span>)}
+            </div>
+            <p><strong>Context, not certification.</strong> Compliance-ready: the architecture maps to applicable regime controls; certification statements require the applicable independent assessment.</p>
+          </Reveal>
+          <RegulationTimeline />
+        </section>
+
+        <section id="platform" className={`${styles.section} ${styles.platformSection}`} aria-labelledby="platform-title">
+          <Reveal className={styles.platformHeading}>
+            <p className={styles.sectionLabel}>03 / THE QUANTUMHALON PLATFORM</p>
+            <h2 id="platform-title">One platform.<br />Two planes.<br /><span>Four outcomes.</span></h2>
+            <p>Gateways carry the traffic. The customer control plane carries the decisions. Those paths never merge.</p>
+          </Reveal>
+
+          <Reveal className={styles.platformMap} delay={0.08}>
+            <div className={styles.controlPlaneNode}>
+              <div>
+                <span>CUSTOMER AUTHORITY</span>
+                <strong>Control plane</strong>
+              </div>
+              <small>ENROL · SIGN · GOVERN · OBSERVE</small>
+              <i className={styles.policyDrop} aria-hidden="true" />
+            </div>
+
+            <div className={styles.packetPath}>
+              <div className={styles.endpointNode}>
+                <span>01 / LAN</span>
+                <strong>Existing systems</strong>
+                <small>APPLICATIONS UNCHANGED</small>
+              </div>
+              <div className={styles.pathLine} aria-hidden="true">
+                {Array.from({ length: 7 }, (_, index) => <i key={index} />)}
+              </div>
+              <div className={styles.gatewayNode}>
+                <div className={styles.gatewayOrb}><Orbit aria-hidden="true" size={26} strokeWidth={1.2} /></div>
+                <span>ENFORCEMENT POINT</span>
+                <strong>Inline gateway</strong>
+                <small>MODE 1 · MODE 2 · PASS · BLOCK</small>
+              </div>
+              <div className={styles.pathLine} aria-hidden="true">
+                {Array.from({ length: 7 }, (_, index) => <i key={index} />)}
+              </div>
+              <div className={styles.endpointNode}>
+                <span>02 / WAN</span>
+                <strong>Network edge</strong>
+                <small>ROUTER / FIREWALL</small>
+              </div>
+            </div>
+
+            <div className={styles.mapBoundary}>
+              <span><i /> APPLICATION TRAFFIC</span>
+              <span><i /> SIGNED MANAGEMENT</span>
+              <strong>CONTROL PLANE IS NOT IN THE LIVE PACKET PATH</strong>
+            </div>
+          </Reveal>
+        </section>
+
+        <section id="operation" className={styles.section} aria-labelledby="operation-title">
+          <div className={styles.sectionGrid}>
+            <Reveal className={styles.sectionIntro}>
+              <p className={styles.sectionLabel}>04 / HOW IT WORKS</p>
+              <h2 id="operation-title">From exposed to governed in four decisions.</h2>
+            </Reveal>
+            <Reveal className={styles.sectionAside} delay={0.08}>
+              <p>Protection starts as a scoped operating change—not a fleet-wide flag day.</p>
+              <span>PLACE → OBSERVE → APPROVE → ENFORCE</span>
+            </Reveal>
+          </div>
+
+          <div className={styles.processList}>
+            {process.map((step, index) => (
+              <Reveal className={styles.processItem} key={step.number} delay={index * 0.05}>
+                <span className={styles.processNumber}>{step.number}</span>
+                <div><h3>{step.title}</h3><p>{step.text}</p></div>
+                <small>{step.meta}</small>
+                <ArrowDownRight aria-hidden="true" size={18} />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section className={`${styles.section} ${styles.modesSection}`} aria-labelledby="modes-title">
+          <Reveal className={styles.modesHeading}>
+            <p className={styles.sectionLabel}>05 / ONE GATEWAY, BOUNDED OUTCOMES</p>
+            <h2 id="modes-title">Policy decides what every managed connection becomes.</h2>
+            <p>Mode 1 and Mode 2 stay deliberately separate. Passthrough and block remain explicit outcomes—not hidden fallbacks.</p>
+          </Reveal>
+          <Reveal delay={0.08}><ProtectionDial /></Reveal>
+        </section>
+
+        <section className={styles.section} aria-labelledby="benefits-title">
+          <Reveal className={styles.benefitsTitle}>
+            <p className={styles.sectionLabel}>06 / OPERATING ADVANTAGE</p>
+            <h2 id="benefits-title">Policy changes.<br /><span>Applications don’t.</span></h2>
+          </Reveal>
+          <div className={styles.benefitBands}>
+            {benefits.map((benefit, index) => (
+              <Reveal className={styles.benefitBand} key={benefit.index} delay={index * 0.05}>
+                <span className={styles.benefitIndex}>{benefit.index}</span>
+                <benefit.icon aria-hidden="true" size={25} strokeWidth={1.3} />
+                <h3>{benefit.title}</h3>
+                <p>{benefit.text}</p>
+                <small>{benefit.foot}</small>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section id="trust" className={`${styles.section} ${styles.trustSection}`} aria-labelledby="trust-title">
+          <div className={styles.trustIntro}>
+            <Reveal>
+              <p className={styles.sectionLabel}>07 / TRUST &amp; VERIFICATION</p>
+              <h2 id="trust-title">Trust starts with saying exactly what is protected.</h2>
+            </Reveal>
+          </div>
+
+          <div className={styles.trustGrid}>
+            <Reveal className={styles.claimBoundary}>
+              <div className={styles.claimColumn}>
+                <span>CONFIDENTIALITY</span>
+                <strong>Hybrid classical<br />+ ML-KEM-768</strong>
+                <small>HNDL PROTECTION BOUNDARY</small>
+              </div>
+              <div className={styles.claimDivider}><span>≠</span></div>
+              <div className={styles.claimColumn}>
+                <span>AUTHENTICATION</span>
+                <strong>Classical X.509<br />today</strong>
+                <small>ECDSA P-384 DEFAULT</small>
+              </div>
+              <p>{exactCryptoClaim}</p>
+            </Reveal>
+
+            <Reveal className={styles.trustReceipt} delay={0.08}>
+              <div className={styles.receiptHeader}>
+                <span>VERIFICATION RECEIPT</span>
+                <Fingerprint aria-hidden="true" size={18} strokeWidth={1.3} />
+              </div>
               {[
-                "Prioritize communications whose confidentiality horizon outlives current cryptography.",
-                "Apply path-level protection before every endpoint and application can migrate.",
-                "Give security, risk, and procurement teams a defensible readiness record.",
-              ].map((item) => (
-                <div key={item} className="grid grid-cols-[18px_1fr] gap-3 border-t border-black/10 pt-4">
-                  <CheckCircle2 className="mt-1 h-4 w-4 text-[#126dff]" />
-                  <p className="text-sm leading-6 text-black/60">{item}</p>
+                ["Topology boundary", "INLINE"],
+                ["Policy signature", "VERIFIED"],
+                ["Gateway peer", "AUTHENTICATED"],
+                ["Control-plane traffic", "OFF PATH"],
+                ["Payload telemetry", "NONE"],
+                ["Fallback posture", "BOUNDED"],
+              ].map(([label, value], index) => (
+                <div className={styles.receiptRow} key={label}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{label}</p>
+                  <strong><Check aria-hidden="true" size={12} /> {value}</strong>
                 </div>
               ))}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      <ScrollStatement
-        label="Why Timing Matters"
-        text="Encrypted traffic captured today may remain sensitive long enough to become readable in the quantum era. Priority paths need protection before application-wide migration is complete."
-        caption="Organizations can reduce Harvest Now, Decrypt Later exposure by prioritizing data lifetime, inline enforcement, and transition evidence."
-        metadata={["Long-lived sensitive data", "Inline protected paths", "Readiness evidence"]}
-      />
-
-      <section className="border-b border-black/10 py-20 lg:py-28">
-        <div className="editorial-wrap">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <SectionHeader
-              label="First Solution"
-              title="QuantumHalon protects selected paths without rebuilding the network."
-              body="The gateway sits inline at governed chokepoints. Policy selects the behavior per traffic path while QCertify governance remains outside live packet handling."
-            />
-            <FadeIn delay={0.1}>
-              <HomeInlineDiagram />
-            </FadeIn>
-          </div>
-
-          <div className="mt-12 grid gap-px border-y border-black/10 bg-black/10 lg:grid-cols-4">
-            {principles.map((item, index) => (
-              <FadeIn key={item.title} delay={index * 0.05}>
-                <div className="h-full bg-[#f7f7f2] p-5">
-                  <item.icon className="h-5 w-5 text-[#126dff]" />
-                  <h3 className="mt-8 text-lg font-semibold text-black">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-black/[0.58]">{item.text}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <EditorialPlate
-        src="/images/generated/inline-gateway-plate.webp"
-        alt="Decorative monochrome technical plate showing an abstract inline gateway in a network path."
-        caption="Inline gateway protection belongs in the existing path"
-      />
-
-      <section className="border-b border-black/10 py-20 lg:py-28">
-        <div className="editorial-wrap grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-          <FadeIn>
-            <SectionLabel label="Protection Modes" />
-            <h2 className="text-6xl font-medium leading-[0.98] text-black sm:text-7xl lg:text-8xl">
-              <RevealLines lines={["One gateway.", "Different decisions."]} />
-            </h2>
-            <p className="mt-7 max-w-xl text-base leading-7 text-black/60">
-              The product does not flatten every path into one answer. It lets
-              the organization choose the right operating behavior for the
-              traffic, trust model, and exception posture.
-            </p>
-          </FadeIn>
-
-          <div className="border-t border-black">
-            {modeRows.map(([number, title, text], index) => (
-              <FadeIn key={title} delay={index * 0.04}>
-                <div className="grid gap-4 border-b border-black/10 py-6 sm:grid-cols-[72px_0.8fr_1fr]">
-                  <div className="text-[10px] font-semibold uppercase text-[#126dff]">{number}</div>
-                  <h3 className="text-xl font-semibold leading-tight text-black">{title}</h3>
-                  <p className="text-sm leading-6 text-black/[0.58]">{text}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-black/10 py-20 lg:py-28">
-        <div className="editorial-wrap grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <FadeIn>
-            <div className="technical-plate">
-              <div className="relative aspect-[16/9]">
-                <Image
-                  src="/images/generated/control-data-plane-plate.webp"
-                  alt="Decorative monochrome technical plate suggesting separation between control plane and data plane."
-                  fill
-                  sizes="(min-width: 1024px) 52vw, 100vw"
-                  className="object-cover"
-                />
+              <div className={styles.receiptFooter}>
+                <CircleDashed aria-hidden="true" size={15} /> LAST-KNOWN-GOOD / ENFORCED LOCALLY
               </div>
-              <div className="border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
-                Governance stays separate from live packet handling
-              </div>
-            </div>
-          </FadeIn>
-          <div>
-            <SectionHeader
-              label="Architecture"
-              title="Control plane and data plane stay cleanly separated."
-              body="The public model is intentionally simple: gateways handle selected traffic locally, while governance coordinates policy, deployment state, and readiness evidence out of band."
-            />
-            <div className="mt-8 grid gap-3">
-              {useCases.map((item) => (
-                <div key={item} className="flex items-center justify-between border-t border-black/10 py-3">
-                  <span className="text-sm font-medium text-black">{item}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-black/[0.35]" />
-                </div>
-              ))}
-            </div>
+            </Reveal>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="border-b border-black/10 py-20 lg:py-28">
-        <div className="editorial-wrap">
-          <SectionHeader
-            label="Program Logic"
-            title="A practical PQC transition is a sequence, not a slogan."
-            body="QCertify separates the work into exposure, protected paths, trust readiness, crypto agility, and evidence for stakeholders."
-            align="center"
-          />
-          <div className="mt-12 grid gap-px border-y border-black/10 bg-black/10 md:grid-cols-3">
-            {[
-              { step: "01", title: "Protect priority traffic", text: "Priority paths are defined by data lifetime, exposure, and operating pressure." },
-              { step: "02", title: "Keep operations stable", text: "Use an inline gateway model rather than a full endpoint rewrite on day one." },
-              { step: "03", title: "Expand with evidence", text: "Use policy, deployment state, and exception records to document transition progress." },
-            ].map((item, index) => (
-              <FadeIn key={item.title} delay={index * 0.05}>
-                <div className="grid h-full grid-rows-[auto_1fr] bg-[#f7f7f2] p-6">
-                  <div className="flex items-center justify-between border-b border-black/10 pb-4">
-                    <span className="text-[10px] font-semibold uppercase text-[#126dff]">{item.step}</span>
-                    <span className="h-px w-16 bg-black/20" />
-                  </div>
-                  <div className="pt-7">
-                    <h3 className="text-xl font-semibold leading-tight text-black">{item.title}</h3>
-                    <p className="mt-4 text-sm leading-6 text-black/[0.58]">{item.text}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
+        <section id="contact" className={styles.contactSection} aria-labelledby="contact-title">
+          <div className={styles.contactHalo} aria-hidden="true" />
+          <div className={styles.contactLayout}>
+            <Reveal>
+              <p className={styles.sectionLabel}>08 / CONTROLLED PILOT</p>
+              <h2 id="contact-title">Plan the first protected path.</h2>
+              <p>Start with one traffic path, one policy, and evidence from a controlled deployment.</p>
+              <a className={styles.emailLink} href="mailto:contact@qcertify.io">
+                contact@qcertify.io <ArrowUpRight aria-hidden="true" size={14} />
+              </a>
+            </Reveal>
+            <Reveal delay={0.08}><ContactForm /></Reveal>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      <section className="py-20 lg:py-28">
-        <div className="editorial-wrap">
-          <div className="grid gap-4 md:grid-cols-3">
-            <LinkCard
-              href="/product"
-              title="Explore QuantumHalon"
-              text="Review the inline gateway model, policy modes, and architecture boundary."
-            />
-            <LinkCard
-              href="/use-cases"
-              title="Map use cases"
-              text="Identify where path-level PQC protection reduces long-lived traffic exposure."
-            />
-            <LinkCard
-              href="/compliance"
-              title="Plan readiness"
-              text="Frame migration as a governed program with evidence and milestones."
-            />
-          </div>
+      <footer className={styles.footer}>
+        <div className={styles.footerTop}>
+          <a href="#top" aria-label="QCertify home">
+            <Image src="/SF_White_Logo_Web.png" alt="QCertify" width={1155} height={254} className={styles.footerLogo} />
+          </a>
+          <p>Governed hybrid PQC for critical enterprise traffic paths.</p>
+          <a href="#top">Back to top <ArrowUpRight aria-hidden="true" size={13} /></a>
         </div>
-      </section>
-
-      <ClosingCta
-        label="Next Step"
-        title="Critical traffic should be protected before the quantum deadline arrives."
-        align="split"
-        actions={[
-          { href: "/contact", label: "Book a Technical Demo" },
-          { href: "/product", label: "Product Details", variant: "secondary" },
-        ]}
-        motionStyle="clip-up"
-      />
+        <div className={styles.footerBottom}>
+          <span>© {new Date().getFullYear()} QCERTIFY</span>
+          <a href="mailto:contact@qcertify.io">CONTACT</a>
+        </div>
+      </footer>
     </div>
-  );
-}
-
-function HomeInlineDiagram() {
-  return (
-    <div className="technical-plate overflow-hidden">
-      <div className="border-b border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
-        High-level model / inline protection point
-      </div>
-      <div className="relative min-h-[280px] p-6 sm:p-8">
-        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 900 340" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <pattern id="home-diagram-grid" width="48" height="48" patternUnits="userSpaceOnUse">
-              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(0,0,0,0.045)" strokeWidth="1" />
-            </pattern>
-          </defs>
-          <rect width="900" height="340" fill="url(#home-diagram-grid)" />
-          <path d="M 92 174 H 808" stroke="rgba(0,0,0,0.30)" strokeWidth="1.2" />
-          <path d="M 92 194 H 808" stroke="rgba(0,0,0,0.12)" strokeWidth="1" />
-          <path d="M 450 68 V 274" stroke="rgba(0,0,0,0.18)" strokeWidth="1" />
-          <path
-            d="M 362 174 H 538"
-            stroke="#126dff"
-            strokeWidth="2"
-            strokeDasharray="6 6"
-            className="anim-flow-dash"
-          />
-          <motion.rect
-            y="169"
-            width="10"
-            height="10"
-            fill="#126dff"
-            initial={{ x: 88, opacity: 0 }}
-            animate={{ x: [88, 802], opacity: [0, 1, 1, 1, 0] }}
-            transition={{ duration: 3.6, repeat: Infinity, ease: "linear", repeatDelay: 0.6 }}
-          />
-          <rect x="358" y="170" width="8" height="8" fill="#126dff" className="anim-pulse-glow" />
-          <rect x="534" y="170" width="8" height="8" fill="#126dff" className="anim-pulse-glow" />
-        </svg>
-
-        <div className="relative z-10 grid min-h-[230px] gap-6 sm:grid-cols-[1fr_220px_1fr] sm:items-center">
-          <div className="max-w-xs">
-            <div className="text-[10px] font-semibold uppercase leading-4 text-black/[0.45]">01 / existing path</div>
-            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Traffic keeps moving</h3>
-            <p className="mt-4 text-sm leading-6 text-black/[0.58]">
-              Selected enterprise paths continue through the planned network route.
-            </p>
-          </div>
-
-          <div className="border border-[#126dff]/70 bg-white/80 px-5 py-6 text-center shadow-[0_18px_45px_rgba(18,109,255,0.08)]">
-            <div className="text-[10px] font-semibold uppercase leading-4 text-[#126dff]">QuantumHalon</div>
-            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Inline gateway</h3>
-            <p className="mx-auto mt-4 max-w-36 text-sm leading-6 text-black/[0.58]">
-              One governed decision point.
-            </p>
-          </div>
-
-          <div className="max-w-xs sm:justify-self-end">
-            <div className="text-[10px] font-semibold uppercase leading-4 text-black/[0.45]">02 / policy outcome</div>
-            <h3 className="mt-2 text-2xl font-semibold leading-tight text-black">Protect, pass, or block</h3>
-            <p className="mt-4 text-sm leading-6 text-black/[0.58]">
-              Policy selects the behavior for each protected path.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-black/10 px-4 py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
-        QCertify governance remains outside live packet handling
-      </div>
-    </div>
-  );
-}
-
-function HomeHero() {
-  return (
-    <section className="relative min-h-[92svh] overflow-hidden border-b border-black/10 pt-24">
-      <picture className="absolute inset-0 block">
-        <source media="(max-width: 639px)" srcSet="/images/generated/qcertify-quantumhalon-hero-mobile-v1.png" />
-        <img
-          src="/images/generated/qcertify-quantumhalon-hero-bg-v2.png"
-          alt=""
-          fetchPriority="high"
-          className="h-full w-full object-cover object-center"
-        />
-      </picture>
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 sm:hidden"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(247,247,242,0.36) 0%, rgba(247,247,242,0.30) 48%, rgba(247,247,242,0.20) 100%), linear-gradient(180deg, rgba(247,247,242,0.42) 0%, rgba(247,247,242,0.14) 48%, rgba(247,247,242,0.58) 100%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 hidden sm:block"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(247,247,242,0.58) 0%, rgba(247,247,242,0.50) 34%, rgba(247,247,242,0.30) 68%, rgba(247,247,242,0.18) 100%), linear-gradient(180deg, rgba(247,247,242,0.56) 0%, rgba(247,247,242,0.16) 48%, rgba(247,247,242,0.66) 100%)",
-        }}
-      />
-      <div className="absolute inset-0 circuit-mask opacity-25" />
-      <div className="editorial-wrap relative z-10 flex min-h-[calc(92svh-6rem)] flex-col justify-between pb-8 pt-8 lg:pt-12">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65 }}
-        >
-          <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-black/10 pb-4 text-[10px] font-semibold uppercase leading-none">
-            <span className="flex items-center gap-2 text-black">
-              <span className="anim-hold-blink h-2 w-2 bg-[#126dff]" />
-              Post-quantum cybersecurity
-            </span>
-            <span className="hidden h-3 w-px bg-black/20 sm:block" />
-            <span className="text-black/[0.45]">Harvest now, decrypt later is already running</span>
-          </div>
-
-          <h1 className="max-w-[min(94vw,62rem)] text-[clamp(2rem,7.4vw,5.35rem)] font-medium leading-[1.08] text-black sm:text-[clamp(2.25rem,7.2vw,5.85rem)] lg:text-[clamp(3rem,5.9vw,6.2rem)]">
-            <span className="block">
-              <RevealText text="Post-Quantum" immediate />
-            </span>
-            <span className="block">
-              <RevealText text="Security." delay={0.08} immediate />
-            </span>
-            <span className="block">
-              <RevealText text="Without Network" delay={0.16} immediate />
-            </span>
-            <span className="block">
-              <RevealText text="Rebuild" delay={0.24} immediate />
-              <motion.span
-                aria-hidden="true"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.9, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="anim-hold-blink ml-3 inline-block h-[0.14em] w-[0.14em] bg-[#126dff] align-baseline sm:ml-4"
-              />
-            </span>
-          </h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.22, duration: 0.65 }}
-            className="mt-8 grid gap-5 border-t border-black pt-5 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {metadata.map((item) => (
-              <div key={item.label} className="metadata">
-                <strong>{item.label}</strong>
-                {item.value}
-              </div>
-            ))}
-          </motion.div>
-
-          <div className="mt-9 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-[21rem] border-l-2 border-[#126dff] pl-4 text-[15px] leading-7 text-black/[0.65] sm:max-w-xl sm:text-lg sm:leading-8"
-            >
-              Traffic captured today gets decrypted tomorrow. QuantumHalon drops
-              post-quantum protection onto the paths you already operate —
-              inline, policy-governed, live in days.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.62, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col gap-3 sm:flex-row"
-            >
-              <CTAButton href="/contact">Book a Technical Demo</CTAButton>
-              <CTAButton href="/how-it-works" variant="secondary">
-                See How It Works
-              </CTAButton>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function EditorialPlate({
-  src,
-  alt,
-  caption,
-}: {
-  src: string;
-  alt: string;
-  caption: string;
-}) {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-7%", "7%"]);
-
-  return (
-    <motion.section
-      ref={ref}
-      className="technical-plate"
-      initial={{ opacity: 0.95, clipPath: "inset(0 0 12% 0)" }}
-      whileInView={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="relative aspect-[16/7] min-h-[280px] overflow-hidden">
-        <motion.div className="absolute inset-[-8%_0]" style={{ y: parallaxY }}>
-          <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
-        </motion.div>
-      </div>
-      <div className="editorial-wrap py-3 text-[11px] uppercase leading-4 text-black/[0.50]">
-        {caption}
-      </div>
-    </motion.section>
   );
 }
