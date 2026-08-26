@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import styles from "@/app/home.module.css";
 import { Reveal } from "@/components/qcertify/Reveal";
 import { 
-  ListChecks, 
+  ScanSearch, 
+  Route, 
+  BadgeCheck, 
   SlidersHorizontal, 
-  KeyRound, 
-  RefreshCw, 
-  ClipboardCheck, 
-  FileCheck,
+  Activity, 
+  FileStack,
   ExternalLink 
 } from "lucide-react";
 
@@ -48,32 +48,32 @@ export function RegulationTimeline() {
     { 
       title: "Inventory cryptographic exposure", 
       desc: "Identify systems, services, data flows, trust dependencies, and paths carrying long-lived sensitive data.",
-      icon: ListChecks
+      icon: ScanSearch
     },
     { 
       title: "Prioritize traffic paths", 
       desc: "Select paths where HNDL risk, regulatory pressure, or operational sensitivity justify early protection.",
-      icon: SlidersHorizontal
+      icon: Route
     },
     { 
       title: "Plan trust readiness", 
       desc: "For paths that require trusted handling, prepare required trust through centralized enterprise processes before activation.",
-      icon: KeyRound
+      icon: BadgeCheck
     },
     { 
       title: "Stage crypto-agile controls", 
       desc: "Use policy to choose protected, exception, or denied paths rather than baking assumptions into apps.",
-      icon: RefreshCw
+      icon: SlidersHorizontal
     },
     { 
       title: "Collect evidence", 
       desc: "Track deployment state, protected-path coverage, operational signals, and exception decisions.",
-      icon: ClipboardCheck
+      icon: Activity
     },
     { 
       title: "Prepare assurance packages", 
       desc: "Turn technical progress into material that security, risk, procurement, and auditors can understand.",
-      icon: FileCheck
+      icon: FileStack
     },
   ];
 

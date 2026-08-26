@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Ban, Braces, Cable, ShieldCheck } from "lucide-react";
+import { Layers, ShieldBan, Split, Waypoints } from "lucide-react";
 import { useState } from "react";
 import styles from "@/app/home.module.css";
 
@@ -12,7 +12,7 @@ interface ModeItem {
   title: string;
   description: string;
   detail: string;
-  icon: typeof Cable;
+  icon: typeof Layers;
 }
 
 const modes: ModeItem[] = [
@@ -23,7 +23,7 @@ const modes: ModeItem[] = [
     title: "Opaque wrap",
     description: "Gateway-to-gateway protection. The inner transport stream is encapsulated on egress and restored unchanged at the ingress gateway.",
     detail: "TRANSPORT-AWARE · MUTUAL GATEWAY AUTH · FAIL-CLOSED",
-    icon: Cable,
+    icon: Layers,
   },
   {
     id: "mode-1",
@@ -32,7 +32,7 @@ const modes: ModeItem[] = [
     title: "TLS mediation",
     description: "TLS-aware dual-leg mediation for destinations where a second QuantumHalon gateway is not available.",
     detail: "TLS-AWARE · CP-CUSTODY LEAVES · POLICY-BOUNDED",
-    icon: Braces,
+    icon: Split,
   },
   {
     id: "passthrough",
@@ -41,7 +41,7 @@ const modes: ModeItem[] = [
     title: "Explicit passthrough",
     description: "The packet-transparent exception. Traffic is relayed unmodified and the decision remains visible in policy.",
     detail: "EXPLICIT POLICY · METADATA TELEMETRY · NO SILENT CHANGE",
-    icon: ShieldCheck,
+    icon: Waypoints,
   },
   {
     id: "block",
@@ -50,7 +50,7 @@ const modes: ModeItem[] = [
     title: "Policy denial",
     description: "The connection stops at the enforcement point instead of drifting into an unapproved protection state.",
     detail: "DENY · AUDITABLE OUTCOME · NO FALLBACK",
-    icon: Ban,
+    icon: ShieldBan,
   },
 ];
 
