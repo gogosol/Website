@@ -7,6 +7,7 @@ import styles from "@/app/home.module.css";
 
 const links = [
   { href: "#risk", label: "Risk" },
+  { href: "#compliance", label: "Compliance" },
   { href: "#platform", label: "Platform" },
   { href: "#operation", label: "Operation" },
   { href: "#trust", label: "Trust" },
@@ -35,11 +36,12 @@ export function Navigation() {
       <nav className={styles.nav} aria-label="Primary navigation">
         <a href="#top" className={styles.brand} aria-label="QCertify home" onClick={() => setOpen(false)}>
           <Image
-            src="/SF_White_Logo_Web.png"
+            src="/Logo SF White.png"
             alt="QCertify"
-            width={1155}
-            height={254}
+            width={654}
+            height={96}
             className={styles.brandImage}
+            priority
           />
         </a>
 

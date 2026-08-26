@@ -456,43 +456,41 @@ export function VerificationCore() {
           statusJewel.position.set(0.64, 0.38, 0.44);
           lockGroup.add(statusJewel);
 
-          // ── 7. Soft Ground Contact Shadow ──
-          // ── 7. Soft Ground Contact Shadow & Blue Glow (100% Complete) ──
+          // ── 7. Soft Ground Contact Shadow & Blue Glow (Smooth natural fade, no clipping) ──
           const shadowCanvas = document.createElement("canvas");
           shadowCanvas.width = 512;
           shadowCanvas.height = 512;
           const sCtx = shadowCanvas.getContext("2d");
           if (sCtx) {
-            const radGrad = sCtx.createRadialGradient(256, 256, 15, 256, 256, 235);
-            radGrad.addColorStop(0, "rgba(0, 210, 255, 0.65)");
-            radGrad.addColorStop(0.22, "rgba(45, 140, 240, 0.42)");
-            radGrad.addColorStop(0.5, "rgba(20, 60, 160, 0.2)");
-            radGrad.addColorStop(0.78, "rgba(5, 15, 45, 0.08)");
+            const radGrad = sCtx.createRadialGradient(256, 256, 8, 256, 256, 175);
+            radGrad.addColorStop(0, "rgba(0, 210, 255, 0.35)");
+            radGrad.addColorStop(0.22, "rgba(45, 140, 240, 0.20)");
+            radGrad.addColorStop(0.50, "rgba(20, 60, 160, 0.08)");
+            radGrad.addColorStop(0.78, "rgba(5, 15, 45, 0.015)");
             radGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
             sCtx.fillStyle = radGrad;
             sCtx.fillRect(0, 0, 512, 512);
           }
           const shadowTex = new THREE.CanvasTexture(shadowCanvas);
           const shadowPlane = new THREE.Mesh(
-            new THREE.PlaneGeometry(4.2, 4.2),
+            new THREE.PlaneGeometry(2.7, 2.7),
             new THREE.MeshBasicMaterial({
               map: shadowTex,
               transparent: true,
-              opacity: 0.95,
+              opacity: 0.75,
               depthWrite: false,
             }),
           );
           shadowPlane.rotation.x = -Math.PI / 2;
-          shadowPlane.position.set(0.45, -1.38, 0);
           scene.add(shadowPlane);
 
           // ── 8. Floating Atmospheric Dust Motes ──
           const particleCount = 38;
           const partPositions = new Float32Array(particleCount * 3);
           for (let i = 0; i < particleCount; i++) {
-            partPositions[i * 3] = (Math.random() - 0.5) * 5.5;
-            partPositions[i * 3 + 1] = (Math.random() - 0.5) * 4.5;
-            partPositions[i * 3 + 2] = (Math.random() - 0.5) * 3.5;
+            partPositions[i * 3] = (Math.random() - 0.5) * 3.4;
+            partPositions[i * 3 + 1] = (Math.random() - 0.5) * 3.8;
+            partPositions[i * 3 + 2] = (Math.random() - 0.5) * 3.0;
           }
           const partGeom = new THREE.BufferGeometry();
           partGeom.setAttribute("position", new THREE.BufferAttribute(partPositions, 3));
@@ -508,48 +506,62 @@ export function VerificationCore() {
           );
           scene.add(particles);
 
-          // ─── POWERFUL FRONT STUDIO LIGHTS ───
-          scene.add(new THREE.AmbientLight(0x182a44, 2.2));
+          // ─── REFINED BALANCED STUDIO LIGHTS ───
+          scene.add(new THREE.AmbientLight(0x182a44, 1.7));
 
-          // Direct Crisp Front Key Light
-          const frontKey = new THREE.DirectionalLight(0xffffff, 5.5);
-          frontKey.position.set(1.8, 2.4, 7.0);
+          // Direct Crisp Front Key Light (Angled from upper right)
+          const frontKey = new THREE.DirectionalLight(0xffffff, 4.0);
+          frontKey.position.set(2.4, 2.2, 6.5);
           scene.add(frontKey);
 
-          // Front-Left Soft Fill Light
-          const frontFill = new THREE.DirectionalLight(0xaad4ff, 3.8);
-          frontFill.position.set(-2.5, 0.5, 6.0);
+          // Front-Left Soft Fill Light (Gentle side fill)
+          const frontFill = new THREE.DirectionalLight(0xaad4ff, 2.5);
+          frontFill.position.set(-2.8, 0.4, 5.5);
           scene.add(frontFill);
 
           // Top Specular Rim for Chrome Shackle
-          const topRim = new THREE.DirectionalLight(0xffffff, 3.5);
-          topRim.position.set(0, 5.5, 2.0);
+          const topRim = new THREE.DirectionalLight(0xffffff, 2.4);
+          topRim.position.set(0.5, 5.5, 2.0);
           scene.add(topRim);
 
-          // Electric Cyan Left Edge Rim
-          const cyanRim = new THREE.PointLight(0x00d4ff, 9.5, 16);
-          cyanRim.position.set(-4.5, 1.2, 2.0);
+          // Electric Cyan Left Edge Rim (Side placement, reduced intensity)
+          const cyanRim = new THREE.PointLight(0x00d4ff, 5.5, 16);
+          cyanRim.position.set(-5.2, 0.9, 2.4);
           scene.add(cyanRim);
 
-          // Royal Blue Rear/Right Rim
-          const blueRim = new THREE.PointLight(0x2288ff, 6.5, 14);
-          blueRim.position.set(3.8, -1.2, -2.0);
+          // Royal Blue Rear/Right Rim (Side placement, reduced intensity)
+          const blueRim = new THREE.PointLight(0x2288ff, 4.0, 14);
+          blueRim.position.set(4.6, -1.0, -2.2);
           scene.add(blueRim);
 
-          const underFill = new THREE.PointLight(0x00d4ff, 4.5, 9);
-          underFill.position.set(0.45, -1.95, 2.0);
+          // Soft Under-Side Accent Light (Less intense, offset to side)
+          const underFill = new THREE.PointLight(0x00d4ff, 2.2, 9);
+          underFill.position.set(0, -1.95, 2.0);
           scene.add(underFill);
 
           // ─── RESIZE & INTERACTION ───
           let width = 0;
           let height = 0;
+
+          const updateLayout = () => {
+            const isMobile = window.innerWidth <= 960;
+            const targetX = isMobile ? 0 : -0.16;
+            const targetY = isMobile ? 0.06 : 0.22;
+            root.position.set(targetX, targetY, 0);
+            shadowPlane.position.set(targetX, isMobile ? -1.55 : -1.38, 0);
+            underFill.position.set(targetX, isMobile ? -2.1 : -1.95, 2.0);
+            lockGroup.scale.setScalar(isMobile ? 0.94 : 0.92);
+            camera.fov = isMobile ? 30 : 28;
+            camera.updateProjectionMatrix();
+          };
+
           const resize = () => {
             const box = host.getBoundingClientRect();
             width = Math.max(1, box.width);
             height = Math.max(1, box.height);
             renderer.setSize(width, height, false);
             camera.aspect = width / height;
-            camera.updateProjectionMatrix();
+            updateLayout();
           };
           resize();
           const resizeObserver = new ResizeObserver(resize);
@@ -558,6 +570,7 @@ export function VerificationCore() {
           let pointerX = 0;
           let pointerY = 0;
           const onPointerMove = (event: PointerEvent) => {
+            if (event.pointerType === "touch") return;
             const box = host.getBoundingClientRect();
             pointerX = ((event.clientX - box.left) / box.width - 0.5) * 0.42;
             pointerY = ((event.clientY - box.top) / box.height - 0.5) * 0.28;
@@ -577,8 +590,6 @@ export function VerificationCore() {
             const delta = Math.min((now - last) / 1000, 0.05);
             last = now;
 
-            root.rotation.y += (pointerX + Math.sin(now * 0.0006) * 0.08 + 0.32 - root.rotation.y) * Math.min(delta * 2.2, 1);
-            root.rotation.x += (-0.14 - pointerY + Math.cos(now * 0.0008) * 0.03 - root.rotation.x) * Math.min(delta * 2.2, 1);
 
             lockGroup.position.y = Math.sin(now * 0.0014) * 0.06;
             particles.rotation.y = now * 0.00003;

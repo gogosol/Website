@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const title = "QCertify — Govern the transition to hybrid PQC";
+const title = "QCertify · Govern the transition to hybrid PQC";
 const description =
-  "QuantumHalon is QCertify’s platform for governed hybrid post-quantum key establishment across critical enterprise traffic paths.";
+  "QuantumHalon is QCertify's platform for governed hybrid post-quantum key establishment across critical enterprise traffic paths.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://qcertify.io"),
@@ -18,33 +18,46 @@ export const metadata: Metadata = {
     "QCertify",
     "QuantumHalon",
     "post-quantum cryptography",
-    "ML-KEM-768",
+    "PQC migration",
+    "hybrid PQC",
+    "FIPS 203",
+    "ML-KEM",
+    "CNSA 2.0",
     "harvest now decrypt later",
-    "inline security gateway",
-    "crypto agility",
+    "HNDL",
+    "inline cryptography",
+    "cryptographic governance",
   ],
-  alternates: { canonical: "/" },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "/",
-    siteName: "QCertify",
     title,
     description,
+    url: "https://qcertify.io",
+    siteName: "QCertify",
+    locale: "en_US",
+    type: "website",
   },
-  twitter: { card: "summary_large_image", title, description },
-  robots: { index: true, follow: true },
-  icons: { icon: "/icon.png", apple: "/icon.png" },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    creator: "@qcertify",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export const viewport: Viewport = {
+  themeColor: "#050507",
   colorScheme: "dark",
-  themeColor: "#050506",
-  width: "device-width",
-  initialScale: 1,
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
       <body>{children}</body>

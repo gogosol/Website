@@ -62,7 +62,7 @@ const benefits = [
     icon: FileCheck2,
     index: "B",
     title: "Change cryptography through policy.",
-    text: "Profiles, fallback floors, trust, and exceptions move as signed configuration—not scattered application work.",
+    text: "Profiles, fallback floors, trust, and exceptions move as signed configuration · not scattered application work.",
     foot: "SIGNED · VERSIONED · REVERSIBLE",
   },
   {
@@ -167,13 +167,14 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section id="regulation" className={`${styles.section} ${styles.regulationSection}`} aria-labelledby="regulation-title">
+        <section id="compliance" className={`${styles.section} ${styles.regulationSection}`} aria-labelledby="compliance-title">
+          <span id="regulation" style={{ position: "absolute", top: 0, pointerEvents: "none" }} />
           <div className={styles.regulationGrid}>
             <Reveal>
-              <p className={styles.sectionLabel}>02 / THE OPERATING PRESSURE</p>
-              <h2 id="regulation-title">The algorithm changed. The operating model has to follow.</h2>
+              <p className={styles.sectionLabel}>02 / THE OPERATING PRESSURE &amp; COMPLIANCE</p>
+              <h2 id="compliance-title">The algorithm changed. The operating model has to follow.</h2>
               <p className={styles.regulationLead}>
-                PQC migration spans inventory, policy, rollout, exceptions, and evidence—not only primitive selection.
+                PQC migration spans inventory, policy, rollout, exceptions, and evidence · not only primitive selection.
               </p>
             </Reveal>
 
@@ -216,7 +217,7 @@ export default function Home() {
                 <small>APPLICATIONS UNCHANGED</small>
               </div>
               <div className={styles.pathLine} aria-hidden="true">
-                {Array.from({ length: 7 }, (_, index) => <i key={index} />)}
+                <span className={styles.pathBeam} />
               </div>
               <div className={styles.gatewayNode}>
                 <div className={styles.gatewayOrb}><Orbit aria-hidden="true" size={26} strokeWidth={1.2} /></div>
@@ -225,7 +226,7 @@ export default function Home() {
                 <small>MODE 1 · MODE 2 · PASS · BLOCK</small>
               </div>
               <div className={styles.pathLine} aria-hidden="true">
-                {Array.from({ length: 7 }, (_, index) => <i key={index} />)}
+                <span className={styles.pathBeam} />
               </div>
               <div className={styles.endpointNode}>
                 <span>02 / WAN</span>
@@ -249,7 +250,7 @@ export default function Home() {
               <h2 id="operation-title">From exposed to governed in four decisions.</h2>
             </Reveal>
             <Reveal className={styles.sectionAside} delay={0.08}>
-              <p>Protection starts as a scoped operating change—not a fleet-wide flag day.</p>
+              <p>Protection starts as a scoped operating change · not a fleet-wide flag day.</p>
               <span>PLACE → OBSERVE → APPROVE → ENFORCE</span>
             </Reveal>
           </div>
@@ -270,7 +271,7 @@ export default function Home() {
           <Reveal className={styles.modesHeading}>
             <p className={styles.sectionLabel}>05 / ONE GATEWAY, BOUNDED OUTCOMES</p>
             <h2 id="modes-title">Policy decides what every managed connection becomes.</h2>
-            <p>Mode 1 and Mode 2 stay deliberately separate. Passthrough and block remain explicit outcomes—not hidden fallbacks.</p>
+            <p>Mode 1 and Mode 2 stay deliberately separate. Passthrough and block remain explicit outcomes · not hidden fallbacks.</p>
           </Reveal>
           <Reveal delay={0.08}><ProtectionDial /></Reveal>
         </section>
@@ -361,8 +362,8 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <div className={styles.footerTop}>
-          <a href="#top" aria-label="QCertify home">
-            <Image src="/SF_White_Logo_Web.png" alt="QCertify" width={1155} height={254} className={styles.footerLogo} />
+          <a href="#top" className={styles.brand} aria-label="QCertify home">
+            <Image src="/Logo SF White.png" alt="QCertify" width={654} height={96} className={styles.footerLogo} />
           </a>
           <p>Governed hybrid PQC for critical enterprise traffic paths.</p>
           <a href="#top">Back to top <ArrowUpRight aria-hidden="true" size={13} /></a>
