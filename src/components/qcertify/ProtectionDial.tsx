@@ -217,7 +217,7 @@ export function ProtectionDial() {
                     <circle cx="0" cy="-20" r="12" fill="rgba(251,191,36,0.12)" stroke="rgba(251,191,36,0.6)" strokeWidth="1" />
                     <path d="M-6 -20H6M0 -26V-14" fill="none" stroke="#fde68a" strokeWidth="1.2" strokeLinecap="round" />
                     <text x="0" y="2" textAnchor="middle" fill="#fbbf24" fontSize="8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.1em">MEDIATION</text>
-                    <text x="0" y="15" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="7" fontFamily="var(--mono)" fontWeight="500">TLS DUAL-LEG</text>
+                    <text x="0" y="15" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="7" fontFamily="var(--mono)" fontWeight="500">DUAL-LEG</text>
                     <text x="0" y="27" textAnchor="middle" fill="rgba(216,213,205,0.45)" fontSize="5.5" fontFamily="var(--mono)">HANDSHAKE VERIFY</text>
                   </g>
 
