@@ -201,7 +201,7 @@
   color: var(--paper);
   font-size: clamp(3.4rem, 5.4vw, 5.6rem);
   font-weight: 530;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.028em;
   line-height: 1.04;
 }
 
@@ -357,8 +357,8 @@
   color: var(--paper);
   font-size: clamp(3.6rem, 7.25vw, 7.2rem);
   font-weight: 500;
-  letter-spacing: -0.066em;
-  line-height: 0.92;
+  letter-spacing: -0.028em;
+  line-height: 0.95;
 }
 .sectionIntro { max-width: 1040px; }
 .sectionAside { padding: 24px 0 2px; border-top: 1px solid var(--line-strong); }
@@ -791,6 +791,7 @@
   .sectionAside { max-width: 600px; }
   .pressureStack { margin-top: 20px; }
   .platformHeading .sectionLabel, .modesHeading .sectionLabel { grid-column: auto; }
+  .platformHeading > p:last-child, .modesHeading > p:last-child { max-width: 650px; margin-top: 8px; }
   .controlPlaneNode {
     width: min(100%, 460px);
     margin: 0 auto clamp(54px, 12vw, 84px);
