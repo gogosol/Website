@@ -373,13 +373,13 @@
 .archiveFooter div { display: flex; gap: 4px; }
 .archiveFooter i { width: 28px; height: 2px; background: rgba(45, 140, 240, 0.22); }
 .archiveFooter i:nth-child(2), .archiveFooter i:nth-child(3) { background: rgba(45, 140, 240, 0.62); }
-.archiveTimeline { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); min-height: 460px; overflow: hidden; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 52px 52px; }
-.archiveTimeline::before { position: absolute; top: 36%; right: 6%; left: 6%; height: 1px; background: linear-gradient(90deg, transparent, rgba(45, 140, 240, .25) 15%, rgba(45, 140, 240, .45) 54%, rgba(45, 140, 240, .08) 85%, transparent); content: ""; }
-.archiveFlow { position: absolute; top: calc(36% - 4px); left: 2%; display: flex; gap: 21px; width: 32%; overflow: hidden; }
+.archiveTimeline { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); min-height: 520px; overflow: hidden; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 52px 52px; }
+.archiveTimeline::before { position: absolute; top: calc((100% - 118px) / 2); right: 6%; left: 6%; height: 1px; background: linear-gradient(90deg, transparent, rgba(45, 140, 240, .25) 15%, rgba(45, 140, 240, .45) 54%, rgba(45, 140, 240, .08) 85%, transparent); content: ""; }
+.archiveFlow { position: absolute; top: calc((100% - 118px) / 2 - 4px); left: 2%; display: flex; gap: 21px; width: 32%; overflow: hidden; }
 .archiveFlow i { flex: 0 0 auto; width: 7px; height: 7px; border: 1px solid rgba(107, 179, 255, 0.45); background: #0a090d; animation: packetPulse 3s ease-in-out infinite; }
 .archiveFlow i:nth-child(3n) { animation-delay: -1s; }
 .archiveFlow i:nth-child(4n) { animation-delay: -2s; }
-.archiveVault { position: absolute; top: 36%; left: 50%; width: min(22vw, 260px); aspect-ratio: 1.15; transform: translate(-50%, -50%); }
+.archiveVault { position: absolute; top: calc((100% - 118px) / 2); left: 50%; width: min(22vw, 260px); aspect-ratio: 1.15; transform: translate(-50%, -50%); }
 .archiveVault > span { position: absolute; inset: calc(var(--layer, 0) * 10px); border: 1px solid rgba(107, 179, 255, calc(.1 + var(--layer, 0) * .055)); border-radius: 18px; background: rgba(13, 12, 17, 0.68); box-shadow: inset 0 1px 0 rgba(255,255,255,.04); }
 .archiveVault > span:nth-child(1) { --layer: 0; transform: translateY(-30px) scale(.78); opacity: .35; }
 .archiveVault > span:nth-child(2) { --layer: 1; transform: translateY(-18px) scale(.84); opacity: .5; }
@@ -387,7 +387,7 @@
 .archiveVault > span:nth-child(4) { --layer: 3; transform: translateY(9px) scale(.95); opacity: .8; }
 .archiveVault > span:nth-child(5) { --layer: 4; transform: translateY(24px); box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 0 70px rgba(45, 140, 240, .09); }
 .archiveVault b { position: absolute; z-index: 2; top: 50%; left: 50%; color: rgba(170, 210, 255, .6); font: 500 9px/1 var(--mono); letter-spacing: .18em; transform: translate(-50%, 10px); }
-.futureField { position: absolute; top: 36%; right: 12%; width: 120px; height: 120px; transform: translateY(-50%); }
+.futureField { position: absolute; top: calc((100% - 118px) / 2); right: 12%; width: 120px; height: 120px; transform: translateY(-50%); }
 .futureField span { position: absolute; inset: calc(var(--f, 0) * 14px); border: 1px solid rgba(45, 140, 240, calc(.26 - var(--f, 0) * .05)); border-radius: 50%; animation: futureWave 7s ease-in-out infinite; }
 .futureField span:nth-child(1) { --f: 0; }
 .futureField span:nth-child(2) { --f: 1; animation-delay: -1.5s; }
@@ -776,8 +776,6 @@
   .nav { grid-template-columns: 1fr auto; }
   .navLinks, .navCta { display: none; }
   .menuButton { display: grid; }
-  .hero { min-height: auto; max-height: none; padding-top: 100px; padding-inline: 18px; }
-  .heroGrid { flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 12px; width: 100%; max-width: 100%; margin: 0 auto; }
   .hero { min-height: auto; max-height: none; padding-top: 68px; padding-inline: 18px; }
   .heroGrid { flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; width: 100%; max-width: 100%; margin: 0 auto; }
   .heroVisual { order: 1; width: 100%; max-width: 100%; min-width: 0; margin: 0 auto; margin-left: 0; display: flex; align-items: center; justify-content: center; }
@@ -785,7 +783,6 @@
   .hero h1 { text-align: center; margin: 0 auto; font-size: clamp(2.8rem, 11vw, 4.2rem); }
   .heroLead { text-align: center; margin: 18px auto 0; font-size: 15px; }
   .heroActions { justify-content: center; margin: 24px auto 0; }
-  .coreScene { width: 100%; max-width: 100%; min-width: 0; height: min(82vw, 460px); min-height: 320px; margin: 0 auto; }
   .coreScene { width: 100%; max-width: 100%; min-width: 0; height: min(72vw, 400px); min-height: 280px; margin: 0 auto; }
   .heroProof { grid-template-columns: repeat(2,1fr); }
   .heroProof > div:nth-child(2) { border-right: 0; }
@@ -897,14 +894,12 @@
   .navWrap { top: 10px; width: calc(100% - 20px); }
   .nav { min-height: 55px; padding-left: 15px; border-radius: 15px; }
   .brandImage { width: 108px; }
-  .hero { padding: 108px 18px 22px; }
   .hero { padding: 66px 18px 18px; }
   .hero h1 { font-size: clamp(3.55rem,16vw,5rem); line-height: .9; }
   .heroLead { font-size: 16px; }
   .heroActions { display: grid; }
   .primaryButton, .secondaryButton { width: 100%; }
   .claimLine { font-size: 8.5px; }
-  .coreScene { min-height: 360px; height: 100vw; max-height: 470px; border-radius: 22px; }
   .coreScene { min-height: 270px; height: min(78vw, 350px); max-height: 370px; border-radius: 22px; }
   .coreStateLeft, .coreStateRight { top: auto; bottom: 22px; }
   .heroProof { grid-template-columns: 1fr; }
@@ -914,10 +909,10 @@
   .sectionIntro h2, .regulationGrid h2, .platformHeading h2, .modesHeading h2, .benefitsTitle h2, .trustIntro h2, .contactLayout h2 { font-size: clamp(3rem,15vw,4.6rem); }
   .sectionGrid { gap: 45px; }
   .archiveTimeline { grid-template-columns: 1fr; min-height: 640px; align-content: end; padding-top: 330px; }
-  .archiveTimeline::before { top: 178px; }
-  .archiveFlow { top: 174px; left: 0; width: 34%; }
-  .archiveVault { top: 178px; width: 190px; }
-  .futureField { top: 178px; right: 2%; width: 90px; height: 90px; }
+  .archiveTimeline::before { top: 165px; }
+  .archiveFlow { top: 161px; left: 0; width: 34%; }
+  .archiveVault { top: 165px; width: 190px; }
+  .futureField { top: 165px; right: 2%; width: 90px; height: 90px; }
   .archiveStep { width: 100%; min-height: 94px; border-right: 0; }
   .pressureStack > div { grid-template-columns: 32px 1fr; }
   .pressureStack p { grid-column: 2; }

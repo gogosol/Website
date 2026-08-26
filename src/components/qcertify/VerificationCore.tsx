@@ -484,6 +484,28 @@ export function VerificationCore() {
           shadowPlane.rotation.x = -Math.PI / 2;
           scene.add(shadowPlane);
 
+          // ── 8. Floating Atmospheric Dust Motes ──
+          const particleCount = 38;
+          const partPositions = new Float32Array(particleCount * 3);
+          for (let i = 0; i < particleCount; i++) {
+            partPositions[i * 3] = (Math.random() - 0.5) * 3.4;
+            partPositions[i * 3 + 1] = (Math.random() - 0.5) * 3.8;
+            partPositions[i * 3 + 2] = (Math.random() - 0.5) * 3.0;
+          }
+          const partGeom = new THREE.BufferGeometry();
+          partGeom.setAttribute("position", new THREE.BufferAttribute(partPositions, 3));
+          const particles = new THREE.Points(
+            partGeom,
+            new THREE.PointsMaterial({
+              color: 0x70c0ff,
+              size: 0.035,
+              transparent: true,
+              opacity: 0.45,
+              sizeAttenuation: true,
+            }),
+          );
+          scene.add(particles);
+
           // ─── REFINED BALANCED STUDIO LIGHTS ───
           scene.add(new THREE.AmbientLight(0x182a44, 1.7));
 
@@ -570,6 +592,7 @@ export function VerificationCore() {
 
 
             lockGroup.position.y = Math.sin(now * 0.0014) * 0.06;
+            particles.rotation.y = now * 0.00003;
 
             renderer.render(scene, camera);
             if (!reduceMotion && !document.hidden) frame = requestAnimationFrame(draw);
@@ -598,7 +621,7 @@ export function VerificationCore() {
             envMap?.dispose();
             shadowTex.dispose();
             root.traverse((object) => {
-              if (object instanceof THREE.Mesh) {
+              if (object instanceof THREE.Mesh || object instanceof THREE.Points) {
                 object.geometry.dispose();
                 const material = object.material;
                 if (Array.isArray(material)) material.forEach((item) => item.dispose());
