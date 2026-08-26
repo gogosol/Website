@@ -546,10 +546,10 @@ export function VerificationCore() {
           const updateLayout = () => {
             const isMobile = window.innerWidth <= 960;
             const targetX = isMobile ? 0 : -0.16;
-            const targetY = isMobile ? 0.06 : 0.22;
+            const targetY = isMobile ? 0.24 : 0.22;
             root.position.set(targetX, targetY, 0);
-            shadowPlane.position.set(targetX, isMobile ? -1.55 : -1.38, 0);
-            underFill.position.set(targetX, isMobile ? -2.1 : -1.95, 2.0);
+            shadowPlane.position.set(targetX, isMobile ? -1.36 : -1.38, 0);
+            underFill.position.set(targetX, isMobile ? -1.93 : -1.95, 2.0);
             lockGroup.scale.setScalar(isMobile ? 0.94 : 0.92);
             camera.fov = isMobile ? 30 : 28;
             camera.updateProjectionMatrix();
