@@ -78,21 +78,16 @@
 .brand { display: inline-flex; align-items: center; width: fit-content; }
 .brandImage { width: 122px; height: auto; object-fit: contain; }
 
-.navLinks { display: flex; align-items: center; gap: 4px; }
 .navLinks { display: flex; align-items: center; gap: 6px; }
 .navLink {
-  padding: 10px 13px;
   padding: 8px 14px;
   border-radius: 10px;
-  color: rgba(244, 242, 236, 0.58);
-  font-size: 12px;
   color: rgba(244, 242, 236, 0.65);
   font-size: 14px;
   font-weight: 450;
   letter-spacing: -0.01em;
   transition: color 180ms ease, background 180ms ease;
 }
-.navLink:hover { background: rgba(255, 255, 255, 0.045); color: var(--paper); }
 .navLink:hover { background: rgba(255, 255, 255, 0.055); color: var(--paper); }
 
 .navCta {
@@ -101,13 +96,11 @@
   align-items: center;
   gap: 8px;
   min-height: 42px;
-  padding: 0 15px;
   padding: 0 17px;
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.075);
   color: var(--paper);
-  font-size: 12px;
   font-size: 13.5px;
   font-weight: 480;
   letter-spacing: -0.01em;
@@ -149,7 +142,6 @@
   margin: 0 16px;
   border-bottom: 1px solid var(--line);
   color: var(--paper-soft);
-  font-size: 14px;
   font-size: 15px;
   font-weight: 480;
 }
