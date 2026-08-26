@@ -206,12 +206,9 @@ export function ProtectionDial() {
                   exit={reduceMotion ? undefined : { opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <line x1="86" y1="140" x2="330" y2="140" stroke="#fbbf24" strokeWidth="2" />
-                  <rect x="145" y="100" width="135" height="25" rx="6" fill="rgba(251,191,36,0.08)" stroke="rgba(251,191,36,0.3)" strokeWidth="1" />
-                  <text x="212" y="116" textAnchor="middle" fill="#fcd34d" fontSize="7" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.08em">CLIENT LEG (HYBRID PQC)</text>
                   <line x1="86" y1="140" x2="330" y2="140" stroke="#60a5fa" strokeWidth="1.8" strokeDasharray="4 4" />
-                  <rect x="145" y="100" width="135" height="25" rx="6" fill="rgba(96,165,250,0.08)" stroke="rgba(96,165,250,0.3)" strokeWidth="1" />
-                  <text x="212" y="116" textAnchor="middle" fill="#93c5fd" fontSize="7" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.08em">CLIENT LEG (TLS 1.3)</text>
+                  <rect x="162" y="100" width="100" height="25" rx="6" fill="rgba(96,165,250,0.08)" stroke="rgba(96,165,250,0.3)" strokeWidth="1" />
+                  <text x="212" y="116" textAnchor="middle" fill="#93c5fd" fontSize="7" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.08em">CLIENT LEG</text>
 
                   {/* Central Mediation Gateway */}
                   <g transform="translate(380, 140)">
@@ -224,9 +221,6 @@ export function ProtectionDial() {
                     <text x="0" y="27" textAnchor="middle" fill="rgba(216,213,205,0.45)" fontSize="5.5" fontFamily="var(--mono)">HANDSHAKE VERIFY</text>
                   </g>
 
-                  <line x1="430" y1="140" x2="674" y2="140" stroke="#60a5fa" strokeWidth="1.8" strokeDasharray="4 4" />
-                  <rect x="480" y="100" width="135" height="25" rx="6" fill="rgba(96,165,250,0.08)" stroke="rgba(96,165,250,0.3)" strokeWidth="1" />
-                  <text x="547" y="116" textAnchor="middle" fill="#93c5fd" fontSize="7" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.08em">SERVER LEG (TLS 1.3)</text>
                   <line x1="430" y1="140" x2="674" y2="140" stroke="#fbbf24" strokeWidth="2" />
                   <rect x="475" y="100" width="145" height="25" rx="6" fill="rgba(251,191,36,0.08)" stroke="rgba(251,191,36,0.3)" strokeWidth="1" />
                   <text x="547" y="116" textAnchor="middle" fill="#fcd34d" fontSize="7" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.08em">SERVER LEG (HYBRID PQC)</text>
