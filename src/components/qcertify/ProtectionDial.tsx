@@ -170,10 +170,10 @@ export function ProtectionDial() {
                   <text x="380" y="126" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5.2" fontFamily="var(--mono)" letterSpacing="0.08em">
                     [ ENCAPSULATED TRANSPORT STREAM ]
                   </text>
-                  <text x="380" y="161" textAnchor="middle" fill="rgba(216,213,205,0.85)" fontSize="6" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.08em">
+                  <text x="380" y="162" textAnchor="middle" fill="rgba(216,213,205,0.85)" fontSize="6.8" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.06em">
                     HYBRID PQC: X25519 + ML-KEM
                   </text>
-                  <text x="380" y="173" textAnchor="middle" fill="rgba(216,213,205,0.55)" fontSize="5.2" fontFamily="var(--mono)" letterSpacing="0.06em">
+                  <text x="380" y="174" textAnchor="middle" fill="rgba(216,213,205,0.6)" fontSize="6" fontFamily="var(--mono)" letterSpacing="0.05em">
                     DUAL-CERT AUTH: ECDSA + ML-DSA-65
                   </text>
 
