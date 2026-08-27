@@ -70,26 +70,29 @@
 }
 
 .memberImage {
-  object-fit: contain;
-  object-position: center top;
+  object-fit: cover;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.5));
   transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.gabrielImage {
-  transform: scale(1.56) translateY(54px);
-}
-
+/* Gonçalo: face is centered horizontally, at ~28% from top in source (1122x1402) */
 .goncaloImage {
-  transform: scale(1.22) translateY(50px);
+  object-position: 50% 25%;
+  transform: scale(1.05);
 }
 
-.teamCard:hover .gabrielImage {
-  transform: scale(1.60) translateY(50px);
+/* Gabriel: face is centered horizontally, at ~18% from top in source (2804x3565) */
+.gabrielImage {
+  object-position: 50% 20%;
+  transform: scale(1.05);
 }
 
 .teamCard:hover .goncaloImage {
-  transform: scale(1.26) translateY(46px);
+  transform: scale(1.08);
+}
+
+.teamCard:hover .gabrielImage {
+  transform: scale(1.08);
 }
 
 .imageVignette {
@@ -211,22 +214,6 @@
 
   .imageContainer {
     height: 370px;
-  }
-
-  .gabrielImage {
-    transform: scale(1.42) translateY(44px);
-  }
-
-  .goncaloImage {
-    transform: scale(1.12) translateY(42px);
-  }
-
-  .teamCard:hover .gabrielImage {
-    transform: scale(1.46) translateY(40px);
-  }
-
-  .teamCard:hover .goncaloImage {
-    transform: scale(1.16) translateY(38px);
   }
 }
 
