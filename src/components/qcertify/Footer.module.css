@@ -1,12 +1,12 @@
 .footer {
   width: min(100%, 1540px);
   margin: 0 auto;
-  padding: clamp(64px, 8vw, 108px) clamp(22px, 4.6vw, 72px) 32px;
+  padding: clamp(64px, 8vw, 108px) clamp(22px, 4.6vw, 72px) 36px;
 }
 
 .footerMain {
   display: grid;
-  grid-template-columns: minmax(280px, 1.4fr) minmax(160px, 0.95fr) minmax(200px, 1.15fr) minmax(220px, 1.1fr);
+  grid-template-columns: minmax(280px, 1.35fr) minmax(160px, 0.9fr) minmax(210px, 1.15fr) minmax(220px, 1.1fr);
   gap: clamp(32px, 5vw, 64px);
   padding-bottom: 56px;
   border-bottom: 1px solid var(--line);
@@ -171,11 +171,11 @@
   align-items: center;
   gap: 7px;
   margin-top: 8px;
-  padding: 5px 9px;
-  border: 1px solid rgba(74, 222, 128, 0.2);
+  padding: 6px 10px;
+  border: 1px solid rgba(74, 222, 128, 0.22);
   border-radius: 6px;
   background: rgba(74, 222, 128, 0.05);
-  color: rgba(183, 245, 202, 0.85);
+  color: rgba(183, 245, 202, 0.88);
   font: 500 8.5px/1 var(--mono);
   letter-spacing: 0.08em;
 }
@@ -235,14 +235,27 @@
 
 @media (max-width: 640px) {
   .footer {
-    padding-inline: 18px;
-    padding-top: 56px;
+    padding-inline: 20px;
+    padding-top: 64px;
+    padding-bottom: 76px;
   }
 
   .footerMain {
     grid-template-columns: 1fr;
     gap: 36px;
-    padding-bottom: 40px;
+    padding-bottom: 36px;
+  }
+
+  .actionsGroup {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .linkedinButton,
+  .emailButton {
+    justify-content: center;
+    width: 100%;
   }
 
   .brandDesc {
@@ -253,6 +266,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+    padding-top: 24px;
   }
 
   .metaLeft {
