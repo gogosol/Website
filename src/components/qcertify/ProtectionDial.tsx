@@ -164,16 +164,12 @@ export function ProtectionDial() {
                   
                   {/* Encapsulated Wrap Stream & Badges */}
                   <line x1="220" y1="140" x2="540" y2="140" stroke="url(#wire-glow-blue)" strokeWidth="2.5" />
-                  <text x="380" y="114" textAnchor="middle" fill="#7dd3fc" fontSize="8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.14em">
                   <text x="380" y="113" textAnchor="middle" fill="#7dd3fc" fontSize="7.5" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.12em">
                     HYBRID PQC ENCRYPTED WRAP
                   </text>
-                  <text x="380" y="130" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5.5" fontFamily="var(--mono)" letterSpacing="0.1em">
                   <text x="380" y="126" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5.2" fontFamily="var(--mono)" letterSpacing="0.08em">
                     [ ENCAPSULATED TRANSPORT STREAM ]
                   </text>
-                  <text x="380" y="168" textAnchor="middle" fill="rgba(216,213,205,0.7)" fontSize="6.2" fontFamily="var(--mono)" letterSpacing="0.05em">
-                    HYBRID PQC (X25519 + ML-KEM) · DUAL-CERT AUTH (ECDSA + ML-DSA-65)
                   <text x="380" y="162" textAnchor="middle" fill="rgba(216,213,205,0.85)" fontSize="6.8" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.06em">
                     HYBRID PQC: X25519 + ML-KEM
                   </text>
