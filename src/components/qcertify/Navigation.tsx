@@ -37,7 +37,7 @@ export function Navigation() {
       <nav className={styles.nav} aria-label="Primary navigation">
         <a href="#top" className={styles.brand} aria-label="QCertify home" onClick={() => setOpen(false)}>
           <Image
-            src="/Logo SF White.png"
+            src="/images/Logo SF White.png"
             alt="QCertify"
             width={654}
             height={96}

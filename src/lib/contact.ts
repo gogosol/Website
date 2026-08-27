@@ -8,6 +8,8 @@ export const contactSchema = z.object({
   email: z.string().trim().email("Enter a valid work email").max(254),
   company: cleanText(120),
   priorityPath: z.enum([
+    "schedule-demo",
+    "launch-pilot",
     "critical-system",
     "site-to-site",
     "partner-exchange",
@@ -21,6 +23,8 @@ export const contactSchema = z.object({
 export type ContactPayload = z.infer<typeof contactSchema>;
 
 export const priorityPathLabels: Record<ContactPayload["priorityPath"], string> = {
+  "schedule-demo": "Schedule an Interactive Demo",
+  "launch-pilot": "Launch 14-Day Governed Pilot",
   "critical-system": "Critical system path",
   "site-to-site": "Site-to-site traffic",
   "partner-exchange": "Partner exchange",

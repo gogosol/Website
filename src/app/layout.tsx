@@ -47,6 +47,13 @@ export const metadata: Metadata = {
     description,
     creator: "@qcertify",
   },
+  alternates: {
+    canonical: "https://qcertify.io",
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
   robots: {
     index: true,
     follow: true,

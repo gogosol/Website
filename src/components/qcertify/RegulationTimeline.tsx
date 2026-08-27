@@ -4,12 +4,6 @@ import { useState, useEffect } from "react";
 import styles from "@/app/home.module.css";
 import { Reveal } from "@/components/qcertify/Reveal";
 import { 
-  ScanSearch, 
-  Route, 
-  BadgeCheck, 
-  SlidersHorizontal, 
-  Activity, 
-  FileStack,
   ExternalLink 
 } from "lucide-react";
 
@@ -42,39 +36,6 @@ export function RegulationTimeline() {
     { date: "Jan 2027", title: "NSS acquisitions align to CNSA 2.0", position: "55%" },
     { date: "Dec 2030", title: "EU critical infrastructure deadline", position: "75%" },
     { date: "2035", title: "U.S. quantum-resistance end-state goal", position: "95%" },
-  ];
-
-  const cards = [
-    { 
-      title: "Inventory cryptographic exposure", 
-      desc: "Identify systems, services, data flows, trust dependencies, and paths carrying long-lived sensitive data.",
-      icon: ScanSearch
-    },
-    { 
-      title: "Prioritize traffic paths", 
-      desc: "Select paths where HNDL risk, regulatory pressure, or operational sensitivity justify early protection.",
-      icon: Route
-    },
-    { 
-      title: "Plan trust readiness", 
-      desc: "For paths that require trusted handling, prepare required trust through centralized enterprise processes before activation.",
-      icon: BadgeCheck
-    },
-    { 
-      title: "Stage crypto-agile controls", 
-      desc: "Use policy to choose protected, exception, or denied paths rather than baking assumptions into apps.",
-      icon: SlidersHorizontal
-    },
-    { 
-      title: "Collect evidence", 
-      desc: "Track deployment state, protected-path coverage, operational signals, and exception decisions.",
-      icon: Activity
-    },
-    { 
-      title: "Prepare assurance packages", 
-      desc: "Turn technical progress into material that security, risk, procurement, and auditors can understand.",
-      icon: FileStack
-    },
   ];
 
   const regulations = [
@@ -199,23 +160,6 @@ export function RegulationTimeline() {
       </Reveal>
 
       <Reveal delay={0.25}>
-        <div className={styles.readinessGrid}>
-          {cards.map((card, i) => {
-            const Icon = card.icon;
-            return (
-              <div key={i} className={styles.readinessCard}>
-                <div className={styles.readinessIcon}>
-                  <Icon size={18} />
-                </div>
-                <h3>{card.title}</h3>
-                <p>{card.desc}</p>
-              </div>
-            );
-          })}
-        </div>
-      </Reveal>
-
-      <Reveal delay={0.35}>
         <div className={styles.regulationEntries}>
           {regulations.map((reg, i) => (
             <a 

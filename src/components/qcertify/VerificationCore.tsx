@@ -527,11 +527,19 @@ export function VerificationCore() {
           const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
           let frame = 0;
           let last = performance.now();
+          let currentRotX = -0.14;
+          let currentRotY = 0.32;
 
           const draw = (now: number) => {
             const delta = Math.min((now - last) / 1000, 0.05);
             last = now;
 
+            const targetRotX = -0.14 - pointerY * 0.18;
+            const targetRotY = 0.32 + pointerX * 0.26;
+            currentRotX += (targetRotX - currentRotX) * Math.min(1, delta * 4);
+            currentRotY += (targetRotY - currentRotY) * Math.min(1, delta * 4);
+            root.rotation.x = currentRotX;
+            root.rotation.y = currentRotY;
 
             lockGroup.position.y = Math.sin(now * 0.0014) * 0.06;
 

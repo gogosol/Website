@@ -26,7 +26,7 @@ export function Footer() {
         <div className={styles.brandCol}>
           <a href="#top" className={styles.brandLink} aria-label="QCertify home">
             <Image
-              src="/Logo SF White.png"
+              src="/images/Logo SF White.png"
               alt="QCertify"
               width={654}
               height={96}

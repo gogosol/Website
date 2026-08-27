@@ -733,13 +733,6 @@
 .countdownValue span:first-child { color: var(--paper); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
 .countdownValue span:last-child { color: rgba(216, 213, 205, 0.35); font: 600 9px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 
-.readinessGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; width: min(100%, 1396px); margin: 72px auto 0; }
-.readinessCard { padding: 26px 22px; border: 1px solid var(--line); border-radius: 18px; background: rgba(9,9,12,.72); box-shadow: inset 0 1px 0 rgba(255,255,255,.04); transition: background 220ms ease, border-color 220ms ease; }
-.readinessCard:hover { background: rgba(255,255,255,.02); border-color: var(--line-strong); }
-.readinessIcon { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid rgba(45,140,240,.22); border-radius: 10px; background: rgba(45,140,240,.06); color: var(--accent-soft); margin-bottom: 24px; }
-.readinessCard h3 { margin: 0 0 10px; font-size: 15px; font-weight: 540; color: var(--paper); }
-.readinessCard p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
-
 .regulationEntries { width: min(100%, 1396px); margin: 56px auto 0; border-top: 1px solid var(--line); }
 .regulationEntry { display: grid; grid-template-columns: 88px 1fr 18px; gap: 16px; padding: 20px 16px; border-bottom: 1px solid var(--line); transition: background 180ms ease; }
 .regulationEntry:hover { background: rgba(45,140,240,.03); }
@@ -775,7 +768,6 @@
 @media (max-width: 960px) {
   .timelineAxis { display: none; }
   .timelineMobileList { display: block; }
-  .readinessGrid { grid-template-columns: repeat(2, 1fr); }
   .countdownGrid { grid-template-columns: 1fr; }
   .regulationEntry { grid-template-columns: 70px 1fr 16px; }
   .nav { grid-template-columns: 1fr auto; }
@@ -894,7 +886,6 @@
 }
 
 @media (max-width: 700px) {
-  .readinessGrid { grid-template-columns: 1fr; margin-top: 48px; }
   .regulationTimeline { margin-top: 56px; }
   .navWrap { top: 10px; width: calc(100% - 20px); }
   .nav { min-height: 55px; padding-left: 15px; border-radius: 15px; }

@@ -59,7 +59,7 @@ export function Preloader() {
           <div className={styles.preloaderContent}>
             <div className={styles.logoWrap}>
               <Image
-                src="/Logo SF White.png"
+                src="/images/Logo SF White.png"
                 alt="QCertify"
                 width={654}
                 height={96}

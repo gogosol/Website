@@ -21,12 +21,12 @@ const teamMembers = [
   {
     name: "Gonçalo Magalhães",
     role: "CO-FOUNDER · ENGINEERING",
-    title: "Technical Co-Founder · Cryptographic Architecture & Systems",
+    title: "Co-Founder · Cryptographic Architecture & Systems",
     image: "/images/goncalo.png",
     imageClass: "goncaloImage" as const,
     linkedin: "https://www.linkedin.com/in/gon%C3%A7alo-magalh%C3%A3es-41671027b/",
-    bio: "Directs core technical development and cryptographic systems engineering, including hybrid post-quantum key establishment (X25519 + ML-KEM), Dual-Cert authentication protocols, and hardware-enforced fail-closed inline gateway infrastructure.",
-    focusBadge: "TECHNICAL DEVELOPMENT · CRYPTOGRAPHIC SYSTEMS",
+    bio: "Leads core engineering, cryptographic systems architecture, and inline gateway infrastructure to deliver seamless, fail-closed post-quantum protection.",
+    focusBadge: "CORE ENGINEERING · CRYPTOGRAPHIC SYSTEMS",
   },
   {
     name: "Gabriel Gestosa",
