@@ -1,0 +1,214 @@
+.teamSection {
+  width: min(100%, 1540px);
+  margin: 0 auto;
+  padding: clamp(64px, 8vw, 120px) clamp(22px, 4.6vw, 72px);
+  border-top: 1px solid var(--line);
+  position: relative;
+  scroll-margin-top: 100px;
+}
+
+.teamHeader {
+  max-width: 780px;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+.sectionLabel {
+  margin: 0 0 16px;
+  color: var(--violet-soft);
+  font: 500 10.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.teamTitle {
+  margin: 0 0 16px;
+  font-size: clamp(32px, 4.5vw, 54px);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: var(--paper);
+  font-weight: 550;
+}
+
+.teamLead {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.55;
+  max-width: 640px;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 3.5vw, 40px);
+}
+
+.teamCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(16, 17, 23, 0.9) 0%, rgba(9, 10, 14, 0.96) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 20px 48px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), border-color 260ms ease, box-shadow 260ms ease;
+}
+
+.teamCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(107, 179, 255, 0.35);
+  box-shadow: 0 24px 60px rgba(45, 140, 240, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: clamp(340px, 32vw, 440px);
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 25%, rgba(45, 140, 240, 0.16) 0%, rgba(13, 14, 20, 0.95) 75%);
+  border-bottom: 1px solid var(--line);
+}
+
+.memberImage {
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.teamCard:hover .memberImage {
+  transform: scale(1.03);
+}
+
+.imageVignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9, 10, 14, 0) 60%, rgba(9, 10, 14, 0.92) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.roleBadge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 99px;
+  background: rgba(9, 10, 14, 0.82);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(107, 179, 255, 0.35);
+  color: var(--violet-soft);
+  font: 550 9px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  padding: clamp(22px, 2.5vw, 32px);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 16px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.memberName {
+  margin: 0;
+  font-size: clamp(20px, 2vw, 25px);
+  font-weight: 550;
+  letter-spacing: -0.025em;
+  color: var(--paper);
+}
+
+.memberTitle {
+  margin: 0;
+  font-size: 13px;
+  color: var(--paper-soft);
+  font-weight: 450;
+}
+
+.linkedinButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(107, 179, 255, 0.32);
+  border-radius: 99px;
+  background: rgba(45, 140, 240, 0.08);
+  color: #f4f2ec;
+  font: 500 11px/1 var(--mono);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 180ms ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.linkedinButton:hover {
+  background: rgba(45, 140, 240, 0.22);
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 6px 24px rgba(45, 140, 240, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-1.5px);
+}
+
+.memberBio {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.cardFooter {
+  padding-top: 14px;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(216, 213, 205, 0.45);
+  font: 500 9px/1.4 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 860px) {
+  .teamSection {
+    scroll-margin-top: 80px;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .imageContainer {
+    height: 340px;
+  }
+}
+
+@media (max-width: 540px) {
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .linkedinButton {
+    align-self: flex-start;
+  }
+}

@@ -61,9 +61,9 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Column 2: Architecture & Platform */}
+        {/* Column 2: Architecture & Company */}
         <div className={styles.navCol}>
-          <h4 className={styles.colTitle}>ARCHITECTURE</h4>
+          <h4 className={styles.colTitle}>ARCHITECTURE &amp; COMPANY</h4>
           <ul className={styles.navList}>
             <li>
               <a href="#risk" className={styles.navLink}>
@@ -81,13 +81,13 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="#operation" className={styles.navLink}>
-                Operational Rollout
+              <a href="#trust" className={styles.navLink}>
+                Cryptographic Trust
               </a>
             </li>
             <li>
-              <a href="#trust" className={styles.navLink}>
-                Cryptographic Trust
+              <a href="#team" className={styles.navLink}>
+                Founding Team
               </a>
             </li>
           </ul>

@@ -17,6 +17,7 @@ import { HeroReveal, Reveal } from "@/components/qcertify/Reveal";
 import { VerificationCore } from "@/components/qcertify/VerificationCore";
 import { RegulationTimeline } from "@/components/qcertify/RegulationTimeline";
 import { Preloader } from "@/components/qcertify/Preloader";
+import { Team } from "@/components/qcertify/Team";
 import { Footer } from "@/components/qcertify/Footer";
 import styles from "./home.module.css";
 
@@ -347,11 +348,13 @@ export default function Home() {
           </div>
         </section>
 
+        <Team />
+
         <section id="contact" className={styles.contactSection} aria-labelledby="contact-title">
           <div className={styles.contactHalo} aria-hidden="true" />
           <div className={styles.contactLayout}>
             <Reveal>
-              <p className={styles.sectionLabel}>08 / PILOT &amp; DEMO</p>
+              <p className={styles.sectionLabel}>09 / PILOT &amp; DEMO</p>
               <h2 id="contact-title">Deploy a governed pilot or schedule a demo.</h2>
               <p>Experience inline hybrid PQC protection on one critical enterprise traffic path in under 14 days with zero application changes.</p>
               <a className={styles.emailLink} href="mailto:contact@qcertify.io">

@@ -11,6 +11,7 @@ const links = [
   { href: "#platform", label: "Platform" },
   { href: "#operation", label: "Operation" },
   { href: "#trust", label: "Trust" },
+  { href: "#team", label: "Team" },
 ];
 
 export function Navigation() {

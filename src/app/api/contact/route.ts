@@ -96,7 +96,7 @@ export async function POST(request: Request) {
     from,
     to: [to],
     replyTo: email,
-    subject: `Demo & Pilot Inquiry: ${company}`,
+    subject: `Architecture review — ${company}`,
     text: [
       "New QCertify architecture review request",
       "",
