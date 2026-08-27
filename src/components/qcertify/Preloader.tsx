@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Preloader.module.css";
 
 const statusSteps = [
-  { threshold: 25, label: "CALIBRATING ML-KEM-768 SUBSYSTEM..." },
+  { threshold: 25, label: "CALIBRATING HYBRID PQC (ML-KEM-768)..." },
   { threshold: 55, label: "VERIFYING DUAL-CERT CATALYST..." },
   { threshold: 80, label: "ENFORCING FAIL-CLOSED RUNTIME..." },
   { threshold: 99, label: "FINALIZING SECURITY BOUNDARIES..." },
