@@ -25,6 +25,7 @@ export function Preloader() {
           document.body.style.overflow = "";
         }, 280);
       }
+    }, 35);
 
     const safetyTimer = setTimeout(() => {
       setProgress(100);
