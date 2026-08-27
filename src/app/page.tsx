@@ -17,6 +17,7 @@ import { HeroReveal, Reveal } from "@/components/qcertify/Reveal";
 import { VerificationCore } from "@/components/qcertify/VerificationCore";
 import { RegulationTimeline } from "@/components/qcertify/RegulationTimeline";
 import { Preloader } from "@/components/qcertify/Preloader";
+import { Footer } from "@/components/qcertify/Footer";
 import styles from "./home.module.css";
 
 const exactCryptoClaim =
@@ -362,19 +363,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className={styles.footer}>
-        <div className={styles.footerTop}>
-          <a href="#top" className={styles.brand} aria-label="QCertify home">
-            <Image src="/Logo SF White.png" alt="QCertify" width={654} height={96} className={styles.footerLogo} />
-          </a>
-          <p>Governed hybrid PQC for critical enterprise traffic paths.</p>
-          <a href="#top">Back to top <ArrowUpRight aria-hidden="true" size={13} /></a>
-        </div>
-        <div className={styles.footerBottom}>
-          <span>© {new Date().getFullYear()} QCERTIFY</span>
-          <a href="mailto:contact@qcertify.io">CONTACT</a>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
