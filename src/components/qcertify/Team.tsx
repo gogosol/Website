@@ -23,6 +23,7 @@ const teamMembers = [
     role: "CO-FOUNDER · ENGINEERING",
     title: "Technical Co-Founder · Cryptographic Architecture & Systems",
     image: "/images/goncalo.png",
+    imageClass: "goncaloImage" as const,
     linkedin: "https://www.linkedin.com/in/gon%C3%A7alo-magalh%C3%A3es-41671027b/",
     bio: "Directs core technical development and cryptographic systems engineering, including hybrid post-quantum key establishment (X25519 + ML-KEM), Dual-Cert authentication protocols, and hardware-enforced fail-closed inline gateway infrastructure.",
     focusBadge: "TECHNICAL DEVELOPMENT · CRYPTOGRAPHIC SYSTEMS",
@@ -32,6 +33,7 @@ const teamMembers = [
     role: "CO-FOUNDER · BUSINESS & PR",
     title: "Co-Founder · Business Development, PR & Strategy",
     image: "/images/gabriel.png",
+    imageClass: "gabrielImage" as const,
     linkedin: "https://www.linkedin.com/in/gabrielnevesgestosa/",
     bio: "Drives enterprise partnerships, business development, communications, and public relations to accelerate commercial adoption and strategic stakeholder engagement.",
     focusBadge: "BUSINESS DEVELOPMENT · COMMUNICATIONS · PARTNERSHIPS",
@@ -65,7 +67,7 @@ export function Team() {
                   alt={`Portrait of ${member.name}`}
                   fill
                   sizes="(max-width: 860px) 100vw, 50vw"
-                  className={styles.memberImage}
+                  className={`${styles.memberImage} ${styles[member.imageClass]}`}
                   priority={false}
                 />
                 <div className={styles.imageVignette} aria-hidden="true" />

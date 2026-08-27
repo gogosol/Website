@@ -76,24 +76,24 @@
   transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Gonçalo (1122x1402): tighter crop, face at ~30% from top.
-   Scale up to fill width, shift down so face sits at vertical center of box. */
+/* Gonçalo (1122x1402): tighter headshot in source.
+   Scale 1.08; translate(3.5%, 2%) centers face horizontally and vertically. */
 .goncaloImage {
-  transform: scale(1.35) translate(6%, 12%);
+  transform: scale(1.08) translate(3.5%, 2%);
 }
 
-/* Gabriel (2804x3565): full-body shot, face at ~18% from top.
-   Scale more to bring face closer, shift down so face centers in box. */
+/* Gabriel (2248x2747): torso/waist shot in source.
+   Scale 1.50; translateY(17%) gives headroom and centers face vertically. */
 .gabrielImage {
-  transform: scale(1.50) translateY(8%);
+  transform: scale(1.50) translateY(17%);
 }
 
 .teamCard:hover .goncaloImage {
-  transform: scale(1.39) translate(6%, 11%);
+  transform: scale(1.12) translate(3.5%, 1%);
 }
 
 .teamCard:hover .gabrielImage {
-  transform: scale(1.54) translateY(7%);
+  transform: scale(1.54) translateY(16%);
 }
 
 .imageVignette {
@@ -218,19 +218,19 @@
   }
 
   .goncaloImage {
-    transform: scale(1.30) translate(6%, 12%);
+    transform: scale(1.05) translate(3.5%, 2%);
   }
 
   .gabrielImage {
-    transform: scale(1.44) translateY(8%);
+    transform: scale(1.46) translateY(17%);
   }
 
   .teamCard:hover .goncaloImage {
-    transform: scale(1.34) translate(6%, 11%);
+    transform: scale(1.08) translate(3.5%, 1%);
   }
 
   .teamCard:hover .gabrielImage {
-    transform: scale(1.48) translateY(7%);
+    transform: scale(1.50) translateY(16%);
   }
 }
 
