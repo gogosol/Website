@@ -16,6 +16,7 @@ import { ProtectionDial } from "@/components/qcertify/ProtectionDial";
 import { HeroReveal, Reveal } from "@/components/qcertify/Reveal";
 import { VerificationCore } from "@/components/qcertify/VerificationCore";
 import { RegulationTimeline } from "@/components/qcertify/RegulationTimeline";
+import { Preloader } from "@/components/qcertify/Preloader";
 import styles from "./home.module.css";
 
 const exactCryptoClaim =
@@ -77,6 +78,7 @@ const benefits = [
 export default function Home() {
   return (
     <div id="top" className={styles.siteShell}>
+      <Preloader />
       <a className={styles.skipLink} href="#main-content">Skip to content</a>
       <Navigation />
 
