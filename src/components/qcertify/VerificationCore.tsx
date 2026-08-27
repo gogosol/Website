@@ -120,6 +120,7 @@ export function VerificationCore() {
             ctx.fillRect(36, 204, 165, 4);
 
             const texture = new THREE.CanvasTexture(texCanvas);
+            texture.needsUpdate = true;
             return texture;
           };
 
@@ -274,7 +275,7 @@ export function VerificationCore() {
             depthWrite: false,
           });
           const graphicMesh = new THREE.Mesh(graphicGeom, graphicMat);
-          graphicMesh.position.set(0, -0.32, 0.465);
+          graphicMesh.position.set(0, -0.32, 0.472);
           lockGroup.add(graphicMesh);
 
           // ── 3. Shackle Collar Wells ──
