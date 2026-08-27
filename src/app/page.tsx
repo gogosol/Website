@@ -12,6 +12,7 @@ import {
 import { ContactForm } from "@/components/qcertify/ContactForm";
 import { Navigation } from "@/components/qcertify/Navigation";
 import { ProtectionDial } from "@/components/qcertify/ProtectionDial";
+import { HndlDiagram } from "@/components/qcertify/HndlDiagram";
 import { HeroReveal, Reveal } from "@/components/qcertify/Reveal";
 import { VerificationCore } from "@/components/qcertify/VerificationCore";
 import { RegulationTimeline } from "@/components/qcertify/RegulationTimeline";
@@ -133,40 +134,8 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <Reveal className={styles.archivePanel} delay={0.1}>
-            <div className={styles.archiveHeader}>
-              <span>HNDL / EXPOSURE SEQUENCE</span>
-              <span>TIME →</span>
-            </div>
-            <div className={styles.archiveTimeline}>
-              <div className={styles.archiveFlow} aria-hidden="true">
-                {Array.from({ length: 18 }, (_, index) => <i key={index} />)}
-              </div>
-              <div className={styles.archiveVault} aria-hidden="true">
-                <span /><span /><span /><span /><span />
-                <b>ARCHIVE</b>
-              </div>
-              <div className={styles.futureField} aria-hidden="true">
-                <span /><span /><span />
-              </div>
-              <div className={styles.archiveStep} data-step="01">
-                <b>Capture</b>
-                <p>Encrypted traffic is collected.</p>
-              </div>
-              <div className={styles.archiveStep} data-step="02">
-                <b>Retain</b>
-                <p>Ciphertext outlives the moment.</p>
-              </div>
-              <div className={styles.archiveStep} data-step="03">
-                <b>Wait</b>
-                <p>The attack surface changes.</p>
-              </div>
-            </div>
-            <div className={styles.archiveFooter}>
-              <span>SENSITIVE NOW</span>
-              <div><i /><i /><i /><i /></div>
-              <span>VALUABLE LATER</span>
-            </div>
+          <Reveal delay={0.1}>
+            <HndlDiagram />
           </Reveal>
         </section>
 
