@@ -167,6 +167,11 @@ export function ProtectionDial() {
                   <text x="380" y="115" textAnchor="middle" fill="#7dd3fc" fontSize="8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.14em">
                     HYBRID PQC ENCRYPTED WRAP
                   </text>
+                  <text x="380" y="132" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5.5" fontFamily="var(--mono)" letterSpacing="0.1em">
+                    [ ENCAPSULATED TRANSPORT STREAM ]
+                  </text>
+                  <text x="380" y="170" textAnchor="middle" fill="rgba(216,213,205,0.7)" fontSize="6.5" fontFamily="var(--mono)" letterSpacing="0.06em">
+                    HYBRID PQC (ML-KEM-768) · DUAL-CERT AUTH (ML-DSA-65)
                   </text>
 
                   {/* LEFT GATEWAY: EGRESS (WRAP / ENCAPSULATE) */}
