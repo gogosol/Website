@@ -530,8 +530,6 @@
 .modeStageHeader { display: flex; justify-content: space-between; align-items: center; min-height: 50px; padding: 0 17px; border-bottom: 1px solid var(--line); color: rgba(216,213,205,.4); font: 500 8px/1 var(--mono); letter-spacing: .1em; }
 .liveState { display: flex; align-items: center; gap: 7px; }
 .liveState i { width: 5px; height: 5px; border-radius: 50%; background: var(--verified); box-shadow: 0 0 12px rgba(183,245,202,.6); }
-.pathViz { min-height: 325px; padding: 6px 20px 0; border-bottom: 1px solid var(--line); }
-.pathViz svg { width: 100%; height: auto; max-height: 320px; margin: auto; }
 .pathViz { min-height: 300px; padding: 6px 20px 0; border-bottom: 1px solid var(--line); }
 .desktopViz { display: block; width: 100%; }
 .mobileViz { display: none; width: 100%; }
@@ -875,10 +873,6 @@
   .processItem { grid-template-columns: 46px 1fr 20px; padding: 25px 0; }
   .processItem small { grid-column: 2; grid-row: 2; }
   .processItem > svg { grid-column: 3; grid-row: 1; }
-  .dialShell { grid-template-columns: 1fr; }
-  .modeRail { grid-template-columns: repeat(4,1fr); gap: 6px; }
-  .modeButton { grid-template-columns: 1fr; justify-items: center; gap: 5px; padding: 10px 6px; border-right: 1px solid var(--line); border-bottom: 0; text-align: center; }
-  .modeButton:last-child { border-right: 0; }
   .dialShell { grid-template-columns: 1fr; margin-top: 48px; }
   .modeRail { grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 8px; }
   .modeButton {
@@ -938,7 +932,6 @@
   .processItem { grid-template-columns: 34px 1fr 18px; gap: 14px; }
   .processItem h3 { font-size: 24px; }
   .processItem p { font-size: 13px; }
-  .modeRail { grid-template-columns: repeat(2,1fr); }
   .dialShell { margin-top: 36px; }
   .modeRail { grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 8px; }
   .modeButton {
@@ -952,11 +945,6 @@
     text-align: center;
   }
   .modeButton:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-  .modeButton:nth-child(2) { border-right: 0; }
-  .modeStage { min-height: 500px; }
-  .pathViz { min-height: 270px; padding-inline: 4px; }
-  .modeCopy { padding: 20px 17px 15px; }
-  .modeDetail { margin: 0 17px 20px 74px; }
   .modeButton:nth-child(2) { border-right: 1px solid var(--line); }
   .modeButton span:nth-child(2) { font-size: 12.5px; }
   .modeStage { min-height: auto; }
@@ -999,17 +987,12 @@
 }
 
 @media (max-width: 420px) {
-  .hero h1 { font-size: clamp(1.95rem, 8.5vw, 2.5rem); line-height: 1.08; }
   .hero h1 { font-size: clamp(2.25rem, 9.5vw, 2.75rem); line-height: 1.02; }
   .eyebrow, .sectionLabel { letter-spacing: .08em; }
   .coreHud { top: 17px; right: 17px; left: 17px; }
   .coreHud span:last-child { display: none; }
   .archiveHeader, .archiveFooter { padding-inline: 12px; }
   .archiveFooter div { display: none; }
-  .modeStageHeader span:first-child { max-width: 140px; }
-  .liveState { font-size: 0; }
-  .modeCopy { grid-template-columns: 1fr; }
-  .modeDetail { margin-left: 17px; }
   .modeRail { grid-template-columns: repeat(2, 1fr); gap: 6px; padding: 6px; }
   .modeButton { min-height: 50px; padding: 6px 4px; }
   .modeButton span:nth-child(2) { font-size: 11.5px; }
