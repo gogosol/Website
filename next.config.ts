@@ -15,7 +15,11 @@ const securityHeaders = [
   },
   {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=()",
+    value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  },
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains; preload",
   },
   {
     key: "Cross-Origin-Opener-Policy",
@@ -33,8 +37,13 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  poweredByHeader: false,
+  compress: true,
   turbopack: {
     root: __dirname,
+  },
+  images: {
+    formats: ["image/avif", "image/webp"],
   },
   async headers() {
     return [

@@ -532,10 +532,6 @@
 .liveState i { width: 5px; height: 5px; border-radius: 50%; background: var(--verified); box-shadow: 0 0 12px rgba(183,245,202,.6); }
 .pathViz { min-height: 325px; padding: 6px 20px 0; border-bottom: 1px solid var(--line); }
 .pathViz svg { width: 100%; height: auto; max-height: 320px; margin: auto; }
-.pathViz { min-height: 300px; padding: 6px 20px 0; border-bottom: 1px solid var(--line); }
-.desktopViz { display: block; width: 100%; }
-.mobileViz { display: none; width: 100%; }
-.pathViz svg { width: 100%; height: auto; max-height: 320px; margin: auto; display: block; }
 .vizGrid path { fill: none; stroke: rgba(255,255,255,.03); stroke-width: 1; }
 .vizBase { fill: none; stroke: rgba(255,255,255,.07); stroke-width: 1; }
 .vizRing { fill: none; stroke: rgba(45,140,240,.2); stroke-width: 1; stroke-dasharray: 4 7; }
@@ -879,20 +875,6 @@
   .modeRail { grid-template-columns: repeat(4,1fr); gap: 6px; }
   .modeButton { grid-template-columns: 1fr; justify-items: center; gap: 5px; padding: 10px 6px; border-right: 1px solid var(--line); border-bottom: 0; text-align: center; }
   .modeButton:last-child { border-right: 0; }
-  .dialShell { grid-template-columns: 1fr; margin-top: 48px; }
-  .modeRail { grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 8px; }
-  .modeButton {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 4px;
-    min-height: 62px;
-    padding: 10px 8px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    text-align: center;
-  }
-  .modeButton:last-child { border-right: 1px solid var(--line); }
-  .modeButton span:nth-child(2) { font-size: 13px; }
   .modeArrow { display: none; }
   .benefitsTitle { grid-template-columns: 1fr; }
   .benefitsTitle .sectionLabel { margin-bottom: 28px; }
@@ -939,44 +921,12 @@
   .processItem h3 { font-size: 24px; }
   .processItem p { font-size: 13px; }
   .modeRail { grid-template-columns: repeat(2,1fr); }
-  .dialShell { margin-top: 36px; }
-  .modeRail { grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 8px; }
-  .modeButton {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 4px;
-    min-height: 56px;
-    padding: 8px 6px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    text-align: center;
-  }
   .modeButton:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .modeButton:nth-child(2) { border-right: 0; }
   .modeStage { min-height: 500px; }
   .pathViz { min-height: 270px; padding-inline: 4px; }
   .modeCopy { padding: 20px 17px 15px; }
   .modeDetail { margin: 0 17px 20px 74px; }
-  .modeButton:nth-child(2) { border-right: 1px solid var(--line); }
-  .modeButton span:nth-child(2) { font-size: 12.5px; }
-  .modeStage { min-height: auto; }
-  .desktopViz { display: none; }
-  .mobileViz { display: block; }
-  .pathViz { min-height: auto; padding: 12px 10px 0; }
-  .modeCopy { padding: 18px 16px 12px; grid-template-columns: 40px 1fr; gap: 12px; }
-  .modeCopy h3 { font-size: 18px; }
-  .modeCopy p { font-size: 13px; }
-  .modeDetail {
-    margin: 0 16px 18px 16px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: rgba(45, 140, 240, 0.05);
-    border: 1px solid rgba(45, 140, 240, 0.15);
-    width: fit-content;
-    max-width: calc(100% - 32px);
-    font-size: 7.5px;
-    line-height: 1.4;
-  }
   .benefitBands { margin-top: 58px; }
   .benefitBand { grid-template-columns: 26px 36px 1fr; gap: 15px; padding: 25px 0; }
   .benefitBand h3 { font-size: 21px; }
@@ -1000,7 +950,6 @@
 
 @media (max-width: 420px) {
   .hero h1 { font-size: clamp(1.95rem, 8.5vw, 2.5rem); line-height: 1.08; }
-  .hero h1 { font-size: clamp(2.25rem, 9.5vw, 2.75rem); line-height: 1.02; }
   .eyebrow, .sectionLabel { letter-spacing: .08em; }
   .coreHud { top: 17px; right: 17px; left: 17px; }
   .coreHud span:last-child { display: none; }
@@ -1010,14 +959,6 @@
   .liveState { font-size: 0; }
   .modeCopy { grid-template-columns: 1fr; }
   .modeDetail { margin-left: 17px; }
-  .modeRail { grid-template-columns: repeat(2, 1fr); gap: 6px; padding: 6px; }
-  .modeButton { min-height: 50px; padding: 6px 4px; }
-  .modeButton span:nth-child(2) { font-size: 11.5px; }
-  .modeStageHeader { padding: 0 12px; font-size: 7.5px; }
-  .modeStageHeader span:first-child { max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .liveState { font-size: 7px; }
-  .modeCopy { grid-template-columns: 1fr; gap: 10px; padding: 14px 12px 8px; }
-  .modeDetail { margin: 0 12px 14px; font-size: 7px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
