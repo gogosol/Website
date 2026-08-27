@@ -87,6 +87,7 @@ export function ProtectionDial() {
         <div className={styles.pathViz} aria-hidden="true">
           <svg viewBox="0 0 760 280" preserveAspectRatio="xMidYMid meet">
             <defs>
+              <linearGradient id="pqc-tunnel-glow" x1="0" y1="0" x2="1" y2="0">
               <linearGradient id="pqc-wrap-glow" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0%" stopColor="#2d8cf0" stopOpacity="0.12" />
                 <stop offset="50%" stopColor="#38bdf8" stopOpacity="0.22" />
@@ -159,19 +160,19 @@ export function ProtectionDial() {
                   <line x1="86" y1="140" x2="190" y2="140" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 4" />
 
                   {/* Encapsulated PQC Wrap Container */}
-                  <rect x="230" y="85" width="300" height="110" rx="16" fill="url(#pqc-wrap-glow)" stroke="rgba(56,189,248,0.28)" strokeWidth="1" />
-                  <rect x="236" y="91" width="288" height="98" rx="12" fill="none" stroke="rgba(56,189,248,0.15)" strokeDasharray="4 6" />
+                  <rect x="220" y="85" width="320" height="110" rx="16" fill="url(#pqc-wrap-glow)" stroke="rgba(56,189,248,0.28)" strokeWidth="1" />
+                  <rect x="226" y="91" width="308" height="98" rx="12" fill="none" stroke="rgba(56,189,248,0.15)" strokeDasharray="4 6" />
                   
                   {/* Encapsulated Wrap Stream & Badges */}
-                  <line x1="230" y1="140" x2="530" y2="140" stroke="url(#wire-glow-blue)" strokeWidth="2.5" />
-                  <text x="380" y="115" textAnchor="middle" fill="#7dd3fc" fontSize="8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.14em">
+                  <line x1="220" y1="140" x2="540" y2="140" stroke="url(#wire-glow-blue)" strokeWidth="2.5" />
+                  <text x="380" y="114" textAnchor="middle" fill="#7dd3fc" fontSize="8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.14em">
                     HYBRID PQC ENCRYPTED WRAP
                   </text>
-                  <text x="380" y="132" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5.5" fontFamily="var(--mono)" letterSpacing="0.1em">
+                  <text x="380" y="130" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5.5" fontFamily="var(--mono)" letterSpacing="0.1em">
                     [ ENCAPSULATED TRANSPORT STREAM ]
                   </text>
-                  <text x="380" y="170" textAnchor="middle" fill="rgba(216,213,205,0.7)" fontSize="6.5" fontFamily="var(--mono)" letterSpacing="0.06em">
-                    HYBRID PQC (ML-KEM-768) · DUAL-CERT AUTH (ML-DSA-65)
+                  <text x="380" y="168" textAnchor="middle" fill="rgba(216,213,205,0.7)" fontSize="6.2" fontFamily="var(--mono)" letterSpacing="0.05em">
+                    HYBRID PQC (X25519 + ML-KEM) · DUAL-CERT AUTH (ECDSA + ML-DSA-65)
                   </text>
 
                   {/* LEFT GATEWAY: EGRESS (WRAP / ENCAPSULATE) */}

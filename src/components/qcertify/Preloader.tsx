@@ -10,10 +10,17 @@ export function Preloader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      setVisible(false);
+      return;
+    }
+
     document.body.style.overflow = "hidden";
 
     let current = 0;
     const interval = setInterval(() => {
+      const step = current < 50 ? Math.random() * 12 + 8 : Math.random() * 18 + 12;
       const step = current < 60 ? Math.random() * 4 + 3 : Math.random() * 6 + 5;
       current = Math.min(100, Math.round(current + step));
       setProgress(current);
@@ -23,8 +30,10 @@ export function Preloader() {
         setTimeout(() => {
           setVisible(false);
           document.body.style.overflow = "";
+        }, 220);
         }, 280);
       }
+    }, 40);
     }, 35);
 
     const safetyTimer = setTimeout(() => {

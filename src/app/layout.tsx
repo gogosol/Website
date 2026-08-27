@@ -20,8 +20,13 @@ export const metadata: Metadata = {
     "post-quantum cryptography",
     "PQC migration",
     "hybrid PQC",
-    "FIPS 203",
+    "X25519",
     "ML-KEM",
+    "FIPS 203",
+    "ML-DSA-65",
+    "ECDSA",
+    "Dual-Cert Catalyst",
+    "FIPS 204",
     "CNSA 2.0",
     "harvest now decrypt later",
     "HNDL",
@@ -59,6 +64,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <html lang="en">
+      <body>{children}</body>
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>{children}</body>
     </html>

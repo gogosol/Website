@@ -20,7 +20,7 @@ import { Preloader } from "@/components/qcertify/Preloader";
 import styles from "./home.module.css";
 
 const exactCryptoClaim =
-  "Hybrid classical+ML-KEM-768 key establishment protecting against harvest-now/decrypt-later; authentication via Dual-Cert Catalyst presenting classical X.509 (ECDSA P-384) alongside post-quantum ML-DSA-65.";
+  "Hybrid X25519 + ML-KEM key establishment protecting against harvest-now/decrypt-later; authentication via Dual-Cert Catalyst presenting classical X.509 (ECDSA) alongside post-quantum ML-DSA-65.";
 
 const pressureLabels = ["NIST PQC", "CNSA 2.0", "NIS2", "DORA", "EU CRA"];
 
@@ -308,14 +308,14 @@ export default function Home() {
             <Reveal className={styles.claimBoundary}>
               <div className={styles.claimColumn}>
                 <span>CONFIDENTIALITY</span>
-                <strong>Hybrid classical<br />+ ML-KEM-768</strong>
+                <strong>Hybrid PQC<br />(X25519 + ML-KEM)</strong>
                 <small>HNDL PROTECTION BOUNDARY</small>
               </div>
               <div className={styles.claimDivider}><span>+</span></div>
               <div className={styles.claimColumn}>
                 <span>AUTHENTICATION</span>
-                <strong>Dual-cert classical<br />+ ML-DSA-65</strong>
-                <small>ECDSA P-384 + ML-DSA-65</small>
+                <strong>Dual-Cert Auth<br />(ECDSA + ML-DSA-65)</strong>
+                <small>DUAL-CERT CATALYST</small>
               </div>
               <p>{exactCryptoClaim}</p>
             </Reveal>

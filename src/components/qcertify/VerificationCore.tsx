@@ -107,7 +107,7 @@ export function VerificationCore() {
 
             ctx.fillStyle = "#00e5ff";
             ctx.font = "bold 11px 'Courier New', monospace";
-            ctx.fillText("HYBRID PQC · ML-KEM-768", 36, 84);
+            ctx.fillText("HYBRID PQC: X25519 + ML-KEM", 36, 84);
 
             ctx.fillStyle = "rgba(190, 225, 255, 0.9)";
             ctx.font = "10px 'Courier New', monospace";
