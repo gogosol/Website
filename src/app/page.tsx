@@ -353,7 +353,7 @@ export default function Home() {
             <Reveal>
               <p className={styles.sectionLabel}>08 / PILOT &amp; DEMO</p>
               <h2 id="contact-title">Deploy a governed pilot or schedule a demo.</h2>
-              <p>Experience inline hybrid PQC protection on one critical enterprise traffic path in under 14 days — with zero application changes.</p>
+              <p>Experience inline hybrid PQC protection on one critical enterprise traffic path in under 14 days with zero application changes.</p>
               <a className={styles.emailLink} href="mailto:contact@qcertify.io">
                 contact@qcertify.io <ArrowUpRight aria-hidden="true" size={14} />
               </a>
