@@ -63,40 +63,39 @@
 .imageContainer {
   position: relative;
   width: 100%;
-  height: clamp(380px, 36vw, 450px);
+  height: clamp(390px, 36vw, 450px);
   overflow: hidden;
-  background: radial-gradient(circle at 50% 36%, rgba(45, 140, 240, 0.16) 0%, rgba(13, 14, 20, 0.96) 72%);
+  background: radial-gradient(circle at 50% 50%, rgba(45, 140, 240, 0.18) 0%, rgba(13, 14, 20, 0.96) 72%);
   border-bottom: 1px solid var(--line);
 }
 
 .memberImage {
+  object-fit: contain;
+  object-position: center top;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.5));
   transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gabrielImage {
-  object-fit: cover;
-  object-position: center 15%;
+  transform: scale(1.56) translateY(54px);
 }
 
 .goncaloImage {
-  object-fit: contain;
-  object-position: center 25%;
-  transform: scale(1.38) translateY(10px);
+  transform: scale(1.22) translateY(50px);
 }
 
 .teamCard:hover .gabrielImage {
-  transform: scale(1.03);
+  transform: scale(1.60) translateY(50px);
 }
 
 .teamCard:hover .goncaloImage {
-  transform: scale(1.42) translateY(8px);
+  transform: scale(1.26) translateY(46px);
 }
 
 .imageVignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(9, 10, 14, 0) 72%, rgba(9, 10, 14, 0.96) 100%);
+  background: linear-gradient(180deg, rgba(9, 10, 14, 0) 70%, rgba(9, 10, 14, 0.96) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -211,15 +210,23 @@
   }
 
   .imageContainer {
-    height: 360px;
+    height: 370px;
+  }
+
+  .gabrielImage {
+    transform: scale(1.42) translateY(44px);
   }
 
   .goncaloImage {
-    transform: scale(1.16) translateY(6px);
+    transform: scale(1.12) translateY(42px);
+  }
+
+  .teamCard:hover .gabrielImage {
+    transform: scale(1.46) translateY(40px);
   }
 
   .teamCard:hover .goncaloImage {
-    transform: scale(1.2) translateY(4px);
+    transform: scale(1.16) translateY(38px);
   }
 }
 
