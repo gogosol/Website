@@ -158,15 +158,22 @@ export function ProtectionDial() {
                 >
                   <line x1="86" y1="140" x2="190" y2="140" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 4" />
 
+                  {/* Encapsulated Tunnel Box */}
+                  <rect x="230" y="85" width="300" height="110" rx="16" fill="url(#pqc-tunnel-glow)" stroke="rgba(56,189,248,0.28)" strokeWidth="1" />
+                  <rect x="236" y="91" width="288" height="98" rx="12" fill="none" stroke="rgba(255,255,255,0.04)" strokeDasharray="4 6" />
                   {/* Encapsulated PQC Wrap Container */}
                   <rect x="230" y="85" width="300" height="110" rx="16" fill="url(#pqc-wrap-glow)" stroke="rgba(56,189,248,0.28)" strokeWidth="1" />
                   <rect x="236" y="91" width="288" height="98" rx="12" fill="none" stroke="rgba(56,189,248,0.15)" strokeDasharray="4 6" />
                   
+                  {/* Encapsulated Tunnel Data Stream */}
                   {/* Encapsulated Wrap Stream & Badges */}
                   <line x1="230" y1="140" x2="530" y2="140" stroke="url(#wire-glow-blue)" strokeWidth="2.5" />
                   <text x="380" y="115" textAnchor="middle" fill="#7dd3fc" fontSize="8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.14em">
+                    PQC ENCRYPTED TUNNEL
                     HYBRID PQC ENCRYPTED WRAP
                   </text>
+                  <text x="380" y="170" textAnchor="middle" fill="rgba(216,213,205,0.45)" fontSize="6.5" fontFamily="var(--mono)" letterSpacing="0.06em">
+                    ML-KEM-768 · ML-DSA-65 DUAL AUTH
                   <text x="380" y="132" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5.5" fontFamily="var(--mono)" letterSpacing="0.1em">
                     [ ENCAPSULATED TRANSPORT STREAM ]
                   </text>
