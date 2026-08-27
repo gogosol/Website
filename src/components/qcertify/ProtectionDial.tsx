@@ -87,7 +87,6 @@ export function ProtectionDial() {
         <div className={styles.pathViz} aria-hidden="true">
           <svg viewBox="0 0 760 280" preserveAspectRatio="xMidYMid meet">
             <defs>
-              <linearGradient id="pqc-tunnel-glow" x1="0" y1="0" x2="1" y2="0">
               <linearGradient id="pqc-wrap-glow" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0%" stopColor="#2d8cf0" stopOpacity="0.12" />
                 <stop offset="50%" stopColor="#38bdf8" stopOpacity="0.22" />
