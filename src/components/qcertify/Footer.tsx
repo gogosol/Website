@@ -110,23 +110,24 @@ export function Footer() {
               CNSA 2.0 · DORA · NIS2
             </li>
             <li className={styles.navItemStatic}>
-              Strict Fail-Closed Topology
+              Fail-Closed Inline Policy
             </li>
           </ul>
         </div>
 
         {/* Column 4: Engagement & Pilot */}
         <div className={styles.navCol}>
-          <h4 className={styles.colTitle}>CONTROLLED PILOT</h4>
+          <h4 className={styles.colTitle}>DEMO &amp; PILOT</h4>
           <p className={styles.pilotText}>
-            Deploy governed hybrid protection on a single live traffic path without application rewrites.
+            Launch a governed pilot on a live traffic path or book an interactive walkthrough.
           </p>
-          <a href="#contact" className={styles.pilotCta}>
-            Request Architecture Review <ArrowUpRight size={13} aria-hidden="true" />
-          </a>
-          <div className={styles.liveBadge} aria-label="System status: Active inline governance">
-            <span className={styles.liveDot} aria-hidden="true" />
-            <span>OFF-PATH CONTROL PLANE</span>
+          <div className={styles.pilotActions}>
+            <a href="#contact" className={styles.pilotCtaButton}>
+              Request Demo / Pilot <ArrowUpRight size={13} aria-hidden="true" />
+            </a>
+            <a href="mailto:contact@qcertify.io?subject=QCertify%20Demo%20%26%20Pilot%20Inquiry" className={styles.pilotSubLink}>
+              Email our Engineering Team <ArrowUpRight size={12} aria-hidden="true" />
+            </a>
           </div>
         </div>
       </div>
@@ -135,8 +136,6 @@ export function Footer() {
       <div className={styles.footerBottom}>
         <div className={styles.metaLeft}>
           <span>© {currentYear} QCERTIFY INC. ALL RIGHTS RESERVED.</span>
-          <span className={styles.metaDot} aria-hidden="true">·</span>
-          <span>HARDWARE-ENFORCED FAIL-CLOSED GOVERNANCE</span>
         </div>
 
         <a href="#top" className={styles.backToTop} aria-label="Scroll back to top">

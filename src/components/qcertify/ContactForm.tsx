@@ -24,7 +24,7 @@ export function ContactForm() {
       const body = (await response.json()) as { message?: string };
       if (!response.ok) throw new Error(body.message || "Request failed.");
       form.reset();
-      setState({ status: "success", message: body.message || "Request received." });
+      setState({ status: "success", message: body.message || "Request received. We will be in touch shortly." });
     } catch (error) {
       setState({
         status: "error",
@@ -51,20 +51,20 @@ export function ContactForm() {
           <input name="company" type="text" required maxLength={120} autoComplete="organization" placeholder="Company" />
         </label>
         <label className={styles.field}>
-          <span>Priority path</span>
+          <span>Evaluation goal</span>
           <select name="priorityPath" defaultValue="" required>
-            <option value="" disabled>Select one</option>
-            <option value="critical-system">Critical system path</option>
-            <option value="site-to-site">Site-to-site traffic</option>
-            <option value="partner-exchange">Partner exchange</option>
-            <option value="hybrid-cloud">Hybrid cloud transit</option>
-            <option value="not-sure">Not sure yet</option>
+            <option value="" disabled>Select engagement</option>
+            <option value="schedule-demo">Schedule an Interactive Demo</option>
+            <option value="launch-pilot">Launch 14-Day Governed Pilot</option>
+            <option value="critical-system">Protect Critical System Path</option>
+            <option value="site-to-site">Site-to-Site Enterprise Traffic</option>
+            <option value="hybrid-cloud">Hybrid Cloud / Partner Transit</option>
           </select>
         </label>
       </div>
       <label className={styles.field}>
         <span>Context <em>Optional</em></span>
-        <textarea name="message" rows={3} maxLength={1200} placeholder="What data path cannot wait?" />
+        <textarea name="message" rows={3} maxLength={1200} placeholder="Tell us about your traffic path or migration timeline..." />
       </label>
       <label className={styles.honeypot} aria-hidden="true">
         Website
@@ -73,7 +73,7 @@ export function ContactForm() {
       <div className={styles.formFooter}>
         <p aria-live="polite" data-status={state.status}>
           {state.status === "success" && <Check aria-hidden="true" size={14} />}
-          {state.message || "No live traffic, keys, or topology are required for the first conversation."}
+          {state.message || "No live keys or internal network topology are required for initial evaluation."}
         </p>
         <button type="submit" disabled={state.status === "submitting"}>
           {state.status === "submitting" ? (
@@ -81,7 +81,7 @@ export function ContactForm() {
           ) : (
             <ArrowUpRight aria-hidden="true" size={16} />
           )}
-          Request review
+          Request Demo / Pilot
         </button>
       </div>
     </form>

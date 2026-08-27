@@ -6,7 +6,7 @@
 
 .footerMain {
   display: grid;
-  grid-template-columns: minmax(280px, 1.35fr) minmax(160px, 0.9fr) minmax(210px, 1.15fr) minmax(220px, 1.1fr);
+  grid-template-columns: minmax(280px, 1.35fr) minmax(160px, 0.9fr) minmax(210px, 1.15fr) minmax(240px, 1.15fr);
   gap: clamp(32px, 5vw, 64px);
   padding-bottom: 56px;
   border-bottom: 1px solid var(--line);
@@ -146,46 +146,49 @@
   line-height: 1.55;
 }
 
-.pilotCta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--violet-soft);
-  font: 500 11px/1 var(--mono);
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  margin-top: 4px;
-  padding-bottom: 2px;
-  border-bottom: 1px solid rgba(107, 179, 255, 0.3);
-  transition: all 180ms ease;
+.pilotActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 6px;
 }
 
-.pilotCta:hover {
-  color: #ffffff;
-  border-color: var(--violet-soft);
-  transform: translateX(2px);
-}
-
-.liveBadge {
+.pilotCtaButton {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  margin-top: 8px;
-  padding: 6px 10px;
-  border: 1px solid rgba(74, 222, 128, 0.22);
-  border-radius: 6px;
-  background: rgba(74, 222, 128, 0.05);
-  color: rgba(183, 245, 202, 0.88);
-  font: 500 8.5px/1 var(--mono);
-  letter-spacing: 0.08em;
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 99px;
+  background: var(--paper);
+  color: #09090c;
+  font: 600 11px/1 var(--mono);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 180ms ease;
 }
 
-.liveDot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #4ade80;
-  box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+.pilotCtaButton:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 24px rgba(45, 140, 240, 0.22);
+  background: #ffffff;
+}
+
+.pilotSubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--violet-soft);
+  font: 500 10.5px/1 var(--mono);
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.pilotSubLink:hover {
+  color: #ffffff;
 }
 
 .footerBottom {
@@ -202,12 +205,6 @@
 .metaLeft {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.metaDot {
-  opacity: 0.35;
 }
 
 .backToTop {
@@ -262,20 +259,19 @@
     max-width: 100%;
   }
 
+  .pilotActions {
+    width: 100%;
+  }
+
+  .pilotCtaButton {
+    justify-content: center;
+    width: 100%;
+  }
+
   .footerBottom {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
     padding-top: 24px;
-  }
-
-  .metaLeft {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-
-  .metaDot {
-    display: none;
   }
 }

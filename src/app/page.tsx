@@ -103,7 +103,7 @@ export default function Home() {
               <HeroReveal delay={0.2}>
                 <div className={styles.heroActions}>
                   <a className={styles.primaryButton} href="#contact">
-                    Request architecture review <ArrowUpRight aria-hidden="true" size={14} />
+                    Request Demo &amp; Pilot <ArrowUpRight aria-hidden="true" size={14} />
                   </a>
                   <a className={styles.secondaryButton} href="#platform">
                     See the platform <ArrowDownRight aria-hidden="true" size={14} />
@@ -351,9 +351,9 @@ export default function Home() {
           <div className={styles.contactHalo} aria-hidden="true" />
           <div className={styles.contactLayout}>
             <Reveal>
-              <p className={styles.sectionLabel}>08 / CONTROLLED PILOT</p>
-              <h2 id="contact-title">Plan the first protected path.</h2>
-              <p>Start with one traffic path, one policy, and evidence from a controlled deployment.</p>
+              <p className={styles.sectionLabel}>08 / PILOT &amp; DEMO</p>
+              <h2 id="contact-title">Deploy a governed pilot or schedule a demo.</h2>
+              <p>Experience inline hybrid PQC protection on one critical enterprise traffic path in under 14 days — with zero application changes.</p>
               <a className={styles.emailLink} href="mailto:contact@qcertify.io">
                 contact@qcertify.io <ArrowUpRight aria-hidden="true" size={14} />
               </a>

@@ -54,7 +54,7 @@ export function Navigation() {
         </div>
 
         <a href="#contact" className={styles.navCta}>
-          Architecture review <ArrowUpRight aria-hidden="true" size={14} />
+          Request Demo <ArrowUpRight aria-hidden="true" size={14} />
         </a>
 
         <button
@@ -77,7 +77,7 @@ export function Navigation() {
           </a>
         ))}
         <a href="#contact" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
-          Request architecture review
+          Request Demo &amp; Pilot
           <ArrowUpRight aria-hidden="true" size={18} />
         </a>
       </div>

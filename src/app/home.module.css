@@ -644,6 +644,15 @@
 .formFooter button:disabled { cursor: wait; opacity: .65; }
 .spinner { animation: spin 1s linear infinite; }
 
+/* Footer */
+.footer { width: min(100%,1540px); margin: auto; padding: 70px clamp(22px,4.6vw,72px) 24px; }
+.footerTop { display: grid; grid-template-columns: 1fr 1fr auto; align-items: end; gap: 50px; padding-bottom: 62px; border-bottom: 1px solid var(--line); }
+.footerLogo { width: 176px; height: auto; }
+.footerTop p { max-width: 420px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.footerTop > a:last-child { display: inline-flex; align-items: center; gap: 7px; color: rgba(216,213,205,.52); font: 500 9px/1 var(--mono); letter-spacing: .06em; }
+.footerBottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 24px; color: rgba(216,213,205,.31); font: 500 8px/1.4 var(--mono); letter-spacing: .08em; }
+.footerBottom a:hover { color: var(--paper); }
+
 .errorPage {
   display: flex;
   min-height: 100svh;
@@ -943,6 +952,9 @@
   .fieldPair { grid-template-columns: 1fr; gap: 0; }
   .formFooter { align-items: stretch; flex-direction: column; }
   .formFooter button { justify-content: center; width: 100%; }
+  .footer { padding-inline: 18px; }
+  .footerTop { grid-template-columns: 1fr; align-items: start; gap: 26px; }
+  .footerBottom { align-items: flex-start; flex-direction: column; }
 }
 
 @media (max-width: 420px) {
