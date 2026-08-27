@@ -36,49 +36,14 @@ export function VerificationCore() {
 
           renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2.0));
           renderer.outputColorSpace = THREE.SRGBColorSpace;
-          renderer.toneMapping = THREE.ACESFilmicToneMapping;
-          renderer.toneMappingExposure = 1.35;
+          renderer.toneMapping = THREE.NeutralToneMapping;
+          renderer.toneMappingExposure = 1.08;
 
           const scene = new THREE.Scene();
           const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
           camera.position.set(0, 0.05, 8.4);
 
           // ─── PROCEDURAL TEXTURE GENERATORS ───
-
-          // 1. Brushed Dark Titanium Texture (Micro-scratch normal/bump map)
-          const createBrushedMetalTexture = () => {
-            const size = 512;
-            const texCanvas = document.createElement("canvas");
-            texCanvas.width = size;
-            texCanvas.height = size;
-            const ctx = texCanvas.getContext("2d");
-            if (!ctx) return null;
-
-            ctx.fillStyle = "#0e1828";
-            ctx.fillRect(0, 0, size, size);
-
-            for (let i = 0; i < 4000; i++) {
-              const y = Math.random() * size;
-              const len = 30 + Math.random() * 120;
-              const x = Math.random() * size;
-              const alpha = 0.04 + Math.random() * 0.09;
-              ctx.fillStyle = `rgba(160, 210, 255, ${alpha})`;
-              ctx.fillRect(x, y, len, 0.8);
-            }
-
-            for (let i = 0; i < 1500; i++) {
-              const y = Math.random() * size;
-              const len = 20 + Math.random() * 80;
-              const x = Math.random() * size;
-              ctx.fillStyle = "rgba(2, 6, 12, 0.12)";
-              ctx.fillRect(x, y, len, 1);
-            }
-
-            const texture = new THREE.CanvasTexture(texCanvas);
-            texture.wrapS = THREE.RepeatWrapping;
-            texture.wrapT = THREE.RepeatWrapping;
-            return texture;
-          };
 
           // 2. Laser-Engraved Technical Faceplate Texture (Confined strictly to top section)
           const createFaceplateTexture = () => {
@@ -209,7 +174,6 @@ export function VerificationCore() {
           const envMap = createStudioEnvironment();
           if (envMap) scene.environment = envMap;
 
-          const brushedMap = createBrushedMetalTexture();
           const faceplateMap = createFaceplateTexture();
 
           // ─── MASTER 3D LOCK ASSEMBLY ───
@@ -252,13 +216,11 @@ export function VerificationCore() {
 
           const bodyMat = new THREE.MeshPhysicalMaterial({
             color: 0x0c1a2e,
-            metalness: 0.94,
-            roughness: 0.2,
-            bumpMap: brushedMap ?? undefined,
-            bumpScale: 0.015,
-            clearcoat: 0.5,
-            clearcoatRoughness: 0.12,
-            envMapIntensity: 2.0,
+            metalness: 0.92,
+            roughness: 0.28,
+            clearcoat: 0.35,
+            clearcoatRoughness: 0.2,
+            envMapIntensity: 1.6,
           });
 
           const lockBody = new THREE.Mesh(bodyGeom, bodyMat);
@@ -292,11 +254,11 @@ export function VerificationCore() {
 
           const plateMat = new THREE.MeshPhysicalMaterial({
             color: 0x0c1e34,
-            roughness: 0.14,
-            metalness: 0.9,
-            clearcoat: 0.65,
-            clearcoatRoughness: 0.08,
-            envMapIntensity: 1.8,
+            roughness: 0.22,
+            metalness: 0.88,
+            clearcoat: 0.45,
+            clearcoatRoughness: 0.18,
+            envMapIntensity: 1.5,
           });
 
           const frontPlate = new THREE.Mesh(plateGeom, plateMat);
@@ -486,35 +448,35 @@ export function VerificationCore() {
 
 
           // ─── REFINED BALANCED STUDIO LIGHTS ───
-          scene.add(new THREE.AmbientLight(0x182a44, 1.7));
+          scene.add(new THREE.AmbientLight(0x182a44, 1.4));
 
           // Direct Crisp Front Key Light (Angled from upper right)
-          const frontKey = new THREE.DirectionalLight(0xffffff, 4.0);
+          const frontKey = new THREE.DirectionalLight(0xffffff, 2.6);
           frontKey.position.set(2.4, 2.2, 6.5);
           scene.add(frontKey);
 
           // Front-Left Soft Fill Light (Gentle side fill)
-          const frontFill = new THREE.DirectionalLight(0xaad4ff, 2.5);
+          const frontFill = new THREE.DirectionalLight(0x88bbee, 1.8);
           frontFill.position.set(-2.8, 0.4, 5.5);
           scene.add(frontFill);
 
           // Top Specular Rim for Chrome Shackle
-          const topRim = new THREE.DirectionalLight(0xffffff, 2.4);
+          const topRim = new THREE.DirectionalLight(0xffffff, 2.0);
           topRim.position.set(0.5, 5.5, 2.0);
           scene.add(topRim);
 
-          // Electric Cyan Left Edge Rim (Side placement, reduced intensity)
-          const cyanRim = new THREE.PointLight(0x00d4ff, 5.5, 16);
-          cyanRim.position.set(-5.2, 0.9, 2.4);
+          // Electric Cyan Left Edge Rim (Directional lighting prevents singular point-light fireflies)
+          const cyanRim = new THREE.DirectionalLight(0x00d4ff, 2.0);
+          cyanRim.position.set(-4.5, 1.0, 2.0);
           scene.add(cyanRim);
 
-          // Royal Blue Rear/Right Rim (Side placement, reduced intensity)
-          const blueRim = new THREE.PointLight(0x2288ff, 4.0, 14);
-          blueRim.position.set(4.6, -1.0, -2.2);
+          // Royal Blue Rear/Right Rim
+          const blueRim = new THREE.DirectionalLight(0x2288ff, 1.6);
+          blueRim.position.set(4.5, -0.8, -1.5);
           scene.add(blueRim);
 
-          // Soft Under-Side Accent Light (Less intense, offset to side)
-          const underFill = new THREE.PointLight(0x00d4ff, 2.2, 9);
+          // Soft Under-Side Accent Light
+          const underFill = new THREE.PointLight(0x00d4ff, 1.5, 6);
           underFill.position.set(0, -1.95, 2.0);
           scene.add(underFill);
 
@@ -594,7 +556,6 @@ export function VerificationCore() {
             host.removeEventListener("pointermove", onPointerMove);
             host.removeEventListener("pointerleave", onPointerLeave);
             document.removeEventListener("visibilitychange", onVisibility);
-            brushedMap?.dispose();
             faceplateMap?.dispose();
             envMap?.dispose();
             shadowTex.dispose();
