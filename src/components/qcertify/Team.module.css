@@ -63,26 +63,40 @@
 .imageContainer {
   position: relative;
   width: 100%;
-  height: clamp(340px, 32vw, 440px);
+  height: clamp(380px, 36vw, 450px);
   overflow: hidden;
-  background: radial-gradient(circle at 50% 25%, rgba(45, 140, 240, 0.16) 0%, rgba(13, 14, 20, 0.95) 75%);
+  background: radial-gradient(circle at 50% 36%, rgba(45, 140, 240, 0.16) 0%, rgba(13, 14, 20, 0.96) 72%);
   border-bottom: 1px solid var(--line);
 }
 
 .memberImage {
-  object-fit: cover;
-  object-position: center top;
-  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.5));
+  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.teamCard:hover .memberImage {
+.gabrielImage {
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+.goncaloImage {
+  object-fit: contain;
+  object-position: center 25%;
+  transform: scale(1.38) translateY(10px);
+}
+
+.teamCard:hover .gabrielImage {
   transform: scale(1.03);
+}
+
+.teamCard:hover .goncaloImage {
+  transform: scale(1.42) translateY(8px);
 }
 
 .imageVignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(9, 10, 14, 0) 60%, rgba(9, 10, 14, 0.92) 100%);
+  background: linear-gradient(180deg, rgba(9, 10, 14, 0) 72%, rgba(9, 10, 14, 0.96) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -97,7 +111,7 @@
   gap: 6px;
   padding: 6px 12px;
   border-radius: 99px;
-  background: rgba(9, 10, 14, 0.82);
+  background: rgba(9, 10, 14, 0.84);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(107, 179, 255, 0.35);
   color: var(--violet-soft);
@@ -197,7 +211,15 @@
   }
 
   .imageContainer {
-    height: 340px;
+    height: 360px;
+  }
+
+  .goncaloImage {
+    transform: scale(1.16) translateY(6px);
+  }
+
+  .teamCard:hover .goncaloImage {
+    transform: scale(1.2) translateY(4px);
   }
 }
 

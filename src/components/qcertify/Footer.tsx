@@ -86,8 +86,8 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="#team" className={styles.navLink}>
-                Founding Team
+              <a href="#leadership" className={styles.navLink}>
+                Executive Leadership
               </a>
             </li>
           </ul>

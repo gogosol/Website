@@ -20,35 +20,38 @@ function LinkedinIcon({ size = 14 }: { size?: number }) {
 const teamMembers = [
   {
     name: "Gonçalo Magalhães",
-    role: "CO-FOUNDER · CTO",
-    title: "Technical Co-Founder & Cryptographic Architect",
+    role: "CO-FOUNDER · ENGINEERING",
+    title: "Technical Co-Founder · Cryptographic Architecture & Systems",
     image: "/images/goncalo.png",
+    imageClass: styles.goncaloImage,
     linkedin: "https://www.linkedin.com/in/gon%C3%A7alo-magalh%C3%A3es-41671027b/",
-    bio: "Leads cryptographic architecture, hybrid post-quantum key establishment (X25519 + ML-KEM), Dual-Cert authentication protocols, and hardware-enforced fail-closed inline gateway infrastructure.",
-    focusBadge: "CRYPTOGRAPHIC ARCHITECTURE · INLINE DATA PLANE",
+    bio: "Directs core technical development and cryptographic systems engineering, including hybrid post-quantum key establishment (X25519 + ML-KEM), Dual-Cert authentication protocols, and hardware-enforced fail-closed inline gateway infrastructure.",
+    focusBadge: "TECHNICAL DEVELOPMENT · CRYPTOGRAPHIC SYSTEMS",
   },
   {
     name: "Gabriel Gestosa",
-    role: "CO-FOUNDER · GROWTH & STRATEGY",
+    role: "CO-FOUNDER · BUSINESS & PR",
     title: "Co-Founder · Business Development, PR & Strategy",
     image: "/images/gabriel.png",
+    imageClass: styles.gabrielImage,
     linkedin: "https://www.linkedin.com/in/gabrielnevesgestosa/",
-    bio: "Drives enterprise partnerships, business development, communications, and institutional regulatory alignment across global quantum transition mandates.",
-    focusBadge: "BUSINESS DEVELOPMENT · PR · STRATEGIC GROWTH",
+    bio: "Drives enterprise partnerships, business development, communications, and public relations to accelerate commercial adoption and strategic stakeholder engagement.",
+    focusBadge: "BUSINESS DEVELOPMENT · COMMUNICATIONS · PARTNERSHIPS",
   },
 ];
 
 export function Team() {
   return (
-    <section id="team" className={styles.teamSection} aria-labelledby="team-title">
+    <section id="leadership" className={styles.teamSection} aria-labelledby="leadership-title">
+      <span id="team" style={{ position: "absolute", top: 0, pointerEvents: "none" }} />
       <div className={styles.teamHeader}>
         <Reveal>
-          <p className={styles.sectionLabel}>08 / LEADERSHIP &amp; FOUNDERS</p>
-          <h2 id="team-title" className={styles.teamTitle}>
-            Architected by cryptographers &amp; builders.
+          <p className={styles.sectionLabel}>08 / EXECUTIVE LEADERSHIP</p>
+          <h2 id="leadership-title" className={styles.teamTitle}>
+            Engineered for trust. Led by founders.
           </h2>
           <p className={styles.teamLead}>
-            Directing quantum-safe protocol engineering, enterprise transition governance, and global regulatory execution.
+            Directing core cryptographic engineering, fail-closed platform architecture, and enterprise execution.
           </p>
         </Reveal>
       </div>
@@ -64,7 +67,7 @@ export function Team() {
                   alt={`Portrait of ${member.name}`}
                   fill
                   sizes="(max-width: 860px) 100vw, 50vw"
-                  className={styles.memberImage}
+                  className={`${styles.memberImage} ${member.imageClass}`}
                   priority={false}
                 />
                 <div className={styles.imageVignette} aria-hidden="true" />
