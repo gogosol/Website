@@ -10,12 +10,6 @@ export function Preloader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) {
-      setVisible(false);
-      return;
-    }
-
     document.body.style.overflow = "hidden";
 
     let current = 0;
