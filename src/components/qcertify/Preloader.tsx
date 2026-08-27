@@ -6,15 +6,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Preloader.module.css";
 
 export function Preloader() {
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(5);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
-    let current = 0;
+    let current = 5;
     const interval = setInterval(() => {
-      const step = current < 65 ? Math.random() * 5 + 4 : Math.random() * 8 + 6;
+      const step = current < 60 ? Math.random() * 4 + 3 : Math.random() * 6 + 5;
       current = Math.min(100, Math.round(current + step));
       setProgress(current);
 
@@ -23,17 +23,17 @@ export function Preloader() {
         setTimeout(() => {
           setVisible(false);
           document.body.style.overflow = "";
-        }, 220);
+        }, 200);
       }
-    }, 28);
+    }, 30);
 
     const safetyTimer = setTimeout(() => {
       setProgress(100);
       setTimeout(() => {
         setVisible(false);
         document.body.style.overflow = "";
-      }, 80);
-    }, 1100);
+      }, 60);
+    }, 1200);
 
     return () => {
       clearInterval(interval);
@@ -51,18 +51,12 @@ export function Preloader() {
           exit={{
             opacity: 0,
             scale: 1.008,
-            filter: "blur(4px)",
-            transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+            transition: { duration: 0.38, ease: [0.16, 1, 0.3, 1] },
           }}
         >
           <div className={styles.ambientAura} aria-hidden="true" />
 
-          <motion.div
-            className={styles.preloaderContent}
-            initial={{ opacity: 0, y: 3 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <div className={styles.preloaderContent}>
             <div className={styles.logoWrap}>
               <Image
                 src="/Logo SF White.png"
@@ -87,7 +81,7 @@ export function Preloader() {
                 style={{ width: `${progress}%` }}
               />
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
