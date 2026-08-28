@@ -70,25 +70,58 @@ export function HndlDiagram() {
 
             {/* 02: ADVERSARY VAULT (CENTER) */}
             <g transform="translate(450, 120)">
-              <rect x="-64" y="-42" width="128" height="84" rx="14" fill="rgba(12,14,20,0.7)" stroke="rgba(255,255,255,0.05)" transform="translate(0, -8) scale(0.92)" />
-              <rect x="-64" y="-42" width="128" height="84" rx="14" fill="rgba(14,16,24,0.85)" stroke="rgba(255,255,255,0.08)" transform="translate(0, -4) scale(0.96)" />
-              <rect x="-64" y="-42" width="128" height="84" rx="14" fill="rgba(10,11,16,0.96)" stroke="rgba(107,179,255,0.3)" strokeWidth="1.2" />
+              {/* Seamless Unified Vault Card */}
+              <rect
+                x="-68"
+                y="-46"
+                width="136"
+                height="92"
+                rx="14"
+                fill="rgba(10,12,18,0.96)"
+                stroke="url(#vaultBorderGlow)"
+                strokeWidth="1.2"
+              />
+              <rect
+                x="-68"
+                y="-46"
+                width="136"
+                height="92"
+                rx="14"
+                fill="url(#vaultCoreGlow)"
+              />
+              
+              {/* Inner subtle frame */}
+              <rect
+                x="-62"
+                y="-40"
+                width="124"
+                height="80"
+                rx="10"
+                fill="none"
+                stroke="rgba(255,255,255,0.04)"
+                strokeWidth="1"
+              />
 
-              <line x1="-48" y1="-14" x2="48" y2="-14" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-              <line x1="-48" y1="14" x2="48" y2="14" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-              <circle cx="0" cy="-6" r="3" fill="#60a5fa" />
+              {/* Status / Vault Disc Indicator */}
+              <circle cx="0" cy="-18" r="4" fill="#38bdf8" opacity="0.9" />
+              <circle cx="0" cy="-18" r="8" fill="none" stroke="rgba(56,189,248,0.3)" strokeWidth="1" strokeDasharray="2 3" />
 
-              <text x="0" y="8" textAnchor="middle" fill="#ffffff" fontSize="8.5" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.14em">
+              {/* Internal Accent Divider Lines */}
+              <line x1="-48" y1="-5" x2="48" y2="-5" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
+              <line x1="-48" y1="21" x2="48" y2="21" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
+
+              <text x="0" y="7" textAnchor="middle" fill="#ffffff" fontSize="8.5" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.14em">
                 VAULT ARCHIVE
               </text>
-              <text x="0" y="20" textAnchor="middle" fill="rgba(216,213,205,0.45)" fontSize="6.5" fontFamily="var(--mono)">
+              <text x="0" y="16.5" textAnchor="middle" fill="rgba(216,213,205,0.5)" fontSize="6.5" fontFamily="var(--mono)">
                 RETAINED: 10–25+ YRS
               </text>
 
-              <text x="0" y="56" textAnchor="middle" fill="#60a5fa" fontSize="8.5" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.1em">
+              {/* Step Sub-label Below Card */}
+              <text x="0" y="60" textAnchor="middle" fill="#60a5fa" fontSize="8.5" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.1em">
                 02 / RETAIN
               </text>
-              <text x="0" y="68" textAnchor="middle" fill="rgba(216,213,205,0.45)" fontSize="7" fontFamily="var(--mono)">
+              <text x="0" y="72" textAnchor="middle" fill="rgba(216,213,205,0.45)" fontSize="7" fontFamily="var(--mono)">
                 CIPHERTEXT STORED
               </text>
             </g>

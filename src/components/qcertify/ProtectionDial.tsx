@@ -118,7 +118,9 @@ export function ProtectionDial() {
                 <rect x="-36" y="-28" width="72" height="56" rx="10" fill="rgba(10,10,13,0.85)" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
                 <circle cx="0" cy="-6" r="4" fill="#60a5fa" opacity="0.8" />
                 <text x="0" y="13" textAnchor="middle" fill="rgba(216,213,205,0.7)" fontSize="8" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.08em">SOURCE</text>
-                <text x="0" y="21" textAnchor="middle" fill="rgba(216,213,205,0.3)" fontSize="6.5" fontFamily="var(--mono)">LAN / APP</text>
+                <text x="0" y="21" textAnchor="middle" fill="rgba(216,213,205,0.3)" fontSize="6.5" fontFamily="var(--mono)">
+                  {mode.id === "mode-2" ? "LOCAL LAN" : "LAN / APP"}
+                </text>
               </g>
 
               {/* DESTINATION Node (Right) */}
@@ -136,7 +138,9 @@ export function ProtectionDial() {
                 />
                 <circle cx="0" cy="-6" r="4" fill={mode.id === "block" ? "#ef4444" : "#60a5fa"} opacity={mode.id === "block" ? 0.4 : 0.8} />
                 <text x="0" y="13" textAnchor="middle" fill="rgba(216,213,205,0.7)" fontSize="8" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.08em">DEST</text>
-                <text x="0" y="21" textAnchor="middle" fill="rgba(216,213,205,0.3)" fontSize="6.5" fontFamily="var(--mono)">WAN / CLOUD</text>
+                <text x="0" y="21" textAnchor="middle" fill="rgba(216,213,205,0.3)" fontSize="6.5" fontFamily="var(--mono)">
+                  {mode.id === "mode-2" ? "REMOTE LAN" : mode.id === "block" ? "BLOCKED" : "WAN / CLOUD"}
+                </text>
               </g>
 
               <AnimatePresence mode="wait">
@@ -149,16 +153,18 @@ export function ProtectionDial() {
                     exit={reduceMotion ? undefined : { opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <line x1="86" y1="130" x2="190" y2="130" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 4" />
+                    <line x1="86" y1="130" x2="168" y2="130" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 4" />
 
-                    <rect x="220" y="78" width="320" height="104" rx="16" fill="url(#pqc-wrap-glow)" stroke="rgba(56,189,248,0.28)" strokeWidth="1" />
-                    <rect x="226" y="84" width="308" height="92" rx="12" fill="none" stroke="rgba(56,189,248,0.15)" strokeDasharray="4 6" />
+                    {/* WAN Transit with Encapsulated Quantum-Safe Tunnel */}
+                    <rect x="220" y="76" width="320" height="108" rx="16" fill="url(#pqc-wrap-glow)" stroke="rgba(56,189,248,0.28)" strokeWidth="1" />
+                    <rect x="226" y="82" width="308" height="96" rx="12" fill="none" stroke="rgba(56,189,248,0.15)" strokeDasharray="4 6" />
                     
                     <line x1="220" y1="130" x2="540" y2="130" stroke="url(#wire-glow-blue)" strokeWidth="2.5" />
-                    <text x="380" y="105" textAnchor="middle" fill="#7dd3fc" fontSize="7.5" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.12em">
-                      HYBRID PQC ENCRYPTED WRAP
+                    
+                    <text x="380" y="101" textAnchor="middle" fill="#7dd3fc" fontSize="8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.12em">
+                      UNTRUSTED WAN · HYBRID PQC WRAP
                     </text>
-                    <text x="380" y="117" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5.5" fontFamily="var(--mono)" letterSpacing="0.08em">
+                    <text x="380" y="113" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5.5" fontFamily="var(--mono)" letterSpacing="0.08em">
                       [ ENCAPSULATED TRANSPORT STREAM ]
                     </text>
                     <text x="380" y="152" textAnchor="middle" fill="rgba(216,213,205,0.85)" fontSize="6.8" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.06em">
@@ -307,7 +313,9 @@ export function ProtectionDial() {
               <g transform="translate(314, 90)">
                 <rect x="-20" y="-18" width="40" height="36" rx="6" fill="rgba(10,10,13,0.9)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" opacity={mode.id === "block" ? 0.35 : 1} />
                 <circle cx="0" cy="-4" r="3" fill={mode.id === "block" ? "#ef4444" : "#60a5fa"} />
-                <text x="0" y="10" textAnchor="middle" fill="rgba(216,213,205,0.7)" fontSize="6" fontFamily="var(--mono)" fontWeight="500">WAN</text>
+                <text x="0" y="10" textAnchor="middle" fill="rgba(216,213,205,0.7)" fontSize="6" fontFamily="var(--mono)" fontWeight="500">
+                  {mode.id === "mode-2" ? "LAN" : mode.id === "block" ? "BLOCKED" : "WAN"}
+                </text>
               </g>
 
               <AnimatePresence mode="wait">
@@ -320,14 +328,20 @@ export function ProtectionDial() {
                     exit={reduceMotion ? undefined : { opacity: 0 }}
                     transition={{ duration: 0.25 }}
                   >
-                    <rect x="92" y="46" width="156" height="88" rx="10" fill="rgba(45,140,240,0.1)" stroke="rgba(56,189,248,0.35)" strokeWidth="1" />
+                    <rect x="92" y="42" width="156" height="96" rx="10" fill="rgba(45,140,240,0.1)" stroke="rgba(56,189,248,0.35)" strokeWidth="1" />
                     <line x1="92" y1="90" x2="248" y2="90" stroke="url(#mob-wire-blue)" strokeWidth="2.5" />
                     
-                    <text x="170" y="66" textAnchor="middle" fill="#7dd3fc" fontSize="7.5" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.08em">
-                      HYBRID PQC WRAP
+                    <text x="170" y="59" textAnchor="middle" fill="#7dd3fc" fontSize="6.8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.06em">
+                      WAN · HYBRID PQC WRAP
                     </text>
-                    <text x="170" y="120" textAnchor="middle" fill="rgba(216,213,205,0.7)" fontSize="6.5" fontFamily="var(--mono)">
-                      ML-KEM-768 + ML-DSA
+                    <text x="170" y="70" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5" fontFamily="var(--mono)" letterSpacing="0.03em">
+                      [ ENCAPSULATED TUNNEL ]
+                    </text>
+                    <text x="170" y="114" textAnchor="middle" fill="rgba(216,213,205,0.9)" fontSize="5.6" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.03em">
+                      HYBRID PQC: X25519 + ML-KEM
+                    </text>
+                    <text x="170" y="126" textAnchor="middle" fill="rgba(216,213,205,0.65)" fontSize="5.2" fontFamily="var(--mono)" letterSpacing="0.03em">
+                      DUAL-CERT: ECDSA + ML-DSA-65
                     </text>
 
                     {/* Egress Node */}
@@ -374,7 +388,7 @@ export function ProtectionDial() {
                 )}
 
                 {/* Mobile Passthrough */}
-                {mode.id === "mob-passthrough" || (mode.id === "passthrough" && (
+                {mode.id === "passthrough" && (
                   <motion.g
                     key="mob-passthrough"
                     initial={reduceMotion ? false : { opacity: 0 }}
@@ -395,7 +409,7 @@ export function ProtectionDial() {
                       LOGGED FOR AUDIT EVIDENCE
                     </text>
                   </motion.g>
-                ))}
+                )}
 
                 {/* Mobile Block */}
                 {mode.id === "block" && (
