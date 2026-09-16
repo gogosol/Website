@@ -45,11 +45,34 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/opengraph-image",
+        destination: "/og-image.png",
+        permanent: true,
+      },
+      {
+        source: "/twitter-image",
+        destination: "/og-image.png",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      {
+        source: "/:all*(png|jpg|jpeg|gif|webp|avif|ico|svg)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
       },
     ];
   },

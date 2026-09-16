@@ -77,6 +77,8 @@ const benefits = [
   },
 ];
 
+export const dynamic = "force-static";
+
 export default function Home() {
   return (
     <div id="top" className={styles.siteShell}>

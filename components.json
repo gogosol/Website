@@ -14,6 +14,7 @@
     "@aceternity": "https://ui.aceternity.com/registry/{name}.json",
     "@8starlabs-ui": "https://ui.8starlabs.com/r/{name}.json",
     "@lucide-animated": "https://lucide-animated.com/r/{name}.json",
-    "@kokonutui": "https://kokonutui.com/r/{name}.json"
+    "@kokonutui": "https://kokonutui.com/r/{name}.json",
+    "@canvas-ui": "https://canvasui.dev/r/{name}.json"
   }
 }
