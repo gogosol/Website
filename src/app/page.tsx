@@ -22,7 +22,7 @@ import { Footer } from "@/components/qcertify/Footer";
 import styles from "./home.module.css";
 
 const exactCryptoClaim =
-  "Hybrid X25519 + ML-KEM key establishment protecting against harvest-now/decrypt-later; authentication via Dual-Cert Catalyst presenting classical X.509 (ECDSA) alongside post-quantum ML-DSA-65.";
+  "Hybrid X25519 + ML-KEM key establishment protects against harvest-now/decrypt-later. Mode 1 supports ECDSA + ML-DSA-65 dual-certificate authentication. Mode 2 authenticates gateways with classical ECDSA P-384.";
 
 const pressureLabels = ["NIST PQC", "CNSA 2.0", "NIS2", "DORA", "EU CRA"];
 
@@ -245,7 +245,7 @@ export default function Home() {
           <Reveal className={styles.modesHeading}>
             <p className={styles.sectionLabel}>05 / ONE GATEWAY, BOUNDED OUTCOMES</p>
             <h2 id="modes-title">Policy decides what every managed connection becomes.</h2>
-            <p>Mode 1 and Mode 2 stay deliberately separate. Passthrough and block remain explicit outcomes · not hidden fallbacks.</p>
+            <p>Mode 1 mediates TLS. Mode 2 protects IP packets with ESP, including UDP without DTLS. Passthrough and block remain explicit policy outcomes.</p>
           </Reveal>
           <Reveal delay={0.08}><ProtectionDial /></Reveal>
         </section>
@@ -286,8 +286,8 @@ export default function Home() {
               <div className={styles.claimDivider}><span>+</span></div>
               <div className={styles.claimColumn}>
                 <span>AUTHENTICATION</span>
-                <strong>Dual-Cert Auth<br />(ECDSA + ML-DSA-65)</strong>
-                <small>DUAL-CERT CATALYST</small>
+                <strong>Mode 1 Dual-Cert<br />(ECDSA + ML-DSA-65)</strong>
+                <small>MODE 2: CLASSICAL ECDSA P-384</small>
               </div>
               <p>{exactCryptoClaim}</p>
             </Reveal>

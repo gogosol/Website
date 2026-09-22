@@ -9,12 +9,12 @@ const modes = [
   {
     id: "mode-2",
     number: "01",
-    title: "Opaque Wrap",
+    title: "IP Packet Protection",
     short: "Mode 2",
     icon: Lock,
     description:
-      "Enterprise traffic is encapsulated in a quantum-safe tunnel between ingress and egress gateways before traversing untrusted transit networks.",
-    detail: "TRANSPORT-AWARE · MUTUAL GATEWAY AUTH · FAIL-CLOSED",
+      "Mode 2 protects selected IPv4 and IPv6 traffic with IPsec ESP between authenticated gateways. TCP, UDP and ICMP share the same protection without changing applications or inner addresses.",
+    detail: "HYBRID IKEv2 · ESP · FAIL-CLOSED · RELEASE QUALIFICATION IN PROGRESS",
   },
   {
     id: "mode-1",
@@ -84,7 +84,7 @@ export function ProtectionDial() {
           <div className={styles.desktopViz}>
             <svg viewBox="0 0 760 260" preserveAspectRatio="xMidYMid meet">
               <defs>
-                <linearGradient id="pqc-wrap-glow" x1="0" y1="0" x2="1" y2="0">
+                <linearGradient id="ipsec-esp-glow" x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0%" stopColor="#2d8cf0" stopOpacity="0.12" />
                   <stop offset="50%" stopColor="#38bdf8" stopOpacity="0.22" />
                   <stop offset="100%" stopColor="#2d8cf0" stopOpacity="0.12" />
@@ -144,7 +144,7 @@ export function ProtectionDial() {
               </g>
 
               <AnimatePresence mode="wait">
-                {/* MODE 2: OPAQUE WRAP */}
+                {/* MODE 2: IPSEC PACKET PROTECTION */}
                 {mode.id === "mode-2" && (
                   <motion.g
                     key="mode-2-diagram-desktop"
@@ -155,23 +155,23 @@ export function ProtectionDial() {
                   >
                     <line x1="86" y1="130" x2="168" y2="130" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 4" />
 
-                    {/* WAN Transit with Encapsulated Quantum-Safe Tunnel */}
-                    <rect x="220" y="76" width="320" height="108" rx="16" fill="url(#pqc-wrap-glow)" stroke="rgba(56,189,248,0.28)" strokeWidth="1" />
+                    {/* WAN transit with IPsec ESP packet protection */}
+                    <rect x="220" y="76" width="320" height="108" rx="16" fill="url(#ipsec-esp-glow)" stroke="rgba(56,189,248,0.28)" strokeWidth="1" />
                     <rect x="226" y="82" width="308" height="96" rx="12" fill="none" stroke="rgba(56,189,248,0.15)" strokeDasharray="4 6" />
                     
                     <line x1="220" y1="130" x2="540" y2="130" stroke="url(#wire-glow-blue)" strokeWidth="2.5" />
                     
                     <text x="380" y="101" textAnchor="middle" fill="#7dd3fc" fontSize="8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.12em">
-                      UNTRUSTED WAN · HYBRID PQC WRAP
+                      EXISTING WAN · IPSEC ESP
                     </text>
                     <text x="380" y="113" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5.5" fontFamily="var(--mono)" letterSpacing="0.08em">
-                      [ ENCAPSULATED TRANSPORT STREAM ]
+                      [ ENCRYPTED IP PACKETS ]
                     </text>
                     <text x="380" y="152" textAnchor="middle" fill="rgba(216,213,205,0.85)" fontSize="6.8" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.06em">
                       HYBRID PQC: X25519 + ML-KEM
                     </text>
                     <text x="380" y="164" textAnchor="middle" fill="rgba(216,213,205,0.6)" fontSize="6" fontFamily="var(--mono)" letterSpacing="0.05em">
-                      DUAL-CERT AUTH: ECDSA + ML-DSA-65
+                      GATEWAY AUTH: ECDSA P-384
                     </text>
 
                     {/* EGRESS GATEWAY */}
@@ -180,7 +180,7 @@ export function ProtectionDial() {
                       <circle cx="0" cy="-18" r="10" fill="url(#gateway-core)" stroke="rgba(56,189,248,0.6)" strokeWidth="1" />
                       <path d="M-4 -18L0 -22L4 -18M0 -22V-14" fill="none" stroke="#7dd3fc" strokeWidth="1.2" strokeLinecap="round" />
                       <text x="0" y="3" textAnchor="middle" fill="#38bdf8" fontSize="8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.12em">EGRESS</text>
-                      <text x="0" y="15" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="7" fontFamily="var(--mono)" fontWeight="500">WRAP</text>
+                      <text x="0" y="15" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="7" fontFamily="var(--mono)" fontWeight="500">ESP ENCRYPT</text>
                       <text x="0" y="26" textAnchor="middle" fill="rgba(216,213,205,0.45)" fontSize="5.5" fontFamily="var(--mono)">ENCAPSULATE</text>
                     </g>
 
@@ -190,7 +190,7 @@ export function ProtectionDial() {
                       <circle cx="0" cy="-18" r="10" fill="url(#gateway-core)" stroke="rgba(56,189,248,0.6)" strokeWidth="1" />
                       <path d="M-4 -18L0 -14L4 -18M0 -14V-22" fill="none" stroke="#7dd3fc" strokeWidth="1.2" strokeLinecap="round" />
                       <text x="0" y="3" textAnchor="middle" fill="#38bdf8" fontSize="8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.12em">INGRESS</text>
-                      <text x="0" y="15" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="7" fontFamily="var(--mono)" fontWeight="500">UNWRAP</text>
+                      <text x="0" y="15" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="7" fontFamily="var(--mono)" fontWeight="500">ESP DECRYPT</text>
                       <text x="0" y="26" textAnchor="middle" fill="rgba(216,213,205,0.45)" fontSize="5.5" fontFamily="var(--mono)">RESTORE</text>
                     </g>
 
@@ -319,7 +319,7 @@ export function ProtectionDial() {
               </g>
 
               <AnimatePresence mode="wait">
-                {/* Mobile Mode 2: Opaque Wrap */}
+                {/* Mobile Mode 2: IP packet protection */}
                 {mode.id === "mode-2" && (
                   <motion.g
                     key="mob-mode-2"
@@ -332,23 +332,23 @@ export function ProtectionDial() {
                     <line x1="92" y1="90" x2="248" y2="90" stroke="url(#mob-wire-blue)" strokeWidth="2.5" />
                     
                     <text x="170" y="59" textAnchor="middle" fill="#7dd3fc" fontSize="6.8" fontFamily="var(--mono)" fontWeight="600" letterSpacing="0.06em">
-                      WAN · HYBRID PQC WRAP
+                      WAN · IPSEC ESP
                     </text>
                     <text x="170" y="70" textAnchor="middle" fill="rgba(147,197,253,0.55)" fontSize="5" fontFamily="var(--mono)" letterSpacing="0.03em">
-                      [ ENCAPSULATED TUNNEL ]
+                      [ ENCRYPTED IP PACKETS ]
                     </text>
                     <text x="170" y="114" textAnchor="middle" fill="rgba(216,213,205,0.9)" fontSize="5.6" fontFamily="var(--mono)" fontWeight="500" letterSpacing="0.03em">
                       HYBRID PQC: X25519 + ML-KEM
                     </text>
                     <text x="170" y="126" textAnchor="middle" fill="rgba(216,213,205,0.65)" fontSize="5.2" fontFamily="var(--mono)" letterSpacing="0.03em">
-                      DUAL-CERT: ECDSA + ML-DSA-65
+                      GATEWAY AUTH: ECDSA P-384
                     </text>
 
                     {/* Egress Node */}
                     <g transform="translate(86, 90)">
                       <rect x="-24" y="-28" width="48" height="56" rx="8" fill="rgba(12,14,20,0.98)" stroke="#38bdf8" strokeWidth="1.2" />
                       <text x="0" y="-3" textAnchor="middle" fill="#38bdf8" fontSize="7.5" fontFamily="var(--mono)" fontWeight="600">EGRESS</text>
-                      <text x="0" y="9" textAnchor="middle" fill="#ffffff" fontSize="6.5" fontFamily="var(--mono)">WRAP</text>
+                      <text x="0" y="9" textAnchor="middle" fill="#ffffff" fontSize="6.5" fontFamily="var(--mono)">ESP</text>
                     </g>
 
                     {/* Ingress Node */}
