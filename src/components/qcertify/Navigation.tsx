@@ -10,7 +10,9 @@ const links = [
   { href: "#compliance", label: "Compliance" },
   { href: "#platform", label: "Platform" },
   { href: "#operation", label: "Operation" },
+  { href: "#federation", label: "Federation" },
   { href: "#trust", label: "Trust" },
+  { href: "#audit-reports", label: "Audit reports" },
   { href: "#leadership", label: "Leadership" },
 ];
 

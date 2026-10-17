@@ -19,6 +19,8 @@ import { RegulationTimeline } from "@/components/qcertify/RegulationTimeline";
 import { Preloader } from "@/components/qcertify/Preloader";
 import { Team } from "@/components/qcertify/Team";
 import { Footer } from "@/components/qcertify/Footer";
+import { FederationSection } from "@/components/qcertify/FederationSection";
+import { AuditReportSection } from "@/components/qcertify/AuditReportSection";
 import styles from "./home.module.css";
 
 const exactCryptoClaim =
@@ -250,9 +252,11 @@ export default function Home() {
           <Reveal delay={0.08}><ProtectionDial /></Reveal>
         </section>
 
+        <FederationSection />
+
         <section className={styles.section} aria-labelledby="benefits-title">
           <Reveal className={styles.benefitsTitle}>
-            <p className={styles.sectionLabel}>06 / OPERATING ADVANTAGE</p>
+            <p className={styles.sectionLabel}>07 / OPERATING ADVANTAGE</p>
             <h2 id="benefits-title">Policy changes.<br /><span>Applications don’t.</span></h2>
           </Reveal>
           <div className={styles.benefitBands}>
@@ -271,7 +275,7 @@ export default function Home() {
         <section id="trust" className={`${styles.section} ${styles.trustSection}`} aria-labelledby="trust-title">
           <div className={styles.trustIntro}>
             <Reveal>
-              <p className={styles.sectionLabel}>07 / TRUST &amp; VERIFICATION</p>
+              <p className={styles.sectionLabel}>08 / TRUST &amp; VERIFICATION</p>
               <h2 id="trust-title">Trust starts with saying exactly what is protected.</h2>
             </Reveal>
           </div>
@@ -318,13 +322,15 @@ export default function Home() {
           </div>
         </section>
 
+        <AuditReportSection />
+
         <Team />
 
         <section id="contact" className={styles.contactSection} aria-labelledby="contact-title">
           <div className={styles.contactHalo} aria-hidden="true" />
           <div className={styles.contactLayout}>
             <Reveal>
-              <p className={styles.sectionLabel}>09 / PILOT &amp; DEMO</p>
+              <p className={styles.sectionLabel}>11 / PILOT &amp; DEMO</p>
               <h2 id="contact-title">Deploy a governed pilot or schedule a demo.</h2>
               <p>Experience inline hybrid PQC protection on one critical enterprise traffic path in under 14 days with zero application changes.</p>
               <a className={styles.emailLink} href="mailto:contact@qcertify.io">

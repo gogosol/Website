@@ -81,8 +81,18 @@ export function Footer() {
               </a>
             </li>
             <li>
+              <a href="#federation" className={styles.navLink}>
+                Federation &amp; Microsegmentation
+              </a>
+            </li>
+            <li>
               <a href="#trust" className={styles.navLink}>
                 Cryptographic Trust
+              </a>
+            </li>
+            <li>
+              <a href="#audit-reports" className={styles.navLink}>
+                Audit Reports
               </a>
             </li>
             <li>

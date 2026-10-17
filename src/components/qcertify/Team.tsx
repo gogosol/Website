@@ -46,7 +46,7 @@ export function Team() {
       <span id="team" style={{ position: "absolute", top: 0, pointerEvents: "none" }} />
       <div className={styles.teamHeader}>
         <Reveal>
-          <p className={styles.sectionLabel}>08 / EXECUTIVE LEADERSHIP</p>
+          <p className={styles.sectionLabel}>10 / EXECUTIVE LEADERSHIP</p>
           <h2 id="leadership-title" className={styles.teamTitle}>
             Engineered for trust. Led by founders.
           </h2>
