@@ -38,7 +38,7 @@
 
 3. **Multi-Mode Policy Dial (`ProtectionDial.tsx`)**:
    - Interactive policy engine simulator with dual desktop/mobile vector diagrams demonstrating four bounded gateway outcomes:
-     - **Mode 2 (Opaque Wrap)**: Encapsulated hybrid PQC tunnel between egress and ingress chokepoints.
+     - **Mode 2 (IPsec packet protection)**: IP packets encrypted with ESP between the sending and the receiving gateway, after a hybrid post-quantum key exchange.
      - **Mode 1 (TLS Mediation)**: Dual-leg policy termination with upstream PQC upgrade.
      - **Mode 0 (Explicit Passthrough)**: Transparent exception path with complete cryptographic telemetry logging.
      - **Block (Enforcement Denial)**: Fail-closed perimeter severance for non-compliant cipher suites.
