@@ -247,7 +247,7 @@ export default function Home() {
           <Reveal className={styles.modesHeading}>
             <p className={styles.sectionLabel}>05 / ONE GATEWAY, BOUNDED OUTCOMES</p>
             <h2 id="modes-title">Policy decides what every managed connection becomes.</h2>
-            <p>Mode 1 mediates TLS. Mode 2 protects IP packets with ESP, including UDP without DTLS. Passthrough and block remain explicit policy outcomes.</p>
+            <p>Mode 1 mediates TLS. Mode 2 protects every IP protocol with ESP between two gateways. Passthrough and block remain explicit policy outcomes.</p>
           </Reveal>
           <Reveal delay={0.08}><ProtectionDial /></Reveal>
         </section>
