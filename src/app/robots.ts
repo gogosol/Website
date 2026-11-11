@@ -1,9 +1,12 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/metadata";
+
+export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/", disallow: "/api/" },
-    sitemap: "https://qcertify.io/sitemap.xml",
-    host: "https://qcertify.io",
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

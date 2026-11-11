@@ -1,88 +1,28 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
+import { Navigation } from "@/components/qcertify/Navigation";
+import { Footer } from "@/components/qcertify/Footer";
 import "./globals.css";
 
-const title = "QCertify · Govern the transition to hybrid PQC";
-const description =
-  "QuantumHalon is QCertify's platform for governed hybrid post-quantum key establishment across critical enterprise traffic paths.";
+const geist = localFont({ src: "../fonts/Geist-Variable-latin.woff2", variable: "--font-geist", weight: "100 900", display: "swap", adjustFontFallback: "Arial" });
+const geistMono = localFont({ src: "../fonts/GeistMono-Variable-latin.woff2", variable: "--font-geist-mono", weight: "100 900", display: "swap", preload: false, adjustFontFallback: false });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://qcertify.io"),
-  title,
-  description,
-  applicationName: "QCertify",
-  authors: [{ name: "QCertify" }],
-  creator: "QCertify",
-  publisher: "QCertify",
-  category: "Cybersecurity",
-  keywords: [
-    "QCertify",
-    "QuantumHalon",
-    "post-quantum cryptography",
-    "PQC migration",
-    "hybrid PQC",
-    "X25519",
-    "ML-KEM",
-    "FIPS 203",
-    "ML-DSA-65",
-    "ECDSA",
-    "Dual-Cert Catalyst",
-    "FIPS 204",
-    "CNSA 2.0",
-    "harvest now decrypt later",
-    "HNDL",
-    "inline cryptography",
-    "cryptographic governance",
-  ],
-  openGraph: {
-    title,
-    description,
-    url: "https://qcertify.io",
-    siteName: "QCertify",
-    locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: "https://qcertify.io/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "QCertify · The Quantum Transition. In Line.",
-        type: "image/png",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    creator: "@qcertify",
-    images: ["https://qcertify.io/og-image.png"],
-  },
-  alternates: {
-    canonical: "https://qcertify.io",
-  },
-  icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  title: "QCertify | Post-quantum protection for existing networks",
+  description: "QuantumHalon by QCertify protects selected network traffic with post-quantum cryptography, through inline gateways and a control plane you operate.",
+  applicationName: "QCertify", authors: [{ name: "QCertify" }], category: "Cybersecurity",
+  icons: { icon: "/icon.png", apple: "/icon.png" }, robots: { index: true, follow: true },
 };
+export const viewport: Viewport = { themeColor: "#f3f2ee", colorScheme: "light" };
 
-export const viewport: Viewport = {
-  themeColor: "#050507",
-  colorScheme: "dark",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>{children}</body>
-    </html>
-  );
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+    <body>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <Navigation />
+      <main id="main-content" tabIndex={-1}>{children}</main>
+      <Footer />
+    </body>
+  </html>;
 }

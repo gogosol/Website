@@ -1,14 +1,4 @@
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import styles from "./home.module.css";
-
 export default function NotFound() {
-  return (
-    <main className={styles.errorPage}>
-      <p>404 / PATH UNAVAILABLE</p>
-      <h1>This path is not part of the policy.</h1>
-      <span>The page may have moved, or the address may be incomplete.</span>
-      <Link href="/"><ArrowLeft aria-hidden="true" size={16} /> Return to QCertify</Link>
-    </main>
-  );
+  return <section className="container error-page"><p className="eyebrow">404 / Page not found</p><h1>Let’s get you back on the right path.</h1><p>The address may be incomplete, or the page may have moved. Explore QuantumHalon or return to the homepage.</p><div className="actions"><Link prefetch={false} className="button" href="/">Return to QCertify</Link><Link prefetch={false} className="button-secondary" href="/platform">Explore the platform</Link><Link prefetch={false} className="button-secondary" href="/demo?intent=demo">Request a demo</Link></div></section>;
 }

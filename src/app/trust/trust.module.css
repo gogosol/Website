@@ -1,0 +1,91 @@
+/* Security & trust: one buyer question per section, a short answer, then the depth beneath it. */
+
+/* Question sections (the hero is the shared IndexedHero) */
+.qa { position: relative; padding-block: clamp(72px, 8vw, 112px); }
+.qa[data-tone="porcelain"] { background: var(--porcelain); }
+.qaHead { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 20px clamp(40px, 6vw, 112px); align-items: end; margin-bottom: clamp(40px, 5vw, 64px); }
+.qaIntro { max-width: 460px; font-size: 17px; line-height: 1.65; color: var(--muted); }
+.blockTitle { margin-bottom: 22px; font-size: var(--fs-feature); font-weight: 480; line-height: 1.15; letter-spacing: -.026em; }
+
+/* Shared item rhythm: a hairline, a short title, two or three lines of explanation. */
+.controls, .properties { display: grid; margin: 0; padding: 0; list-style: none; }
+.controls { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px clamp(28px, 3.4vw, 48px); }
+.properties { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px clamp(32px, 4vw, 64px); margin-bottom: clamp(40px, 5vw, 64px); }
+.controls li, .properties li, .planes > div, .retention > div { padding-top: 22px; border-top: 1px solid var(--line-strong); }
+.controls h3, .properties h3, .planes dt, .retention dt { font-size: var(--fs-card); font-weight: 520; line-height: 1.3; letter-spacing: -.015em; }
+.controls p, .properties p, .planes dd, .retention dd { margin: 10px 0 0; max-width: 420px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.properties p { max-width: 560px; }
+/* The stadium mark from the QCertify logo marks a built-in control. */
+.controls h3 { display: flex; align-items: center; gap: 12px; }
+.controls h3::before { content: ""; flex-shrink: 0; width: 18px; height: 10px; border-radius: 999px; border: 1.25px solid var(--ink); }
+
+/* Where traffic flows */
+.planes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px clamp(28px, 3.4vw, 48px); margin: clamp(32px, 4vw, 48px) 0 0; }
+.planes dt { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; }
+.planes dt span { font: 500 11px/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* Outcomes: one row per outcome, aligned to the column headers with subgrid. */
+.outcomes { margin-bottom: 24px; border-top: 1px solid var(--line-strong); }
+.outcomeHead, .outcome { display: grid; grid-template-columns: minmax(0, .8fr) repeat(3, minmax(0, 1fr)); column-gap: clamp(24px, 2.6vw, 40px); }
+.outcomeHead { padding: 14px 0; border-bottom: 1px solid var(--line); font: 500 11px/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.outcome { padding: 26px 0; border-bottom: 1px solid var(--line); }
+.outcome h3 { font-size: var(--fs-card); font-weight: 520; line-height: 1.3; letter-spacing: -.015em; }
+.outcomeLabel { display: block; margin-bottom: 6px; font: 500 11px/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.outcome dl { grid-column: 2 / -1; display: grid; grid-template-columns: subgrid; margin: 0; }
+/* Column headers carry the labels on wide screens; the terms stay available to assistive technology. */
+.outcome dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.outcome dd { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+.outcome [data-limit] dd { padding-left: 14px; border-left: 2px solid var(--line-strong); color: var(--ink); }
+
+/* Cryptography: the classification matrix is depth, opened on demand. */
+.more { border-top: 1px solid var(--line-strong); }
+.moreTitle { display: block; font-size: var(--fs-feature); font-weight: 480; line-height: 1.15; letter-spacing: -.026em; transition: color var(--dur-fast); }
+.moreHint { display: block; margin-top: 6px; max-width: 620px; font-size: 15px; line-height: 1.55; color: var(--muted); }
+.more summary:hover .moreTitle { color: var(--blue-ink); }
+.moreBody { padding: 12px 0 36px; }
+
+/* Verification: two signatures, two jobs */
+.signatures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: clamp(40px, 5vw, 64px); }
+.signatures > div { padding: clamp(22px, 2.4vw, 32px); border: 1px solid var(--line); border-radius: var(--radius-xl); background: var(--porcelain); }
+.sigAlg { font: 500 11px/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.signatures h3 { margin-top: 12px; font-size: var(--fs-feature); font-weight: 480; line-height: 1.15; letter-spacing: -.026em; }
+.signatures p:not(.sigAlg) { margin-top: 12px; max-width: 540px; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+
+/* Retention */
+.retention { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px clamp(24px, 3vw, 40px); margin: 0; }
+.small { max-width: 720px; margin-top: clamp(32px, 4vw, 48px); font-size: 14px; line-height: 1.6; color: var(--muted); }
+.small a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Assurance: three things kept distinct */
+.assurance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line-strong); }
+.assurance > div { padding: 26px 32px 6px 0; }
+.assurance > div + div { padding-left: 32px; border-left: 1px solid var(--line); }
+.assurance h3 { font-size: var(--fs-card); font-weight: 520; line-height: 1.3; letter-spacing: -.015em; }
+.assurance p { margin-top: 10px; max-width: 400px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.disclosure { margin-top: clamp(40px, 5vw, 64px); padding: 16px 20px; border-radius: 14px; background: var(--porcelain); font-size: 14px; line-height: 1.6; color: var(--ink-2); }
+.disclosure a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 1100px) {
+  .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .retention { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .qaHead { grid-template-columns: 1fr; }
+  .planes { grid-template-columns: 1fr; gap: 22px; }
+  .outcomeHead { display: none; }
+  .outcome { grid-template-columns: 1fr; row-gap: 16px; padding: 24px 0; }
+  .outcome dl { grid-column: auto; grid-template-columns: 1fr; row-gap: 14px; }
+  .outcome dt { position: static; width: auto; height: auto; overflow: visible; clip: auto; white-space: normal; margin-bottom: 4px; font: 500 11px/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .outcome [data-limit] { padding: 12px 14px; border-radius: 12px; background: var(--porcelain); }
+  .outcome [data-limit] dd { padding-left: 0; border-left: 0; }
+  .assurance { grid-template-columns: 1fr; }
+  .assurance > div, .assurance > div + div { padding: 22px 0 18px; border-left: 0; }
+  .assurance > div + div { border-top: 1px solid var(--line); }
+}
+@media (max-width: 760px) {
+  .signatures, .properties { grid-template-columns: 1fr; }
+  .qaIntro { font-size: 16px; }
+}
+@media (max-width: 600px) {
+  .controls, .retention { grid-template-columns: 1fr; gap: 24px; }
+}

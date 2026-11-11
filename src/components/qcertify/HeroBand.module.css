@@ -1,0 +1,7 @@
+.band { margin: 0; }
+.frame { position: relative; overflow: hidden; border-radius: clamp(16px, 2vw, 26px); aspect-ratio: 21 / 9; background: #ecebe6; }
+.band[data-tone="dark"] .frame { background: #17181b; }
+.frame img { object-fit: cover; }
+.caption { display: flex; justify-content: space-between; gap: 16px; margin-top: 14px; font: 500 11px/1.5 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+/* A 21:9 band becomes a thin strip on a phone; give it more height there. */
+@media (max-width: 760px) { .frame { aspect-ratio: 3 / 2; } }

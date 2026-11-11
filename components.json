@@ -16,5 +16,22 @@
     "@lucide-animated": "https://lucide-animated.com/r/{name}.json",
     "@kokonutui": "https://kokonutui.com/r/{name}.json",
     "@canvas-ui": "https://canvasui.dev/r/{name}.json"
-  }
+  },
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibrary": "lucide"
 }

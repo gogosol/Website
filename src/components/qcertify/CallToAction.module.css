@@ -1,0 +1,6 @@
+.section { position: relative; overflow: hidden; padding-block: clamp(80px, 10vw, 136px); }
+.inner { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 48px 64px; flex-wrap: wrap; }
+.inner > div:first-child { max-width: 760px; }
+.inner h2 { max-width: 720px; }
+.inner p:not(:global(.eyebrow)) { margin-top: 22px; max-width: 560px; color: var(--on-graphite-muted); font-size: 17px; line-height: 1.65; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }

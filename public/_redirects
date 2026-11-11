@@ -1,0 +1,10 @@
+# Cloudflare Pages redirects (https://developers.cloudflare.com/pages/configuration/redirects/)
+/social-image /social-image.png 301
+/opengraph-image /social-image.png 301
+/opengraph-image.png /social-image.png 301
+/twitter-image /social-image.png 301
+/twitter-image.png /social-image.png 301
+/og-image.png /social-image.png 301
+/trust-and-evidence /trust 301
+/security /trust 301
+/contact /demo 301

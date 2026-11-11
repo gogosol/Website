@@ -1,80 +1,33 @@
 import type { NextConfig } from "next";
+import widths from "./src/lib/image-widths.json";
 
-const securityHeaders = [
-  {
-    key: "X-Frame-Options",
-    value: "DENY",
-  },
-  {
-    key: "X-Content-Type-Options",
-    value: "nosniff",
-  },
-  {
-    key: "Referrer-Policy",
-    value: "strict-origin-when-cross-origin",
-  },
-  {
-    key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
-  },
-  {
-    key: "Strict-Transport-Security",
-    value: "max-age=63072000; includeSubDomains; preload",
-  },
-  {
-    key: "Cross-Origin-Opener-Policy",
-    value: "same-origin",
-  },
-  {
-    key: "X-Permitted-Cross-Domain-Policies",
-    value: "none",
-  },
-  {
-    key: "X-DNS-Prefetch-Control",
-    value: "on",
-  },
-];
-
+/**
+ * Static export for Cloudflare Pages (free plan).
+ *
+ * - Every public route is prerendered to HTML at build time; no server runtime is needed.
+ * - next/image uses a custom loader. `scripts/postbuild.mjs` pre-encodes WebP variants for
+ *   every configured width, so responsive images work without an image-optimisation service.
+ * - Security headers and redirects are served by Cloudflare Pages from `public/_headers` and
+ *   `public/_redirects` (Next.js headers()/redirects() do not apply to a static export).
+ * - The contact form posts to a Pages Function in `functions/api/contact.ts`.
+ */
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: "export",
+  trailingSlash: false,
   poweredByHeader: false,
-  compress: true,
   turbopack: {
     root: __dirname,
   },
+  // Development only: `next dev` serves its client runtime to localhost by default. Reviews run
+  // through a Visual Studio dev tunnel and local QA uses 127.0.0.1; without these entries the
+  // pages render but never hydrate there. No effect on the static production export.
+  allowedDevOrigins: ["127.0.0.1", "**.devtunnels.ms"],
   images: {
-    formats: ["image/avif", "image/webp"],
-  },
-  async redirects() {
-    return [
-      {
-        source: "/opengraph-image",
-        destination: "/og-image.png",
-        permanent: true,
-      },
-      {
-        source: "/twitter-image",
-        destination: "/og-image.png",
-        permanent: true,
-      },
-    ];
-  },
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: securityHeaders,
-      },
-      {
-        source: "/:all*(png|jpg|jpeg|gif|webp|avif|ico|svg)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-    ];
+    loader: "custom",
+    loaderFile: "./src/lib/image-loader.ts",
+    deviceSizes: widths.deviceSizes,
+    imageSizes: widths.imageSizes,
+    qualities: [75],
   },
 };
 

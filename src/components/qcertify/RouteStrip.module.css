@@ -1,0 +1,30 @@
+.route { display: flex; align-items: center; width: 100%; max-width: 460px; margin: 0; padding: 0; list-style: none; }
+.route li { display: flex; align-items: center; flex: 0 0 auto; min-width: 0; }
+.route li + li { flex: 1 1 auto; }
+.route li + li::before { content: ""; flex: 1 1 auto; min-width: 12px; height: 2px; margin: 0 6px; border-radius: 2px; background: #b4b6bb; }
+.route li[data-protected]::before { height: 3px; background: var(--blue); box-shadow: 0 0 0 3px rgba(31,92,255,.12); }
+.route[data-steps] li + li::before { height: 1px; background: var(--line-strong); }
+.route span { flex-shrink: 0; padding: 6px 9px; border: 1px solid var(--line-strong); border-radius: 999px; background: #fff; font: 500 11px/1 var(--font-mono); letter-spacing: .02em; color: var(--muted); white-space: nowrap; }
+.route li[data-gateway] span { border-color: var(--ink); color: var(--ink); }
+.route[data-compact] span { padding: 5px 8px; font-size: 10.5px; }
+.route[data-compact] li + li::before { min-width: 8px; margin: 0 4px; }
+/* Large: gateways drawn as ceramic slabs with an aperture, as in the architecture diagrams. */
+.route[data-large] { max-width: 620px; }
+.route[data-large] span { padding: 9px 14px; font-size: 12px; }
+.route[data-large] li + li::before { height: 2px; margin: 0 8px; }
+.route[data-large] li[data-protected]::before { height: 4px; box-shadow: 0 0 0 4px rgba(31,92,255,.12); }
+.route[data-large]:not([data-steps]) li[data-gateway] span { position: relative; width: 30px; height: 52px; padding: 0; overflow: hidden; color: transparent; font-size: 0; border: 1.2px solid #bdb8ac; border-radius: 7px; background: #f6f5f1; box-shadow: 3px 4px 0 rgba(40,38,32,.07); }
+.route[data-large]:not([data-steps]) li[data-gateway] span::after { content: ""; position: absolute; left: 8px; top: 15px; width: 12px; height: 20px; border-radius: 6px; border: 1px solid #a7abb2; background: #e3e5e9; }
+@media (max-width: 560px) {
+  .route li[data-gateway] span { width: 28px; height: 16px; padding: 0; overflow: hidden; color: transparent; border: 1.5px solid var(--ink); border-radius: 999px; font-size: 0; }
+  .route li + li::before { min-width: 8px; margin: 0 5px; }
+  .route span { padding: 5px 8px; font-size: 10.5px; }
+}
+@media (max-width: 480px) { .route li[data-transit] span { display: none; } }
+@media (max-width: 420px) { .route[data-steps] { flex-wrap: wrap; gap: 8px 6px; } .route[data-steps] li + li::before { content: none; } }
+/* Large strips adapt to the width of their frame (the frame declares the "route" container). */
+@container route (max-width: 400px) {
+  .route[data-large] span { padding: 6px 9px; font-size: 11px; }
+  .route[data-large] li + li::before { min-width: 8px; margin: 0 4px; }
+  .route[data-large] li[data-transit] span { display: none; }
+}

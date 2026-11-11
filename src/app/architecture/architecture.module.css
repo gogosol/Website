@@ -1,0 +1,28 @@
+.hero { background: #f2eeeb; padding-block: clamp(48px, 6vw, 88px) clamp(32px, 4vw, 56px); overflow: hidden; }
+.heroGrid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 24px clamp(24px, 4vw, 64px); align-items: center; }
+.heroCopy :global(.page-title) { font-size: clamp(42px, 4.6vw, 70px); }
+.heroCopy :global(.lead) { max-width: 520px; color: var(--ink-2); }
+.heroCopy :global(.text-link) { margin-top: 22px; }
+.heroArt { margin-right: calc(-1 * var(--gutter)); }
+.anchor { position: absolute; top: 0; }
+.section { position: relative; padding-block: var(--space-section); }
+.options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line-strong); }
+.options li { padding: 24px 32px 0 0; }
+.options li + li { padding-left: 32px; border-left: 1px solid var(--line); }
+.options h3 { font-size: var(--fs-card); font-weight: 520; letter-spacing: -.015em; }
+.options p { margin-top: 10px; max-width: 360px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.vendorNote { max-width: 760px; margin-top: clamp(36px, 4vw, 56px); padding: 18px 20px; border-radius: 14px; background: var(--porcelain); font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+.requirements { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 40px; margin: 0 0 32px; }
+.requirements > div { padding-top: 20px; border-top: 1px solid var(--line-strong); }
+.requirements dt { font-size: 17px; font-weight: 540; letter-spacing: -.012em; }
+.requirements dd { margin: 10px 0 0; font-size: 14.5px; line-height: 1.6; color: var(--muted); }
+@media (max-width: 1023px) {
+  .heroGrid { grid-template-columns: 1fr; }
+  .heroArt { margin: 0 calc(-1 * var(--gutter)); }
+  .requirements { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .options { grid-template-columns: 1fr; border-top: 0; }
+  .options li, .options li + li { padding: 20px 0; border-left: 0; border-top: 1px solid var(--line-strong); }
+  .requirements { grid-template-columns: 1fr; gap: 24px; }
+}

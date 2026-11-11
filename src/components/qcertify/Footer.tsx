@@ -1,157 +1,57 @@
 import Image from "next/image";
-import { ArrowUpRight, Mail } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import logo from "../../../public/images/Logo SF White.png";
 import styles from "./Footer.module.css";
 
-function LinkedinIcon({ size = 15 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.62 1.62 0 1 0 0-3.24 1.62 1.62 0 0 0 0 3.24m1.39 9.74v-8.37H5.07v8.37h2.78z" />
-    </svg>
-  );
-}
+const groups = [
+  { label: "QuantumHalon", links: [
+    { href: "/platform", text: "Platform" },
+    { href: "/architecture", text: "Architecture" },
+    { href: "/use-cases", text: "Use cases" },
+    { href: "/trust", text: "Security & trust" },
+  ] },
+  { label: "Company", links: [
+    { href: "/company", text: "About QCertify" },
+    { href: "/resources", text: "Resources" },
+    { href: "/demo?intent=demo", text: "Request a demo" },
+  ] },
+];
 
+const external = [
+  { href: "https://csrc.nist.gov/pubs/fips/203/final", text: "NIST FIPS 203 (ML-KEM)" },
+  { href: "https://csrc.nist.gov/pubs/fips/204/final", text: "NIST FIPS 204 (ML-DSA)" },
+];
+
+/** A quiet, proportionate footer: the authentic wordmark, one statement, three link groups. */
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className={styles.footer}>
-      <div className={styles.footerMain}>
-        {/* Column 1: Brand & Social */}
-        <div className={styles.brandCol}>
-          <a href="#top" className={styles.brandLink} aria-label="QCertify home">
-            <Image
-              src="/images/Logo SF White.png"
-              alt="QCertify"
-              width={654}
-              height={96}
-              className={styles.footerLogo}
-            />
-          </a>
-          <p className={styles.brandDesc}>
-            Governed hybrid post-quantum cryptography (PQC) for critical enterprise traffic paths.
-          </p>
-
-          <div className={styles.actionsGroup}>
-            <a
-              href="https://www.linkedin.com/company/qcertify"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.linkedinButton}
-              aria-label="QCertify on LinkedIn (opens in a new tab)"
-            >
-              <LinkedinIcon size={14} />
-              <span>LinkedIn</span>
-              <ArrowUpRight size={13} strokeWidth={1.75} aria-hidden="true" />
-            </a>
-
-            <a
-              href="mailto:contact@qcertify.io"
-              className={styles.emailButton}
-              aria-label="Email QCertify at contact@qcertify.io"
-            >
-              <Mail size={14} strokeWidth={1.75} aria-hidden="true" />
-              <span>contact@qcertify.io</span>
-            </a>
-          </div>
+  return <footer className={styles.footer} data-nav-theme="dark">
+    <div className="container">
+      <div className={styles.top}>
+        <div className={styles.brand}>
+          <Link prefetch={false} href="/" className={styles.logoLink} aria-label="QCertify home">
+            <Image src={logo} alt="QCertify" sizes="128px" className={styles.logo} />
+          </Link>
+          <p className={styles.statement}>QCertify builds QuantumHalon: post-quantum protection for the networks enterprises already run, under their own control.</p>
+          <a className={styles.email} href="mailto:contact@qcertify.io">contact@qcertify.io</a>
         </div>
-
-        {/* Column 2: Architecture & Company */}
-        <div className={styles.navCol}>
-          <h4 className={styles.colTitle}>ARCHITECTURE &amp; COMPANY</h4>
-          <ul className={styles.navList}>
-            <li>
-              <a href="#risk" className={styles.navLink}>
-                Risk &amp; HNDL Exposure
-              </a>
-            </li>
-            <li>
-              <a href="#compliance" className={styles.navLink}>
-                Compliance &amp; Pressure
-              </a>
-            </li>
-            <li>
-              <a href="#platform" className={styles.navLink}>
-                Inline Gateway Platform
-              </a>
-            </li>
-            <li>
-              <a href="#federation" className={styles.navLink}>
-                Federation &amp; Microsegmentation
-              </a>
-            </li>
-            <li>
-              <a href="#trust" className={styles.navLink}>
-                Cryptographic Trust
-              </a>
-            </li>
-            <li>
-              <a href="#audit-reports" className={styles.navLink}>
-                Audit Reports
-              </a>
-            </li>
-            <li>
-              <a href="#leadership" className={styles.navLink}>
-                Executive Leadership
-              </a>
-            </li>
+        {groups.map((group) => <nav key={group.label} aria-label={group.label} className={styles.group}>
+          <h2>{group.label}</h2>
+          <ul>{group.links.map((link) => <li key={link.href}><Link prefetch={false} href={link.href}>{link.text}</Link></li>)}</ul>
+        </nav>)}
+        <nav aria-label="Standards and security" className={styles.group}>
+          <h2>Standards &amp; security</h2>
+          <ul>
+            {external.map((link) => <li key={link.href}><a href={link.href} target="_blank" rel="noopener noreferrer">{link.text}<ArrowUpRight aria-hidden="true" size={13} /><span className="sr-only"> (opens in a new tab)</span></a></li>)}
+            <li><a href="/.well-known/security.txt">Report a vulnerability</a></li>
           </ul>
-        </div>
-
-        {/* Column 3: Cryptography & Standards */}
-        <div className={styles.navCol}>
-          <h4 className={styles.colTitle}>STANDARDS &amp; PQC</h4>
-          <ul className={styles.navList}>
-            <li className={styles.navItemStatic}>
-              Hybrid PQC (X25519 + ML-KEM)
-            </li>
-            <li className={styles.navItemStatic}>
-              Dual-Cert Auth (ECDSA + ML-DSA)
-            </li>
-            <li className={styles.navItemStatic}>
-              NIST FIPS 203 &amp; FIPS 204
-            </li>
-            <li className={styles.navItemStatic}>
-              CNSA 2.0 · DORA · NIS2
-            </li>
-            <li className={styles.navItemStatic}>
-              Fail-Closed Inline Policy
-            </li>
-          </ul>
-        </div>
-
-        {/* Column 4: Engagement & Pilot */}
-        <div className={styles.navCol}>
-          <h4 className={styles.colTitle}>DEMO &amp; PILOT</h4>
-          <p className={styles.pilotText}>
-            Launch a governed pilot on a live traffic path or book an interactive walkthrough.
-          </p>
-          <div className={styles.pilotActions}>
-            <a href="#contact" className={styles.pilotCtaButton}>
-              Request Demo / Pilot <ArrowUpRight size={13} aria-hidden="true" />
-            </a>
-            <a href="mailto:contact@qcertify.io?subject=QCertify%20Demo%20%26%20Pilot%20Inquiry" className={styles.pilotSubLink}>
-              Email our Engineering Team <ArrowUpRight size={12} aria-hidden="true" />
-            </a>
-          </div>
-        </div>
+        </nav>
       </div>
-
-      {/* Footer Bottom Metadata */}
-      <div className={styles.footerBottom}>
-        <div className={styles.metaLeft}>
-          <span>© {currentYear} QCERTIFY INC. ALL RIGHTS RESERVED.</span>
-        </div>
-
-        <a href="#top" className={styles.backToTop} aria-label="Scroll back to top">
-          Back to top <ArrowUpRight size={13} aria-hidden="true" />
-        </a>
+      <div className={styles.bottom}>
+        <p>&copy; {new Date().getUTCFullYear()} QCertify. All rights reserved.</p>
+        <p>QuantumHalon is a product of QCertify.</p>
+        <Link prefetch={false} href="/trust#privacy">Privacy and data handling</Link>
       </div>
-    </footer>
-  );
+    </div>
+  </footer>;
 }

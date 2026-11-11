@@ -1,0 +1,43 @@
+/* The artwork's own studio colour, so the sculpture can sit frameless on a matching surface. */
+.figure { margin: 0; --studio: #f2eeeb; }
+.stage { position: relative; }
+.canvas { position: relative; }
+.image { display: block; width: 100%; height: auto; }
+/* Unframed, the artwork dissolves into a surface of the same studio colour: no visible edge. */
+.figure:not([data-framed]) .image { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(180deg, transparent 0, #000 7%, #000 93%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(180deg, transparent 0, #000 7%, #000 93%, transparent 100%); mask-composite: intersect; }
+.figure[data-framed] .stage { overflow: hidden; border-radius: var(--radius-xl); background: var(--studio); }
+
+/* Desktop: anchored callouts. Each note is a zero-size point at its anchor. */
+.notes { margin: 0; padding: 0; list-style: none; }
+.note { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; }
+.dot { position: absolute; left: -6px; top: -6px; width: 12px; height: 12px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1.5px var(--ink), 0 0 0 7px rgba(255,255,255,.55); }
+.note[data-tone="blue"] .dot { box-shadow: 0 0 0 1.5px var(--blue), 0 0 0 7px rgba(255,255,255,.6); }
+.note::before { content: ""; position: absolute; background: rgba(15,16,18,.45); }
+.note[data-side="right"]::before { left: 10px; top: 0; width: 18px; height: 1px; }
+.note[data-side="left"]::before { right: 10px; top: 0; width: 18px; height: 1px; }
+.note[data-side="up"]::before { left: 0; bottom: 10px; width: 1px; height: 18px; }
+.note[data-side="down"]::before { left: 0; top: 10px; width: 1px; height: 30px; }
+.label { position: absolute; display: grid; gap: 2px; width: max-content; max-width: 230px; padding: 8px 12px; border-radius: 12px; background: rgba(243,239,236,.86); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.label strong { font-size: 14px; font-weight: 560; letter-spacing: -.01em; color: var(--ink); }
+.text { font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+.note[data-tone="blue"] .label strong { color: var(--blue-ink); }
+.note[data-side="right"] .label { left: 30px; top: -20px; }
+.note[data-side="left"] .label { right: 30px; top: -20px; text-align: right; }
+.note[data-side="up"] .label { left: 0; bottom: 30px; transform: translateX(-50%); text-align: center; max-width: 190px; }
+.note[data-side="down"] .label { left: -12px; top: 42px; }
+.number, .markers { display: none; }
+
+/* Small screens: numbered markers on the artwork and a legend beneath it. */
+@media (max-width: 860px) {
+  .markers { display: block; }
+  .marker { position: absolute; display: grid; place-items: center; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; background: var(--ink); color: #fff; font: 600 11px/1 var(--font-mono); box-shadow: 0 0 0 4px rgba(255,255,255,.7); }
+  .marker[data-tone="blue"] { background: var(--blue); }
+  .notes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; margin-top: 24px; }
+  .note { position: static; width: auto; height: auto; }
+  .note::before, .dot { display: none; }
+  .label, .note[data-side] .label { position: static; transform: none; width: auto; max-width: none; padding: 0; border-radius: 0; background: none; backdrop-filter: none; text-align: left; grid-template-columns: 24px 1fr; column-gap: 12px; }
+  .number { display: grid; place-items: center; grid-row: span 2; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font: 600 10.5px/1 var(--font-mono); }
+  .note[data-tone="blue"] .number { background: var(--blue); }
+  .label strong, .text { grid-column: 2; }
+}
+@media (max-width: 520px) { .notes { grid-template-columns: 1fr; } }

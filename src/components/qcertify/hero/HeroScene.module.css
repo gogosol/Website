@@ -1,0 +1,19 @@
+.root { position: absolute; inset: 0; }
+.stage { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(180deg, #f7f6f3 0%, #f1f0ec 50%, #eeede8 100%); }
+.poster, .canvas { position: absolute; inset: 0; }
+.poster img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+.canvas { opacity: 0; transition: opacity 1.2s var(--ease-out); }
+.stage[data-state="live"] .canvas { opacity: 1; }
+.veil { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(247,246,243,.72) 0%, rgba(247,246,243,.38) 30%, rgba(247,246,243,0) 52%); }
+.motionToggle { position: absolute; right: var(--gutter); bottom: 132px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 6px 14px 6px 12px; border: 1px solid rgba(15,16,18,.16); border-radius: 999px; background: rgba(247,246,243,.78); backdrop-filter: blur(10px); font: 500 11px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); animation: toggle-in .6s var(--ease-out) both; }
+.motionToggle:hover { border-color: var(--ink); }
+@keyframes toggle-in { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 1023px) {
+  .veil { display: none; }
+  .motionToggle { bottom: 16px; right: 16px; }
+  /* The tall poster's empty sky (its top ~21%) is drawn by the stage gradient, which matches it to
+     within one colour level. The picture starts just above the sculpture and stays bottom-aligned at
+     full size, so the composition, and its match with the live canvas, are unchanged. */
+  .poster { top: 14%; }
+  .poster img { object-position: 50% 100%; -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 24px); mask-image: linear-gradient(180deg, transparent 0, #000 24px); }
+}

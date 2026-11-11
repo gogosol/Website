@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# cloudflare (local emulator state)
+.wrangler/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
@@ -46,3 +49,29 @@ next-env.d.ts
 .artifacts/
 .playwright-mcp/
 .mcp.json
+
+# Local quality reports
+/.lighthouseci/
+/test-results/
+/playwright-report/
+/tests/visual-baselines/
+/.claude/
+/.codex/
+/.superpowers/
+
+# Keep QCertify-specific skills versioned; third-party installs remain local.
+!.agents/
+.agents/*
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/qcertify-product-truth/
+!.agents/skills/qcertify-ux-strategy/
+!.agents/skills/qcertify-visual-system/
+!.agents/skills/qcertify-quality-gates/
+
+# Internal working notes and local AI prompts. This repository is PUBLIC: never publish these.
+# docs/rebuild/ holds the product evidence ledger (including items marked "do not publish"),
+# internal validation notes and strategy briefs. Prompt files are local scratch input.
+/docs/rebuild/
+/*prompt*.txt
+/*prompt*.md

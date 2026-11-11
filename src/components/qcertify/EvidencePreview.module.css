@@ -1,0 +1,30 @@
+.preview { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--paper); }
+.heading { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 25px 32px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.document { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; }
+.document svg { color: var(--ink); flex-shrink: 0; }
+.label { font-size: 11px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.tabs { display: flex; padding: 0 32px; gap: 28px; border-bottom: 1px solid var(--line); }
+.tabs button { padding: 22px 0 18px; min-height: 56px; background: none; border: 0; border-bottom: 3px solid transparent; cursor: pointer; color: var(--muted); font-size: 14px; white-space: nowrap; transition: color 160ms, border-color 160ms; }
+.tabs button[aria-selected="true"] { border-bottom-color: var(--accent); color: var(--ink); font-weight: 600; }
+.tabs button:hover { color: var(--accent); }
+.panel { padding: 36px 32px 20px; min-height: 365px; }
+.panel[hidden] { display: none; }
+.intro { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-bottom: 28px; }
+.intro h3 { margin: 0; max-width: 380px; font-size: clamp(23px, 2.3vw, 30px); font-weight: 500; line-height: 1.2; letter-spacing: -.025em; }
+.intro p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+.fields { margin: 0; }
+.fields > div { display: grid; grid-template-columns: .8fr 1.8fr; gap: 30px; padding: 16px 0; border-top: 1px solid var(--line); }
+.fields dt { display: flex; align-items: baseline; gap: 9px; font-size: 13px; font-weight: 600; }
+.fields dt svg { flex-shrink: 0; color: var(--ink); }
+.fields dd { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.note { padding: 20px 32px; margin: 0; color: var(--ink); background: var(--surface); font-size: 13px; line-height: 1.65; border-top: 1px solid var(--line); }
+.disclaimer { padding: 16px 32px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+@media (max-width: 640px) {
+  .heading { padding: 22px; align-items: flex-start; flex-direction: column; gap: 12px; }
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; padding: 0 22px; }
+  .tabs button { padding: 15px 0 12px; min-height: 48px; text-align: left; }
+  .panel { padding: 28px 22px 12px; min-height: 550px; }
+  .intro { grid-template-columns: 1fr; gap: 14px; margin-bottom: 24px; }
+  .fields > div { grid-template-columns: 1fr; gap: 7px; padding: 14px 0; }
+  .note, .disclaimer { padding: 18px 22px; }
+}

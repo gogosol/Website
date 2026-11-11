@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
+import { publicRoutes, siteUrl } from "@/lib/metadata";
+
+export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: "https://qcertify.io",
-      lastModified: new Date("2026-08-25"),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+  return publicRoutes.map((path) => ({
+    url: `${siteUrl}${path === "/" ? "" : path}`,
+    changeFrequency: "monthly",
+    priority: path === "/" ? 1 : path === "/demo" ? 0.9 : 0.8,
+  }));
 }
