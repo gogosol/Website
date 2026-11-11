@@ -1,0 +1,4 @@
+# gitleaks false positives, pinned by exact fingerprint (commit:file:rule:line) so nothing else is masked.
+# ModeComparison.tsx line 7 is public website copy: the word "Key establishment" followed by the
+# standard TLS group name X25519MLKEM768 trips the generic-api-key heuristic (entropy 3.52). Not a secret.
+a1f268e7a9ac7ee57b2d852840c365a64a68b888:src/components/qcertify/ModeComparison.tsx:generic-api-key:7
