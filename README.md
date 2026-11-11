@@ -21,6 +21,13 @@ npm run cf:preview     # optional: Wrangler's local Pages emulator, including th
 
 Deployment settings, environment variables and free-plan limits: `docs/rebuild/deployment-cloudflare.md`.
 
+Production is the `qcertify-website` Cloudflare Worker, deployed by Workers Builds (`npx wrangler deploy`)
+on every push to `main`. `wrangler.jsonc` runs `npm run build` and serves `out/` as static assets with
+the same `_headers` and `_redirects`; only `/api/*` invokes the Worker (`worker/index.ts`), which runs the
+contact handler from `functions/api/contact.ts`. Workers Builds uses Node 22 with npm 10, so update
+`package-lock.json` with npm 10 (for example `volta run --node 22 --npm 10.9.2 npm install`): npm 11
+drops lockfile entries that npm 10's `npm ci` requires.
+
 ## Public routes
 
 | Route | Purpose |
