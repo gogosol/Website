@@ -36,7 +36,7 @@ drops lockfile entries that npm 10's `npm ci` requires.
 | `/platform` | Discover, define policy, enforce, verify, each with a conceptual illustration |
 | `/architecture` | The architecture explorer, Mode 1 and Mode 2 boundaries, control-plane deployment, planning |
 | `/use-cases` | Three primary situations and three more, each with its boundary and prerequisites |
-| `/trust` | Seven buyer questions: control, traffic flow, scope, security properties, verification, retention, assurance |
+| `/trust` | Seven buyer questions: control, traffic flow, scope, security properties, verification, retention, security review |
 | `/company` | QCertify and QuantumHalon, the founders, how we work, contact routes |
 | `/resources` | Migration challenge, exposure model (Mosca), technical FAQs, evaluation questions, primary sources |
 | `/demo` | Request a technical demo or a pilot and deployment conversation |
@@ -47,13 +47,20 @@ uses `pageMetadata` for its title, description, canonical URL and social card
 
 ## Content rules
 
+- Follow the current public-copy policy in `AGENTS.md`. Do not restore release, qualification,
+  readiness, lab-validation or certification-status banners/disclaimers, including paraphrases.
+  Internal engineering status and archived `.artifacts/` copy do not override that policy.
+  Keep verification gaps internal and explain genuine capabilities, boundaries and prerequisites.
+  Removing a disclaimer does not authorize invented certification or production-readiness claims.
+- The build and browser checks enforce the shared policy in `scripts/public-copy-policy.mjs`.
 - Internal working notes, including the product evidence ledger, live in `docs/rebuild/`. That
-  folder is git-ignored and never published. Read `docs/rebuild/product-evidence.md` before
-  changing technical claims; browser tests enforce the wording rules recorded there.
+  folder is git-ignored and never published. Read its current policy first, then the relevant
+  dated evidence in `docs/rebuild/product-evidence.md`, before changing technical claims.
 - No genuine Console screens in public pages. Product capabilities are shown with conceptual
   illustrations labelled as such. Use "Request a demo"; there is no scheduling integration.
-- Keep key establishment (ML-KEM) and authentication (ML-DSA) separate; never call a
-  combination "quantum-safe". Blue means QuantumHalon-protected traffic, a selected state or
+- Keep key establishment (ML-KEM) and authentication separate. Mode 2 website copy describes
+  ECDSA P-384 or ML-DSA authentication, as configured; runtime verification is recorded internally.
+  Never call a combination "quantum-safe". Blue means QuantumHalon-protected traffic, a selected state or
   focus, never decoration.
 - No mascot, invented customers, certifications, audits, benchmarks or statistics.
 

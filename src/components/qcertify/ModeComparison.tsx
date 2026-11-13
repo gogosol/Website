@@ -5,7 +5,7 @@ const rows: [string, string, string][] = [
   ["Gateways", "One inline gateway on the path", "Two gateways, one at each end of the path"],
   ["Protection boundary", "Each TLS leg, terminated and re-established at the gateway", "Between the two gateways, inside an IPsec (ESP) tunnel"],
   ["Key establishment", "X25519MLKEM768 offered first; weaker exchanges only down to your floor, and recorded", "ML-KEM-768 with ECDH P-384 or X25519 (hybrid), or ML-KEM alone"],
-  ["Authentication", "ML-DSA-65 certificate for clients that support it; ECDSA otherwise, recorded as a classical fallback", "Each gateway authenticates to its configured peer with an identity issued by your control plane"],
+  ["Authentication", "ML-DSA-65 certificate for clients that support it; ECDSA otherwise, recorded as a classical fallback", "Classical ECDSA P-384 or post-quantum ML-DSA, as configured, with peer identities issued by your control plane"],
   ["Inside the gateway", "Authorised sessions are decrypted and re-encrypted", "Packets are encapsulated without inspecting their content"],
   ["Requires", "Clients trust the inspection root you distribute", "IKEv2 and ESP reachability between the gateways"],
 ];

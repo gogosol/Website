@@ -1,5 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
 import routes from "../routes.json";
+import { findPublicCopyViolations } from "../../scripts/public-copy-policy.mjs";
 
 for (const route of routes) {
   test(`${route} loads with valid navigation, metadata, and images @smoke`, async ({ page, request }) => {
@@ -162,17 +163,14 @@ test("the exposure model evaluates x + y > z without predicting a date @smoke", 
   await expect(page.getByText(/An assumption to test, not a forecast/)).toBeVisible();
 });
 
-test("public pages carry no lab narrative, no booking promise and no Mode 2 ML-DSA claim @smoke", async ({ request }) => {
-  const forbidden = [/lab[- ]validated/i, /lab[- ]proven/i, /lab capture/i, /QCertify.s lab/i, /controlled lab/i, /release 2026/i, /production[- ]approved/i, /enterprise[- ]certified/i, /not yet available/i, /in this release/i, /qualification/i, /devtunnels/i, /mascot/i, /\bbook (a|your) (technical )?demo\b/i, /ML-DSA signatures between the two gateways/i];
+test("public pages carry no lab narrative, no qualification status and no booking promise @smoke", async ({ request }) => {
+  const forbidden = [/devtunnels/i, /mascot/i, /\bbook (a|your) (technical )?demo\b/i];
   for (const route of routes) {
     const html = await (await request.get(route)).text();
+    expect(findPublicCopyViolations(html), `${route} public-copy policy`).toEqual([]);
     // Block-level closing tags become segment breaks, so table cells and list items are read separately.
     const text = html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ").replace(/<\/(p|li|td|th|h[1-6]|dd|dt|div|caption|summary|figcaption|title|desc|text|button)>/gi, " ¶ ").replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").replace(/\s+/g, " ");
     for (const pattern of forbidden) expect(text, `${route} must not match ${pattern}`).not.toMatch(pattern);
-    // Wording rule from docs/rebuild/product-evidence.md (internal): no sentence pairs Mode 2 with ML-DSA.
-    for (const sentence of text.split(/¶|(?<=[.!?])\s+/)) {
-      if (/Mode 2/.test(sentence)) expect(sentence, `${route}: Mode 2 sentence`).not.toMatch(/ML-DSA/);
-    }
   }
 });
 

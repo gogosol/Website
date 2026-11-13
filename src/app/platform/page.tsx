@@ -52,7 +52,7 @@ const steps = [
     details: [
       "Classical fallbacks are counted and recorded.",
       "Reports export with verification material for your auditors.",
-      "Product evidence supports your reviews. It is not a certification.",
+      "Product evidence supports your own security reviews and auditors.",
     ],
     visual: <VerifyIllustration />,
     link: { href: "/trust#evidence", text: "What you can verify" },

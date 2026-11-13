@@ -6,11 +6,13 @@
  * 2. Verifies the export: every public route has an HTML file, every referenced image
  *    variant exists, required platform files are present, and the output respects the
  *    Cloudflare Pages Free limits (20,000 files, 25 MiB per file).
+ * 3. Rejects public copy that exposes internal release or qualification status.
  */
 import { copyFile, mkdir, readFile, readdir, stat } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import sharp from "sharp";
+import { findPublicCopyViolations } from "./public-copy-policy.mjs";
 
 const root = process.cwd();
 const out = join(root, "out");
@@ -63,6 +65,15 @@ async function walk(directory) {
 
 const files = await walk(out);
 const problems = [];
+
+// Check source too: client-only states may not appear in the initial exported HTML.
+const copySources = [...await walk(join(root, "src")), ...await walk(join(root, "public"))]
+  .filter((path) => /\.(?:[cm]?[jt]sx?|json|html|txt|svg)$/i.test(path));
+const copyExports = files.filter((path) => /\.(?:html|txt|svg)$/i.test(path));
+for (const file of [...copySources, ...copyExports]) {
+  const violations = findPublicCopyViolations(await readFile(file, "utf8"));
+  if (violations.length) problems.push(`Disallowed public copy in ${relative(root, file)}: ${violations.join(", ")}`);
+}
 
 // Every route must exist as a prerendered HTML document.
 for (const route of routes) {

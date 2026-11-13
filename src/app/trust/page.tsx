@@ -10,7 +10,7 @@ import styles from "./trust.module.css";
 
 export const metadata = pageMetadata(
   "Security & trust",
-  "Who controls QuantumHalon, where your traffic flows, what is protected and where protection ends, which security properties it provides, what you can verify and what independent assurance exists.",
+  "Who controls QuantumHalon, where your traffic flows, what is protected and where protection ends, which security properties it provides and how your reviewers can assess the evidence.",
   "/trust",
 );
 
@@ -23,7 +23,7 @@ const questions = [
   ["cryptography", "Which security properties does it provide?"],
   ["evidence", "What can we verify for ourselves?"],
   ["privacy", "What information is retained?"],
-  ["assurance", "What independent assurance exists?"],
+  ["assurance", "How can our reviewers assess the evidence?"],
 ] as const;
 
 const controls = [
@@ -50,7 +50,7 @@ const outcomes = [
 
 const properties = [
   ["Post-quantum key establishment", "ML-KEM (FIPS 203), combined with X25519 or ECDH P-384 as a hybrid, or on its own in Mode 2. This is what protects recorded traffic from later decryption."],
-  ["Authentication, stated separately", "The control plane signs policy and commands with ML-DSA (FIPS 204). Mode 1 presents ML-DSA certificates to clients that support them and records every classical fallback."],
+  ["Authentication, stated separately", "The control plane signs policy and commands with ML-DSA (FIPS 204). Mode 1 presents ML-DSA certificates to clients that support them and records every classical fallback. Mode 2 supports classical ECDSA P-384 or post-quantum ML-DSA gateway authentication, as configured."],
   ["Explicit fallback floors", "Compatibility is a scoped policy with a floor. Mode 1 refuses connections below it. Mode 2 traffic uses an authorised tunnel or is dropped, never sent in cleartext."],
   ["Trust before traffic", "Mode 2 authorises only the configured peer gateway. A trusted certificate alone never grants access to a partner network."],
 ];
@@ -126,11 +126,11 @@ export default function TrustPage() {
       <p className={styles.small}>Please do not send credentials, keys or confidential network details through the website. Questions about an enquiry: <a href="mailto:contact@qcertify.io">contact@qcertify.io</a>.</p>
     </Question>
 
-    <Question id="assurance" index={7} question="What independent assurance exists?" title="Evidence, architecture and certification are different things.">
+    <Question id="assurance" index={7} question="How can our reviewers assess the evidence?" title="Evidence for your own security review.">
       <div className={styles.assurance}>
         <div><h3>Product-generated evidence</h3><p>Posture reports, the signed audit ledger and signed exports, produced by your control plane for your own reviews and auditors.</p></div>
         <div><h3>Security architecture</h3><p>The design on this page: separated planes, customer-held identities, signed commands, explicit fallback floors and fail-closed Mode 2 enforcement.</p></div>
-        <div><h3>Independent certification</h3><p>An assessment by an accredited third party. QuantumHalon is not presented as independently certified. Using NIST-standardised algorithms, or producing signed reports, is not in itself a certification.</p></div>
+        <div><h3>Your review process</h3><p>Your reviewers can examine the architecture and verify signed records against your organisation&rsquo;s security requirements.</p></div>
       </div>
       <p className={styles.disclosure}>Found a security issue? Email <a href="mailto:contact@qcertify.io">contact@qcertify.io</a> with &ldquo;Security report&rdquo; in the subject, as described in our <a href="/.well-known/security.txt">security.txt</a>.</p>
     </Question>

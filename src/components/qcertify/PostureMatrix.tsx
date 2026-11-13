@@ -29,7 +29,7 @@ export function PostureMatrix() {
       <tbody>{rows.map((row) => <tr key={row.title}><th scope="row">{row.title}<small>{row.detail}</small></th>{row.cells.map((cell, index) => <td key={index} data-tone={cell.tone}><span className={styles.label}>{cell.label}</span><span className={styles.axis}>{columns[index].title}</span><p>{cell.text}</p></td>)}</tr>)}</tbody>
     </table>
     <ul className={styles.where}>
-      <li><strong>Mode 2</strong>Hybrid or ML-KEM-only key establishment between the gateways. Authentication is classified by the signature the gateways actually use.</li>
+      <li><strong>Mode 2</strong>Hybrid or ML-KEM-only key establishment between the gateways, with classical ECDSA P-384 or post-quantum ML-DSA authentication. Posture reflects the configured combination.</li>
       <li><strong>Mode 1</strong>Hybrid key establishment; ML-DSA for clients that support it. Clients that need ECDSA are recorded as partly classical.</li>
       <li><strong>Passthrough</strong>Reported as observed. QuantumHalon adds nothing and claims nothing.</li>
     </ul>

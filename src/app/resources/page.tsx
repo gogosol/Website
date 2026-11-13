@@ -118,7 +118,7 @@ export default function ResourcesPage() {
 
     <section id="standards" className={styles.section} aria-labelledby="standards-title">
       <div className="container">
-        <Head index={5} eyebrow="Primary sources" id="standards-title" title="Go to the standard." intro="Standards and public guidance, read at the source. Citing them does not mean QuantumHalon is certified against them." />
+        <Head index={5} eyebrow="Primary sources" id="standards-title" title="Go to the standard." intro="Standards and public guidance, read at the source." />
         <ul className={styles.standards}>{standards.map((standard) => <li key={standard.name}><a href={standard.href} target="_blank" rel="noopener noreferrer">
           <span className={styles.source}>{standard.source}</span>
           <span className={styles.standard}><strong>{standard.name}</strong><span>{standard.text}</span></span>

@@ -82,7 +82,7 @@ export const outcomes: Record<ModeId, Outcome> = {
     protects: "Selected IP packets of any IP protocol, carried in an IPsec (ESP) tunnel between the two QuantumHalon gateways.",
     begins: "Protection begins when the first gateway encapsulates the packet and ends when the peer gateway decapsulates it. Beyond the gateways, traffic continues exactly as it did before.",
     keyExchange: "ML-KEM-768 combined with ECDH P-384 or X25519 (hybrid), or ML-KEM alone. Each configuration names its algorithms, and both gateways enforce them.",
-    authentication: "Each gateway authenticates to its configured peer with an identity issued by your control plane. No other peer is authorised.",
+    authentication: "Each gateway authenticates to its configured peer using classical ECDSA P-384 or post-quantum ML-DSA, as configured, with an identity issued by your control plane. No other peer is authorised.",
     failure: "Packets use an authorised tunnel or are dropped. A missing tunnel, a restart or a revocation never falls back to cleartext or weaker algorithms.",
     requirements: ["IKEv2 and ESP reachability between the two gateways, without address translation between them."],
   },
@@ -128,7 +128,7 @@ export const componentNotes: Record<ComponentId, { title: string; text: string }
   source: { title: "Existing systems", text: "Applications keep their protocols and need no rewrite, and hosts need no agent. QuantumHalon acts on traffic that crosses an inline gateway. For Mode 1, clients trust your inspection root." },
   gatewayA: { title: "Inline gateway", text: "Physically inline on the selected path, enforcing the published configuration locally: Mode 1, Mode 2, passthrough or block. Coverage follows topology." },
   transport: { title: "Your existing network", text: "Routers, firewalls, WAN and VPN paths keep carrying the traffic. No post-quantum capable routers are required." },
-  gatewayB: { title: "Peer gateway", text: "The other end of the protected segment. In Mode 2 the two gateways authenticate each other and enforce the same algorithms." },
+  gatewayB: { title: "Peer gateway", text: "The other end of the protected segment. In Mode 2 the two gateways authenticate each other using classical ECDSA P-384 or post-quantum ML-DSA, as configured, and enforce the same algorithms." },
   destination: { title: "Destination systems", text: "Receive the traffic as before. Protection between gateways complements, and does not replace, endpoint and storage security." },
   control: { title: "Customer-controlled control plane", text: "Runs on premises, in your private cloud or air-gapped. It publishes policy and signs every command with ML-DSA, issues gateway identities from your own certificate authority and keeps the signed audit ledger. It never carries application traffic." },
 };

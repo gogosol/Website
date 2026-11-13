@@ -8,6 +8,33 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
+## Public copy policy, 13 November 2026
+
+This policy supersedes older copy directives in `docs/rebuild/`, project skills,
+engineering status documents and archived `.artifacts/` files. Those sources retain
+technical evidence and history; they are not authority to restore removed public copy.
+
+- Describe product capabilities, security boundaries and genuine deployment prerequisites.
+- Do not add public release, qualification, readiness, lab-validation or certification-status
+  banners or disclaimers. This includes "Release qualification in progress", "lab-proven",
+  "not production-approved", "certification pending", "not independently certified", and
+  indirect rewrites such as "assurance still to establish" or "validation remains open".
+  The rule applies to pages, metadata, illustrations, captions, FAQs and generated assets.
+- Keep engineering verification status, evidence gaps and historical test results in internal
+  working notes. A missing test or certification is not an instruction to add a public disclaimer.
+  Do not replace removed disclaimers with invented certification, compliance, audit or
+  production-readiness claims. Verify substantive technical claims and record their scope.
+- Keep real prerequisites and limits visible, including gateway placement, traffic scope,
+  reachability and client trust requirements. Explain them as product and deployment facts.
+- Mode 2 website copy describes ECDSA P-384 (classical) or ML-DSA (post-quantum)
+  authentication, as configured, separately from key establishment. Keep the distinction
+  between this owner-requested description and runtime verification in the internal evidence
+  ledger; website edits do not establish or implement runtime support.
+
+`scripts/public-copy-policy.mjs` enforces this policy in the build and browser checks.
+Fix conflicting copy rather than weakening the guard. Read the current policy at the top of
+`docs/rebuild/product-evidence.md` before consulting its dated historical reviews.
+
 ## UI Component Registries (shadcn)
 
 The project configures custom shadcn registries in `components.json`, including **Canvas UI**:

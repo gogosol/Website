@@ -124,7 +124,7 @@ export default function Home() {
         <div className={styles.trust} data-reveal>
           <h3>Built to be examined.</h3>
           <div>
-            <p>QuantumHalon uses NIST-standardised ML-KEM and ML-DSA, runs under your own authority, and records every administrative decision in a signed audit ledger. That evidence supports your own reviews and auditors. It is not a certification.</p>
+            <p>QuantumHalon uses NIST-standardised ML-KEM and ML-DSA, runs under your own authority, and records every administrative decision in a signed audit ledger. That evidence supports your own reviews and auditors.</p>
             <Link prefetch={false} href="/trust" className="text-link">Security and trust <ArrowUpRight aria-hidden="true" /></Link>
           </div>
         </div>
