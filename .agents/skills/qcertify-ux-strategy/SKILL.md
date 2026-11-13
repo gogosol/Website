@@ -12,11 +12,9 @@ For each proposed page identify its objective, evidence, primary action and link
 to the next useful page. Exact routes remain a design decision until specified.
 
 Use current content as inventory and mark unsupported claims for internal evidence review.
-Keep release, qualification, readiness, lab-validation and certification status in internal
-notes, without public banners or disclaimers, including indirect paraphrases. Public copy
-explains capabilities, security boundaries and deployment prerequisites; do not replace removed
-disclaimers with invented certification or production-readiness claims. The build and browser
-checks enforce the current policy through `scripts/public-copy-policy.mjs`.
+Public copy explains capabilities, security boundaries and deployment prerequisites, without
+status banners or disclaimers, and without invented certification or compliance claims.
+The build and browser checks enforce the policy through `scripts/public-copy-policy.mjs`.
 
 The original UX audit was supplied after setup; use the later decisions recorded in the strategy
 and design notes. Avoid exposing implementation jargon in user flows.

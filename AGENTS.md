@@ -8,32 +8,24 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-## Public copy policy, 13 November 2026
+## Public copy policy
 
-This policy supersedes older copy directives in `docs/rebuild/`, project skills,
-engineering status documents and archived `.artifacts/` files. Those sources retain
-technical evidence and history; they are not authority to restore removed public copy.
+This policy supersedes older copy directives in `docs/rebuild/`, project skills and archived
+`.artifacts/` files. Those sources are history, not authority to restore removed public copy.
 
-- Describe product capabilities, security boundaries and genuine deployment prerequisites.
-- Do not add public release, qualification, readiness, lab-validation or certification-status
-  banners or disclaimers. This includes "Release qualification in progress", "lab-proven",
-  "not production-approved", "certification pending", "not independently certified", and
-  indirect rewrites such as "assurance still to establish" or "validation remains open".
-  The rule applies to pages, metadata, illustrations, captions, FAQs and generated assets.
-- Keep engineering verification status, evidence gaps and historical test results in internal
-  working notes. A missing test or certification is not an instruction to add a public disclaimer.
-  Do not replace removed disclaimers with invented certification, compliance, audit or
-  production-readiness claims. Verify substantive technical claims and record their scope.
-- Keep real prerequisites and limits visible, including gateway placement, traffic scope,
-  reachability and client trust requirements. Explain them as product and deployment facts.
-- Mode 2 website copy describes ECDSA P-384 (classical) or ML-DSA (post-quantum)
-  authentication, as configured, separately from key establishment. Keep the distinction
-  between this owner-requested description and runtime verification in the internal evidence
-  ledger; website edits do not establish or implement runtime support.
+- Public pages describe what QuantumHalon does: its capabilities, security boundaries and
+  deployment prerequisites (gateway placement, traffic scope, reachability, client trust).
+- No status banners or disclaimers about release, testing, approval or certification state,
+  in pages, metadata, illustrations, captions, FAQs or generated assets, including paraphrases.
+- No invented certifications, compliance, audits, customers, benchmarks or statistics. Check
+  substantive technical claims against the product documentation and record their source in
+  the internal notes.
+- Mode 2 gateways authenticate with classical ECDSA P-384 or post-quantum ML-DSA signatures,
+  as configured. Describe authentication separately from key establishment (ML-KEM).
 
 `scripts/public-copy-policy.mjs` enforces this policy in the build and browser checks.
-Fix conflicting copy rather than weakening the guard. Read the current policy at the top of
-`docs/rebuild/product-evidence.md` before consulting its dated historical reviews.
+Fix conflicting copy rather than weakening the guard. The internal notes start at the top of
+`docs/rebuild/product-evidence.md` (git-ignored, never published).
 
 ## UI Component Registries (shadcn)
 

@@ -47,19 +47,16 @@ uses `pageMetadata` for its title, description, canonical URL and social card
 
 ## Content rules
 
-- Follow the current public-copy policy in `AGENTS.md`. Do not restore release, qualification,
-  readiness, lab-validation or certification-status banners/disclaimers, including paraphrases.
-  Internal engineering status and archived `.artifacts/` copy do not override that policy.
-  Keep verification gaps internal and explain genuine capabilities, boundaries and prerequisites.
-  Removing a disclaimer does not authorize invented certification or production-readiness claims.
-- The build and browser checks enforce the shared policy in `scripts/public-copy-policy.mjs`.
+- Follow the public-copy policy in `AGENTS.md`: describe capabilities, security boundaries and
+  deployment prerequisites, without status banners or disclaimers. The build and browser checks
+  enforce it through `scripts/public-copy-policy.mjs`.
 - Internal working notes, including the product evidence ledger, live in `docs/rebuild/`. That
   folder is git-ignored and never published. Read its current policy first, then the relevant
   dated evidence in `docs/rebuild/product-evidence.md`, before changing technical claims.
 - No genuine Console screens in public pages. Product capabilities are shown with conceptual
   illustrations labelled as such. Use "Request a demo"; there is no scheduling integration.
-- Keep key establishment (ML-KEM) and authentication separate. Mode 2 website copy describes
-  ECDSA P-384 or ML-DSA authentication, as configured; runtime verification is recorded internally.
+- Keep key establishment (ML-KEM) and authentication separate. Mode 2 gateways authenticate with
+  classical ECDSA P-384 or post-quantum ML-DSA signatures, as configured.
   Never call a combination "quantum-safe". Blue means QuantumHalon-protected traffic, a selected state or
   focus, never decoration.
 - No mascot, invented customers, certifications, audits, benchmarks or statistics.

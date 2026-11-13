@@ -19,7 +19,7 @@ const primary: UseCase[] = [
   { id: "site-to-site", label: "Site-to-site traffic", title: "Protect traffic between sites over the network you already have.",
     situation: "Branches, data centres and production sites connected by a WAN, MPLS or VPN.",
     exposure: "A conventional WAN or VPN does not, on its own, add post-quantum protection, and traffic between sites often stays sensitive for years.",
-    fit: "A gateway at each site boundary carries the selected traffic, of any IP protocol, in an IPsec tunnel with ML-KEM key establishment (Mode 2).",
+    fit: "A gateway at each site boundary carries the selected traffic, of any IP protocol, in an IPsec tunnel with ML-KEM key establishment (Mode 2). The gateways authenticate each other with classical ECDSA P-384 or post-quantum ML-DSA signatures, as configured.",
     gain: "Post-quantum protection between sites, without changing the routers or applications at either end.",
     note: "Both directions of the traffic cross both gateways, with IKEv2 and ESP reachability between them and no address translation in between.",
     route: ["Site A", "Gateway", "WAN", "Gateway", "Site B"], protectedFrom: 2, protectedTo: 3 },

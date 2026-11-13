@@ -6,7 +6,7 @@
  * 2. Verifies the export: every public route has an HTML file, every referenced image
  *    variant exists, required platform files are present, and the output respects the
  *    Cloudflare Pages Free limits (20,000 files, 25 MiB per file).
- * 3. Rejects public copy that exposes internal release or qualification status.
+ * 3. Rejects disallowed public copy (the guard in scripts/public-copy-policy.mjs).
  */
 import { copyFile, mkdir, readFile, readdir, stat } from "node:fs/promises";
 import { existsSync } from "node:fs";

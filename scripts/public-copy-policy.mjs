@@ -1,4 +1,4 @@
-/** Owner's public-copy policy. Engineering status belongs in internal notes. */
+/** Wording that must not appear in public pages, metadata or generated assets (see AGENTS.md). */
 export const forbiddenPublicCopy = [
   /\bqualification\b/i,
   /\blab[-\s]+(?:validated|proven|tested|only|capture|evidence|demonstration)\b/i,

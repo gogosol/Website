@@ -47,7 +47,7 @@ export function DiscoverIllustration() {
 
 /** Define policy: one policy composed from scope, outcome, protection and review. */
 export function PolicyIllustration() {
-  return <Figure label="Illustration of a policy being defined: the traffic scope from branch systems to the data centre, the outcome set to protect, protection between two gateways with hybrid ML-KEM key establishment, and review by two administrators before publishing.">
+  return <Figure label="Illustration of a policy being defined: the traffic scope from branch systems to the data centre, the outcome set to protect, protection between two gateways with hybrid ML-KEM key establishment and ML-DSA authentication, and review by two administrators before publishing.">
     <div className={styles.head}>
       <div><span className={styles.kicker}>New policy</span><span className={styles.title}>Branch systems {ARROW} Data centre</span></div>
       <span className={styles.pill} data-tone="quiet">Draft</span>
@@ -63,7 +63,7 @@ export function PolicyIllustration() {
       </div></li>
       <li className={styles.step} data-done=""><span className={styles.stepDot}><Check size={12} strokeWidth={3} aria-hidden="true" /></span><div>
         <span className={styles.stepLabel}>Protection</span>
-        <dl className={styles.spec}><div><dt>Boundary</dt><dd>Gateway to gateway</dd></div><div><dt>Key establishment</dt><dd>Hybrid ML-KEM</dd></div></dl>
+        <dl className={styles.spec}><div><dt>Boundary</dt><dd>Gateway to gateway</dd></div><div><dt>Key establishment</dt><dd>Hybrid ML-KEM</dd></div><div><dt>Authentication</dt><dd>ML-DSA</dd></div></dl>
       </div></li>
       <li className={styles.step}><span className={styles.stepDot}>4</span><div>
         <span className={styles.stepLabel}>Review</span>

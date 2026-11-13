@@ -163,7 +163,7 @@ test("the exposure model evaluates x + y > z without predicting a date @smoke", 
   await expect(page.getByText(/An assumption to test, not a forecast/)).toBeVisible();
 });
 
-test("public pages carry no lab narrative, no qualification status and no booking promise @smoke", async ({ request }) => {
+test("public pages follow the public-copy policy and make no booking promise @smoke", async ({ request }) => {
   const forbidden = [/devtunnels/i, /mascot/i, /\bbook (a|your) (technical )?demo\b/i];
   for (const route of routes) {
     const html = await (await request.get(route)).text();
